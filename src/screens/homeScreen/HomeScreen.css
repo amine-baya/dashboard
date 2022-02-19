@@ -1,0 +1,69 @@
+.homeScreen .home_trusted
+{
+    background-color: #EDFCF0;
+    padding: 10px 0px;
+    padding-right: 50px;
+    width: 85%;
+    margin: 60px auto;
+}
+.home_trusted h2
+{
+    padding-left: 50px;
+    text-transform: uppercase;
+    transform: translateY(20px);
+}
+.home_trusted .home_trusted_logo
+{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    align-items: center;
+    justify-items: center;
+}
+
+.homeScreen .home_role
+{
+    width: 70%;
+    margin: 0 auto;
+}
+.homeScreen .home_role h3
+{
+    margin-bottom: 50px;
+}
+.homeScreen .home_role .home_role_role
+{
+    margin-bottom: 30px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.homeScreen .home_role .homeScreen_role_span
+{
+    text-decoration: underline;
+    color: #395F8C;
+    cursor: pointer;
+    margin-bottom: 70px;
+    display: block;
+}
+
+.homeScreen .home_role .homeScreen_hr
+{
+    display: block;
+    width: 100%;
+    border: 1px solid #696F79;
+    transform: rotate(-0.13deg);
+}
+
+.homeScreen .home_role .homeScreen_btn
+{
+    display: block;
+    width: 250px;
+    height: 50px;
+    background: #395F8C;
+    border-radius: 8px;
+    color: white;
+    text-align: center;
+    line-height: 50px;
+    margin: 50px auto;
+    cursor: pointer;
+}
