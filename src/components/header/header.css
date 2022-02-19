@@ -1,0 +1,32 @@
+header{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    margin: 20px 50px;
+}
+header .logo span {
+    display: inline-block;
+    padding-left: 15px;
+}
+
+header .nav-sections ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .nav-sections ul li {
+    text-decoration: none;
+    list-style-type: none;
+}
+
+header .nav-sections ul li.button-header button {
+    width: 185px;
+    height: 50px;
+    background: #75141D;
+    border-radius: 4px;
+    outline: none;
+    border: none;
+    font-size:18px;
+    color:#FFF;
+    
+}

@@ -1,0 +1,28 @@
+hr{
+    width: 130%;
+    transform: translateX(-13%);
+    background-color: #000000;
+    margin-bottom: 20px;
+}
+
+.btn_contaienr{
+    justify-content: space-evenly;
+    display: flex;
+    margin-bottom: 50px;
+    margin-top: 30px;
+}
+
+.btn_contaienr span.btn_span{
+    width: 190px;
+    padding: 15px 0;
+    text-align: center;
+    border: 1px solid #395F8C;
+    box-sizing: border-box;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn_contaienr span.btn_2{
+    background-color: #395F8C;
+    color: #fff;
+}
