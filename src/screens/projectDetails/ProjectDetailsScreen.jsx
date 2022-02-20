@@ -6,7 +6,7 @@ import './projectDetails.css'
 
 const ProjectDetailsScreen = () => {
   return (
-    <div id='project_details' >
+    <div id='project_details' className='container' >
       <div className='project_details_container'>
           <Title title="Project Details" />
           <p className='project_details_question'>What type of project are you hiring for</p>
