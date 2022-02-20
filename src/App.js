@@ -6,6 +6,8 @@ import HomeScreen from "./screens/homeScreen/HomeScreen";
 import ProjectDetailsScreen from "./screens/projectDetails/ProjectDetailsScreen";
 import KpisOneScreen from "./screens/kpisOneScreen/KpisOneScreen";
 import ProfessionalDetailsScreen from "./screens/professionalDetails/ProfessionalDetailsScreen";
+import KpisTwoScreen from "./screens/kpisTwoScreen/KpisTwoScreen";
+
 
 
 
@@ -20,6 +22,8 @@ function App() {
           <Route path="/project-details" element={<ProjectDetailsScreen />} ></Route>
           <Route path="/kpis-one" element={<KpisOneScreen />} ></Route>
           <Route path="/professional-details" element={<ProfessionalDetailsScreen />} ></Route>
+          <Route path="/kpis-two" element={<KpisTwoScreen />} ></Route>
+
 
 
         </Routes>

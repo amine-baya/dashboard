@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './type.css'
 
 const Type = ({text}) => {
+  const [checked, setchecked] = useState(false)
   return (
-    <div className='type'>
-        <input type="checkbox" />
-        <p>{text}</p>
+    <div className={checked ? 'type checked' : 'type'}>
+        <input type="checkbox" onChange={() => setchecked(!checked)}/>
+        <p className={checked && 'checked'}>{text}</p>
     </div>
   )
 }

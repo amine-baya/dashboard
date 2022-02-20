@@ -42,6 +42,19 @@ export let KpisInfo = [
 ]
 
 
+export let kpisSkills = [
+  {
+    title: "Sales",
+    options: ["Sales Growth","Sales Target","Revenu","Customer Churn Rate","Lead Conversion Ratio"],
+  },
+  {
+      title: "Sales Executive",
+      options: ["Sales Growth","Sales Target","Revenu","Customer Churn Rate","Lead Conversion Ratio"],
+  },
+]
+
+
+
 
 
 

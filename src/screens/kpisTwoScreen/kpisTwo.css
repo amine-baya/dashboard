@@ -1,0 +1,32 @@
+.kpis_Container{
+    margin: 0 50px;
+ }
+ 
+#kpisTwo .kpisTwo_header
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+ #kpisTwo .kpis_change_skills_btn
+{
+    display: block;
+    width: 208px;
+    height: 50px;
+    color: #395F8C;
+    background: #FFFFFF;
+    border: 1px solid #395F8C;
+    box-sizing: border-box;
+    border-radius: 6px;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+    font-size: 16px;
+    
+}
+
+
+
+

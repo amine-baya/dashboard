@@ -10,6 +10,12 @@
     margin-bottom: 30px;
 
 }
+#project_details .project_details_container  .project_details_types .type.checked
+{
+    border: 1px solid #4FAC8D;
+    box-shadow: 0px 4px 14px 1px #0000000A;
+
+}
 
 #project_details .project_details_container  .project_details_types .type input
 {
@@ -27,4 +33,9 @@
     margin-left: 20px;
     margin-bottom: 0;
     text-transform: capitalize;
+}
+
+#project_details .project_details_container  .project_details_types .type p.checked
+{
+    color:  #4FAC8D;
 }
