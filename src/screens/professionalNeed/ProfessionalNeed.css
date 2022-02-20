@@ -1,0 +1,85 @@
+#professional_need .professional_need_container
+{
+    margin: 0 50px;
+
+}
+#professional_need .professional_need_container .professional_need_img
+{
+    display: block;
+    margin: 30px auto 50px;
+}
+
+#professional_need .professional_need_container div h5
+{
+    margin-bottom: 30px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    color: #696F79;
+}
+#professional_need .professional_need_container div input
+{
+    cursor: pointer;
+}
+#professional_need .professional_need_container div span
+{
+    margin-right: 80px;
+    margin-left: 12px;
+    text-transform: capitalize;
+    font-weight: bold;
+}
+#professional_need .professional_need_container div.professional_need_choice span 
+{
+    display: inline-block;
+    margin-bottom: 30px;
+}
+#professional_need .professional_need_container div .professional_need_grid
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+#professional_need .professional_need_container div .professional_need_grid .professional_need_grid_box
+{   
+    background: #FFFFFF;
+    border: 1px solid #E0DEDE;
+    box-shadow: 6px 6px 14px 1px rgba(0, 0, 0, 0.06);
+    border-radius: 10px;
+    padding: 35px 20px;
+    margin-bottom: 70px;
+}
+#professional_need .professional_need_container div .professional_need_grid .professional_need_grid_box.professional_need_grid_box_contractor
+{
+    background: #ECF5FF;
+border: 1px solid #395F8C;
+box-shadow: 6px 6px 14px 1px rgba(0, 0, 0, 0.06);
+border-radius: 10px;
+}
+#professional_need .professional_need_container div .professional_need_grid .professional_need_grid_box div
+{
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+}
+#professional_need .professional_need_container div .professional_need_grid .professional_need_grid_box h3
+{
+    font-family: Inter;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 25px;
+    color: #395F8C;
+    margin-bottom: 20px;
+}
+
+#professional_need .professional_need_container div .professional_need_grid .professional_need_grid_box span
+{
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 14px;
+margin-right: 0;
+color: #6E798C;
+}
