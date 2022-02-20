@@ -1,7 +1,8 @@
-hr{
-    width: 130%;
-    transform: translateX(-13%);
-    background-color: #000000;
+.hr{
+    display: block;
+    width: 100%;
+    border: 0.5px solid #696F79;
+    transform: rotate(-0.17deg);
     margin-bottom: 20px;
 }
 

@@ -18,7 +18,7 @@ const HomeScreen = () => {
 
       <div className='home_role'>
           <h3>What role would you like to have the professional fill?</h3>
-          <div className='home_role_role'>
+          <div className='home_roles'>
           <Role text="Sales-Bussiness development Manager, Sales Director, Sales Executive"/>
           <Role text="Sales-Bussiness development Manager, Sales Director, Sales Executive"/>
           <Role text="Sales-Bussiness development Manager, Sales Director, Sales Executive"/>

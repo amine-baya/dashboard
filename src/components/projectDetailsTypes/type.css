@@ -1,6 +1,4 @@
-
-
-.homeScreen .home_role .home_roles .role
+#project_details .project_details_container  .project_details_types .type
 {
     display: flex;
     padding: 25px ;
@@ -8,11 +6,12 @@
     color: #8692A6;
     border-radius: 6px;
     box-shadow: 0px 2px 14px 1px #0000000F;
-    min-height: 100px;
+    min-height: 70px;
+    margin-bottom: 30px;
 
 }
 
-.homeScreen .home_role .home_roles .role input
+#project_details .project_details_container  .project_details_types .type input
 {
     height: 25px;
     width: 25px;
@@ -20,7 +19,7 @@
     cursor: pointer;
     background-color: #E3E3E3;
 }
-.homeScreen .home_role .home_roles .role p
+#project_details .project_details_container  .project_details_types .type p
 {
     align-self: center;
     font-size: 18px;

@@ -1,30 +1,30 @@
 import Header from "./components/header/Header";
-import Kpi from "./components/Kpi/Kpi";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './index.css'
-import Title from "./components/title/Title";
-import KpisInfo from './kpisInfo'
-import Button from "./components/button/Button";
+import { BrowserRouter as Router,Routes, Route } from "react-router-dom";
 import HomeScreen from "./screens/homeScreen/HomeScreen";
+import ProjectDetailsScreen from "./screens/projectDetails/ProjectDetailsScreen";
+import KpisOneScreen from "./screens/kpisOneScreen/KpisOneScreen";
 
 
 
 function App() {
-  console.log(KpisInfo)
   return (
     <div className="App">
+       
+      <Router>
+        <Header />
+        <Routes>
+          <Route path="/" element={<HomeScreen />} ></Route>
+          <Route path="/project-details" element={<ProjectDetailsScreen />} ></Route>
+          <Route path="/kpis-one" element={<KpisOneScreen />} ></Route>
 
-      <Header />
-      {/* <div className="kpis-Container">
-      <Title title="Please select KPIs that you want this person to fulfill:" />
-       { KpisInfo.map((kpi)=>(
-        <Kpi title={kpi.title} options={kpi.options}  />
+        </Routes>
+      </Router>
+       
 
-        ))}
-        <Button />
-
-      </div> */}
-      <HomeScreen />
+      
+      
     </div>
   );
 }

@@ -1,13 +1,13 @@
 import React from 'react'
 import './Button.css'
 
-const Button = () => {
+const Button = ({text}) => {
   return (
     <div>
-        <hr/>
+        <span className='hr'></span>
         <div className='btn_contaienr'>
             <span className='btn_span btn_1'>Back</span>
-            <span className='btn_span btn_2'>Next: Project Details</span>
+            <span className='btn_span btn_2'>{text}</span>
         </div>
     </div>
   )
