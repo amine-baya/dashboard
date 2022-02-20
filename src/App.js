@@ -8,6 +8,8 @@ import KpisOneScreen from "./screens/kpisOneScreen/KpisOneScreen";
 import ProfessionalDetailsScreen from "./screens/professionalDetails/ProfessionalDetailsScreen";
 import KpisTwoScreen from "./screens/kpisTwoScreen/KpisTwoScreen";
 import ProfessionalNeedScreen from "./screens/professionalNeed/ProfessionalNeedScreen";
+import ScheduleScreen from "./screens/schedule/ScheduleScreen";
+import DateAndTime from "./screens/dateandtime/DateAndTime";
 
 
 
@@ -25,6 +27,10 @@ function App() {
           <Route path="/professional-details" element={<ProfessionalDetailsScreen />} ></Route>
           <Route path="/kpis-two" element={<KpisTwoScreen />} ></Route>
           <Route path="/professional-need" element={<ProfessionalNeedScreen />} ></Route>
+          <Route path="/schedule" element={<ScheduleScreen />} ></Route>
+          <Route path="/date-and-time" element={<DateAndTime />} ></Route>
+
+
 
         </Routes>
       </Router>

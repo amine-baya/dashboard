@@ -1,0 +1,32 @@
+#schedule .schedule_container
+{
+    margin: 0 50px;
+}
+
+#schedule .schedule_container div h5
+{
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+    color: #494949;
+    margin: 40px 0 10px;
+}
+
+#schedule .schedule_container .schedule_info p
+{
+    margin-top: 25px;
+font-family: Inter;
+font-style: normal;
+font-weight: normal;
+font-size: 12px;
+line-height: 26px;
+color: #ACACAC;
+}
+#schedule .schedule_container .schedule_info p span
+{
+    text-decoration: underline;
+    color: #395F8C;
+    font-weight: bold;
+}

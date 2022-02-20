@@ -25,15 +25,15 @@ const KpisTwoScreen = () => {
             show={modalShow}
             onHide={() => setModalShow(false)}
             />
-
             <Tag  options={select}  />
+            <h6 className='see-more'>See More</h6>
         </>
        }
 
           
           <div className='kpisTwo_header'>
-            <Title title="Skills" />
-            <span className='kpis_change_skills_btn' onClick={() => setModalShow(true)} >Change skill category</span>
+            <Title title="Skills" diffMargin={select.length === 0 ?  false : true}  />
+            { select.length === 0 &&   <span className='kpis_change_skills_btn' onClick={() => setModalShow(true)} >Change skill category</span>}
           </div>
           { kpisSkills.map((kpi)=>(
             <Kpi title={kpi.title} options={kpi.options}  />

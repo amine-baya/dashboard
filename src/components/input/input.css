@@ -1,0 +1,31 @@
+.input_component label
+{
+    display: block;
+    font-family: Inter;
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 19px;
+display: flex;
+align-items: center;
+margin-bottom: 15px;
+color: #696F79;
+margin-top: 25px;
+}
+
+.input_component input
+{
+    width: 100%;
+    padding: 20px 30px;
+    background: #FFFFFF;
+border: 1px solid #395F8C;
+border-radius: 6px;
+transition: all ease .5s;
+}
+
+.input_component input:focus
+{
+    box-shadow: 0px 0px 20px -10px #395F8C;
+    border:1px solid #395F8C;
+    outline: none;
+}

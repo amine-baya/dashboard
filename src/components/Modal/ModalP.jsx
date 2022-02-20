@@ -1,5 +1,5 @@
 import React from 'react'
-import { Modal,Button, Form } from 'react-bootstrap'
+import { Modal, Form } from 'react-bootstrap'
 import './modalP.css'
 
 const ModalP = (props) => {
@@ -16,23 +16,25 @@ const ModalP = (props) => {
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-          <label>Category</label>
-            <Form.Select aria-label="Default select example">
+          <label className='label_select_modal'>Category</label>
+            <Form.Select aria-label="Default select example" className='form_select_modal'>
                 <option>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                <option value="1">Developer-front-end, back-end, full-stack, mobile etc</option>
+                <option value="2">Marketing-digital marketers, marketing managers, SEO</option>
+                <option value="3">Data analysts-data science, data visualisation, predictive analysis</option>
             </Form.Select>
 
-            <label>Speciality</label>
-            <Form.Select aria-label="Default select example">
+            <label className='label_select_modal'>Speciality</label>
+            <Form.Select aria-label="Default select example" className='form_select_modal'>
                 <option>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                <option value="1">Developer-front-end, back-end, full-stack, mobile etc</option>
+                <option value="2">Marketing-digital marketers, marketing managers, SEO</option>
+                <option value="3">Data analysts-data science, data visualisation, predictive analysis</option>
             </Form.Select>
-            <Button onClick={props.onHide}>Cancel</Button>
-            <Button onClick={props.onHide}>Save</Button>
+            <div className='modal_buttons'>
+            <button classsName='btn_cancel_modal' onClick={props.onHide} style={{color: '#395F8C',border:'1px solid #395F8C'}} >Cancel</button>
+            <button classsName="btn_cancel_save" onClick={props.onHide}  style={{background: '#395F8C',marginLeft:'25px'}}>Save</button>
+            </div>
 
           </Modal.Body>
           

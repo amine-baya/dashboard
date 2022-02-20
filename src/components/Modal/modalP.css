@@ -1,0 +1,27 @@
+#contained-modal-title-vcenter{
+    margin-left: 55px !important;
+}
+.form_select_modal{
+    margin: 10px auto 30px !important;
+    width: 85% !important;
+    padding: 0.375rem 2.25rem 0.375rem 2rem !important;
+    height: 65px !important;
+    outline: none;   
+}
+.label_select_modal{
+    margin-left: 60px !important;
+}
+
+.modal_buttons{
+    display: flex;
+    justify-content: right;
+    margin-right: 55px;
+}
+.modal_buttons button{
+    border-radius: 6px;
+    border: none;
+    padding: 12px 40px;
+    color: #FFF;
+    width: 130px;
+}
+

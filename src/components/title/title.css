@@ -5,6 +5,9 @@
     font-weight: 600;
     font-size: 24px;
     line-height: 29px;
-    
+}
+
+.title h1.title_small_padding{
+    padding-top: 30px;
     
 }
