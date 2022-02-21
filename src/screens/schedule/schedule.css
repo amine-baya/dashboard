@@ -30,3 +30,24 @@ color: #ACACAC;
     color: #395F8C;
     font-weight: bold;
 }
+#schedule .schedule_container .schedule_calend h5
+{
+    margin-bottom: 50px;
+}
+#schedule .schedule_container .schedule_calend h6
+{
+    font-family: Inter;
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 19px;
+display: flex;
+align-items: center;
+color: #696F79;
+}
+.schedule_calend_grid
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
