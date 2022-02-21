@@ -7,7 +7,7 @@ const Calendars = () => {
     <div>
         <div className='control-section'>
             <div className='daterangepicker-control-section'>
-                <DateRangePickerComponent placeholder='dd/mm/yyyy'></DateRangePickerComponent>
+                <DateRangePickerComponent placeholder='DD/MM/YYYY' format='dd-MMM-yy'></DateRangePickerComponent>
             </div>
         </div>
     </div>

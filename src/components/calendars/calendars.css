@@ -1,7 +1,7 @@
 .daterangepicker-control-section {
     width: 100%;
-    margin: 30px auto;
-    padding: 20px 30px;
+    margin: 0px auto 40px;
+    padding: 15px 30px;
     background: #FFFFFF;
 border: 1px solid #395F8C;
 border-radius: 6px;
@@ -9,5 +9,53 @@ transition: all ease .5s;
 }
 .e-input-group:not(.e-float-icon-left):not(.e-float-input)::before, .e-input-group:not(.e-float-icon-left):not(.e-float-input)::after, .e-input-group.e-float-icon-left:not(.e-float-input) .e-input-in-wrap::before, .e-input-group.e-float-icon-left:not(.e-float-input) .e-input-in-wrap::after, .e-input-group.e-control-wrapper:not(.e-float-icon-left):not(.e-float-input)::before, .e-input-group.e-control-wrapper:not(.e-float-icon-left):not(.e-float-input)::after, .e-input-group.e-control-wrapper.e-float-icon-left:not(.e-float-input) .e-input-in-wrap::before, .e-input-group.e-control-wrapper.e-float-icon-left:not(.e-float-input) .e-input-in-wrap::after
 {
-    display: none !important; 
+    background: #395F8C;
+}
+
+.e-daterangepicker.e-popup .e-calendar .e-content .e-range-hover, .e-bigger.e-small .e-daterangepicker.e-popup .e-calendar .e-content .e-range-hover, .e-daterangepicker.e-popup .e-calendar .e-end-date.e-selected.e-range-hover span.e-day, .e-daterangepicker.e-popup .e-calendar .e-start-date.e-selected.e-range-hover span.e-day, .e-bigger.e-small .e-daterangepicker.e-popup .e-calendar .e-end-date.e-selected.e-range-hover span.e-day, .e-bigger.e-small .e-daterangepicker.e-popup .e-calendar .e-start-date.e-selected.e-range-hover span.e-day, .e-daterangepicker.e-popup .e-calendar .e-content .e-range-hover span, .e-bigger.e-small .e-daterangepicker.e-popup .e-calendar .e-content .e-range-hover span, .e-calendar .e-content td.e-today.e-selected:hover span.e-day, .e-calendar .e-content td.e-selected:hover span.e-day, .e-calendar .e-content td.e-selected.e-focused-date span.e-day, .e-bigger.e-small .e-calendar .e-content td.e-today.e-selected:hover span.e-day, .e-bigger.e-small .e-calendar .e-content td.e-selected:hover span.e-day, .e-bigger.e-small .e-calendar .e-content td.e-selected.e-focused-date span.e-day, .e-calendar .e-content td.e-selected span.e-day, .e-bigger.e-small .e-calendar .e-content td.e-selected span.e-day
+{
+    background-color: #395F8C;
+    color: white;
+}
+
+.e-calendar .e-content td.e-focused-date.e-today span.e-day, .e-bigger.e-small .e-calendar .e-content td.e-focused-date.e-today span.e-day,
+.e-calendar .e-content td.e-focused-date.e-today span.e-day, .e-bigger.e-small .e-calendar .e-content td.e-focused-date.e-today span.e-day:hover
+{
+    color: #395F8C;
+    border: 1px solid #395F8C;
+
+}
+.e-calendar .e-content td.e-today.e-selected span.e-day, .e-bigger.e-small .e-calendar .e-content td.e-today.e-selected span.e-day
+{
+    background-color: #395F8C;
+    border: 1px solid #395F8C;
+}
+
+.e-daterangepicker.e-popup .e-calendar .e-content.e-month .e-today.e-range-hover span, .e-bigger.e-small .e-daterangepicker.e-popup .e-calendar .e-content.e-month .e-today.e-range-hover span
+{
+    background-color: #395F8C;
+    color: #fff;
+    border: 1px solid #395F8C;
+}
+
+.e-daterangepicker.e-popup .e-calendar .e-range-hover:not(.e-selected):hover span.e-day, .e-daterangepicker.e-popup .e-calendar .e-range-hover.e-focused-date:not(.e-selected) span.e-day, .e-daterangepicker.e-popup .e-calendar .e-range-hover.e-focused-date.e-today span.e-day, .e-bigger.e-small .e-daterangepicker.e-popup .e-calendar .e-range-hover:not(.e-selected):hover span.e-day, .e-bigger.e-small .e-daterangepicker.e-popup .e-calendar .e-range-hover.e-focused-date:not(.e-selected) span.e-day, .e-bigger.e-small .e-daterangepicker.e-popup .e-calendar .e-range-hover.e-focused-date.e-today span.e-day
+{
+    background-color: #395F8C;
+    color: #fff;
+}
+/************************************************/
+
+
+.timepicker-control-section {
+    width: 100%;
+    margin: 30px auto;
+    padding: 15px 30px;
+    background: #FFFFFF;
+border: 1px solid #395F8C;
+border-radius: 6px;
+transition: all ease .5s;
+}
+
+.e-bigger .control-pane.default .control-section {
+    margin-top: 60px;
 }
