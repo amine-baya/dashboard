@@ -1,0 +1,84 @@
+#verification{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 150px 115px;
+}
+#verification h3{
+font-style: normal;
+font-weight: bold;
+font-size: 30px;
+line-height: 36px;
+display: flex;
+align-items: center;
+color: #292731;
+}
+#verification  .mail_outline_verification{
+    position: relative;
+}
+#verification  .mail_outline_verification img.mail_outline_verification_verify{
+    display: block;
+    margin: 55px 0;
+}
+
+#verification  .mail_outline_verification img.mail_outline_verification_outline{
+    position: absolute;
+    top: 40%;
+    left: 39%;
+}
+
+#verification p{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 22px;
+    line-height: 30px;
+    align-items: center;
+    text-align: center;
+    color: #292731;
+    padding-top: 0;
+    padding-bottom: 40px;
+    margin-bottom: 0;
+}
+#verification p span{
+    color: #4ead8d;
+}
+#verification button{
+   margin-bottom: 20px;
+}
+
+#verification .code_verification{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 10px;
+}
+#verification .code_verification input{
+    width: 65px;
+    height: 65px;
+    background: rgba(196, 196, 196, 0.3);
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 43px;
+    color: #444444;
+    padding-left: 35%;
+}
+
+#verification .code_verification
+input::-webkit-outer-spin-button,
+#verification .code_verification
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#verification p.resend_verification{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #292731;
+}
