@@ -12,6 +12,7 @@ import ScheduleScreen from "./screens/schedule/ScheduleScreen";
 import DateAndTime from "./screens/dateandtime/DateAndTime";
 import SuccessfulScreen from "./screens/successful/SuccessfulScreen";
 import VerificationScreen from "./screens/verification/VerificationScreen";
+import CreatePassswordScreen from "./screens/createPassword/CreatePassswordScreen";
 
 
 
@@ -33,6 +34,8 @@ function App() {
           <Route path="/date-and-time" element={<DateAndTime />} ></Route>
           <Route path="/successful" element={<SuccessfulScreen />} ></Route>
           <Route path="/verification" element={<VerificationScreen />} ></Route>
+          <Route path="/create-password" element={<CreatePassswordScreen />} ></Route>
+
 
 
 
