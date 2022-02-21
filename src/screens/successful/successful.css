@@ -1,0 +1,35 @@
+#successful{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 150px 115px;
+   
+}
+#successful h3{
+    color:  #136237 ;
+    padding: 30px 0;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 131%;
+    text-align: center;
+}
+
+#successful p{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 22px;
+    line-height: 30px;
+    /* or 136% */
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #4A4A4A;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+
+
