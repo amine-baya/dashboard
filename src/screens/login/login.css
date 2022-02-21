@@ -1,0 +1,42 @@
+#login{
+    padding: 0 110px;
+}
+
+#login h6{
+    padding-top:  100px;
+}
+
+#login h1{
+    padding: 0 0 35px 0 ;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 36px;
+    color: #292731;
+}
+
+#login .large_button{
+    margin-top: 50px;
+   
+}
+
+#login p{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #616161;
+    text-align: center;
+}
+
+#login p span{
+
+    color: #395f8c;
+ 
+}
+
+#login .password_memory{
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
