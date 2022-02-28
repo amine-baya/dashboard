@@ -1,0 +1,97 @@
+#profile
+{
+    margin: 0 50px;
+}
+.profile_container
+{
+    background: #FFFFFF;
+box-shadow: 4px 4px 20px rgba(220, 220, 220, 0.8);
+border-radius: 10px;
+    margin: 0 10px;
+    padding: 30px 40px;
+}
+.profile_box{
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile_box .profile_box_name_img{
+    display: flex;
+}
+
+.profile_box .profile_box_btn
+{
+background: #395F8C;
+border-radius: 8px;
+width: 185px;
+height: 52px;
+display: block;
+font-family: Inter;
+font-style: normal;
+font-weight: 600;
+font-size: 18px;
+line-height: 22px;
+text-align: center;
+line-height: 52px;
+color: #FFFFFF;
+cursor: pointer;
+}
+
+.profile_box .profile_box_name_img .profile_box_name
+{
+    margin: 20px 0 0 50px;
+}
+
+.profile_box .profile_box_name_img .profile_box_name h3
+{
+    font-family: Inter;
+font-style: normal;
+font-weight: bold;
+font-size: 36px;
+line-height: 44px;
+color: #22242C;
+}
+
+.profile_box .profile_box_name_img .profile_box_name span
+{
+    font-family: Inter;
+font-style: normal;
+font-weight: normal;
+font-size: 18px;
+line-height: 22px;
+color: #8E8EA1;
+}
+
+.profile_container .profile_box_content
+{
+    padding: 40px;
+    margin-top: 20px;
+}
+
+.profile_container .profile_box_content div
+{
+    display: grid;
+    grid-template-columns: 5% 90%;
+    margin-bottom: 30px;
+}
+
+.profile_container .profile_box_content div span
+{
+    font-family: Inter;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 19px;
+color: #8E8EA1;
+}
+
+.profile_container .profile_box_content div p
+{
+    font-family: Inter;
+font-style: normal;
+font-weight: normal;
+font-size: 20px;
+line-height: 24px;
+color: #333333;
+transform: translateX(50px);
+}
