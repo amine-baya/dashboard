@@ -1,0 +1,47 @@
+#Dashboard_Header{
+    padding-top: 20px;
+    padding-left: 35px;
+    padding-right: 35px;
+    display: flex;
+    justify-content: space-between;
+}
+#Dashboard_Header .search_data{
+    position: relative;
+    
+}
+
+#Dashboard_Header .search_data img{
+    position: absolute;
+    top: 17px;
+    left:20px;
+}
+#Dashboard_Header .search_data input{
+    border: 0.6px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 40px;
+    width: 460px;
+    height: 50px;
+    outline: none;
+    padding-left: 50px;
+}
+
+
+#Dashboard_Header .Dashboard_Header_notification ul  {
+  display: flex;
+  align-items: center;
+}
+
+#Dashboard_Header .Dashboard_Header_notification ul li {
+    text-decoration: none;
+    list-style-type: none;
+    padding-left: 40px;
+}
+
+#Dashboard_Header .Dashboard_Header_notification ul li span {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.02em;
+    color: #848688;
+}

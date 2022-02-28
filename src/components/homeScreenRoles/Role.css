@@ -1,4 +1,10 @@
 
+.homeScreen .home_role .home_roles
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem
+}
 
 .homeScreen .home_role .home_roles .role
 {

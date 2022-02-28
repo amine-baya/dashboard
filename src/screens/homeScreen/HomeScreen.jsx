@@ -8,17 +8,17 @@ const HomeScreen = () => {
       <div className='home_trusted'>
           <h2>Trusted by</h2>
           <div className='home_trusted_logo'>
-              <img src="images/bechuzi.png" alt="bechuzi" />
-              <img src="images/egn_logo.png" alt="egn" />
-              <img src="images/usc_logo.png" alt="usc_logo" />
-              <img src="images/csr_logo.png" alt="csr_logo" />
-              <img src="images/motorola-logo.png" alt="motorola" />
+              <img src="../../images/bechuzi.png" alt="bechuzi" />
+              <img src="../../images/egn_logo.png" alt="egn" />
+              <img src="../../images/usc_logo.png" alt="usc_logo" />
+              <img src="../../images/csr_logo.png" alt="csr_logo" />
+              <img src="../../images/motorola-logo.png" alt="motorola" />
           </div>
       </div>
 
       <div className='home_role'>
           <h3>What role would you like to have the professional fill?</h3>
-          <div className='home_roles'>
+          <div className='home_roles'> 
           <Role text="Sales-Bussiness development Manager, Sales Director, Sales Executive"/>
           <Role text="Sales-Bussiness development Manager, Sales Director, Sales Executive"/>
           <Role text="Sales-Bussiness development Manager, Sales Director, Sales Executive"/>

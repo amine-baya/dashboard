@@ -19,18 +19,18 @@ const ProfessionalNeedScreen = () => {
                 <div className='professional_need_grid'>
                     <div className='professional_need_grid_box professional_need_grid_box_contractor'>
                         <h3>Hire as a Contractor</h3>
-                        <div><img src="images/check.png" alt="check" /><span>Still regarded as a full-time employee</span></div>
-                        <div><img src="images/check.png" alt="check" /><span>Invoiced Monthly</span></div>
-                        <div><img src="images/check.png" alt="check" /><span>Additional wage credits available</span></div>
-                        <div><img src="images/check.png" alt="check" /><span>Benefit and allownace seperate</span></div>
+                        <div><img src="../../images/check.png" alt="check" /><span>Still regarded as a full-time employee</span></div>
+                        <div><img src="../../images/check.png" alt="check" /><span>Invoiced Monthly</span></div>
+                        <div><img src="../../images/check.png" alt="check" /><span>Additional wage credits available</span></div>
+                        <div><img src="../../images/check.png" alt="check" /><span>Benefit and allownace seperate</span></div>
 
                     </div>
                     <div className='professional_need_grid_box'>
                         <h3>Hire as an Employee</h3>
-                        <div><img src="images/check.png" alt="check" /><span>Still regarded as a full-time employee</span></div>
-                        <div><img src="images/check.png" alt="check" /><span>Invoiced Monthly</span></div>
-                        <div><img src="images/check.png" alt="check" /><span>Additional wage credits available</span></div>
-                        <div><img src="images/check.png" alt="check" /><span>Benefit and allownace seperate</span></div>
+                        <div><img src="../../images/check.png" alt="check" /><span>Still regarded as a full-time employee</span></div>
+                        <div><img src="../../images/check.png" alt="check" /><span>Invoiced Monthly</span></div>
+                        <div><img src="../../images/check.png" alt="check" /><span>Additional wage credits available</span></div>
+                        <div><img src="../../images/check.png" alt="check" /><span>Benefit and allownace seperate</span></div>
 
                     </div>
                 </div>

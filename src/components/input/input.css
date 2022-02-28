@@ -1,3 +1,7 @@
+.input_component
+{
+    width: 100%;
+}
 .input_component label
 {
     display: block;
@@ -12,6 +16,8 @@ margin-bottom: 15px;
 color: #696F79;
 margin-top: 25px;
 }
+
+
 
 .input_component input
 {

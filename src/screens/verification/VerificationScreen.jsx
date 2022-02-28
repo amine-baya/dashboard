@@ -8,8 +8,8 @@ const VerificationScreen = () => {
     <div id='verification'>
       <h3>Verify your Email</h3>
       <div className='mail_outline_verification'>
-        <img src="images/verify.png" alt="verify" className='mail_outline_verification_verify' />
-        <img src="images/mail-outline.png" alt="mail-outline" className='mail_outline_verification_outline' />
+        <img src="../../images/verify.png" alt="verify" className='mail_outline_verification_verify' />
+        <img src="../../images/mail-outline.png" alt="mail-outline" className='mail_outline_verification_outline' />
         
       </div>
       <p>Enter 4 didgit verification code we sent at <span>tonikjone@demoo.com</span></p>

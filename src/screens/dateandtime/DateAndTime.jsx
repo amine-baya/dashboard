@@ -9,18 +9,18 @@ const DateAndTime = () => {
             <p>
                 Details of your meeting to discuss hiring for Sales - Business Development Manager, Sales Director, Sales Executives
             </p>
-            <img src='images/edit.png' alt="edit" />
+            <img src='../../images/edit.png' alt="edit" />
         </div>
         <div className='date_and_time_part2'>
             <p>
-            <img src='images/calendar.png' alt="calendar" />
+            <img src='../../images/calendar.png' alt="calendar" />
             Hiring for Sales - Business Development Manager, Sales Director, Sales Executives
             </p>
             
         </div>
         <div className='date_and_time_part3'>
             <p>
-            <img src='images/time.png' alt="time" />
+            <img src='../../images/time.png' alt="time" />
                 Thursday, October 14, 2021, 7:30 AM — 8:00 AM  (Asia/Karachi)
             </p>
             

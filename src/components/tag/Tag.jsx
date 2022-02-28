@@ -6,7 +6,7 @@ const Tag = (props) => {
       {
         props.options.map((option)=>(
             <button className='tag-button' >
-           {option} <img src='images/plus.png' alt="plus" />
+           {option} <img src='../../images/plus.png' alt="plus" />
             </button>
           ))
       }
