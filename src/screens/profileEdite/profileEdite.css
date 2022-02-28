@@ -1,0 +1,65 @@
+#eprofile
+{
+    margin: 0 50px;
+}
+.eprofile_container
+{
+    background: #FFFFFF;
+box-shadow: 4px 4px 20px rgba(220, 220, 220, 0.8);
+border-radius: 10px;
+    margin: 40px 200px;
+    padding: 30px 100px;
+}
+
+
+.eprofile_box .eprofile_box_name_img{
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.eprofile_box .eprofile_box_name_img span
+{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    top: 0;
+    width: 187px;
+    height: 187px;
+    background: rgba(72, 72, 72, 0.49);
+    line-height: 187px;
+
+}
+
+
+.eprofile_container .eprofile_box_content
+{
+    margin-top: 50px;
+    margin-bottom: 80px;
+}
+.eprofile_container .eprofile_box_content .eprofile_box_content_grid
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 40px;
+}
+
+.eprofile_container .eprofile_container_btn
+{
+    width: 292px;
+    height: 52px;  
+    background: #395F8C;
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto;
+    color: #fff;
+    line-height: 52px;
+    text-align: center;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    cursor: pointer;
+}
