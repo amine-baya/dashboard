@@ -6,12 +6,15 @@ import Tag from '../../components/tag/Tag'
 import ModalP from '../../components/Modal/ModalP'
 import {kpisSkills} from '../../kpisInfo.js'
 import './kpisTwo.css'
+import Header from '../../components/header/Header'
 
 const KpisTwoScreen = () => {
 
     const [modalShow, setModalShow] = useState(false);
     const select = ["one","two","three"]
   return (
+    <>
+    <Header /> 
     <div id='kpisTwo' className="container">
       <div className='kpis_Container'>
 
@@ -41,9 +44,10 @@ const KpisTwoScreen = () => {
             ))}
       </div>
     
-      <Button text="Next: Project Details" />
+      <Button text="Next: Project Details" nav='/professional-need'/>
 
     </div>
+    </>
   )
 }
 

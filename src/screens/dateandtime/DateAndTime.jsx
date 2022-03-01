@@ -1,9 +1,12 @@
 import React from 'react'
+import Header from '../../components/header/Header'
 import LargeButton from '../../components/largeButton/LargeButton'
 import './dateAndTime.css'
 
 const DateAndTime = () => {
   return (
+    <>
+    <Header /> 
     <div id='dateandtime' className='container'>
         <div className='date_and_time_part1'>
             <p>
@@ -32,13 +35,14 @@ const DateAndTime = () => {
             </p>
             
         </div>
-        <LargeButton text="Submit" />
+        <LargeButton text="Submit" nav='/successful'/>
 
         <button className='date_and_time_back_btn'>
             Back
         </button>
         
     </div>
+    </>
   )
 }
 

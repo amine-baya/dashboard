@@ -1,9 +1,14 @@
 import React from 'react'
 import Input from '../../components/input/Input'
 import Title from '../../components/title/Title'
+import DashboardNavbar from '../../components/dashboardNavbar/DashboardNavbar'
+import DashboardHeader from '../../components/dashboardHeader/DashboardHeader'
 import './profileEdite.css'
 const ProfileEdite = () => {
   return (
+      <>
+      <DashboardNavbar />
+      <DashboardHeader />
        <div className='container_dashboard_right'>
         <div></div>
         <div id='eprofile'>
@@ -29,6 +34,7 @@ const ProfileEdite = () => {
         </div>
 
     </div>
+      </>
   
 
   )

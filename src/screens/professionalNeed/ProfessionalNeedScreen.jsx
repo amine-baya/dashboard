@@ -2,9 +2,12 @@ import React from 'react'
 import './ProfessionalNeed.css'
 import Title from '../../components/title/Title'
 import Button from '../../components/button/Button'
+import Header from '../../components/header/Header'
 
 const ProfessionalNeedScreen = () => {
   return (
+      <>
+      <Header /> 
     <div className='container' id='professional_need'>
         <div className='professional_need_container'>
             <Title title='Shortlisting candidates based on your requirement'/>
@@ -36,8 +39,9 @@ const ProfessionalNeedScreen = () => {
                 </div>
             </div>
         </div>
-        <Button text='Next: Schedule'/>
+        <Button text='Next: Schedule' nav='/schedule'/>
     </div>
+      </>
   )
 }
 

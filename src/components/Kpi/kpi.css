@@ -32,14 +32,12 @@ padding-top: 5px;
     padding-bottom: 0 !important;
 }
 
-/* .accordion-button:not(.collapsed)::after
+ .accordion-button:not(.collapsed)::after
 {
     background-image: url("../../images/up.png") !important;
     transform: rotate(0) !important;
-
 }
-
 .accordion-button::after{
     background-image: url("../../images/up.png") !important;
     transform: rotate(-180deg) !important;
-} */
+} 

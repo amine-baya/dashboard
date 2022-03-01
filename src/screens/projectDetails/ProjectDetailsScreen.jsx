@@ -3,9 +3,12 @@ import Title from '../../components/title/Title'
 import Button from '../../components/button/Button'
 import Type from '../../components/projectDetailsTypes/Type'
 import './projectDetails.css'
+import Header from '../../components/header/Header'
 
 const ProjectDetailsScreen = () => {
   return (
+    <>
+    <Header /> 
     <div id='project_details' className='container' >
       <div className='project_details_container'>
           <Title title="Project Details" />
@@ -17,8 +20,9 @@ const ProjectDetailsScreen = () => {
             <Type text="None of the above, I am interested to learn about kimbocorp"/>
           </div>
       </div>
-          <Button text="Next: Project Details" />
+          <Button text="Next: Project Details" nav="/professional-details"  />
     </div>
+    </>
   )
 }
 

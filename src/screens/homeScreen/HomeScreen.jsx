@@ -1,9 +1,14 @@
 import React from 'react'
-import './HomeScreen.css'
+import {useNavigate} from 'react-router-dom'
 import Role from '../../components/homeScreenRoles/Role'
+import Header from '../../components/header/Header'
+import './HomeScreen.css'
 
 const HomeScreen = () => {
+  let navigate = useNavigate()
   return (
+    <>
+    <Header /> 
     <div className='homeScreen'>
       <div className='home_trusted'>
           <h2>Trusted by</h2>
@@ -27,9 +32,10 @@ const HomeScreen = () => {
           </div>
           <span className='homeScreen_role_span'>Looking to work with companies?</span>
           <span className='homeScreen_hr'></span>
-          <span className='homeScreen_btn'>Get Started</span>
+          <span className='homeScreen_btn' onClick={()=> navigate("/kpis-one")}>Get Started</span>
       </div>
     </div>
+    </>
   )
 }
 

@@ -1,9 +1,14 @@
 import React from 'react'
+import DashboardHeader from '../../components/dashboardHeader/DashboardHeader'
+import DashboardNavbar from '../../components/dashboardNavbar/DashboardNavbar'
 import Title from '../../components/title/Title'
 import './profile.css'
 
 const ProfileScreen = () => {
   return (
+      <>
+      <DashboardNavbar />
+      <DashboardHeader />
     <div className='container_dashboard_right'>
         <div></div>
         <div id='profile'>
@@ -31,6 +36,7 @@ const ProfileScreen = () => {
         </div>
 
     </div>
+      </>
   
 
   )

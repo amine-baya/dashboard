@@ -1,10 +1,13 @@
 import React from 'react'
+import Header from '../../components/header/Header'
 import Input from '../../components/input/Input'
 import LargeButton from '../../components/largeButton/LargeButton'
 import './verificationPassword.css'
 
 const VerificationPasswordScreen = () => {
   return (
+    <>
+    <Header /> 
     <div className='container'>
     <div id='verification_password'>
       <h3>Forget Password</h3>
@@ -17,9 +20,8 @@ const VerificationPasswordScreen = () => {
       <LargeButton text="Resset Password" />
       <p className='try_way'>Try another way</p>
     </div>
-
-
   </div>
+    </>
   )
 }
 

@@ -2,11 +2,14 @@ import React from 'react'
 import Button from '../../components/button/Button'
 import Calendars from '../../components/calendars/Calendars'
 import TimePicker from '../../components/calendars/TimePicker'
+import Header from '../../components/header/Header'
 import Input from '../../components/input/Input'
 import './schedule.css'
 
 const ScheduleScreen = () => {
   return (
+    <>
+    <Header /> 
     <div className='container' id='schedule'>
         <div className='schedule_container'>
             <h2>Schedule</h2>
@@ -29,8 +32,9 @@ const ScheduleScreen = () => {
               </div>
             </div>
         </div>
-            <Button text="Next: Schedule" />
+            <Button text="Next: Schedule" nav='/date-and-time'/>
     </div>
+    </>
   )
 }
 

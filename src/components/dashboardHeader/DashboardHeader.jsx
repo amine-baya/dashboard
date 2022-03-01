@@ -1,7 +1,6 @@
 import React from 'react'
 import Input from '../input/Input'
 import './dashboardHeader.css'
-import {Outlet} from 'react-router-dom'
 
 
 const DashboardHeader = () => {
@@ -25,7 +24,6 @@ const DashboardHeader = () => {
         </div>
 
     </div>
-      <Outlet />
     </>
 
   )
