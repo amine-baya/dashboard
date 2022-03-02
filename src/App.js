@@ -42,12 +42,9 @@ function App() {
                 <Route path="/verification-password" element={<VerificationPasswordScreen />} />
                 <Route path="/profile" element={<ProfileScreen />} />
                 <Route path="/profile-edit" element={<ProfileEditeScreen />} />
+                <Route path="/TEST" element={<ProfileEditeScreen />} />
         </Routes>
-      </Router>
-       
-
-      
-      
+      </Router>    
     </div>
   );
 }
