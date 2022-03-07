@@ -3,7 +3,7 @@ import './Role.css'
 
 const Role = ({text}) => {
   return (
-    <div className='role'>
+    <div className='role' >
           <input type="checkbox" />
           <p>{text}</p>
     </div>

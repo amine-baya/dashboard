@@ -2,18 +2,18 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './Button.css'
 
-const Button = ({text,nav}) => {
+const Button = ({text,nav,page,setPage}) => {
   let navigate = useNavigate()
 
-  const oo =()=>{
+  const move =()=>{
     navigate(`${nav}`)
   }
   return (
     <div>
         <span className='hr'></span>
         <div className='btn_contaienr'>
-            <span className='btn_span btn_1' onClick={() => navigate(-1)} >Back</span>
-            <span className='btn_span btn_2' onClick={()=> oo() } >{text}</span>
+            <span className='btn_span btn_1' onClick={() => setPage((currPage) => currPage - 1)} >Back</span>
+            <span className='btn_span btn_2' onClick={()=> setPage((currPage) => currPage + 1) } >{text}</span>
         </div>
     </div>
   )

@@ -15,7 +15,7 @@ body {
   margin: 0 auto;
 }
 
-.container_dashboard_right{
+.container_dashboard_right, .container_calender{
   display: grid;
   grid-template-columns: 20% 80%;
 }

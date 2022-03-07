@@ -16,6 +16,9 @@ import LoginScreen from "./screens/login/LoginScreen";
 import VerificationPasswordScreen from "./screens/verificationPassword/VerificationPasswordScreen";
 import ProfileScreen from "./screens/profile/ProfileScreen";
 import ProfileEditeScreen from "./screens/profileEdite/ProfileEditeScreen";
+import Form from "./screens/form/Form";
+
+import Calender from './screens/calender/Calender';
 
 
 
@@ -27,7 +30,8 @@ function App() {
        
       <Router>
         <Routes>
-                <Route path="/" element={<HomeScreen />}  />
+               
+                <Route path="/" element={<Form />} />
                 <Route path="/kpis-one" element={<KpisOneScreen />} />
                 <Route path="/project-details" element={<ProjectDetailsScreen />} />
                 <Route path="/professional-details" element={<ProfessionalDetailsScreen />} />
@@ -42,7 +46,7 @@ function App() {
                 <Route path="/verification-password" element={<VerificationPasswordScreen />} />
                 <Route path="/profile" element={<ProfileScreen />} />
                 <Route path="/profile-edit" element={<ProfileEditeScreen />} />
-                <Route path="/TEST" element={<ProfileEditeScreen />} />
+
         </Routes>
       </Router>    
     </div>

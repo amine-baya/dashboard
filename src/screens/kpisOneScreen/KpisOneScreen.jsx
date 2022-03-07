@@ -1,25 +1,22 @@
 import React from 'react'
 import Button  from '../../components/button/Button'
-import Header from '../../components/header/Header'
 import Kpi from '../../components/Kpi/Kpi'
 import Title from '../../components/title/Title'
-import {KpisInfo} from '../../kpisInfo.js'
 import './kpisOne.css'
 
-const KpisOneScreen = () => {
+const KpisOneScreen = ({ page, setPage,data }) => {
   return (
     <>
-    <Header /> 
     <div id='kpisOne' className="container">
       <div className='kpis_Container'>
-            <Title title="Please select KPIs that you want this person to fulfill:" />
-          { KpisInfo.map((kpi)=>(
-            <Kpi title={kpi.title} options={kpi.options}  />
+            <Title title={data.question_text} />
+          { data.options.map((option)=>(
+            <Kpi title={option.name} options={option.subcategory}  />
 
             ))}
       </div>
     
-      <Button text="Next: Project Details" nav="/project-details" />
+      <Button text="Next: Project Details" nav="/project-details" page={page} setPage={setPage} />
 
     </div> 
     </>

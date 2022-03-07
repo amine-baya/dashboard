@@ -1,14 +1,14 @@
 import React from 'react'
-import {useNavigate} from 'react-router-dom'
+
 import Role from '../../components/homeScreenRoles/Role'
-import Header from '../../components/header/Header'
 import './HomeScreen.css'
 
-const HomeScreen = () => {
-  let navigate = useNavigate()
+const HomeScreen = ({page,setPage,data}) => {
+  
+  console.log(data);
   return (
     <>
-    <Header /> 
+    
     <div className='homeScreen'>
       <div className='home_trusted'>
           <h2>Trusted by</h2>
@@ -22,17 +22,16 @@ const HomeScreen = () => {
       </div>
 
       <div className='home_role'>
-          <h3>What role would you like to have the professional fill?</h3>
+           <h3>{data?.question_text}</h3>
           <div className='home_roles'> 
-          <Role text="Sales-Bussiness development Manager, Sales Director, Sales Executive"/>
-          <Role text="Sales-Bussiness development Manager, Sales Director, Sales Executive"/>
-          <Role text="Sales-Bussiness development Manager, Sales Director, Sales Executive"/>
-          <Role text="Sales-Bussiness development Manager, Sales Director, Sales Executive"/>
-          <Role text="other"/>
-          </div>
+         { data?.options.map((option) => (
+           <Role text={option.name}  />
+         )
+          )}
+          </div> 
           <span className='homeScreen_role_span'>Looking to work with companies?</span>
           <span className='homeScreen_hr'></span>
-          <span className='homeScreen_btn' onClick={()=> navigate("/kpis-one")}>Get Started</span>
+          <span className='homeScreen_btn' onClick={()=> setPage((currPage) => currPage + 1)}>Get Started</span>
       </div>
     </div>
     </>

@@ -3,24 +3,25 @@ import Title from '../../components/title/Title'
 import Button from '../../components/button/Button'
 import Type from '../../components/projectDetailsTypes/Type'
 import './projectDetails.css'
-import Header from '../../components/header/Header'
 
-const ProjectDetailsScreen = () => {
+
+const ProjectDetailsScreen = ({ page, setPage,data }) => {
   return (
     <>
-    <Header /> 
     <div id='project_details' className='container' >
       <div className='project_details_container'>
           <Title title="Project Details" />
-          <p className='project_details_question'>What type of project are you hiring for</p>
+          <p className='project_details_question'>{data.question_text}</p>
           <div className='project_details_types'>
-            <Type text="New bussiness never started"/>
-            <Type text="Existing bussiness that is expanding"/>
-            <Type text="Ongoiing adivse and mentorship"/>
-            <Type text="None of the above, I am interested to learn about kimbocorp"/>
+            {
+              data.options.map((option)=>(
+                <Type text={option.name} />
+              ))
+            }
+           
           </div>
       </div>
-          <Button text="Next: Project Details" nav="/professional-details"  />
+          <Button text="Next: Project Details" nav="/professional-details" page={page} setPage={setPage}    />
     </div>
     </>
   )

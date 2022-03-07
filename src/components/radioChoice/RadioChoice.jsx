@@ -9,7 +9,7 @@ const RadioChoice = (props) => {
       props.options.map((option)=>(
         <div className='radio_details'>
             <input type="radio"/>
-            <p>{option}</p>
+            <p>{option.name}</p>
         </div>
         ))
     }
