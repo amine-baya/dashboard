@@ -1,17 +1,32 @@
 import React, { useState,useEffect } from "react";
 import axios from 'axios'
 import Button from "../../components/button/Button";
-import HomeScreen from "../homeScreen/HomeScreen";
-import KpisOneScreen from "../kpisOneScreen/KpisOneScreen";
-import KpisTwoScreen from "../kpisTwoScreen/KpisTwoScreen";
-import ProfessionalDetailsScreen from "../professionalDetails/ProfessionalDetailsScreen";
-import ProjectDetailsScreen from "../projectDetails/ProjectDetailsScreen";
+
+
+
+
 import Header from "../../components/header/Header";
+import { ContextApi } from "../../helpers/ContextApi";
+import HomeScreen from "../../components/form/homeScreen/HomeScreen";
+import KpisOneScreen from "../../components/form/kpisOneScreen/KpisOneScreen";
+import ProjectDetailsScreen from "../../components/form/projectDetails/ProjectDetailsScreen";
+import ProfessionalDetailsScreen from "../../components/form/professionalDetails/ProfessionalDetailsScreen";
+import KpisTwoScreen from "../../components/form/kpisTwoScreen/KpisTwoScreen";
+
+
 
 const Form = () => {
+
+  const [select, setSelect] = useState([])
+  const [roles,setRoles] = useState([])
+  const [types,setTypes] = useState([])
+  console.log(types);
+  console.log(roles);
   const [page, setPage] = useState(0);
   const [data,setData] = useState([])
-  const [dataForm,setDataForm] = useState([])
+  const [dataForm,setDataForm] = useState({
+    roles: [],
+  })
 
 
   useEffect(() => {
@@ -21,7 +36,6 @@ const Form = () => {
       console.log("must verify the url");
     })
   }, [])
-  console.log(data[4])
 
     const PageDisplay = () => {
         if (page === 0) {
@@ -40,11 +54,13 @@ const Form = () => {
         }
       };
 
-  console.log(data,page);
   return (
     <>
     <Header /> 
+    <ContextApi.Provider value={{select, setSelect,roles,setRoles,types,setTypes}}>
+
     <div>{PageDisplay()}</div>
+    </ContextApi.Provider> 
 
     </>
   )

@@ -1,7 +1,8 @@
 import React from 'react'
-import Title from '../../components/title/Title'
-import Button from '../../components/button/Button'
-import Type from '../../components/projectDetailsTypes/Type'
+import Button from '../../button/Button'
+import Type from '../../projectDetailsTypes/Type'
+import Title from '../../title/Title'
+
 import './projectDetails.css'
 
 

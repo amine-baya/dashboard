@@ -1,7 +1,9 @@
 import React from 'react'
-import Button  from '../../components/button/Button'
-import KpiProfessionalDetails from '../../components/kpiProfessionalDetails/KpiProfessionalDetails'
-import Title from '../../components/title/Title'
+import Button from '../../button/Button';
+import Title from '../../title/Title';
+import KpiProfessionalDetails from '../../kpiProfessionalDetails/KpiProfessionalDetails';
+
+
 import './professionalDetails.css'
 
 const ProfessionalDetailsScreen = ({page, setPage,data}) => {

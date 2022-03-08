@@ -33,3 +33,10 @@ padding-top: 50px !important;
 
 
 
+
+
+.active_kpis_Container .tag-button
+{
+    background-color: #4FAC8D;
+    color: white;
+}

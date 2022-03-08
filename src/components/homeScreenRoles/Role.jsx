@@ -4,11 +4,7 @@ import './Role.css'
 
 const Role = ({text,name,value}) => {
 
-  const {roles,setRoles} = useContext(ContextApi)
-  
-
- 
-
+ const {roles,setRoles} = useContext(ContextApi)
  const handleCheckbox = e =>{
     const selectedRole = roles.find(el => el === e.target.value);
     console.log(selectedRole);

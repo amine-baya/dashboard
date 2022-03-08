@@ -1,15 +1,19 @@
-import React, { useState } from 'react'
-import Button from '../../components/button/Button'
-import Kpi from '../../components/Kpi/Kpi'
-import Title from '../../components/title/Title'
-import Tag from '../../components/tag/Tag'
-import ModalP from '../../components/Modal/ModalP'
+import React, { useState, useContext } from 'react'
+import { ContextApi } from '../../../helpers/ContextApi';
+import Button from '../../button/Button';
+import Kpi from '../../Kpi/Kpi';
+import ModalP from '../../Modal/ModalP';
+import Tag from '../../tag/Tag';
+import Title from '../../title/Title';
+
 import './kpisTwo.css'
 
 const KpisTwoScreen = ({page,setPage,data}) => {
 
     const [modalShow, setModalShow] = useState(false);
-    const select = ["one","two","three"]
+
+    const {select} = useContext(ContextApi)
+
   return (
     <>
     <div id='kpisTwo' className="container">
@@ -25,8 +29,12 @@ const KpisTwoScreen = ({page,setPage,data}) => {
             show={modalShow}
             onHide={() => setModalShow(false)}
             />
+            <div className='active_kpis_Container'>
+            
             <Tag  options={select}  />
             <h6 className='see-more'>See More</h6>
+
+            </div>
         </>
        }
 
@@ -36,7 +44,8 @@ const KpisTwoScreen = ({page,setPage,data}) => {
             { select.length === 0 &&   <span className='kpis_change_skills_btn' onClick={() => setModalShow(true)} >Change skill category</span>}
           </div>
           { data.options.map((option)=>(
-            <Kpi title={option.name} options={option.subcategory}  />
+
+              <Kpi title={option.name} options={option.subcategory} />
 
             ))}
       </div>

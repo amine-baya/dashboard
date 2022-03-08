@@ -1,11 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './index.css'
 import { BrowserRouter as Router,Routes, Route } from "react-router-dom";
-import HomeScreen from "./screens/homeScreen/HomeScreen";
-import ProjectDetailsScreen from "./screens/projectDetails/ProjectDetailsScreen";
-import KpisOneScreen from "./screens/kpisOneScreen/KpisOneScreen";
-import ProfessionalDetailsScreen from "./screens/professionalDetails/ProfessionalDetailsScreen";
-import KpisTwoScreen from "./screens/kpisTwoScreen/KpisTwoScreen";
 import ProfessionalNeedScreen from "./screens/professionalNeed/ProfessionalNeedScreen";
 import ScheduleScreen from "./screens/schedule/ScheduleScreen";
 import DateAndTime from "./screens/dateandtime/DateAndTime";
@@ -17,25 +12,20 @@ import VerificationPasswordScreen from "./screens/verificationPassword/Verificat
 import ProfileScreen from "./screens/profile/ProfileScreen";
 import ProfileEditeScreen from "./screens/profileEdite/ProfileEditeScreen";
 import Form from "./screens/form/Form";
-
 import Calender from './screens/calender/Calender';
 
 
 
 
-
 function App() {
+
   return (
+
     <div className="App">
-       
-      <Router>
-        <Routes>
-               
+      
+        <Router>
+          <Routes>    
                 <Route path="/" element={<Form />} />
-                <Route path="/kpis-one" element={<KpisOneScreen />} />
-                <Route path="/project-details" element={<ProjectDetailsScreen />} />
-                <Route path="/professional-details" element={<ProfessionalDetailsScreen />} />
-                <Route path="/kpis-two" element={<KpisTwoScreen />} />
                 <Route path="/professional-need" element={<ProfessionalNeedScreen />} />
                 <Route path="/schedule" element={<ScheduleScreen />} />
                 <Route path="/date-and-time" element={<DateAndTime />} />
@@ -46,9 +36,9 @@ function App() {
                 <Route path="/verification-password" element={<VerificationPasswordScreen />} />
                 <Route path="/profile" element={<ProfileScreen />} />
                 <Route path="/profile-edit" element={<ProfileEditeScreen />} />
-
-        </Routes>
-      </Router>    
+          </Routes>
+        </Router>    
+      
     </div>
   );
 }

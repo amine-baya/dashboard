@@ -1,7 +1,10 @@
 import React from 'react'
-import Button  from '../../components/button/Button'
-import Kpi from '../../components/Kpi/Kpi'
-import Title from '../../components/title/Title'
+import Button from '../../button/Button'
+
+
+
+import Kpi from '../../Kpi/Kpi'
+import Title from '../../title/Title'
 import './kpisOne.css'
 
 const KpisOneScreen = ({ page, setPage,data }) => {

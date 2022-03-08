@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Role from '../../components/homeScreenRoles/Role'
+import Role from '../../homeScreenRoles/Role'
 import './HomeScreen.css'
 
 const HomeScreen = ({page,setPage,data}) => {
