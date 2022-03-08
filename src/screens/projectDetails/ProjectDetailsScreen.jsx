@@ -15,7 +15,7 @@ const ProjectDetailsScreen = ({ page, setPage,data }) => {
           <div className='project_details_types'>
             {
               data.options.map((option)=>(
-                <Type text={option.name} />
+                <Type text={option.name} name="role" value={option.identifier} />
               ))
             }
            
