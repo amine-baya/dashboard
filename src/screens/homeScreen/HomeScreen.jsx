@@ -4,8 +4,8 @@ import Role from '../../components/homeScreenRoles/Role'
 import './HomeScreen.css'
 
 const HomeScreen = ({page,setPage,data}) => {
+
   
-  console.log(data);
   return (
     <>
     
@@ -25,7 +25,7 @@ const HomeScreen = ({page,setPage,data}) => {
            <h3>{data?.question_text}</h3>
           <div className='home_roles'> 
          { data?.options.map((option) => (
-           <Role text={option.name}  />
+           <Role text={option.name} name="role" value={option.identifier}  />
          )
           )}
           </div> 

@@ -1,10 +1,29 @@
-import React from 'react'
+import React,{useState,useContext} from 'react'
+import { ContextApi } from '../../helpers/ContextApi'
 import './Role.css'
 
-const Role = ({text}) => {
+const Role = ({text,name,value}) => {
+
+  const {roles,setRoles} = useContext(ContextApi)
+  
+
+ 
+
+ const handleCheckbox = e =>{
+    const selectedRole = roles.find(el => el === e.target.value);
+    console.log(selectedRole);
+    if (selectedRole === undefined) {
+      setRoles([...roles,e.target.value]);
+    }
+    else{
+    const newRoles = roles.filter(el => el !== selectedRole);
+    setRoles(newRoles);
+    }
+  }
+  
   return (
     <div className='role' >
-          <input type="checkbox" />
+          <input onChange={handleCheckbox} type="checkbox" name={name} value={value}  />
           <p>{text}</p>
     </div>
   )
