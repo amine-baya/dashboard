@@ -1,10 +1,5 @@
 import React, { useState,useEffect } from "react";
 import axios from 'axios'
-import Button from "../../components/button/Button";
-
-
-
-
 import Header from "../../components/header/Header";
 import { ContextApi } from "../../helpers/ContextApi";
 import HomeScreen from "../../components/form/homeScreen/HomeScreen";
@@ -13,20 +8,14 @@ import ProjectDetailsScreen from "../../components/form/projectDetails/ProjectDe
 import ProfessionalDetailsScreen from "../../components/form/professionalDetails/ProfessionalDetailsScreen";
 import KpisTwoScreen from "../../components/form/kpisTwoScreen/KpisTwoScreen";
 
-
-
 const Form = () => {
 
   const [select, setSelect] = useState([])
   const [roles,setRoles] = useState([])
   const [types,setTypes] = useState([])
-  console.log(types);
-  console.log(roles);
   const [page, setPage] = useState(0);
   const [data,setData] = useState([])
-  const [dataForm,setDataForm] = useState({
-    roles: [],
-  })
+  const [details,setDetails] = useState([])
 
 
   useEffect(() => {
@@ -57,7 +46,7 @@ const Form = () => {
   return (
     <>
     <Header /> 
-    <ContextApi.Provider value={{select, setSelect,roles,setRoles,types,setTypes}}>
+    <ContextApi.Provider value={{select, setSelect,roles,setRoles,types,setTypes,details,setDetails,page,setPage}}>
 
     <div>{PageDisplay()}</div>
     </ContextApi.Provider> 
