@@ -22,7 +22,7 @@ const ProjectDetailsScreen = ({ page, setPage,data }) => {
            
           </div>
       </div>
-          <Button text="Next: Project Details" nav="/professional-details" page={page} setPage={setPage}    />
+          <Button text="Next: Project Details" nav="/professional-details"   />
     </div>
     </>
   )

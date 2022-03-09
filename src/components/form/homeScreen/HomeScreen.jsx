@@ -1,20 +1,24 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { ContextApi } from '../../../helpers/ContextApi'
 
 import Role from '../../homeScreenRoles/Role'
 import './HomeScreen.css'
 
-const HomeScreen = ({page,setPage,data}) => {
+const HomeScreen = ({data}) => {
 
+  const {setPage} = useContext(ContextApi)
   
+  const getStarted =()=>{
+    data &&  setPage((currPage) => currPage + 1)
+  }
   return (
     <>
-    
     <div className='homeScreen'>
       <div className='home_trusted'>
           <h2>Trusted by</h2>
           <div className='home_trusted_logo'>
               <img src="../../images/bechuzi.png" alt="bechuzi" />
-              <img src="../../images/egn_logo.png" alt="egn" />
+              <img src="../../images/egn_logo.png" alt="egn" /> 
               <img src="../../images/usc_logo.png" alt="usc_logo" />
               <img src="../../images/csr_logo.png" alt="csr_logo" />
               <img src="../../images/motorola-logo.png" alt="motorola" />
@@ -31,7 +35,7 @@ const HomeScreen = ({page,setPage,data}) => {
           </div> 
           <span className='homeScreen_role_span'>Looking to work with companies?</span>
           <span className='homeScreen_hr'></span>
-          <span className='homeScreen_btn' onClick={()=> setPage((currPage) => currPage + 1)}>Get Started</span>
+          <span className='homeScreen_btn' onClick={getStarted}>Get Started</span>
       </div>
     </div>
     </>

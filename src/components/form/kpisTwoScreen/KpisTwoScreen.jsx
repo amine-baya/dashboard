@@ -50,7 +50,7 @@ const KpisTwoScreen = ({page,setPage,data}) => {
             ))}
       </div>
     
-      <Button text="Next: Project Details" nav='/professional-need' page={page} setPage={setPage} />
+      <Button text="Next: Project Details" nav='/professional-need'  />
 
     </div>
     </>

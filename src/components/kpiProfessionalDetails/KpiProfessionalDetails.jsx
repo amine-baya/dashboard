@@ -10,7 +10,7 @@ const KpiProfessionalDetails = (props) => {
         <Accordion.Item eventKey="0" className="accordion-item" >
             <Accordion.Header className="accordion-Header">{props.title}</Accordion.Header>
             <Accordion.Body className="accordion-body professionalDetails_accordion-body ">
-                <RadioChoice options={props.options} />
+                <RadioChoice options={props.options} identifier={props.identifier} />
             </Accordion.Body>
         </Accordion.Item>
     </Accordion>
