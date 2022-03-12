@@ -6,7 +6,7 @@ const Role = ({text,name,value}) => {
 
  const {roles,setRoles} = useContext(ContextApi)
  const handleCheckbox = e =>{
-    const selectedRole = roles.find(el => el === e.target.value);
+    const selectedRole = roles.find(el => el === e.target.value)
     console.log(selectedRole);
     if (selectedRole === undefined) {
       setRoles([...roles,e.target.value]);

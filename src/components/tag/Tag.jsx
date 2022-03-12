@@ -1,47 +1,49 @@
 import React, { useContext } from 'react'
 import { ContextApi } from '../../helpers/ContextApi'
 import './tag.css'
-const Tag = (props) => {
+const Tag = ({options,identifier}) => {
   const {select ,setSelect} = useContext(ContextApi)
 
-  // const [active, setactive] = useState(false)
+  const a = (option,e) => {
+    
+    e.target.parentElement.classList.add(`active`, `active-${option.identifier}`)
 
-  // const a = (option) => {
-  //   const selectedOptin = select.find(el => el.identifier === option.identifier);
-  //   if (selectedOptin === undefined) {
-  //     setSelect([...select, option])
-  //   }
-  //   setactive(true)
+    const selectedOption = select.find(el => el.identifier === option.identifier);
+    if (selectedOption === undefined) {
+      setSelect([...select, {...option, class: `active-${option.identifier}`} ])
+    }
 
-  // }
+  }
 
-  // const b = (item) => {
-  //   const newarr = select.filter(el => el.identifier !== item.identifier)
+  const b = (item,e) => {
+    const newarr = select.filter(el => el.identifier !== item.identifier)
 
-  //   setSelect([...newarr])
+    
+    setSelect([...newarr])
+    
+    console.log(e.target.parentElement.id);
+ 
+    e.target.parentElement.classList.remove(`active`)
 
-  //   console.log([...newarr]);
-  // }
-
+    
+    var elements = document.getElementsByClassName(e.target.parentElement.id)
+    
+    console.log(elements[0]);
+    elements[0]?.classList.remove('active')
+   
+  }
 
 
   return (
       <>
-      {/* {
-        props.options.map((option)=>(
-            <button className={active ? 'tag-button active' : 'tag-button'}  onClick={() => a(option)}>
-           {option.name} <img src='../../images/plus.png' alt="plus" />
-            </button>
-          ))
-      } */}
+      {
+        options.map((option)=>(
+            <button className= 'tag-button' id={option.class && option.class}>
 
-{
-        props.options.map((option)=>(
-            <button >
-           {option.name} <img src='../../images/plus.png' alt="plus" />
+           {option.name} <img className='img_correct' src='./images/correct.png' alt="plus"/> <img className='img_close' src='./images/close.png' alt="plus" onClick={(e) => b(option,e)} />  <img className='img_plus' src='./images/plus.png' alt="plus" onClick={(e) => a(option, e)}/>  
             </button>
           ))
-      }
+      } 
       </>
        
    

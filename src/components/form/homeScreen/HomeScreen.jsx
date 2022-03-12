@@ -11,6 +11,7 @@ const HomeScreen = ({data}) => {
   const getStarted =()=>{
     data &&  setPage((currPage) => currPage + 1)
   }
+  console.log(data);
   return (
     <>
     <div className='homeScreen'>

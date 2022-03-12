@@ -4,6 +4,7 @@ import Button from '../../button/Button';
 import Kpi from '../../Kpi/Kpi';
 import ModalP from '../../Modal/ModalP';
 import Tag from '../../tag/Tag';
+
 import Title from '../../title/Title';
 
 import './kpisTwo.css'
@@ -21,7 +22,7 @@ const KpisTwoScreen = ({page,setPage,data}) => {
 
         { select.length > 0 &&  
         <>
-         <div className='kpisTwo_header'>
+        <div className='kpisTwo_header'>
             <Title title="Selected tags" />
             <span className='kpis_change_skills_btn' onClick={() => setModalShow(true)} >Change skill category</span>
           </div>
@@ -34,7 +35,7 @@ const KpisTwoScreen = ({page,setPage,data}) => {
             <Tag  options={select}  />
             <h6 className='see-more'>See More</h6>
 
-            </div>
+          </div>
         </>
        }
 
@@ -45,7 +46,8 @@ const KpisTwoScreen = ({page,setPage,data}) => {
           </div>
           { data.options.map((option)=>(
 
-              <Kpi title={option.name} options={option.subcategory} />
+              <Kpi title={option.name} options={option.subcategory} identifier={option.identifier} />
+              
 
             ))}
       </div>

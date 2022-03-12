@@ -7,6 +7,7 @@ import KpiProfessionalDetails from '../../kpiProfessionalDetails/KpiProfessional
 import './professionalDetails.css'
 
 const ProfessionalDetailsScreen = ({data}) => {
+  console.log(data);
   return (
     <>
     

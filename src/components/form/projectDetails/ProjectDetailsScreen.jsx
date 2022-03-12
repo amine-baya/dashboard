@@ -7,6 +7,7 @@ import './projectDetails.css'
 
 
 const ProjectDetailsScreen = ({ page, setPage,data }) => {
+  console.log(data);
   return (
     <>
     <div id='project_details' className='container' >

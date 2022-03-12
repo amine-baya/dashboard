@@ -31,12 +31,39 @@
 padding-top: 50px !important;
 }
 
+.tag-button .img_correct,
+.tag-button .img_close
+{
+    display: none;
+}
 
+.tag-button.active
+{
+    background-color: #4FAC8D;
+    color: white;
+}
+.tag-button.active .img_correct
+{
+    display: inline-block;
+}
 
-
+.tag-button.active .img_plus,
+.tag-button.active .img_close
+{
+    display: none;
+}
 
 .active_kpis_Container .tag-button
 {
     background-color: #4FAC8D;
     color: white;
+}
+.active_kpis_Container .tag-button .img_close
+{
+    display: inline-block;
+}
+.active_kpis_Container .tag-button .img_plus,
+.active_kpis_Container .tag-button .img_correct
+{
+    display: none;
 }
