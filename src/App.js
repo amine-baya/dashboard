@@ -13,6 +13,9 @@ import ProfileScreen from "./screens/profile/ProfileScreen";
 import ProfileEditeScreen from "./screens/profileEdite/ProfileEditeScreen";
 import Form from "./screens/form/Form";
 import Calender from './screens/calender/Calender';
+import Register from './TalentScreens/register/Register';
+import AboutMe from './TalentScreens/aboutme/AboutMe';
+import Personalinformation from './TalentScreens/PersonalInformation/PersonalInformation';
 
 
 
@@ -36,6 +39,10 @@ function App() {
                 <Route path="/verification-password" element={<VerificationPasswordScreen />} />
                 <Route path="/profile" element={<ProfileScreen />} />
                 <Route path="/profile-edit" element={<ProfileEditeScreen />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/about-me" element={<AboutMe />} />
+                <Route path="/personal-information" element={<Personalinformation />} />
+
           </Routes>
         </Router>    
       
