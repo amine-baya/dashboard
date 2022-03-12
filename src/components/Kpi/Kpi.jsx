@@ -11,7 +11,7 @@ const Kpi = (props) => {
             <Accordion.Item eventKey="0" className="accordion-item" >
                 <Accordion.Header className="accordion-Header">{props.title}</Accordion.Header>
                 <Accordion.Body className="accordion-body" >
-                    <Tag options={props.options} />
+                    <Tag options={props.options} identifier={props.identifier} />
                     <h6 className='see-more'>See More</h6>
                 </Accordion.Body>
             </Accordion.Item>

@@ -1,13 +1,12 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { ContextApi } from '../../helpers/ContextApi'
+
 import './Button.css'
 
-const Button = ({text,nav,page,setPage}) => {
-  let navigate = useNavigate()
+const Button = ({text}) => {
+ const {setPage} = useContext(ContextApi)
 
-  const move =()=>{
-    navigate(`${nav}`)
-  }
+  
   return (
     <div>
         <span className='hr'></span>
