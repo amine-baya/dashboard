@@ -21,6 +21,7 @@ const Form = () => {
   useEffect(() => {
     axios.get('https://toptal-node.herokuapp.com/api/v1/projects/all-Details').then(res =>{
       setData(res.data)
+      console.log(res.data,"hello");
     }).catch(err =>{
       console.log("must verify the url");
     })
@@ -39,7 +40,6 @@ const Form = () => {
           }
          else {
           return <KpisTwoScreen  page={page} setPage={setPage} data={data[4]} />;
-
         }
       };
 
