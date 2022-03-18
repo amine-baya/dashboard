@@ -1,0 +1,345 @@
+#dashboard_editing {
+    width: 90%;
+    margin: 0 auto;
+    font-family: 'Inter';
+}
+#dashboard_editing .dashboard_editing_titles div h1 {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    transform: translateY(20px);
+    margin-top: -60px;
+}
+#dashboard_editing .dashboard_editing_titles .dashboard_editing_cv_button {
+    margin-left: 80%;
+    margin-right: 2%;
+    background: #75141D;
+    border-radius: 6px;
+    padding: 12px 22px ;
+    color: #fff;
+    text-align: center;
+}
+
+#dashboard_editing .dashboard_editing_header{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    border-radius: 6px;
+    box-shadow: 6px 0px 18px rgba(0, 0, 0, 0.06);
+    margin-top: 60px   
+}
+#dashboard_editing .dashboard_editing_header .dashboard_editing_header_info {
+    display: flex;
+    align-items: center;
+    height: 120px;
+}
+#dashboard_editing .dashboard_editing_header .dashboard_editing_header_info .dashboard_editing_header_img {
+    width: 140px;
+    height: 140px;
+    transform: translateY(-20%);
+}
+
+#dashboard_editing .dashboard_editing_header .dashboard_editing_header_info .dashboard_editing_header_img img{
+    width: 100%;
+    height: 100%;
+}
+
+#dashboard_editing .dashboard_editing_header .dashboard_editing_header_info h4 {
+    padding-left: 15px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 130%;
+    color: #232D42;
+}
+#dashboard_editing .dashboard_editing_header .dashboard_editing_header_info h4 span {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 175%;
+    color: #8A92A6;
+}
+
+#dashboard_editing .dashboard_editing_header .dashboard_editing_header_button {
+    background: #395F8C;
+    border-radius: 4px;
+    padding: 12px 22px ;
+    color: #fff;
+}
+
+
+
+#dashboard_editing .dashboard_editing_body{
+    display: grid;
+    grid-template-columns: 40% 60%;
+    grid-gap: 25px;
+    margin-top: 50px  ;
+    margin-bottom: 70px;
+}
+
+#dashboard_editing .dashboard_editing_body > div{
+    border-radius: 6px;
+    box-shadow: 6px 0px 18px rgba(0, 0, 0, 0.06);
+    padding: 20px 30px;
+}
+
+#dashboard_editing .dashboard_editing_body > div h4{
+font-weight: 600;
+font-size: 24px;
+margin-bottom: 25px;
+}
+/**************ABOUT*****************/
+#dashboard_editing .dashboard_editing_body_about  .dashboard_editing_body_about_header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#dashboard_editing .dashboard_editing_body_about  .dashboard_editing_body_about_header h4{
+    margin-bottom: 0;
+}
+#dashboard_editing .dashboard_editing_body_about p
+{
+    color: #8A92A6;
+    font-weight: 400px;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+#dashboard_editing .dashboard_editing_body_about p.dashboard_editing_body_about_p
+{
+    margin-top: 22px;
+}
+#dashboard_editing .dashboard_editing_body_about p span
+{
+    color: #0048B2;
+    margin-left: 10px;
+}
+
+/************PORTFOLIO***************/
+#dashboard_editing .dashboard_editing_body_portfolio  .dashboard_editing_body_portfolio_header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+#dashboard_editing .dashboard_editing_body_portfolio  .dashboard_editing_body_portfolio_header h4{
+    margin-bottom: 0;
+}
+#dashboard_editing .dashboard_editing_body_portfolio  .dashboard_editing_body_portfolio_header span{
+    color:  #395F8C;
+    
+}
+
+#dashboard_editing .dashboard_editing_body_portfolio .dashboard_editing_body_portfolio_project{
+    display: flex;
+    margin-bottom: 25px;
+}
+#dashboard_editing .dashboard_editing_body_portfolio .dashboard_editing_body_portfolio_project .dashboard_editing_body_portfolio_project_img img{
+    width: 115px;
+    height: 105px;
+    margin-right: 20px;
+ }
+
+
+#dashboard_editing .dashboard_editing_body_portfolio_project_info .dashboard_editing_body_portfolio_project_info_edit
+{
+    display: flex;
+}
+#dashboard_editing .dashboard_editing_body_portfolio_project_info .dashboard_editing_body_portfolio_project_info_edit img
+{
+    margin-left: 10px;
+    transform: translateY(-5px);
+}
+ #dashboard_editing .dashboard_editing_body_portfolio_project_info h5
+ {
+     font-weight: 700;
+     font-size: 18px;
+     letter-spacing: 0.03em;
+     color: #343A40;
+ }
+
+ 
+ #dashboard_editing .dashboard_editing_body_portfolio_project_info p
+ {
+     font-weight: 400;
+ font-size: 14px;
+ letter-spacing: 0.03em;
+ color: #666666;
+ }
+
+
+ 
+#dashboard_editing  .resume_about_skills
+{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#dashboard_editing .resume_about_skills span
+{
+    display: block;
+    padding: 0 15px;
+height: 30px;
+background: #EDEDED;
+border-radius: 6px;
+font-weight: 400;
+font-size: 12px;
+letter-spacing: 0.257143px;
+color: #4EAD8D;
+text-align: center;
+line-height: 30px;
+margin-right:  10px;
+}
+/******************EDUCATION***********************/
+
+#dashboard_editing .dashboard_editing_body_education  .dashboard_editing_body_education_header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+#dashboard_editing .dashboard_editing_body_education  .dashboard_editing_body_education_header h4{
+    margin-bottom: 0;
+}
+#dashboard_editing .dashboard_editing_body_education  .dashboard_editing_body_education_header span{
+    color:  #395F8C;
+    
+}
+
+#dashboard_editing .dashboard_editing_body_education .dashboard_editing_body_education_step{
+    display: flex;
+    margin-bottom: 25px;
+}
+
+#dashboard_editing .dashboard_editing_body_education_step_info .dashboard_editing_body_education_step_info_edit
+{
+    display: flex;
+}
+#dashboard_editing .dashboard_editing_body_education_step_info .dashboard_editing_body_education_step_info_edit img
+{
+    margin-left: 10px;
+    transform: translateY(-5px);
+}
+#dashboard_editing .dashboard_editing_body_education_step_info  h5
+ {
+     font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.03em;
+    color: #565656;
+ }
+
+ #dashboard_editing .dashboard_editing_body_education_step_info span
+ {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.03em;
+    color: #4EAD8D;
+    padding-bottom: 10px;
+ }
+ 
+ #dashboard_editing .dashboard_editing_body_education_step_info p
+ {
+     font-weight: 400;
+ font-size: 14px;
+ letter-spacing: 0.03em;
+ color: #666666;
+ }
+
+
+ 
+
+
+/******************EMPLOYMENT***********************/
+
+#dashboard_editing .dashboard_editing_body_employment  .dashboard_editing_body_employment_header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+#dashboard_editing .dashboard_editing_body_employment  .dashboard_editing_body_employment_header h4{
+    margin-bottom: 0;
+    
+}
+#dashboard_editing .dashboard_editing_body_employment  .dashboard_editing_body_employment_header span{
+    color:  #395F8C;
+    
+}
+
+
+#dashboard_editing .dashboard_editing_body_employment_info
+{
+    margin-bottom: 45px;
+}
+#dashboard_editing .dashboard_editing_body_employment_info h5
+{
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #494949;
+}
+#dashboard_editing .dashboard_editing_body_employment_info .dashboard_editing_body_employment_info_edit
+{
+    display: flex;
+}
+
+#dashboard_editing .dashboard_editing_body_employment_info .dashboard_editing_body_employment_info_edit span
+{
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.03em;
+    color: #4EAD8D;    
+position: relative;
+margin-left: 50px;
+}
+#dashboard_editing .dashboard_editing_body_employment_info .dashboard_editing_body_employment_info_edit span::before
+{
+    position: absolute;
+    content: '';
+    left: -32px;
+    top: 9px;
+    background: #4EAD8D;
+    height: 2px;
+    width: 26px;
+}
+#dashboard_editing .dashboard_editing_body_employment_info .dashboard_editing_body_employment_info_span
+{
+    display: block;
+font-weight: 400;
+font-family: 'Roboto';
+font-size: 12px;
+letter-spacing: 0.257143px;
+color: #FFFFFF;
+width: 66px;
+height: 26px;
+line-height: 26px;
+background: #75141D;
+border: 1px solid #75141D;
+border-radius: 20px;
+text-align: center;
+margin: 10px 0;
+}
+#dashboard_editing .dashboard_editing_body_employment_info .dashboard_editing_body_employment_info_edit img
+{
+    margin-left: 10px;
+    transform: translateY(-5px);
+}
+#dashboard_editing .dashboard_editing_body_employment_info .dashboard_editing_body_employment_info_edit img:first-of-type
+{
+    margin-left: 20px;
+}
+
+ 
+ #dashboard_editing .dashboard_editing_body_employment_info p
+ {
+     font-weight: 400;
+ font-size: 14px;
+ letter-spacing: 0.03em;
+ color: #666666;
+ margin: 10px 0 20px;
+ }
