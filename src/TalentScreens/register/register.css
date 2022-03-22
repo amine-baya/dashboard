@@ -170,3 +170,20 @@ line-height: 30px;
 {
     margin: 60px auto  100px;
 }
+
+.to_account{
+    text-align: right;
+    margin-right: 50px;
+}
+
+.to_account p{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    color: #8692A6;
+}
+.to_account p span{
+    color: #4fb29a;
+}
