@@ -1,0 +1,53 @@
+#Education .Education_container
+{
+    margin: 0 50px;
+    margin-top: 50px;
+    font-family: Inter;
+}
+#Education .Education_container h3
+{
+    font-weight: 400;
+    font-size: 18px;
+}
+
+#Education .Education_container h4
+{
+    font-weight: 500;
+font-size: 16px;
+margin: 25px 0 0;
+}
+
+#Education .Education_container .form-select
+{
+    height: 64px;
+}
+
+#Education .Education_container .Portfolio_paragraph_grid
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 15px;
+    margin-bottom: 70px;
+
+}
+
+#Education .Education_container .Portfolio_paragraph_grid .timepicker-control-section
+{
+    margin: 0 auto 10px;
+}
+
+#Education .Education_container button.btn_save
+{
+padding: 0px 24px;
+width: 310px;
+height: 60px;
+display: block;
+outline: none;
+border: none;
+color: #fff;
+margin-bottom: 30px !important;
+margin: 0 auto;
+background: #395F8C;
+border-radius: 6px;
+}
