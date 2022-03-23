@@ -51,7 +51,13 @@ font-size: 16px;
 }
 
 
-#about_me .about_me_container .about_me_info .upload_about_me
+#about_me .about_me_container .about_me_info input[type="file"]
+{ 
+  display: none;
+    
+}
+
+#about_me .about_me_container .about_me_info label
 { 
     display: block;
     background: #FFFFFF;
@@ -66,6 +72,7 @@ font-size: 16px;
     margin-bottom: 40px;
     cursor: pointer;
     filter: drop-shadow(0px 4px 4px #DCDCDC);
+    
 }
 
 #about_me .about_me_container .about_me_info .about_me_p
