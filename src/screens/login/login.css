@@ -34,9 +34,19 @@
     color: #395f8c;
  
 }
+#login p span a{
+
+    text-decoration: none;
+ 
+}
 
 #login .password_memory{
     margin-top: 15px;
     display: flex;
     justify-content: space-between;
+}
+
+#login .password_memory span a{
+    text-decoration: none;
+
 }
