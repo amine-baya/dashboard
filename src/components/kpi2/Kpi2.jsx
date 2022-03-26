@@ -9,9 +9,9 @@ const Kpi2 = (props) => {
     <>
         <Accordion defaultActiveKey={['0']} alwaysOpen className='accordion'>
             <Accordion.Item eventKey="0" className="accordion-item" >
-                <Accordion.Header className="accordion-Header">{props.title}</Accordion.Header>
+                <Accordion.Header className="accordion-Header">{props?.title}</Accordion.Header>
                 <Accordion.Body className="accordion-body" >
-                    <Tag2 options={props.options} identifier={props.identifier} />
+                    <Tag2 options={props?.options} identifier={props?.identifier} />
                     <h6 className='see-more'>See More</h6>
                 </Accordion.Body>
             </Accordion.Item>
