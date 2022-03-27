@@ -184,6 +184,7 @@ line-height: 30px;
     line-height: 28px;
     color: #8692A6;
 }
-.to_account p span{
+.to_account p span a{
     color: #4fb29a;
+    text-decoration: none;
 }

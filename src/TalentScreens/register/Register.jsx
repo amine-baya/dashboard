@@ -1,12 +1,16 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Form } from 'react-bootstrap'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Header from '../../components/header/Header'
+import { UserInfo } from '../../helpers/ContextApi'
+
 
 import './register.css'
 
 const Register = () => {
+
+  const {setUserInfo} = useContext(UserInfo)
 
   let navigate = useNavigate()
   const [full_name,setFullName] = useState('')
@@ -22,16 +26,23 @@ const Register = () => {
             'Content-Type': 'application/json',
         },
     }
-    const {data} = await axios.post('https://toptal-node.herokuapp.com/api/v1/auth/register', {full_name, email, password, professional}, config)
-      console.log(data);
+     await axios.post('https://toptal.ibrcloud.com/api/v1/auth/register', {full_name, email, password, professional}, config).then(res =>{
+      setUserInfo(res.data)
+      localStorage.setItem("userInfo", JSON.stringify(res.data) )
+
+      navigate('/talent')
+  }).catch(err =>{
+    console.log(err);
+  })
   }
+
 
 
   return (
     <div>
          <Header /> 
          <div className="to_account">
-           <p>Already have an account? <span>Sign In</span> </p>
+           <p>Already have an account? <span><Link to="/login" >Sign In</Link></span> </p>
          </div>
         <div className='container' id='register'>
             <div className='register_container'>
