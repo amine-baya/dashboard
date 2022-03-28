@@ -1,4 +1,4 @@
-import React, {useContext}  from 'react'
+import React, {useContext, useEffect, useState}  from 'react'
 import { UserInfo } from '../../helpers/ContextApi'
 import './tag3.css'
 const Tag3 = ({options}) => {
@@ -6,7 +6,7 @@ const Tag3 = ({options}) => {
   const {sales,setSales,marketing,setMarketing,finance,setFinance,development,setDevelopment} = useContext(UserInfo)
   
   const addIndustries = (option,e) => {
-    
+    console.log(option);
     if(option.parent === "sales" ){
 
         e.target.parentElement.nodeName === "BUTTON" && e.target.parentElement.classList.toggle(`active`)

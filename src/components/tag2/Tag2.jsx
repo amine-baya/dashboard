@@ -12,15 +12,13 @@ const Tag2 = ({options,identifier}) => {
     e.target.classList.toggle(`active`)
     
 
-    const selectedOption = select1?.find(el => el.identifier === option.identifier);
+    const selectedOption = select1?.find(el => el === option.identifier);
      if (selectedOption) {
-    //   setSelect1( select1.filter(function(person) { 
-    //     return person !== e.target.value 
-    // }));
-    setSelect1(select1.filter(el => el.identifier !== option.identifier))
+  
+    setSelect1(select1.filter(el => el !== option.identifier))
      }
      if (selectedOption === undefined) {
-      setSelect1([...select1, {...option} ])
+      setSelect1([...select1,option.identifier ])
      }
     }
     
@@ -28,7 +26,7 @@ const Tag2 = ({options,identifier}) => {
       <>
       {
         options?.map((option)=>(
-            <button className= 'tag-button' onClick={(e) => addIndustries(option, e)}>
+            <button className= {select1.includes(option.identifier) ? 'tag-button active' : 'tag-button' } onClick={(e) => addIndustries(option, e)}>
                 {option.name || option.age} <img className='img_correct' src='./images/correct.png' alt="plus"/>  <img className='img_plus' src='./images/plus.png' alt="plus" />   
             </button>
           )) 
