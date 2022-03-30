@@ -11,16 +11,14 @@ import './register.css'
 const Register = () => {
 
   const {setUserInfo} = useContext(UserInfo)
-
-  let navigate = useNavigate()
   const [full_name,setFullName] = useState('')
   const [email,setEmail] = useState('')
   const [password,setPassword] = useState('')
   const [professional,setProfessional] = useState('')
+  let navigate = useNavigate()
 
   const submitHandler = async(e)=>{
     e.preventDefault()
-    console.log(professional,full_name,email,password)
       const config = {
         headers: {
             'Content-Type': 'application/json',
@@ -29,7 +27,6 @@ const Register = () => {
      await axios.post('https://toptal.ibrcloud.com/api/v1/auth/register', {full_name, email, password, professional}, config).then(res =>{
       setUserInfo(res.data)
       localStorage.setItem("userInfo", JSON.stringify(res.data) )
-
       navigate('/talent')
   }).catch(err =>{
     console.log(err);
@@ -42,7 +39,7 @@ const Register = () => {
     <div>
          <Header /> 
          <div className="to_account">
-           <p>Already have an account? <span><Link to="/login" >Sign In</Link></span> </p>
+           <p>Already have an account? <span><Link to="/" >Sign In</Link></span> </p>
          </div>
         <div className='container' id='register'>
             <div className='register_container'>
@@ -55,13 +52,7 @@ const Register = () => {
                     <span className='or'>Or</span>
                   </div>
                   <div className="nrl_register">
-                  {/* <button class="select" name="select" value="options">options</button>
-                        <div class="options">
-                            <p class="item active">option 1</p>
-                            <p class="item">option 2</p>
-                            <p class="item">option 3</p>
-                            <p class="item">option 4</p>
-                        </div> */}
+                  
                     <form onSubmit={submitHandler}>
                         
                           <label htmlFor="Your Professional fill?">Your Professional fill?</label>
