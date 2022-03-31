@@ -6,14 +6,14 @@ import Title from '../../title/Title'
 import './kpisOne.css'
 
 const KpisOneScreen = ({ data }) => {
-  console.log(data);
+  console.log(data.options);
   return (
     <>
     <div id='kpisOne' className="container">
       <div className='kpis_Container'>
-            <Title title={data.question_text} />
+            <Title title="Please select KPIs that you want this person to fulfill:" />
           { data?.options.map((option)=>(
-            <Kpi2 title={option.name} options={option.subcategory}  />
+            <Kpi2 title={option.name} options={option.subkpis}  />
 
             ))}
       </div>

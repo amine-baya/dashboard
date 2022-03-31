@@ -11,9 +11,11 @@ import './kpisTwo.css'
 
 const KpisTwoScreen = ({page,setPage,data}) => {
 
+  const {select} = useContext(ContextApi)
+
     const [modalShow, setModalShow] = useState(false);
 
-    const {select} = useContext(ContextApi)
+    console.log(data);
 
   return (
     <>
@@ -44,7 +46,7 @@ const KpisTwoScreen = ({page,setPage,data}) => {
             <Title title={data.question_text} diffMargin={select.length === 0 ?  false : true}  />
             { select.length === 0 &&   <span className='kpis_change_skills_btn' onClick={() => setModalShow(true)} >Change skill category</span>}
           </div>
-          { data.options.map((option)=>(
+          { data?.skill?.map((option)=>(
 
               <Kpi title={option.name} options={option.subcategory} identifier={option.identifier} />
               

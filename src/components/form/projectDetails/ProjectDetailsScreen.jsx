@@ -7,16 +7,16 @@ import './projectDetails.css'
 
 
 const ProjectDetailsScreen = ({ page, setPage,data }) => {
-  console.log(data);
+  console.log(data.type[0]);
   return (
     <>
     <div id='project_details' className='container' >
       <div className='project_details_container'>
           <Title title="Project Details" />
-          <p className='project_details_question'>{data.question_text}</p>
+          <p className='project_details_question'>{data?.type[0].question}</p>
           <div className='project_details_types'>
             {
-              data.options.map((option)=>(
+              data?.type[0]?.options.map((option)=>(
                 <Type text={option.name} name="role" value={option.identifier} />
               ))
             }

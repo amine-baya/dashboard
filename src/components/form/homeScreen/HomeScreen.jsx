@@ -7,11 +7,10 @@ import './HomeScreen.css'
 const HomeScreen = ({data}) => {
 
   const {setPage} = useContext(ContextApi)
-  
+
   const getStarted =()=>{
     data &&  setPage((currPage) => currPage + 1)
   }
-  console.log(data);
   return (
     <>
     <div className='homeScreen'>
@@ -27,10 +26,10 @@ const HomeScreen = ({data}) => {
       </div>
 
       <div className='home_role'>
-           <h3>{data?.question_text}</h3>
+           <h3>{data?.role[0]?.question_text}</h3>
           <div className='home_roles'> 
-         { data?.options.map((option) => (
-           <Role text={option.name} name="role" value={option.identifier}  />
+         { data?.role[0]?.options?.map((option) => (
+           <Role text={option?.name} name="role" value={option?.identifier}  />
          )
           )}
           </div> 
