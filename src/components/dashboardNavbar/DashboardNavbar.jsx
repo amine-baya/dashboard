@@ -1,7 +1,10 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import './dashboardNavbar.css'
+import {ImProfile} from 'react-icons/im'
 
 const DashboardNavbar = () => {
+  let navigate = useNavigate()
   return (
     <div id='dashboard_navbar'>
       <div className='dashboard_navbar_container'>
@@ -14,6 +17,7 @@ const DashboardNavbar = () => {
               <li><img src='../../images/calendar.png' alt='Calender' /> <span>Calender</span></li>
               <li><img src='../../images/profile.png' alt='Profile' /> <span>Profile</span></li>
               <li><img src='../../images/candidate.png' alt='Candidates' /> <span>Candidates</span></li> 
+              <li onClick={()=> navigate("/resume")}><ImProfile color="#A3AED0" size="1.7em" /> <span style={{paddingLeft:"20px"}}>resume</span></li> 
             </ul> 
         </div>
 
