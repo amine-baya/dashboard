@@ -52,7 +52,7 @@ const Calender = () => {
         <div id='calender' className='calender'>
           <p>Hi {personalData?.first_name}</p>
           <h2>Welcome to Toptalent!</h2>
-            <ScheduleComponent currentView='Week' eventSettings={{dataSource: localData}}>
+            <ScheduleComponent currentView='Month' eventSettings={{dataSource: localData}}>
             <ResourcesDirective>
               <ResourceDirective field='ResourceId' idField='Id' colorField='color' title='Resources Name' name='Resources' textField='Name' dataSource={ResourceDataSource}/>
             </ResourcesDirective>
