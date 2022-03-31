@@ -11,7 +11,8 @@ import './register.css'
 const Register = () => {
 
   const {setUserInfo} = useContext(UserInfo)
-  const [full_name,setFullName] = useState('')
+  const [firstName,setFirstName] = useState('')
+  const [lastName,setLastName] = useState('')
   const [email,setEmail] = useState('')
   const [password,setPassword] = useState('')
   const [professional,setProfessional] = useState('')
@@ -24,7 +25,7 @@ const Register = () => {
             'Content-Type': 'application/json',
         },
     }
-     await axios.post('https://toptal.ibrcloud.com/api/v1/auth/register', {full_name, email, password, professional}, config).then(res =>{
+     await axios.post('https://toptal.ibrcloud.com/api/v1/auth/register', {first_name:firstName,last_name:lastName, email, password, professional}, config).then(res =>{
       setUserInfo(res.data)
       localStorage.setItem("userInfo", JSON.stringify(res.data) )
       navigate('/talent')
@@ -63,8 +64,12 @@ const Register = () => {
                               <option value="Marketing">Marketing-digital marketers, marketing managers, SEO</option>
                           </Form.Select>
                           <div className='input_component'>
-                            <label className='label'>Full Name*</label>
-                            <input type="text" placeholder="Enter Full Name " onChange={(e) => setFullName(e.target.value)}/>
+                            <label className='label'>First Name*</label>
+                            <input type="text" placeholder="Enter Full Name " onChange={(e) => setFirstName(e.target.value)}/>
+                          </div>
+                          <div className='input_component'>
+                            <label className='label'>Last Name*</label>
+                            <input type="text" placeholder="Enter Full Name " onChange={(e) => setLastName(e.target.value)}/>
                           </div>
                           <div className='input_component'>
                             <label className='label'>Email Address*</label>

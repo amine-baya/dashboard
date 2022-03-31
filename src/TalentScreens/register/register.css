@@ -2,7 +2,7 @@
 {
     margin: 0 50px;
     margin-top: 150px;
-    font-family: Inter;
+    font-family: 'Ubuntu', sans-serif;
 }
 #register .register_container  h3
 {
@@ -22,7 +22,7 @@ line-height: 30px;
 #register .register_container .register_info p
 {
     margin-top: 25px;
-    font-family: Inter;
+    font-family: 'Ubuntu', sans-serif;
     font-size: 14px;
     color: #696F79;
 }
@@ -177,7 +177,7 @@ line-height: 30px;
 }
 
 .to_account p{
-    font-family: 'Inter';
+    font-family: 'Ubuntu', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
