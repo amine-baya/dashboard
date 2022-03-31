@@ -1,9 +1,7 @@
 import React from 'react'
 import { Modal } from 'react-bootstrap'
 import Input from '../../input/Input'
-import Kpi2 from '../../kpi2/Kpi2'
 import TextArea from '../../textarea/TextArea'
-import {PortfolioData} from  '../../../kpisInfo'
 import './editAboutModal.css'
 
 
