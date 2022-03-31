@@ -1,0 +1,25 @@
+.edit_employment_dates_grid
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    
+
+}
+
+.label_select_employment_dates{
+    margin-bottom: 0;
+}
+
+.edit_inputs_project .edit_inputs_project_checkbox,
+.edit_inputs_project .edit_inputs_project_checkbox div  
+{
+    display: flex;
+    align-items: baseline;
+}
+
+.edit_inputs_project .edit_inputs_project_checkbox div label
+{
+    margin-left: 10px;
+    margin-right: 80px;
+}

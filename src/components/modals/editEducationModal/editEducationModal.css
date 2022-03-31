@@ -1,0 +1,13 @@
+.edit_education_dates_grid
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 0 55px 50px;
+
+}
+
+.label_select_education_dates{
+    margin-bottom: 0;
+}
+

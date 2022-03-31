@@ -1,0 +1,9 @@
+.edit_inputs_project .edit_inputs_project_grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 40px;
+}
+.modal_buttons_edit_about{
+    margin-top: 40px;
+    margin-bottom: 40px;
+}

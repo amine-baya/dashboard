@@ -1,0 +1,37 @@
+.change_photo_modal_container{
+    margin: 25px 55px;
+}
+
+.change_photo_modal_container .change_photo_modal_img{
+   
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+    position: relative;
+}
+.change_photo_modal_container .change_photo_modal_img img.change_photo_modal_img_profile{
+    width: 150px;
+    height: 150px;
+    filter: brightness(70%);
+    
+}
+.change_photo_modal_container .change_photo_modal_img img.change_photo_modal_img_edit{
+    width: 40px;
+    height: 40px;
+    display: block;
+    position: absolute;
+    top: 40%;
+}
+
+.change_photo_modal_container .change_photo_modal_rules p{
+    color: #404142;
+    font-family: 'Ubuntu', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 25px;
+}
+
+.modal_buttons_photo_modal {
+    margin-right: 0;
+}

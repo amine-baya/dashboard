@@ -1,7 +1,7 @@
 #dashboard_editing {
     width: 90%;
     margin: 0 auto;
-    font-family: 'Inter';
+    font-family: 'Ubuntu', sans-serif;
 }
 #dashboard_editing .dashboard_editing_titles div h1 {
     padding-bottom: 0;
@@ -289,7 +289,7 @@ margin-right:  10px;
 
 #dashboard_editing .dashboard_editing_body_employment_info .dashboard_editing_body_employment_info_edit span
 {
-    font-family: 'Poppins';
+    font-family: 'Ubuntu', sans-serif;
     font-weight: 600;
     font-size: 14px;
     letter-spacing: 0.03em;
@@ -310,19 +310,19 @@ margin-left: 50px;
 #dashboard_editing .dashboard_editing_body_employment_info .dashboard_editing_body_employment_info_span
 {
     display: block;
-font-weight: 400;
-font-family: 'Roboto';
-font-size: 12px;
-letter-spacing: 0.257143px;
-color: #FFFFFF;
-width: 66px;
-height: 26px;
-line-height: 26px;
-background: #75141D;
-border: 1px solid #75141D;
-border-radius: 20px;
-text-align: center;
-margin: 10px 0;
+    font-weight: 400;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.257143px;
+    color: #FFFFFF;
+    width: 66px;
+    height: 26px;
+    line-height: 26px;
+    background: #75141D;
+    border: 1px solid #75141D;
+    border-radius: 20px;
+    text-align: center;
+    margin: 10px 0;
 }
 #dashboard_editing .dashboard_editing_body_employment_info .dashboard_editing_body_employment_info_edit img
 {
