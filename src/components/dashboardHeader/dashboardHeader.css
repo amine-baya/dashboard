@@ -45,3 +45,9 @@
     letter-spacing: 0.02em;
     color: #848688;
 }
+
+#Dashboard_Header .Dashboard_Header_notification ul li.Dashboard_Header_profile_image img {
+   height: 40px;
+   width: 40px;
+   border-radius: 50%;
+}
