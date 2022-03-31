@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import DashboardHeader from '../../components/dashboardHeader/DashboardHeader'
 import DashboardNavbar from '../../components/dashboardNavbar/DashboardNavbar'
 import {Inject, ScheduleComponent, Day, Week, WorkWeek, Month, Agenda, ViewsDirective, ViewDirective, DragAndDrop, Resize, ResourcesDirective, ResourceDirective} from '@syncfusion/ej2-react-schedule'
 import './calender.css'
+import { UserInfo } from '../../helpers/ContextApi'
+
 
 
 const Calender = () => {
+  const {personalData} = useContext(UserInfo)
+
   const localData = [{
     Id: 1,
     Subject: "one",
@@ -34,15 +38,19 @@ const Calender = () => {
    const eventTemplate = (props) => {
      return <div className='template-wrap'>{props.Subject}</div>
    }
+
+ 
+   
+
   
   return (
     <>
-        <DashboardNavbar />
+      <DashboardNavbar />
       <DashboardHeader />
       <div className='container_calender'>
         <div></div>
         <div id='calender' className='calender'>
-          <p>Hi Justin Nguyen</p>
+          <p>Hi {personalData?.first_name}</p>
           <h2>Welcome to Toptalent!</h2>
             <ScheduleComponent currentView='Week' eventSettings={{dataSource: localData}}>
             <ResourcesDirective>

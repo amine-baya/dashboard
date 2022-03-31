@@ -5,16 +5,16 @@
 .input_component label
 {
     display: block;
-    font-family: Inter;
-font-style: normal;
-font-weight: 500;
-font-size: 16px;
-line-height: 19px;
-display: flex;
-align-items: center;
-margin-bottom: 15px;
-color: #696F79;
-margin-top: 25px;
+    font-family: 'Ubuntu', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    color: #696F79;
+    margin-top: 25px;
 }
 
 
