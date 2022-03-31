@@ -1,0 +1,43 @@
+
+
+
+.about_me_info .upload_label
+{
+    display: block;
+    font-family: 'Ubuntu', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    color: #696F79;
+    margin-top: 25px;
+}
+
+
+ .about_me_info .upload_about_me
+{ 
+    display: block;
+    background: #FFFFFF;
+    border: 1px solid #395F8C;
+    box-sizing: border-box;
+    border-radius: 6px;
+    height: 55px;
+    line-height: 55px;
+    text-align: center;
+    width: 50%;
+    color: #395F8C;
+    margin-bottom: 40px;
+    cursor: pointer;
+    filter: drop-shadow(0px 4px 4px #DCDCDC);
+}
+
+ .about_me_info .about_me_p
+{
+
+font-weight: 500;
+color: #424344;
+margin-bottom: 10px;
+}

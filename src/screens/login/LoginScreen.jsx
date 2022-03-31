@@ -26,7 +26,7 @@ const LoginScreen = () => {
     await axios.post('https://toptal.ibrcloud.com/api/v1/auth/login', {email, password}, config).then(res =>{
       setUserInfo(res.data)
       localStorage.setItem("userInfo", JSON.stringify(res.data) )
-      navigate('/personal-information')
+      navigate('/calender')
     }).catch(err =>{
       console.log(err);
     })

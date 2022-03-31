@@ -12,7 +12,7 @@
 #professional_need .professional_need_container div h5
 {
     margin-bottom: 30px;
-    font-family: Inter;
+    font-family: 'Ubuntu', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
@@ -65,7 +65,7 @@ border-radius: 10px;
 }
 #professional_need .professional_need_container div .professional_need_grid .professional_need_grid_box h3
 {
-    font-family: Inter;
+    font-family: 'Ubuntu', sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 18px;

@@ -26,7 +26,7 @@ border-radius: 8px;
 width: 185px;
 height: 52px;
 display: block;
-font-family: Inter;
+font-family: 'Ubuntu', sans-serif;
 font-style: normal;
 font-weight: 600;
 font-size: 18px;
@@ -44,22 +44,22 @@ cursor: pointer;
 
 .profile_box .profile_box_name_img .profile_box_name h3
 {
-    font-family: Inter;
-font-style: normal;
-font-weight: bold;
-font-size: 36px;
-line-height: 44px;
-color: #22242C;
+    font-family: 'Ubuntu', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 44px;
+    color: #22242C;
 }
 
 .profile_box .profile_box_name_img .profile_box_name span
 {
-    font-family: Inter;
-font-style: normal;
-font-weight: normal;
-font-size: 18px;
-line-height: 22px;
-color: #8E8EA1;
+    font-family: 'Ubuntu', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    color: #8E8EA1;
 }
 
 .profile_container .profile_box_content
@@ -77,21 +77,21 @@ color: #8E8EA1;
 
 .profile_container .profile_box_content div span
 {
-    font-family: Inter;
-font-style: normal;
-font-weight: normal;
-font-size: 16px;
-line-height: 19px;
-color: #8E8EA1;
+    font-family: 'Ubuntu', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #8E8EA1;
 }
 
 .profile_container .profile_box_content div p
 {
-    font-family: Inter;
-font-style: normal;
-font-weight: normal;
-font-size: 20px;
-line-height: 24px;
-color: #333333;
-transform: translateX(50px);
+    font-family: 'Ubuntu', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 24px;
+    color: #333333;
+    transform: translateX(50px);
 }

@@ -1,0 +1,299 @@
+#resume_preview
+{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 130px;
+    font-family: 'Ubuntu', sans-serif;
+} 
+#resume_preview h2.resume_title
+{
+    color: #395F8C;
+    font-weight: 700;
+    font-size: 25px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #395F8C;
+    position: relative;
+    margin-left: 60px;
+
+}
+#resume_preview h2.resume_title::after
+{
+    position: absolute;
+    content: "";
+    width: 20px;
+    transform: translateX(-60px);
+    height: 45px;
+    left: 0px;
+    top: -3px;
+    background: #395F8C;
+}
+#resume_preview .resume_header
+{
+    display: grid;
+    grid-template-columns: 60% 40%;
+}
+
+#resume_preview .resume_header h2
+{
+
+font-weight: 300;
+font-size: 70px;
+letter-spacing: 0.005em;
+color: #A9A9A9;
+
+}
+
+#resume_preview .resume_header h2 span
+{
+font-weight: 900;
+color: #395F8C;
+text-transform: uppercase;
+}
+#resume_preview .resume_header h3
+{
+    
+font-weight: 400;
+font-size: 30px;
+letter-spacing: 0.005em;
+color: #6B6B6B;
+margin-bottom: 60px;
+text-transform: uppercase;
+
+}
+
+#resume_preview .resume_header .resume_header_title
+{
+    font-weight: 400;
+font-size: 12px;
+letter-spacing: 2px;
+margin: 40px 0 0;
+color: #9B9999;
+}
+
+#resume_preview .resume_header .resume_header_info
+{
+    font-weight: 400;
+font-size: 20px;
+letter-spacing: 0.385714px;
+color: #595959;
+}
+
+#resume_preview .resume_header .resume_header_available
+{
+    
+font-weight: 400;
+font-size: 20px;
+color: #828282;
+margin-top: 40px;
+}
+
+#resume_preview .resume_header .resume_header_available span
+{
+    color: #4FAD90;
+}
+
+#resume_preview .resume_header .resume_header_hire
+{
+    text-decoration:underline ;
+    display: block;
+    
+font-weight: 400;
+font-size: 17px;
+color: #4F5663;
+
+}
+
+#resume_preview .resume_header .resume_header_btn
+{
+    display: block;
+    width: 251px;
+    height: 50px;
+    background: #4FAD90;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 50px;
+    color: #FFFFFF;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#resume_preview .resume_header_img img
+{
+   transform: translateY(40px);
+   width: 250px;
+   height: 250px;
+   border-radius: 50%;
+
+}
+
+#resume_preview .resume_about
+{
+    margin-top: 100px;
+    margin-bottom: 100px;
+    
+}
+
+#resume_preview .resume_about p 
+{
+    font-weight: 400;
+    font-size: 18px;
+    letter-spacing: 0.385714px;
+    color: #6D6D6D;
+    margin-bottom: 45px;
+    margin-top: 50px;
+}
+
+#resume_preview  .resume_about_skills
+{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#resume_preview .resume_about_skills span
+{
+    display: block;
+    padding: 0 25px;
+height: 50px;
+background: #EDEDED;
+border-radius: 6px;
+font-weight: 400;
+font-size: 16px;
+letter-spacing: 0.257143px;
+color: #75141D;
+text-align: center;
+line-height: 50px;
+margin:  10px;
+}
+
+#resume_preview .resume_portfolio .resume_portfolio_container
+{
+    margin-top: 85px;
+
+}
+#resume_preview .resume_portfolio .resume_portfolio_box
+{
+    margin-bottom: 115px;
+    display: flex;
+    
+}
+
+#resume_preview .resume_portfolio .resume_portfolio_box img
+{
+    margin:0 50px;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+}
+#resume_preview .resume_portfolio .resume_portfolio_box .resume_portfolio_box_info
+{
+    width: 60%;
+}
+#resume_preview .resume_portfolio .resume_portfolio_box .resume_portfolio_box_info h4
+{
+    font-weight: 700;
+    font-size: 30px;
+    letter-spacing: 0.03em;
+    color: #343A40;
+}
+
+#resume_preview .resume_portfolio .resume_portfolio_box .resume_portfolio_box_info p
+{
+    font-weight: 400;
+    font-size: 22px;
+    letter-spacing: 0.03em;
+    color: #666666;
+}
+/**************************************************/
+
+
+
+
+#resume_preview .resume_employment .resume_employment_container
+{
+    margin: 85px;
+
+}
+#resume_preview .resume_employment .resume_employment_box
+{
+    margin-bottom: 115px;
+    display: flex;
+    
+}
+#resume_preview .resume_employment .resume_employment_box .resume_employment_box_info
+{
+    width: 60%;
+}
+#resume_preview .resume_employment .resume_employment_box .resume_employment_box_info div:first-of-type
+{
+    display: flex;
+    align-items: center;
+}
+#resume_preview .resume_employment .resume_employment_box .resume_employment_box_info div:first-of-type span
+{
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 600;
+    font-size: 30px;
+    letter-spacing: 0.03em;
+    color: #999999;
+    position: relative;
+    margin-left: 80px;
+}
+#resume_preview .resume_employment .resume_employment_box .resume_employment_box_info div:first-of-type span::before
+{
+    position: absolute;
+    content: '';
+    left: -60px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #999999;
+    height: 6px;
+    width: 45px;
+}
+#resume_preview .resume_employment .resume_employment_box .resume_employment_box_info h4
+{
+    font-weight: 700;
+    font-size: 30px;
+    letter-spacing: 0.03em;
+    color: #343A40;
+}
+#resume_preview .resume_employment .resume_employment_box .resume_employment_box_info .resume_employment_box_info_span
+{
+    display: block;
+font-weight: 400;
+letter-spacing: 0.257143px;
+color: #FFFFFF;
+width: 100px;
+height: 33px;
+background: #4FAD90;
+border: 1px solid #4FAD90;
+border-radius: 20px;
+text-align: center;
+line-height: 33px;
+margin: 10px 0;
+}
+#resume_preview .resume_employment .resume_employment_box .resume_employment_box_info p
+{
+    font-weight: 400;
+    font-size: 22px;
+    letter-spacing: 0.03em;
+    color: #666666;
+}
+#resume_preview .move_from_resume {
+    
+    margin-bottom: 70px;
+}
+#resume_preview .move_from_resume .move_from_resume_button{
+    display: block;
+    width: 350px;
+    background: #395f8c;
+    color: #FFFFFF;
+    margin: 0 auto;
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;    
+    cursor: pointer;
+}
+

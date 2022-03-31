@@ -5,7 +5,7 @@
 
 #schedule .schedule_container div h5
 {
-    font-family: Inter;
+    font-family: 'Ubuntu', sans-serif;;
     font-style: normal;
     font-weight: 500;
     font-size: 20px;
@@ -17,12 +17,12 @@
 #schedule .schedule_container .schedule_info p
 {
     margin-top: 25px;
-font-family: Inter;
-font-style: normal;
-font-weight: normal;
-font-size: 12px;
-line-height: 26px;
-color: #ACACAC;
+    font-family: 'Ubuntu', sans-serif;;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 26px;
+    color: #ACACAC;
 }
 #schedule .schedule_container .schedule_info p span
 {
@@ -36,14 +36,14 @@ color: #ACACAC;
 }
 #schedule .schedule_container .schedule_calend h6
 {
-    font-family: Inter;
-font-style: normal;
-font-weight: 500;
-font-size: 16px;
-line-height: 19px;
-display: flex;
-align-items: center;
-color: #696F79;
+    font-family: 'Ubuntu', sans-serif;;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    color: #696F79;
 }
 .schedule_calend_grid
 {

@@ -6,7 +6,6 @@ const Tag3 = ({options}) => {
   const {sales,setSales,marketing,setMarketing,finance,setFinance,development,setDevelopment} = useContext(UserInfo)
   
   const addIndustries = (option,e) => {
-    console.log(option);
     if(option.parent === "sales" ){
 
         e.target.parentElement.nodeName === "BUTTON" && e.target.parentElement.classList.toggle(`active`)

@@ -1,0 +1,168 @@
+#Personal_information .Personal_information_container
+{
+    margin: 0 50px;
+    margin-top: 130px;
+    font-family: 'Ubuntu', sans-serif;
+}
+#Personal_information .Personal_information_container h3
+{
+    font-weight: 700;
+    font-size: 30px;
+}
+
+#Personal_information .Personal_information_container .Personal_information_title h5
+{
+font-weight: normal;
+font-weight: 400;
+font-size: 18px;
+    margin: 10px 0 30px;
+    color: #8692A6;
+}
+#Personal_information .Personal_information_container  h4
+{
+    font-weight: 500;
+font-size: 20px;
+color: #424344;
+margin-bottom: 30px;
+}
+#Personal_information .Personal_information_container .Personal_information_info
+{
+    display: flex;
+    align-items: center;
+}
+#Personal_information .Personal_information_container .Personal_information_info img
+{
+    
+    margin-right: 35px;
+}
+#Personal_information .Personal_information_container .Personal_information_info img.Personal_information_info_profile_img
+{
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+#Personal_information .Personal_information_container .Personal_information_info span
+{
+    border: 1px solid #395F8C;
+border-radius: 6px;
+height: 55px;
+padding: 0 30px;
+align-items: center;
+line-height: 55px;
+display: flex;
+color: #395F8C;
+}
+#Personal_information .Personal_information_container .Personal_information_info input[type="file"]
+{ 
+  display: none;
+    
+}
+
+#Personal_information .Personal_information_container .Personal_information_info label
+{ 
+    display: block;
+    background: #FFFFFF;
+    border: 1px solid #395F8C;
+    box-sizing: border-box;
+    border-radius: 6px;
+    height: 55px;
+    line-height: 55px;
+    text-align: center;
+    width: 50%;
+    color: #395F8C;
+    margin-bottom: 40px;
+    cursor: pointer;
+    filter: drop-shadow(0px 4px 4px #DCDCDC);
+}
+
+#Personal_information .Personal_information_container .Personal_information_age h5
+{
+    font-weight: 500;
+    color: #4D5055;
+    font-size: 16px;
+    margin: 25px 0 20px;
+}
+#Personal_information .Personal_information_container .Personal_information_age div.Personal_information_age_grid
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin-bottom: 40px;
+    gap: 1.5rem;
+
+}
+#Personal_information .Personal_information_container .Personal_information_age div.Personal_information_age_grid div
+{
+    background: #F0F0F0;
+    border-radius: 4px;
+    color: #8692A6;
+    cursor: pointer;
+}
+#Personal_information .Personal_information_container .Personal_information_age div.Personal_information_age_grid div span
+{
+    height: 50px;
+    display: inline-block;
+    text-align: center;
+    line-height: 50px;
+    padding:0 10px 0 30px;
+}
+
+#Personal_information .Personal_information_container .Personal_information_age div.Personal_information_age_grid div img
+
+{
+    display: inline-block;
+    padding: 15px 8px;
+}
+#Personal_information .Personal_information_container .Personal_information_age div.Personal_information_age_grid div.active
+{
+    background-color: #56C1A7;
+    color: #fff;
+}
+#Personal_information .Personal_information_container .Personal_information_age div.Personal_information_age_grid div .img_correct
+{
+    display: none;
+}
+#Personal_information .Personal_information_container .Personal_information_age div.Personal_information_age_grid div.active .img_correct
+{
+    display: inline-block;
+}
+#Personal_information .Personal_information_container .Personal_information_age div.Personal_information_age_grid div .img_plus
+{
+    display: inline-block;
+}
+#Personal_information .Personal_information_container .Personal_information_age div.Personal_information_age_grid div.active .img_plus
+{
+    display: none;
+}
+#Personal_information .Personal_information_container .Personal_information_location h3
+{
+    font-weight: 500;
+font-size: 16px;
+color: #4D5055;
+margin-bottom: 20px;
+}
+
+#Personal_information .Personal_information_container .Personal_information_location label
+{
+    font-weight: 500;
+font-size: 16px;
+margin-bottom: 15px;
+color: #696F79;
+}
+
+
+#Personal_information .Personal_information_container .Personal_information_location .Personal_information_grid
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 36px;
+}
+#Personal_information .Personal_information_container .Personal_information_location .Personal_information_grid .form-select
+{
+    height: 64px;
+    padding: 20px;
+}
+
+
+
+

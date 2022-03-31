@@ -33,6 +33,7 @@ const Tag = ({options,identifier}) => {
    
   }
 
+  
 
   return (
       <>
@@ -40,7 +41,7 @@ const Tag = ({options,identifier}) => {
         options.map((option)=>(
             <button className= 'tag-button' id={option.class && option.class}>
 
-           {option.name} <img className='img_correct' src='./images/correct.png' alt="plus"/> <img className='img_close' src='./images/close.png' alt="plus" onClick={(e) => b(option,e)} />  <img className='img_plus' src='./images/plus.png' alt="plus" onClick={(e) => a(option, e)}/>  
+           {option.name || option.age} <img className='img_correct' src='./images/correct.png' alt="plus"/> <img className='img_close' src='./images/close.png' alt="plus" onClick={(e) => b(option,e)} />  <img className='img_plus' src='./images/plus.png' alt="plus" onClick={(e) => a(option, e)}/>  
             </button>
           ))
       } 

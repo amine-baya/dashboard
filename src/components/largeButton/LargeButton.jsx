@@ -1,17 +1,14 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+
 import './largeButton.css'
 
-const LargeButton = ({text, nav}) => {
+const LargeButton = ({text,to}) => {
 
-  let navigate = useNavigate()
-  const oo = () =>{
+ 
 
-  navigate(`${nav}`)
-  }
   return (
     <div >
-        <button className='large_button' onClick={()=> oo()} >
+        <button className='large_button'  >
             {text}
         </button>
     </div>
