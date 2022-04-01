@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Form } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
 import Header from '../../components/header/Header'
@@ -11,12 +11,28 @@ import './register.css'
 const Register = () => {
 
   const {setUserInfo} = useContext(UserInfo)
+  const [roles,serRoles] = useState([])
   const [firstName,setFirstName] = useState('')
   const [lastName,setLastName] = useState('')
   const [email,setEmail] = useState('')
   const [password,setPassword] = useState('')
   const [professional,setProfessional] = useState('')
   let navigate = useNavigate()
+
+
+  
+
+  useEffect(() => {
+
+        
+        axios.get('https://toptal.ibrcloud.com/api/v1/roles/show_all_roles').then(res =>{
+          serRoles(res.data[0].options)
+          
+        }).catch(err =>{
+            console.err("must verify the url");
+        })
+        
+    },[] )
 
   const submitHandler = async(e)=>{
     e.preventDefault()
@@ -59,9 +75,13 @@ const Register = () => {
                           <label htmlFor="Your Professional fill?">Your Professional fill?</label>
                           <Form.Select aria-label="Default select example" onChange={(e) => setProfessional(e.target.value)}>
                               <option>select</option>
-                              <option value="Sales-Bussiness">Sales-Bussiness development Manager, Sales Director, Sales Executive</option>
-                              <option value="Developer">Developer-front-end, back-end, full-stack, mobile etc</option>
-                              <option value="Marketing">Marketing-digital marketers, marketing managers, SEO</option>
+                              {
+                                roles?.map((role)=>(
+                                  <option key={role.identifier} value={role.identifier}>{role.name}</option>
+                                  
+                                ))
+                              }
+                              
                           </Form.Select>
                           <div className='input_component'>
                             <label className='label'>First Name*</label>

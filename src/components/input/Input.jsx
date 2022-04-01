@@ -6,7 +6,7 @@ const Input = ({label, placeH, type}) => {
   return (
     <div className='input_component'>
         <label className='label'>{label}</label>
-        <input type={type ? type : 'text'} placeholder={placeH && placeH} onChange={(e) => console.log(e.target.value)}/>
+        <input type={type ? type : 'text'} placeholder={placeH && placeH} />
     </div>
   )
 }

@@ -3,8 +3,6 @@ import React, { useState,useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Header from '../../components/header/Header'
 import { UserInfo } from '../../helpers/ContextApi'
-
-
 import Title from '../../components/title/Title'
 import './login.css'
 
@@ -28,7 +26,7 @@ const LoginScreen = () => {
       localStorage.setItem("userInfo", JSON.stringify(res.data) )
       navigate('/calender')
     }).catch(err =>{
-      console.log(err);
+      console.err(err);
     })
     
 }

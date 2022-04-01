@@ -7,9 +7,7 @@ import Kpi3 from '../../kpi3/Kpi3'
 const AboutMe = () => {
     const {userInfo,sales,marketing,finance,development} = useContext(UserInfo)
     const {setTalentPage,aboutText,setAboutText,cv,setCv} = useContext(TalentContextApi)
-    //const [aboutText, setAboutText] = useState(personalData?.about_self)
     const [data, setData] = useState([])
-    //const [cv,setCv] = useState(personalData?.cv)
     const [subkpis1, setSubkpis1] = useState([])
     const [subkpis2, setSubkpis2] = useState([])
     const [subkpis3, setSubkpis3] = useState([])
@@ -22,7 +20,7 @@ const AboutMe = () => {
           setData(res.data)
           
         }).catch(err =>{
-          console.log("must verify the url");
+          console.err("must verify the url");
         })
         
       }, [])
@@ -62,7 +60,7 @@ const AboutMe = () => {
            await axios.post('https://toptal.ibrcloud.com/api/v1/user/abour-cv-uploads',file, config).then(res => {
             setCv(res.data.cv)
             }).catch(err =>{
-              console.log(err);
+              console.err(err);
             })
       }
     
@@ -97,13 +95,16 @@ const AboutMe = () => {
                 </textarea> 
                 <h4>Upload your CV</h4>
                 <input type="file" id='file' className='upload_about_me'  onChange={uploadFileHandler}  />
-                <label for="file">
+                <label htmlFor="file">
                   Upload your CV***
                 </label> 
            </div>
             <p className='about_me_p'> {data.question_text}</p>
            { data?.options?.map((option)=>(
-            <Kpi3 title={option.name} options={option.subkpis}  />
+             <div key={option.identifier}>
+
+               <Kpi3 title={option.name} options={option.subkpis}  />
+             </div>
             ))}
             
         </div>

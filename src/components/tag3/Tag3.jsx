@@ -60,12 +60,13 @@ const Tag3 = ({options}) => {
         }   
     }
             }
+           
             
   return (
       <>
       {
         options?.map((option)=>( 
-            <button className= 'tag-button' onClick={(e) => addIndustries(option, e)}>
+            <button key={option.identifier} className= 'tag-button' onClick={(e) => addIndustries(option, e)}>
                 {option.name } <img className='img_correct' src='./images/correct.png' alt="plus"/>  <img className='img_plus' src='./images/plus.png' alt="plus" />   
             </button>
           )) 

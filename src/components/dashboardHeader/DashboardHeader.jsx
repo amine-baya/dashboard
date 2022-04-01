@@ -5,7 +5,7 @@ import './dashboardHeader.css'
 
 const DashboardHeader = () => {
   const {personalData} = useContext(UserInfo)
-  console.log(personalData);
+ 
 
   return (
     <>
@@ -15,7 +15,7 @@ const DashboardHeader = () => {
         <div id='Dashboard_Header'>
             <div className='search_data' >
                 <img src='../../images/search.png' alt='search'  /> 
-                <input type="search" placeHolder='Search Data'   />
+                <input type="search" placeholder='Search Data'   />
             </div>
             <div className="Dashboard_Header_notification">
               <ul>

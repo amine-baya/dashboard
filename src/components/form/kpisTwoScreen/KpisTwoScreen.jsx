@@ -4,12 +4,11 @@ import Button from '../../button/Button';
 import Kpi from '../../Kpi/Kpi';
 import ModalP from '../../Modal/ModalP';
 import Tag from '../../tag/Tag';
-
 import Title from '../../title/Title';
 
 import './kpisTwo.css'
 
-const KpisTwoScreen = ({page,setPage,data}) => {
+const KpisTwoScreen = ({data}) => {
 
   const {select} = useContext(ContextApi)
 

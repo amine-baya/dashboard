@@ -2,7 +2,7 @@ import React from 'react'
 
 import './largeButton.css'
 
-const LargeButton = ({text,to}) => {
+const LargeButton = ({text}) => {
 
  
 

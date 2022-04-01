@@ -1,6 +1,5 @@
 import React from 'react'
 import Button from '../../button/Button'
-
 import Kpi2 from '../../kpi2/Kpi2'
 import Title from '../../title/Title'
 import './kpisOne.css'

@@ -2,11 +2,8 @@ import React from 'react'
 import Button from '../../button/Button'
 import Type from '../../projectDetailsTypes/Type'
 import Title from '../../title/Title'
-
 import './projectDetails.css'
-
-
-const ProjectDetailsScreen = ({ page, setPage,data }) => {
+const ProjectDetailsScreen = ({data}) => {
   console.log(data.type[0]);
   return (
     <>

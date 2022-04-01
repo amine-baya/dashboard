@@ -22,27 +22,24 @@ import TalentForm from './TalentScreens/talentForm/TalentForm';
 import axios from 'axios';
 
 
-
-
-
 function App() {
 
   const [userInfo,setUserInfo] = useState()
   const [personalData,setPersonalData] = useState([])
-  const amine = localStorage.getItem('personalData') && JSON.parse(localStorage.getItem('personalData')) 
-  const [select1 ,setSelect1] = useState(amine?.industries.length > 0 ? amine?.industries[0].subcategory : [])
-  const [select2 ,setSelect2] = useState(amine?.portfolio_services.length > 0 ? amine?.portfolio_services[0].subcategory : [])
-  const [select3 ,setSelect3] = useState(amine?.skills.length > 0 ? amine?.skills[0].subcategory : [])
-  const [sales ,setSales] = useState( amine?.kips[0] !== undefined ? amine?.kips[0]?.subcategory : [])
-  const [marketing ,setMarketing] = useState( amine?.kips[1] !== undefined ? amine?.kips[1]?.subcategory : [])
-  const [finance ,setFinance] = useState( amine?.kips[2] !== undefined ? amine?.kips[2]?.subcategory : [])
-  const [development,setDevelopment] = useState( amine?.kips[3] !== undefined  ? amine?.kips[3]?.subcategory : [])
+  const storageLocalData = localStorage.getItem('personalData') && JSON.parse(localStorage.getItem('personalData')) 
+  const [select1 ,setSelect1] = useState(storageLocalData?.industries.length > 0 ? storageLocalData?.industries[0].subcategory : [])
+  const [select2 ,setSelect2] = useState(storageLocalData?.portfolio_services.length > 0 ? storageLocalData?.portfolio_services[0].subcategory : [])
+  const [select3 ,setSelect3] = useState(storageLocalData?.skills.length > 0 ? storageLocalData?.skills[0].subcategory : [])
+  const [sales ,setSales] = useState( storageLocalData?.kips[0] !== undefined ? storageLocalData?.kips[0]?.subcategory : [])
+  const [marketing ,setMarketing] = useState( storageLocalData?.kips[1] !== undefined ? storageLocalData?.kips[1]?.subcategory : [])
+  const [finance ,setFinance] = useState( storageLocalData?.kips[2] !== undefined ? storageLocalData?.kips[2]?.subcategory : [])
+  const [development,setDevelopment] = useState( storageLocalData?.kips[3] !== undefined  ? storageLocalData?.kips[3]?.subcategory : [])
   
    useEffect(()  =>  {
      setUserInfo(localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : [])
 
    }, [])
-  console.log(userInfo);
+
    useEffect(() => {
      if (userInfo) {    
        const config = {
@@ -54,7 +51,7 @@ function App() {
        axios.get('https://toptal.ibrcloud.com/api/v1/user/get-user-information', config).then(res =>{      
          setPersonalData(res.data)      
        }).catch(err =>{
-           console.log("must verify the url");
+           console.err("must verify the url");
        })
      }
 
@@ -62,7 +59,6 @@ function App() {
  }, [userInfo?.token])
 
 
-console.log(personalData);
   return (
     <UserInfo.Provider value={{userInfo, setUserInfo,personalData,setPersonalData, select1 ,
                               setSelect1,select2 ,setSelect2,select3,setSelect3,sales,setSales,

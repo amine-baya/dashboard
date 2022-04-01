@@ -21,9 +21,9 @@ const Form = () => {
   useEffect(() => {
     axios.get('https://toptal.ibrcloud.com/api/v1/projects/all-Details').then(res =>{
       setData(res.data)
-      console.log(res.data,"hello");
+      
     }).catch(err =>{
-      console.log("must verify the url");
+      console.err("must verify the url");
     })
   }, [])
 

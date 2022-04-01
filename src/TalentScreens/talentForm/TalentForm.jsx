@@ -13,7 +13,7 @@ import Confirmation from "../../components/talentForm/confirmation/Confirmation"
 const TalentForm = () => {
 
 
-  const {userInfo,setPersonalData, setSelect1, setSelect2} = useContext(UserInfo)
+  const {userInfo, setSelect1, setSelect2} = useContext(UserInfo)
   const [talentPage, setTalentPage] = useState(0);
   const [aboutText, setAboutText] = useState("")
   const [cv,setCv] = useState("")
@@ -38,12 +38,11 @@ const TalentForm = () => {
 
     const config = {
         headers: {
-          Authorization: ` Bearer ${userInfo.token}`,
+          Authorization: ` Bearer ${userInfo?.token}`,
           'Content-Type': 'multipart/form-data',
         },
       }
     axios.get('https://toptal.ibrcloud.com/api/v1/user/get-user-information', config).then(res =>{
-      //setPersonalData(res.data)
       localStorage.setItem("personalData", JSON.stringify(res.data) )
       setSelect1(res.data.industries[0].subcategory);
       setSelect2(res.data.portfolio_services[0].subcategory);
@@ -63,10 +62,10 @@ const TalentForm = () => {
       setHireTo(res.data.date_hire_to)
       
     }).catch(err =>{
-        console.log("must verify the url");
+        console.err("must verify the url");
     })
     
-}, [userInfo.token])
+}, [userInfo?.token])
 
 
     const PageDisplay = () => {
@@ -95,7 +94,8 @@ const TalentForm = () => {
                                         image, setImage,ageVal, setageVal,countryVal, setCountryVal,nationalityVal, setNationalityVal,
                                         imageProject,setImageProject,projectDescription, setProjectDescription,projectName,setProjectName,
                                         isEmployed, setIsEmployed,positionName, setPositionName,employmentDescription, setEmploymentDescription,
-                                        hireFrom, setHireFrom,hireTo, setHireTo, schoolVal, setschoolVal, degreeVal, setdegreeVal, date_education_from, date_education_to, setdate_education_from, setdate_education_to}}>
+                                        hireFrom, setHireFrom,hireTo, setHireTo, schoolVal, setschoolVal, degreeVal, setdegreeVal, 
+                                        date_education_from, date_education_to, setdate_education_from, setdate_education_to}}>
 
       <div>{PageDisplay()}</div>
     </TalentContextApi.Provider> 

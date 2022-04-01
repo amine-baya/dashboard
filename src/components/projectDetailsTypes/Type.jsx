@@ -9,7 +9,6 @@ const Type = ({text,name,value}) => {
   const handleCheckbox = e =>{
     setchecked(!checked)
      const selectedType = types.find(el => el === e.target.value);
-     console.log(selectedType);
      if (selectedType === undefined) {
       setTypes([...types,e.target.value]);
      }

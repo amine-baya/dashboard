@@ -7,7 +7,6 @@ const RadioChoice = (props) => {
   const {details,setDetails} = useContext(ContextApi)
   const handleRadiobox = e =>{
      const selectedRole = details.find(el => el === e.target.value)
-     console.log(selectedRole);
      if (selectedRole === undefined) {
       setDetails([...details,e.target.value]);
      }

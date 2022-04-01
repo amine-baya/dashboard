@@ -3,7 +3,6 @@ import { DatePickerComponent } from "@syncfusion/ej2-react-calendars";
 import './EmploymentHistory.css'
 import axios from 'axios';
 import Title from '../../title/Title';
-import TalentButton from '../../talentButton/TalentButton';
 import { TalentContextApi, UserInfo } from '../../../helpers/ContextApi';
 import Kpi5 from '../../kpi5/Kpi5';
 
@@ -13,11 +12,6 @@ const EmploymentHistory = () => {
       hireFrom, setHireFrom,hireTo, setHireTo} = useContext(TalentContextApi)
 
     const [skils, setskils] = useState()
-    // const [isEmployed, setIsEmployed] = useState(personalData?.current_employee)
-    // const [positionName, setPositionName] = useState(personalData?.position)
-    // const [employmentDescription, setEmploymentDescription] = useState(personalData?.emp_history_short_description)
-    // const [hireFrom, setHireFrom] = useState(personalData?.date_hire_from)
-    // const [hireTo, setHireTo] = useState(personalData?.date_hire_to)
     const [mySkills, setMySkills] = useState([])
 
     useEffect(() => {
@@ -30,10 +24,10 @@ const EmploymentHistory = () => {
 
     useEffect(() => {
         axios.get('https://toptal.ibrcloud.com/api/v1/projects/get-skills').then(res =>{
-            setskils(res.data)
-            console.log(res.data);
+            setskils("done")
+            
         }).catch(err =>{
-          console.log("must verify the url");
+          console.err("must verify the url");
         })
       }, [])
 
@@ -56,10 +50,10 @@ const EmploymentHistory = () => {
            date_hire_to: hireTo,
            skills: mySkills
         }, config).then(res => {
-          console.log(res);
+         
           
       }).catch(err =>{
-          console.log(err);
+          console.err(err);
        })
     }
 

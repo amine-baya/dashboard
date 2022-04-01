@@ -13,9 +13,6 @@ const Portfolio = () => {
   const {setTalentPage,imageProject,setImageProject,projectDescription, setProjectDescription,projectName,setProjectName} = useContext(TalentContextApi)
   const [portfolioData,setPortfolioData] = useState([])
   const [portfolio_services, setportfolio_services] = useState()
-  //const [image,setImage] = useState(personalData?.project_images)
-  //const [projectDescription, setProjectDescription] = useState(personalData?.project_short_description)
-  //const [projectName,setProjectName] = useState(personalData?.project_name)
 
    useEffect(() => {
      setportfolio_services([ {
@@ -72,7 +69,7 @@ const Portfolio = () => {
         },
     }
       await axios.patch('https://toptal.ibrcloud.com/api/v1/user/add-more-information',{project_name: projectName,project_images: imageProject,project_short_description: projectDescription, portfolio_services}, config).then(res => {
-      console.log(res);
+      console.log("done");
       
   }).catch(err =>{
       console.log(err);
@@ -92,8 +89,8 @@ const Portfolio = () => {
                 imageProject &&
                   <Carousel>
                     {
-                      imageProject?.map((img)=>(
-                      <div>
+                      imageProject?.map((img,index)=>(
+                      <div key={index}>
                           <img src={img} alt="project" />
                           
                       </div>
@@ -128,7 +125,9 @@ const Portfolio = () => {
             </div>
             {
               portfolioData?.options?.map((option)=>(
-              <Kpi4  options={option.subcategory} title={option.name}  /> 
+                <div key={option.identifier}> 
+                  <Kpi4  options={option.subcategory} title={option.name}  /> 
+                </div>
               ))
             }
 

@@ -17,23 +17,12 @@ const Tag = ({options,identifier}) => {
 
   const b = (item,e) => {
     const newarr = select.filter(el => el.identifier !== item.identifier)
-
-    
     setSelect([...newarr])
-    
-    console.log(e.target.parentElement.id);
- 
     e.target.parentElement.classList.remove(`active`)
-
-    
     var elements = document.getElementsByClassName(e.target.parentElement.id)
-    
-    console.log(elements[0]);
     elements[0]?.classList.remove('active')
    
   }
-
-  
 
   return (
       <>

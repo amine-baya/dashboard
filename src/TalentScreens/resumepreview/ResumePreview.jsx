@@ -9,9 +9,6 @@ const ResumePreview = () => {
     const [data, setData] = useState()
     const {userInfo,setPersonalData} = useContext(UserInfo)
     let navigate = useNavigate()
-console.log(userInfo);
-
-
     useEffect(() => {
 
         const config = {
@@ -26,15 +23,11 @@ console.log(userInfo);
          
           
         }).catch(err =>{
-            console.log("must verify the url");
+            console.err("must verify the url");
         })
         
-    }, [])
+    },[] )
     
-    console.log(data);
-
-    
-
          const globalSkills = data?.kips?.map(g => g.subcategory).flat()
         
        
@@ -64,7 +57,7 @@ console.log(userInfo);
             <div className='resume_about_skills'>
             { 
                  globalSkills !== undefined ?
-                 globalSkills?.map((skill)=>(<span>{skill}</span>))
+                 globalSkills?.map((skill,index)=>(<span key={index}>{skill}</span>))
                        : <span>skill</span>
                    } 
                 
@@ -84,7 +77,7 @@ console.log(userInfo);
                 <div className='resume_about_skills'>
                  { 
                  data ?
-                       data.portfolio_services[0]?.subcategory?.map((skill)=>(<span>{skill}</span>))
+                       data.portfolio_services[0]?.subcategory?.map((skill,index)=>(<span key={index}>{skill}</span>))
                        : <span>skill</span>
                    }  
                 </div>
@@ -104,7 +97,7 @@ console.log(userInfo);
                 <div className='resume_about_skills'>
                 { 
                  data !== undefined ?
-                       data.skills[0]?.subcategory?.map((skill)=>(<span>{skill}</span>))
+                       data.skills[0]?.subcategory?.map((skill,index)=>(<span key={index}>{skill}</span>))
                        : <span>skill</span>
                    }  
                 </div>

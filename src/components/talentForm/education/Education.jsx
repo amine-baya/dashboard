@@ -5,19 +5,12 @@ import axios from 'axios'
 import { DatePickerComponent } from '@syncfusion/ej2-react-calendars'
 import Title from '../../title/Title'
 import { TalentContextApi, UserInfo } from '../../../helpers/ContextApi'
-import { useNavigate } from 'react-router-dom'
-
-
 
 const Education = () => {
   const {userInfo} = useContext(UserInfo)
   const {schoolVal, setschoolVal, degreeVal, setdegreeVal, date_education_from, date_education_to, setdate_education_from, setdate_education_to} = useContext(TalentContextApi)
-   const [school, setSchool] = useState([])
-   const [degree, setDegree] = useState([])
-  // const [schoolVal, setschoolVal] = useState(personalData?.school)
-  // const [degreeVal, setdegreeVal] = useState(personalData?.degree)
-  // const [date_education_from, setdate_education_from] = useState(personalData?.date_education_from)
-  // const [date_education_to, setdate_education_to] = useState(personalData?.date_education_to)
+  const [school, setSchool] = useState([])
+  const [degree, setDegree] = useState([])
   const {setTalentPage} = useContext(TalentContextApi)
  
 
@@ -26,24 +19,19 @@ const Education = () => {
 
       let one = "https://toptal.ibrcloud.com/api/v1/school"
       let two = "https://toptal.ibrcloud.com/api/v1/degree"
-      
-
+    
       const requestOne =    axios.get(one);
       const requestTwo =    axios.get(two);
-      
-
+  
       axios.all([requestOne, requestTwo]).then(axios.spread((...responses) => {
         setSchool(responses[0].data)
         setDegree(responses[1].data)
        
-          
-      
       })).catch(errors => {
       
           console.log("must verify the url");
         })
       }, [])
-
 
       const submitHandler = async (e) => {
 
@@ -58,12 +46,11 @@ const Education = () => {
             },
         }
           await axios.patch('https://toptal.ibrcloud.com/api/v1/user/add-more-information', {school: schoolVal, degree: degreeVal, date_education_from, date_education_to},  config).then(res => {
-          console.log(res);
           
-
+    
           
       }).catch(err =>{
-          console.log(err);
+          console.err(err);
        })
     }
   
@@ -80,8 +67,8 @@ const Education = () => {
                   <label >School</label>
                   <Form.Select aria-label="Default select example" value={schoolVal} onChange={(e) => setschoolVal(e.target.value)}>
                   <option value= "Null">University/School Name</option>
-                  { school?.map((el)=>(
-                    <option value={el.school}>{el.school}</option> 
+                  { school?.map((el,index)=>(
+                    <option key={index} value={el.school}>{el.school}</option> 
                     ))}
                   
                 </Form.Select>
@@ -90,8 +77,8 @@ const Education = () => {
                   <label >Education Level Attained</label>
                   <Form.Select aria-label="Default select example" value={degreeVal} onChange={(e) => setdegreeVal(e.target.value)}>
                   <option>Select Degree</option>
-                  { degree?.map((el)=>(
-                    <option value={el.degree}>{el.degree}</option> 
+                  { degree?.map((el,index)=>(
+                    <option key={index} value={el.degree}>{el.degree}</option> 
                     ))}
                 </Form.Select>
                 

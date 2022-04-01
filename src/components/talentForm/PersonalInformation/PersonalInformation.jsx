@@ -8,16 +8,12 @@ import Kpi2 from '../../kpi2/Kpi2'
 const PersonalInformation = () => {
   const {userInfo, select1} = useContext(UserInfo)
   const {setTalentPage,image, setImage,ageVal, setageVal,countryVal, setCountryVal,nationalityVal, setNationalityVal} = useContext(TalentContextApi)
-  
   const [age, setAge] = useState([])
   const [country, setCountry] = useState(null)
   const [nationality, setNationality] = useState(null)
   const [industries, setIndustries] = useState([])
   const [industriesVal, setindustriesVal] = useState([])
-  //const [image, setImage] = useState(personalData?.profile)
-  //const [ageVal, setageVal] = useState(personalData?.age)
-  //const [countryVal, setCountryVal] = useState(personalData?.country)
-  //const [nationalityVal, setNationalityVal] = useState(personalData?.nationality)
+
 
   useEffect(() => {
     setindustriesVal([ {
@@ -90,7 +86,7 @@ const PersonalInformation = () => {
           },
       }
         await axios.patch('https://toptal.ibrcloud.com/api/v1/user/add-more-information',{profile: image, age: ageVal,country:countryVal,nationality:nationalityVal, industries: industriesVal}, config).then(res => {
-        console.log(res);
+        console.log("done");
         
     }).catch(err =>{
         console.log(err);
@@ -116,8 +112,8 @@ const PersonalInformation = () => {
             <div className='Personal_information_age'>
               <h5>What is your age?</h5>
               <div className='Personal_information_age_grid'>
-                { age?.map((el)=>(
-                  <div onClick={(e) => ageHandler(e)} value={el.age}>
+                { age?.map((el,indx)=>(
+                  <div onClick={(e) => ageHandler(e)} value={el.age} key={indx}>
                     <span className='item' > {el.age}  </span>  <img className='img_plus' src="../../images/plus.png" alt="plus" /> <img className='img_correct' src='./images/correct.png' alt="plus"/>
                   </div>
                     ))}
@@ -131,8 +127,8 @@ const PersonalInformation = () => {
                   <label >Country</label>
                   <Form.Select aria-label="Default select example" value={countryVal} onChange={(e) => setCountryVal(e.target.value)} >
                   <option>select</option>
-                  { country?.map((el)=>(
-                    <option value={el.country_name}>{el.country_name}</option> 
+                  { country?.map((el,indx)=>(
+                    <option key={indx} value={el.country_name}>{el.country_name}</option> 
                     ))}
                   
                 </Form.Select>
@@ -141,8 +137,8 @@ const PersonalInformation = () => {
                   <label >City or State</label>
                   <Form.Select aria-label="Default select example" value={nationalityVal}  onChange={(e) => setNationalityVal(e.target.value)}>
                   <option>select</option>
-                  { nationality?.map((el)=>(
-                    <option value={el.nationality}>{el.nationality}</option> 
+                  { nationality?.map((el,indx)=>(
+                    <option key={indx} value={el.nationality}>{el.nationality}</option> 
                     ))}
                 </Form.Select>
                 </div>
@@ -151,7 +147,9 @@ const PersonalInformation = () => {
            <h4>{industries?.question_text}</h4>
         {
               industries?.options?.map((option)=>(
-            <Kpi2 title={option.name} options={option.subcategory} identifier={industries.identifier}  />
+                <div key={option.identifier}>
+                  <Kpi2 title={option.name} options={option.subcategory} identifier={industries.identifier}  />
+                </div>
             ))   
         }
       

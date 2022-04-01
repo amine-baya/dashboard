@@ -26,7 +26,7 @@ const Tag5 = ({options,identifier}) => {
       <>
       {
         options?.map((option)=>(
-            <button className= {select3.includes(option.identifier) ? 'tag-button active' : 'tag-button' }  onClick={(e) => addIndustries(option, e)}>
+            <button key={option.identifier} className= {select3.includes(option.identifier) ? 'tag-button active' : 'tag-button' }  onClick={(e) => addIndustries(option, e)}>
                 {option.name || option.age} <img className='img_correct' src='./images/correct.png' alt="plus"/>  <img className='img_plus' src='./images/plus.png' alt="plus" />   
             </button>
           )) 
