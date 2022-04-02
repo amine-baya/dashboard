@@ -68,9 +68,9 @@ function App() {
       
         <Router>
           <Routes>    
-                <Route path="/" element={<LoginScreen />} />
+                <Route path="/" element={<Form />} />
+                <Route path="/login" element={<LoginScreen />} />
                 <Route path="/register" element={<Register />} />
-                <Route path="/form" element={<Form />} />
                 <Route path="/professional-need" element={<ProfessionalNeedScreen />} />
                 <Route path="/schedule" element={<ScheduleScreen />} />
                 <Route path="/date-and-time" element={<DateAndTime />} />

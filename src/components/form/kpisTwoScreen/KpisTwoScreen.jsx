@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react'
+import { useNavigate } from 'react-router-dom';
 import { ContextApi } from '../../../helpers/ContextApi';
 import Button from '../../button/Button';
 import Kpi from '../../Kpi/Kpi';
@@ -10,11 +11,14 @@ import './kpisTwo.css'
 
 const KpisTwoScreen = ({data}) => {
 
-  const {select} = useContext(ContextApi)
 
-    const [modalShow, setModalShow] = useState(false);
+  const {select,setPage} = useContext(ContextApi)
+  const [modalShow, setModalShow] = useState(false);
+  let navigate = useNavigate()
 
-    console.log(data);
+  const  toDash=()=>{
+    navigate('/calender')
+  }
 
   return (
     <>
@@ -53,7 +57,13 @@ const KpisTwoScreen = ({data}) => {
             ))}
       </div>
     
-      <Button text="Next: Project Details" nav='/professional-need'  />
+      <div>
+        <span className='hr'></span>
+        <div className='btn_contaienr'>
+            <span className='btn_span btn_1' onClick={() => setPage((currPage) => currPage - 1)} >Back</span>
+            <span className='btn_span btn_2' onClick={()=> toDash() } >Done</span>
+        </div>
+    </div>
 
     </div>
     </>
