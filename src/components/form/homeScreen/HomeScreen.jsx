@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import { ContextApi } from '../../../helpers/ContextApi'
-
 import Role from '../../homeScreenRoles/Role'
 import './HomeScreen.css'
 

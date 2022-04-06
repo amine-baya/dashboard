@@ -23,7 +23,7 @@ const VerificationScreen = () => {
             <input type="text" />
           </div>
           <LargeButton text="Submit" nav='/create-password'/>
-          <p className='resend_verification'>Didn’t get  the code? <span>Resend</span></p>
+          <p className='resend_verification'>Didn’t get  the code? <span  >Resend</span></p>
         </div>
       </div>
     </>

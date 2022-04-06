@@ -39,7 +39,7 @@ const TalentForm = () => {
     const config = {
         headers: {
           Authorization: ` Bearer ${userInfo?.token}`,
-          'Content-Type': 'multipart/form-data',
+          
         },
       }
     axios.get('https://toptal.ibrcloud.com/api/v1/user/get-user-information', config).then(res =>{
@@ -60,6 +60,7 @@ const TalentForm = () => {
       setEmploymentDescription(res.data.emp_history_short_description)
       setHireFrom(res.data.date_hire_from)
       setHireTo(res.data.date_hire_to)
+      console.log("yeee");
       
     }).catch(err =>{
         console.err("must verify the url");
