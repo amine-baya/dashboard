@@ -10,9 +10,6 @@ const EmailVerificationModal = (props) => {
   const {userInfo} = useContext(UserInfo)
   let navigate = useNavigate()
 
-
-
-
     const verifyEmail =()=>{
 
       const config = {
@@ -22,7 +19,7 @@ const EmailVerificationModal = (props) => {
       }
 
     axios.post('https://toptal.ibrcloud.com/api/v1/user/otp-send-mail', {}, config).then(res =>{
-
+      
     navigate('/verification')
       
       console.log(res);
