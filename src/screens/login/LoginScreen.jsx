@@ -13,8 +13,8 @@ const LoginScreen = () => {
   let navigate = useNavigate()
 
   useEffect(() => {   
-    console.log(userInfo?.token);
-     if (userInfo?.token === undefined) {
+    console.log(userInfo);
+     if (userInfo?.token !== undefined) {
        navigate("/calender")
    }
       

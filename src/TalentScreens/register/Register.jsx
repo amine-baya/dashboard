@@ -21,7 +21,7 @@ const Register = () => {
   let navigate = useNavigate()
 
   useEffect(() => {   
-    console.log(userInfo?.token);
+    console.log(userInfo);
     if (userInfo?.token !== undefined) {
       navigate("/calender")
   }

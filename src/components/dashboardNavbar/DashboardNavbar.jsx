@@ -1,14 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './dashboardNavbar.css'
 import {ImProfile} from 'react-icons/im'
 import {AiOutlineLogout} from 'react-icons/ai'
+import { UserInfo } from '../../helpers/ContextApi'
 
 const DashboardNavbar = () => {
+  const {setUserInfo} = useContext(UserInfo)
+
   let navigate = useNavigate()
 
   const logout =()=>{
     localStorage.removeItem("userInfo")
+    setUserInfo()
     localStorage.removeItem("personalData")
     navigate("/")
   }
