@@ -188,3 +188,14 @@ line-height: 30px;
     color: #4fb29a;
     text-decoration: none;
 }
+
+
+.register_role_checkbox
+{
+    display: flex;
+}
+.register_role_checkbox label
+{
+    display: inline-block;
+    margin: 0 40px 0 10px;
+}

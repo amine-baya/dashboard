@@ -10,21 +10,21 @@ import './register.css'
 
 const Register = () => {
 
-  const {setUserInfo} = useContext(UserInfo)
+  const {userInfo,setUserInfo} = useContext(UserInfo)
   const [roles,serRoles] = useState([])
   const [firstName,setFirstName] = useState('')
   const [lastName,setLastName] = useState('')
   const [email,setEmail] = useState('')
   const [password,setPassword] = useState('')
   const [professional,setProfessional] = useState('')
+  const [role, setrole] = useState('isTalent')
   let navigate = useNavigate()
 
-
-  
-
-  useEffect(() => {
-
-        
+  useEffect(() => {   
+    console.log(userInfo?.token);
+    if (userInfo?.token !== undefined) {
+      navigate("/calender")
+  }
         axios.get('https://toptal.ibrcloud.com/api/v1/roles/show_all_roles').then(res =>{
           serRoles(res.data[0].options)
           
@@ -32,21 +32,25 @@ const Register = () => {
             console.err("must verify the url");
         })
         
-    },[] )
+    },[userInfo] )
 
   const submitHandler = async(e)=>{
     e.preventDefault()
       const config = {
         headers: {
             'Content-Type': 'application/json',
-        },
+        }
     }
-     await axios.post('https://toptal.ibrcloud.com/api/v1/auth/register', {first_name:firstName,last_name:lastName, email, password, professional}, config).then(res =>{
+     await axios.post('https://toptal.ibrcloud.com/api/v1/auth/register', {first_name:firstName, last_name:lastName, email, password,professional_role: professional, role}, config).then(res =>{
       setUserInfo(res.data)
-      localStorage.setItem("userInfo", JSON.stringify(res.data) )
-      navigate('/talent')
+      localStorage.setItem("userInfo", JSON.stringify(res.data))
+      if (role === "isClient") {
+        navigate('/client')
+      } else {
+        navigate('/talent')
+      }
   }).catch(err =>{
-    console.log(err);
+    console.log(err.response.data);
   })
   }
 
@@ -102,12 +106,20 @@ const Register = () => {
                           <div>
                           <p>You acknowledge that the Topptalent screening process is confidential and that you will not publicly disclose details about this process. By submitting, you acknowledge that you have read and agreed to our <span>Terms and Conditions</span> , <span>Privacy Policy</span>, and <span>Cookie Policy</span>.</p>
                           </div>
+                          <div className='register_role_checkbox' >
+                              <div>
+                                  <input type="radio" name="role" checked value="isTalent" onChange={(e)=>{setrole(e.target.value)} }/>
+                                  <label htmlFor="role">Talent</label>
+                              </div>
+                              <div>
+                                  <input type="radio" name="role" value="isClient" onChange={(e)=>{setrole(e.target.value)} }/>
+                                  <label htmlFor="role">Client</label>
+                              </div>
+                            </div>
                           <button className='large_button' type='submit'  >
                             Register Account
                           </button>
                     </form>
-
-                
             </div>
             </div>
         </div>
