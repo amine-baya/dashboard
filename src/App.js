@@ -34,22 +34,42 @@ function App() {
   const [marketing ,setMarketing] = useState( storageLocalData?.kips[1] !== undefined ? storageLocalData?.kips[1]?.subcategory : [])
   const [finance ,setFinance] = useState( storageLocalData?.kips[2] !== undefined ? storageLocalData?.kips[2]?.subcategory : [])
   const [development,setDevelopment] = useState( storageLocalData?.kips[3] !== undefined  ? storageLocalData?.kips[3]?.subcategory : [])
+  const [long, setLong] = useState([])
+  const [many, setMany] = useState([])
+  const [level, setLevel] = useState([])
+  const [need, setNeed] = useState([])
+  const [web,setWeb] = useState([])
+  const [mobile,setMobile] = useState([])
+  const [dataSience,setDataSience] = useState([])
+  const [publicRelations,setPublicRelations] = useState([])
+
+  const [verifiedEmailShow, setVerifiedEmailModalShow] = useState(false);
+  const [verifyEmailShow, setVerifyEmailModalShow] = useState(false);
+
+
   
    useEffect(()  =>  {
      setUserInfo(localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : [])
 
    }, [])
 
-   useEffect(() => {
-     if (userInfo) {    
+   useEffect(()  =>  {
+
+
+    
+
+     if (userInfo) {  
+  
        const config = {
            headers: {
+            'Content-Type' : 'application/json',
+            'Accept' : 'application/json',
              Authorization: ` Bearer ${userInfo?.token}`,
-             'Content-Type': 'multipart/form-data',
+             
            },
          }
-       axios.get('https://toptal.ibrcloud.com/api/v1/user/get-user-information', config).then(res =>{      
-         setPersonalData(res.data)      
+        axios.get('https://toptal.ibrcloud.com/api/v1/user/get-user-information', config).then(res =>{      
+         setPersonalData(res.data)    
        }).catch(err =>{
            console.err("must verify the url");
        })
@@ -62,14 +82,15 @@ function App() {
   return (
     <UserInfo.Provider value={{userInfo, setUserInfo,personalData,setPersonalData, select1 ,
                               setSelect1,select2 ,setSelect2,select3,setSelect3,sales,setSales,
-                              marketing,setMarketing,finance,setFinance,development,setDevelopment}}>
+                              marketing,setMarketing,finance,setFinance,development,setDevelopment, verifyEmailShow, setVerifyEmailModalShow,verifiedEmailShow, setVerifiedEmailModalShow, long, setLong, many, setMany, level, setLevel, need, setNeed,
+                              web,setWeb,mobile,setMobile,dataSience,setDataSience,publicRelations,setPublicRelations}}>
 
     <div className="App">
       
         <Router>
           <Routes>    
-                <Route path="/" element={<Form />} />
-                <Route path="/login" element={<LoginScreen />} />
+                <Route path="/" element={<LoginScreen />} />
+                <Route path="/client" element={<Form />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/professional-need" element={<ProfessionalNeedScreen />} />
                 <Route path="/schedule" element={<ScheduleScreen />} />
