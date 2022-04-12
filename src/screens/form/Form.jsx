@@ -11,8 +11,8 @@ import KpisTwoScreen from "../../components/form/kpisTwoScreen/KpisTwoScreen";
 const Form = () => {
 
   const [select, setSelect] = useState([])
-  const [roles,setRoles] = useState([])
-  const [types,setTypes] = useState([])
+  const [roles,setRoles] = useState("")
+  const [type,setType] = useState("") 
   const [page, setPage] = useState(0);
   const [data,setData] = useState([])
   const [details,setDetails] = useState([])
@@ -21,6 +21,7 @@ const Form = () => {
   useEffect(() => {
     axios.get('https://toptal.ibrcloud.com/api/v1/projects/all-Details').then(res =>{
       setData(res.data)
+      console.log(res.data);
       
     }).catch(err =>{
       console.err("must verify the url");
@@ -46,7 +47,7 @@ const Form = () => {
   return (
     <>
     <Header /> 
-    <ContextApi.Provider value={{select, setSelect,roles,setRoles,types,setTypes,details,setDetails,page,setPage}}>
+    <ContextApi.Provider value={{select, setSelect,roles,setRoles,type,setType,details,setDetails,page,setPage}}>
 
       <div>{PageDisplay()}</div>
     </ContextApi.Provider> 
