@@ -37,6 +37,17 @@ const Education = () => {
 
         e.preventDefault()
         setTalentPage((currPage) => currPage + 1)
+
+        const educations = [ {
+          school: schoolVal,
+          degree : degreeVal,
+          date_education_from: date_education_from,
+          date_education_to: date_education_to,
+         
+        
+       } ]
+
+
   
         const config = {
             headers: {
@@ -45,20 +56,79 @@ const Education = () => {
    
             },
         }
-          await axios.patch('https://toptal.ibrcloud.com/api/v1/user/add-more-information', {school: schoolVal, degree: degreeVal, date_education_from, date_education_to},  config).then(res => {
+
+        if(schoolVal === ""  || degreeVal ==="" || date_education_from === ""  || date_education_to ===""   ) {
+          console.log("verify inputs");
+      }
+      else{
+          await axios.patch('https://toptal.ibrcloud.com/api/v1/user/add-more-information',{school: schoolVal,degree : degreeVal,date_education_from: date_education_from,date_education_to: date_education_to},  config).then(res => {
           
-    
+            console.log("done");
+            setschoolVal("")
+            setdegreeVal("")
+            setdate_education_from("")
+            setdate_education_to("")
           
       }).catch(err =>{
           console.err(err);
        })
+      }
+    }
+
+
+    const addNewEducation = async()=>{
+
+      const educations = [ {
+          school: schoolVal,
+          degree : degreeVal,
+          date_education_from: date_education_from,
+          date_education_to: date_education_to,
+       
+     } ]
+    
+     console.log(educations);
+          const config = {
+            headers: {
+          'Content-Type': 'application/json',
+          Authorization: ` Bearer ${userInfo.token}`,
+    
+            },
+        }
+
+        if(schoolVal === ""  || degreeVal ==="" || date_education_from === ""  || date_education_to ===""   ) {
+          console.log("verify inputs");
+      }
+      else{
+          axios.patch('https://toptal.ibrcloud.com/api/v1/user/add-more-information',{educations: educations}, config).then(res => {
+          console.log("done");
+          setschoolVal("")
+          setdegreeVal("")
+          setdate_education_from("")
+          setdate_education_to("")
+         
+    
+         
+          
+      }).catch(err =>{
+          console.log(err.response);
+       })
+    }
+    
     }
   
   return (
     <>
     <div className='container' id='Education'>
         <div className='Education_container'>
-            <Title title="Education" />
+            
+            <div className='Personal_information_header'>
+             
+                  <>
+                  <Title title="Education" />
+                  <span className='addNewPeriod' onClick={()=>addNewEducation()}>add new</span>
+                  </>
+
+            </div>
 
                 <h3>Tell us your most notable work experinces.</h3>
                 <div className='Education_location'>

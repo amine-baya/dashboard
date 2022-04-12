@@ -51,3 +51,18 @@ margin: 0 auto;
 background: #395F8C;
 border-radius: 6px;
 }
+
+#Education .Personal_information_header .addNewPeriod{
+    display: block;
+    width: 208px;
+    height: 50px;
+    color: #395F8C;
+    background: #FFFFFF;
+    border: 1px solid #395F8C;
+    box-sizing: border-box;
+    border-radius: 6px;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+    font-size: 16px;
+}
