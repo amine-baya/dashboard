@@ -9,10 +9,11 @@ import { TalentContextApi, UserInfo } from '../../../helpers/ContextApi'
 
 
 const Portfolio = () => {
-  const {userInfo, select2} = useContext(UserInfo)
+  const {userInfo, select2,setSelect2} = useContext(UserInfo)
   const {setTalentPage,imageProject,setImageProject,projectDescription, setProjectDescription,projectName,setProjectName} = useContext(TalentContextApi)
   const [portfolioData,setPortfolioData] = useState([])
   const [portfolio_services, setportfolio_services] = useState()
+  
 
    useEffect(() => {
      setportfolio_services([ {
@@ -20,6 +21,8 @@ const Portfolio = () => {
        subcategory: [...select2]
       
      } ])
+
+     
    }, [ select2])
 
 
@@ -61,6 +64,18 @@ const Portfolio = () => {
     e.preventDefault()
     setTalentPage((currPage) => currPage + 1)
 
+
+   const portfolio = [ {
+     project_name: projectName,
+     project_images : imageProject,
+     project_short_description: projectDescription,
+     portfolio_services: portfolio_services,
+    
+  } ]
+
+
+  console.log(portfolio);
+
     const config = {
         headers: {
        'Content-Type': 'application/json',
@@ -68,14 +83,68 @@ const Portfolio = () => {
 
         },
     }
-      await axios.patch('https://toptal.ibrcloud.com/api/v1/user/add-more-information',{project_name: projectName,project_images: imageProject,project_short_description: projectDescription, portfolio_services}, config).then(res => {
+    
+    if(projectName === "" || imageProject.length === 0  || projectDescription ==="" || portfolio_services[0].subcategory.length === 0  ) {
+      console.log("verify inputs");
+  }
+  else{
+      await axios.patch('https://toptal.ibrcloud.com/api/v1/user/add-more-information',{portfolio}, config).then(res => {
       console.log("done");
+      setProjectName("")
+      setImageProject([])
+      setProjectDescription("")
+      setSelect2([])
+
+     
       
   }).catch(err =>{
       console.log(err);
    })
 }
+  }
 
+const addNewProject = async()=>{
+
+  const portfolio = [ {
+    project_name: projectName,
+    project_images : imageProject,
+    project_short_description: projectDescription,
+    portfolio_services: portfolio_services,
+   
+  
+ } ]
+
+      const config = {
+        headers: {
+      'Content-Type': 'application/json',
+      Authorization: ` Bearer ${userInfo.token}`,
+
+        },
+    }
+   
+ 
+
+   
+
+    if(projectName === "" || imageProject.length === 0  || projectDescription ==="" || portfolio_services[0].subcategory.length === 0  ) {
+      console.log("verify inputs");
+  }
+  else{
+      await axios.patch('https://toptal.ibrcloud.com/api/v1/user/add-more-information',{portfolio}, config).then(res => {
+      console.log("done");
+      setProjectName("")
+      setImageProject([])
+      setProjectDescription("")
+      setSelect2([])
+
+     
+      
+  }).catch(err =>{
+      console.log(err.response);
+   })
+}
+
+}
 
 
 
@@ -83,7 +152,18 @@ const Portfolio = () => {
     <>
     <div className='container' id='Personal_information'>
         <div className='Personal_information_container'>
-            <Title title={portfolioData?.question_text} />
+          <div className='Personal_information_header'>
+            {
+              imageProject.length > 0 ? (
+                <>
+                <Title title={portfolioData?.question_text} />
+                <span className='addNewPeriod' onClick={()=>addNewProject()}>add new</span>
+                </>
+
+              ): (<Title title={portfolioData?.question_text} />)
+
+            }
+          </div>
             <div>
               {
                 imageProject &&
@@ -108,7 +188,7 @@ const Portfolio = () => {
             </div>
             <div className='input_component'>
                   <label className='label'>Project Name</label>
-                  <input type="text" placeholder="Enter Project Name" value={projectName} onChange={(e) => setProjectName(e.target.value)}/>
+                  <input type="text" placeholder="Enter Project Name" required value={projectName} onChange={(e) => setProjectName(e.target.value)}/>
             </div> 
               <label className='label'>Upload Image</label>
             <div className='Personal_information_info'>

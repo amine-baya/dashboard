@@ -1,3 +1,8 @@
+.Personal_information_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
 .Personal_information_container .carousel.carousel-slider{
     height: 400px;
 }
@@ -30,6 +35,21 @@
     padding: 18px 15px;
     color: #000000a1;
     outline: none;
+}
+
+#Personal_information .Personal_information_header .addNewPeriod{
+    display: block;
+    width: 208px;
+    height: 50px;
+    color: #395F8C;
+    background: #FFFFFF;
+    border: 1px solid #395F8C;
+    box-sizing: border-box;
+    border-radius: 6px;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+    font-size: 16px;
 }
 
 
