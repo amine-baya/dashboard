@@ -21,10 +21,7 @@ const Register = () => {
   let navigate = useNavigate()
 
   useEffect(() => {   
-    console.log(userInfo);
-    if (userInfo?.token !== undefined) {
-      navigate("/calender")
-  }
+  
         axios.get('https://toptal.ibrcloud.com/api/v1/roles/show_all_roles').then(res =>{
           serRoles(res.data[0].options)
           
@@ -33,6 +30,8 @@ const Register = () => {
         })
         
     },[userInfo] )
+
+    console.log(roles);
 
   const submitHandler = async(e)=>{
     e.preventDefault()
