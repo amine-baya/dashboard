@@ -5,6 +5,10 @@
     margin-top: 130px;
     font-family: 'Ubuntu', sans-serif;
 } 
+#resume_preview h2
+{
+    text-transform: uppercase;
+}
 #resume_preview h2.resume_title
 {
     color: #395F8C;
@@ -156,16 +160,16 @@ color: #4F5663;
 {
     display: block;
     padding: 0 25px;
-height: 50px;
-background: #EDEDED;
-border-radius: 6px;
-font-weight: 400;
-font-size: 16px;
-letter-spacing: 0.257143px;
-color: #75141D;
-text-align: center;
-line-height: 50px;
-margin:  10px;
+    height: 50px;
+    background: #EDEDED;
+    border-radius: 6px;
+    font-weight: 400;
+    font-size: 16px;
+    letter-spacing: 0.257143px;
+    color: #75141D;
+    text-align: center;
+    line-height: 50px;
+    margin:  10px;
 }
 
 #resume_preview .resume_portfolio .resume_portfolio_container
@@ -222,16 +226,22 @@ margin:  10px;
     display: flex;
     
 }
+
 #resume_preview .resume_employment .resume_employment_box .resume_employment_box_info
 {
-    width: 60%;
+    width: 80%;
 }
-#resume_preview .resume_employment .resume_employment_box .resume_employment_box_info div:first-of-type
+
+#resume_preview .resume_employment .resume_employment_box .resume_employment_box_info .resume_employment_box_info_container
+{
+   margin-bottom: 50px;
+}
+#resume_preview .resume_employment .resume_employment_box .resume_employment_box_info .resume_employment_box_info_position
 {
     display: flex;
     align-items: center;
 }
-#resume_preview .resume_employment .resume_employment_box .resume_employment_box_info div:first-of-type span
+#resume_preview .resume_employment .resume_employment_box .resume_employment_box_info .resume_employment_box_info_position span
 {
     font-family: 'Ubuntu', sans-serif;
     font-weight: 600;
@@ -241,7 +251,7 @@ margin:  10px;
     position: relative;
     margin-left: 80px;
 }
-#resume_preview .resume_employment .resume_employment_box .resume_employment_box_info div:first-of-type span::before
+#resume_preview .resume_employment .resume_employment_box .resume_employment_box_info .resume_employment_box_info_position span::before
 {
     position: absolute;
     content: '';
@@ -262,17 +272,17 @@ margin:  10px;
 #resume_preview .resume_employment .resume_employment_box .resume_employment_box_info .resume_employment_box_info_span
 {
     display: block;
-font-weight: 400;
-letter-spacing: 0.257143px;
-color: #FFFFFF;
-width: 100px;
-height: 33px;
-background: #4FAD90;
-border: 1px solid #4FAD90;
-border-radius: 20px;
-text-align: center;
-line-height: 33px;
-margin: 10px 0;
+    font-weight: 400;
+    letter-spacing: 0.257143px;
+    color: #FFFFFF;
+    width: 100px;
+    height: 33px;
+    background: #4FAD90;
+    border: 1px solid #4FAD90;
+    border-radius: 20px;
+    text-align: center;
+    line-height: 33px;
+    margin: 10px 0;
 }
 #resume_preview .resume_employment .resume_employment_box .resume_employment_box_info p
 {

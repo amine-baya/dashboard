@@ -9,36 +9,44 @@ const ResumePreview = () => {
     const [data, setData] = useState()
     const {userInfo,setPersonalData} = useContext(UserInfo)
     let navigate = useNavigate()
-    useEffect(() => {
 
+    console.log(data);
+    
+   
+    useEffect(() => {
+        
+     
         const config = {
             headers: {
               Authorization: ` Bearer ${userInfo?.token}`,
-              'Content-Type': 'multipart/form-data',
+              
             },
           }
+         
         axios.get('https://toptal.ibrcloud.com/api/v1/user/get-user-information', config).then(res =>{
           setData(res.data)
           setPersonalData(res.data)
+          console.log(res.data);
          
           
         }).catch(err =>{
-            console.err("must verify the url");
+            console.log("must verify the url");
+            console.log(err);
         })
         
-    },[] )
+    },[userInfo?.token] )
     
          const globalSkills = data?.kips?.map(g => g.subcategory).flat()
         
        
   return (
       <>
-      <Header /> 
+        <Header /> 
     <div id='resume_preview'>
         <div className='resume_header'>
         <div>
             <h2><span>{data?.first_name} </span>{data?.last_name}</h2>
-            <h3> {data?.professional}</h3>
+            <h3> {data?.professional_role}</h3>
             <p className='resume_header_title'>LOCATION</p>
             <p className='resume_header_info'>{data?.country ? data.country : "....."}</p>
             <p className='resume_header_title'>MEMBER SINCE</p>
@@ -69,40 +77,60 @@ const ResumePreview = () => {
         <div className="resume_portfolio">
         <h2 className='resume_title'>Portfolio</h2>
         <div className='resume_portfolio_container'>
-        <div className='resume_portfolio_box'>
-            <img src={ data?.project_images[0]  ? data.project_images[0] : "../../images/initial_project.jpg"} alt="project" />
-            <div className='resume_portfolio_box_info'>
-                <h4>{ data?.project_name ? data?.project_name : "...."}</h4> 
-                <p>{data?.project_short_description ? data?.project_short_description : "................"} </p>
-                <div className='resume_about_skills'>
-                 { 
-                 data ?
-                       data.portfolio_services[0]?.subcategory?.map((skill,index)=>(<span key={index}>{skill}</span>))
-                       : <span>skill</span>
-                   }  
+
+        {
+                data &&
+                data.portfolio.map((po)=>(
+                    <div className='resume_portfolio_box'>
+                    <img src={ po?.images[0]  ? po?.images[0] : "../../images/initial_project.jpg"} alt="project" />
+                    <div className='resume_portfolio_box_info'>
+                    <h4>{ po?.project_name ? po?.project_name : "...."}</h4> 
+                    <p>{po?.short_description ? po?.short_description : "................"} </p>
+                    <div className='resume_about_skills'>
+                    
+                   {
+
+                    po.services[0]?.subcategory?.map((skill,index)=>(<span >{skill}</span>))
+                   }
+                        
+                      
                 </div>
             </div>
-        </div>
+        </div> 
+
+                ))
+            }
+           
+           
         </div>
         </div>
         
         <div className="resume_employment">
         <h2 className='resume_title'>EMPLOYMENT</h2>
         <div className='resume_employment_container'>
-        <div className='resume_employment_box'>
+         <div className='resume_employment_box'>
             <div className='resume_employment_box_info'>
-                <div><h4>{ data?.position ? data.position : "........."}</h4><span>{data?.date_hire_from ? data.date_hire_from.slice(0,4) : "........"}-{data?.date_education_to ? data.date_hire_to.slice(0,4) : ".........." }</span></div>
-                <span className='resume_employment_box_info_span'>{ parseInt(Date().slice(10,15)) ===  parseInt(data?.date_hire_to.slice(0,4)) ? "Active" : "Past" }</span>
-                <p>{data?.emp_history_short_description ? data.emp_history_short_description : "........."} </p>
-                <div className='resume_about_skills'>
-                { 
-                 data !== undefined ?
-                       data.skills[0]?.subcategory?.map((skill,index)=>(<span key={index}>{skill}</span>))
-                       : <span>skill</span>
-                   }  
-                </div>
+                {
+                    data !== undefined &&
+                    data.employments.map((employment)=>(
+                        <div className='resume_employment_box_info_container'>
+                            <div className="resume_employment_box_info_position"><h4>{ employment?.position ? employment.position : "........."}</h4><span>{employment?.from ? employment.from.slice(0,4) : "........"}-{employment?.to ? employment.to.slice(0,4) : ".........." }</span></div>
+                            <span className='resume_employment_box_info_span'>{ employment.current_employed ===  'yes' ? "Active" : "Past" }</span>
+                            <p>{employment?.short_description ? employment.short_description : "........."} </p>
+                            <div className='resume_about_skills'>
+                            { 
+                            employment !== undefined ?
+                            employment.skills[0]?.subcategory?.map((skill,index)=>(<span key={index}>{skill}</span>))
+                                : <span>skill</span>
+                            }  
+                            </div>
+                        </div>
+                        
+                    ))
+                }
+               
             </div>
-        </div>
+        </div> 
        
         </div>
         </div>
@@ -112,8 +140,18 @@ const ResumePreview = () => {
         <div className='resume_employment_container'>
             <div className='resume_employment_box'>
                 <div className='resume_employment_box_info'>
-                    <div><h4>{data?.degree ? data.degree : "degree"}</h4><span>{data?.date_education_from ? data?.date_education_from.slice(0,4) : "..........."}-{data?.date_education_to ? data?.date_education_to.slice(0,4): "............"}</span></div>
-                    <p>{data?.school ? data.school : "school"} </p>
+
+                {
+                    data !== undefined &&
+                    data.educations.map((education)=>(
+                        <div className='resume_employment_box_info_container'>
+                           
+                            <div><h4>{education.degree ? education.degree  : "degree"}</h4><span>{education?.from ? education?.from.slice(0,4) : "..........."}-{education?.to ? education?.to.slice(0,4): "............"}</span></div>
+                            <p>{education?.school ? education.school : "school"} </p>
+                        </div>
+                        
+                    ))
+                }
                     
                 </div>
             </div>
@@ -125,7 +163,7 @@ const ResumePreview = () => {
                   Next
             </span>
         </div>
-    </div>
+    </div>  
       </>
   )
 }
