@@ -7,7 +7,7 @@ import { TalentContextApi, UserInfo } from '../../../helpers/ContextApi';
 import Kpi5 from '../../kpi5/Kpi5';
 
 const EmploymentHistory = () => {
-    const {userInfo, select3} = useContext(UserInfo)
+    const {userInfo, select3, setSelect3} = useContext(UserInfo)
     const {setTalentPage, isEmployed, setIsEmployed,positionName, setPositionName,employmentDescription, setEmploymentDescription,
       hireFrom, setHireFrom,hireTo, setHireTo} = useContext(TalentContextApi)
 
@@ -24,16 +24,24 @@ const EmploymentHistory = () => {
 
     useEffect(() => {
         axios.get('https://toptal.ibrcloud.com/api/v1/projects/get-skills').then(res =>{
-            setskils("done")
+            setskils(res.data)
             
         }).catch(err =>{
           console.err("must verify the url");
         })
       }, [])
 
-      const submitHandler = async (e) => {
+      const submitHandler =  (e) => {
         e.preventDefault()
         setTalentPage((currPage) => currPage + 1)
+
+        const employments = [ {current_employed: isEmployed,
+          position:positionName,
+          emp_history_short_description: employmentDescription,
+          date_hire_from: hireFrom,
+          date_hire_to: hireTo,
+          skills: mySkills
+          }]
 
         const config = {
             headers: {
@@ -42,27 +50,81 @@ const EmploymentHistory = () => {
     
             },
         }
-          await axios.patch('https://toptal.ibrcloud.com/api/v1/user/add-more-information',
-          {current_employee: isEmployed,
-           position:positionName,
-           emp_history_short_description: employmentDescription,
-           date_hire_from: hireFrom,
-           date_hire_to: hireTo,
-           skills: mySkills
-        }, config).then(res => {
+        if(isEmployed === "" || positionName === ""  || employmentDescription ==="" || hireFrom === "" || hireTo === "" || mySkills.length === 0  ) {
+          console.log("verify inputs");
+      }
+      else{
+          axios.patch('https://toptal.ibrcloud.com/api/v1/user/add-more-information',{employments}, config).then(res => {
+          console.log("done");
+          setIsEmployed("")
+          setPositionName("")
+          setEmploymentDescription("")
+          setHireFrom("")
+          setHireTo("")
+          setSelect3([])
          
           
       }).catch(err =>{
-          console.err(err);
+          console.log(err);
        })
     }
+          
+    }
+
+    
+const addNewProject =()=>{
+
+  
+  const config = {
+        headers: {
+      'Content-Type': 'application/json',
+      Authorization: ` Bearer ${userInfo.token}`,
+
+        },
+      }
+    const employments = [ {current_employed: isEmployed,
+      position:positionName,
+      emp_history_short_description: employmentDescription,
+      date_hire_from: hireFrom,
+      date_hire_to: hireTo,
+      skills: mySkills
+      }]
+   
+    if(isEmployed === "" || positionName === ""  || employmentDescription ==="" || hireFrom === "" || hireTo === "" || mySkills.length === 0  ) {
+      console.log("verify inputs");
+  }
+  else{
+      axios.patch('https://toptal.ibrcloud.com/api/v1/user/add-more-information',{employments}, config).then(res => {
+      console.log("done");
+      setIsEmployed("")
+      setPositionName("")
+      setEmploymentDescription("")
+      setHireFrom("")
+      setHireTo("")
+      setSelect3([])   
+      
+  }).catch(err =>{
+      console.log(err.response);
+   })
+}
+console.log(employments, isEmployed);
+
+}
 
   return (
     
         <>
     <div className='container' id='Employment_history'>
         <div className='Employment_history_container'>
-            <Title title="Employment History" />
+        <div className='Personal_information_header'>
+             
+             <>
+             <Title title="Employment History" />
+             <span className='addNewPeriod' onClick={()=>addNewProject()}>add new</span>
+             </>
+
+       </div>
+            
             <div className='Portfolio_paragraph'>
                 <h3>Tell us your most notable work experinces.</h3>
                 <h4>
