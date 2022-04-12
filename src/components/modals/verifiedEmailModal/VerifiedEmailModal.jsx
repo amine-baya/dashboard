@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Modal } from 'react-bootstrap'
+import { UserInfo } from '../../../helpers/ContextApi'
 import './verifiedEmailModal.css'
 
 const VerifiedEmailModal = (props) => {
+  const {userInfo, setVerifiedEmailModalShow} = useContext(UserInfo)
+
     return (
         <Modal
           {...props}
@@ -22,7 +25,7 @@ const VerifiedEmailModal = (props) => {
                     <h1>Verified!</h1>
                     <p >You have Successfully verified the account</p>
                    
-                    <button className='email_verified_modal_button'>
+                    <button className='email_verified_modal_button' onClick={() => setVerifiedEmailModalShow(false)}>
                         Go to Dashboard
                     </button>
 
