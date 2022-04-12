@@ -1,14 +1,32 @@
+import axios from 'axios'
 import React, { useContext } from 'react'
-import { ContextApi } from '../../../helpers/ContextApi'
+import { ContextApi, UserInfo } from '../../../helpers/ContextApi'
 import Role from '../../homeScreenRoles/Role'
 import './HomeScreen.css'
 
 const HomeScreen = ({data}) => {
 
-  const {setPage} = useContext(ContextApi)
+  const {setPage,roles} = useContext(ContextApi)
+  const {userInfo} = useContext(UserInfo)
 
   const getStarted =()=>{
     data &&  setPage((currPage) => currPage + 1)
+
+
+      const config = {
+          headers: {
+        'Content-Type': 'application/json',
+        Authorization: ` Bearer ${userInfo?.token}`,
+          },
+      }
+         axios.patch('https://toptal.ibrcloud.com/api/v1/user/add-more-client-information',{selected_role: roles }, config).then(res => {
+        console.log("done");
+           
+    }).catch(err =>{
+        console.err(err.response);
+    })
+
+        
   }
   return (
     <>
@@ -27,8 +45,10 @@ const HomeScreen = ({data}) => {
       <div className='home_role'>
            <h3>{data?.role[0]?.question_text}</h3>
           <div className='home_roles'> 
-         { data?.role[0]?.options?.map((option) => (
-           <Role text={option?.name} name="role" value={option?.identifier}  />
+         { data?.role[0]?.options?.map((option,index) => (
+           <div key={index}>
+             <Role text={option?.name} name="role" value={option?.identifier}  />
+            </div>
          )
           )}
           </div> 

@@ -1,10 +1,35 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { ContextApi, UserInfo } from '../../../helpers/ContextApi'
 import Button from '../../button/Button'
 import Type from '../../projectDetailsTypes/Type'
 import Title from '../../title/Title'
 import './projectDetails.css'
+import axios from 'axios'
+
 const ProjectDetailsScreen = ({data}) => {
-  console.log(data.type[0]);
+  const {type, setPage} = useContext(ContextApi)
+  const {userInfo} = useContext(UserInfo)
+
+
+  const submitHandler = async (e) => {
+
+    e.preventDefault()
+  
+      setPage((currPage) => currPage + 1)
+
+      const config = {
+          headers: {
+        'Content-Type': 'application/json',
+        Authorization: ` Bearer ${userInfo.token}`,
+          },
+      }
+        await axios.patch('https://toptal.ibrcloud.com/api/v1/user/add-more-client-information',{project_type: type }, config).then(res => {
+        console.log("done");
+           
+    }).catch(err =>{
+        console.err(err.response);
+    })
+  }
   return (
     <>
     <div id='project_details' className='container' >
@@ -13,14 +38,22 @@ const ProjectDetailsScreen = ({data}) => {
           <p className='project_details_question'>{data?.type[0].question}</p>
           <div className='project_details_types'>
             {
-              data?.type[0]?.options.map((option)=>(
-                <Type text={option.name} name="role" value={option.identifier} />
+              data?.type[0]?.options.map((option,index)=>(
+                <div key={index}>
+                  <Type text={option.name} value={option.identifier} />
+                </div>
               ))
             }
            
           </div>
       </div>
-          <Button text="Next: Project Details" nav="/professional-details"   />
+      <div>
+        <span className='hr'></span>
+        <div className='btn_contaienr'>
+            <span className='btn_span btn_1' onClick={() =>setPage((currPage) => currPage - 1)}   >Back</span>
+            <span className='btn_span btn_2' onClick={(e) => submitHandler(e)}>Next: Project Details</span>
+        </div>
+    </div>
     </div>
     </>
   )
