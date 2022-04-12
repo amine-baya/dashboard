@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import DashboardHeader from '../../components/dashboardHeader/DashboardHeader'
 import DashboardNavbar from '../../components/dashboardNavbar/DashboardNavbar'
 import EmailVerificationModal from '../../components/modals/emailVerification/EmailVerificationModal'
@@ -10,10 +10,18 @@ import VerifiedEmailModal from '../../components/modals/verifiedEmailModal/Verif
 
 
 const Calender = () => {
-  const {personalData} = useContext(UserInfo)
-  const [verifyEmailShow, setVerifyEmailModalShow] = useState(false);
-  const [verifiedEmailShow, setVerifiedEmailModalShow] = useState(false);
-
+  const {personalData, verifyEmailShow, setVerifyEmailModalShow, verifiedEmailShow, setVerifiedEmailModalShow} = useContext(UserInfo)
+  
+  useEffect(() => {
+    console.log(verifyEmailShow);
+    personalData?.verify_otp !== undefined &&
+    
+    setVerifyEmailModalShow( verifyEmailShow === "false" ? false : personalData?.verify_otp ===  "yes" ? false : true)
+  
+  }, [personalData?.verify_otp])
+  
+  
+  
 
   const localData = [{
     Id: 1,
@@ -40,13 +48,11 @@ const Calender = () => {
     {Name: 'green', Id: 2, color: '#49A85E'}
   ]
 
-   const eventTemplate = (props) => {
-     return <div className='template-wrap'>{props.Subject}</div>
+   const eventTemplate = (prop) => {
+     return <div className='template-wrap'>{prop.Subject}</div>
    }
 
- 
    
-
   
   return (
     <>
@@ -63,8 +69,8 @@ const Calender = () => {
       <div className='container_calender'>
         <div></div>
         <div id='calender' className='calender'>
-          <p onClick={()=>setVerifyEmailModalShow(true)}>Hi {personalData?.first_name}</p>
-          <h2 onClick={()=>setVerifiedEmailModalShow(true)}>Welcome to Toptalent!</h2>
+          <p >Hi {personalData?.first_name}</p>
+          <h2 >Welcome to Toptalent!</h2>
             <ScheduleComponent currentView='Month' eventSettings={{dataSource: localData}}>
             <ResourcesDirective>
               <ResourceDirective field='ResourceId' idField='Id' colorField='color' title='Resources Name' name='Resources' textField='Name' dataSource={ResourceDataSource}/>
