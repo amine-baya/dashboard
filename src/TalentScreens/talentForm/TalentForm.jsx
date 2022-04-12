@@ -37,33 +37,40 @@ const TalentForm = () => {
   useEffect(() => {
 
     const config = {
-        headers: {
-          Authorization: ` Bearer ${userInfo?.token}`,
-          
-        },
-      }
+      headers: {
+       'Content-Type' : 'application/json',
+       'Accept' : 'application/json',
+        Authorization: ` Bearer ${userInfo?.token}`,
+        
+      },
+    }
+
+   
+
     axios.get('https://toptal.ibrcloud.com/api/v1/user/get-user-information', config).then(res =>{
       localStorage.setItem("personalData", JSON.stringify(res.data) )
-      setSelect1(res.data.industries[0].subcategory);
-      setSelect2(res.data.portfolio_services[0].subcategory);
-      setAboutText(res.data.about_self)
-      setCv(res.data.cv)
-      setImage(res.data.profile)
-      setageVal(res.data.age)
-      setCountryVal(res.data?.country)
-      setNationalityVal(res.data?.nationality)
-      setImageProject(res.data.project_images)
-      setProjectDescription(res.data.project_short_description)
-      setProjectName(res.data.project_name)
-      setIsEmployed(res.data.current_employee)
-      setPositionName(res.data.position)
-      setEmploymentDescription(res.data.emp_history_short_description)
-      setHireFrom(res.data.date_hire_from)
-      setHireTo(res.data.date_hire_to)
-      console.log("yeee");
+      console.log(res.data);
+      //setSelect1(res.data.industries[0].subcategory);
+      //setSelect2(res.data.portfolio_services[0].subcategory);
+      //setAboutText(res.data.about_self)
+      //setCv(res.data.cv)
+      //setImage(res.data.profile)
+      //setageVal(res.data.age)
+      //setCountryVal(res.data?.country)
+      //setNationalityVal(res.data?.nationality)
+      //setImageProject(res.data.project_images)
+      //setProjectDescription(res.data.project_short_description)
+      //setProjectName(res.data.project_name)
+      //setIsEmployed(res.data.current_employee)
+      //setPositionName(res.data.position)
+      //setEmploymentDescription(res.data.emp_history_short_description)
+      //setHireFrom(res.data.date_hire_from)
+      //setHireTo(res.data.date_hire_to)
+
       
     }).catch(err =>{
-        console.err("must verify the url");
+        
+        console.log(err.response.data);
     })
     
 }, [userInfo?.token])
