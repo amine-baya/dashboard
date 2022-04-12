@@ -67,6 +67,7 @@ const AboutMe = () => {
       const submitHandler = async (e) => {
         e.preventDefault()
           const kips = [ subkpis1[0],subkpis2[0],subkpis3[0],subkpis4[0] ]
+          console.log(kips);
           setTalentPage((currPage) => currPage + 1)
           const config = {
               headers: {
@@ -74,12 +75,18 @@ const AboutMe = () => {
             Authorization: ` Bearer ${userInfo.token}`,
               },
           }
-            await axios.patch('https://toptal.ibrcloud.com/api/v1/user/add-more-information',{about_self: aboutText,cv:cv,kips: kips }, config).then(res => {
+         console.log(aboutText,cv,kips);
+          if(aboutText === ""  || cv === ""   ) {
+            console.log("verify inputs");
+        }else{
+
+             axios.patch('https://toptal.ibrcloud.com/api/v1/user/add-more-information',{about_self: aboutText,cv:cv,kips: kips }, config).then(res => {
             console.log("done");
-               
+              
         }).catch(err =>{
-            console.err(err);
+            console.log(err.response.data)
         })
+        }
       }
 
   return (
