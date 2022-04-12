@@ -34,6 +34,8 @@ const PersonalInformation = () => {
       const requestThree =  axios.get(three);
       const requestFour =   axios.get(four);
 
+      
+
       axios.all([requestOne, requestTwo, requestThree,requestFour]).then(axios.spread((...responses) => {
         setAge(responses[0].data)
         setCountry(responses[1].data)
@@ -85,12 +87,17 @@ const PersonalInformation = () => {
  
           },
       }
+      
+      if(image === ""  || ageVal === "" || countryVal === "" || nationalityVal === ""   ) {
+        console.log("verify inputs");
+    }else{
         await axios.patch('https://toptal.ibrcloud.com/api/v1/user/add-more-information',{profile: image, age: ageVal,country:countryVal,nationality:nationalityVal, industries: industriesVal}, config).then(res => {
         console.log("done");
         
-    }).catch(err =>{
-        console.log(err);
-     })
+      }).catch(err =>{
+          console.log(err.response.data);
+      })
+      }
   }
 
   return (
