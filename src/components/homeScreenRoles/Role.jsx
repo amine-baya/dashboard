@@ -4,21 +4,14 @@ import './Role.css'
 
 const Role = ({text,name,value}) => {
 
- const {roles,setRoles} = useContext(ContextApi)
+ const {setRoles} = useContext(ContextApi)
  const handleCheckbox = e =>{
-    const selectedRole = roles.find(el => el === e.target.value)
-    if (selectedRole === undefined) {
-      setRoles([...roles,e.target.value]);
-    }
-    else{
-    const newRoles = roles.filter(el => el !== selectedRole);
-    setRoles(newRoles);
-    }
+  setRoles(e.target.value)
   }
   
   return (
     <div className='role' >
-          <input onChange={handleCheckbox} type="checkbox" name={name} value={value}  />
+          <input onChange={handleCheckbox} type="radio" name="role" value={value}  />
           <p>{text}</p>
     </div>
   )

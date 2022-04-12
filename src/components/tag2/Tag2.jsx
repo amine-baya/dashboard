@@ -1,9 +1,10 @@
-import React, { useContext }  from 'react'
+import React, { useContext, useState }  from 'react'
 import { UserInfo } from '../../helpers/ContextApi'
 import './tag2.css'
 const Tag2 = ({options,identifier}) => {
 
   const {select1 ,setSelect1} = useContext(UserInfo)
+  
 
   const addIndustries = (option,e) => {
 
