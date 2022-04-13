@@ -1,17 +1,20 @@
 import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
-import { TalentContextApi, UserInfo } from '../../../helpers/ContextApi'
+import { TalentContextApi } from '../../../helpers/ContextApi'
 import './aboutme.css'
 import Kpi3 from '../../kpi3/Kpi3'
+import useAuth from "../../../hooks/useAuth"
 
 const AboutMe = () => {
-    const {userInfo,sales,marketing,finance,development} = useContext(UserInfo)
     const {setTalentPage,aboutText,setAboutText,cv,setCv} = useContext(TalentContextApi)
     const [data, setData] = useState([])
     const [subkpis1, setSubkpis1] = useState([])
     const [subkpis2, setSubkpis2] = useState([])
     const [subkpis3, setSubkpis3] = useState([])
     const [subkpis4, setSubkpis4] = useState([])
+
+    const {userInfo,sales,marketing,finance,development} = useAuth()
+
 
 
     useEffect(() => {
@@ -53,14 +56,14 @@ const AboutMe = () => {
       
            const config = {
              headers: {
-               Authorization: ` Bearer ${userInfo.token}`,
+               Authorization: ` Bearer ${userInfo?.token}`,
                'Content-Type': 'multipart/form-data',
              },
            }
            await axios.post('https://toptal.ibrcloud.com/api/v1/user/abour-cv-uploads',file, config).then(res => {
             setCv(res.data.cv)
             }).catch(err =>{
-              console.err(err);
+              console.log(err.response.data);
             })
       }
     
@@ -72,15 +75,14 @@ const AboutMe = () => {
           const config = {
               headers: {
             'Content-Type': 'application/json',
-            Authorization: ` Bearer ${userInfo.token}`,
+            Authorization: ` Bearer ${userInfo?.token}`,
               },
           }
-         console.log(aboutText,cv,kips);
           if(aboutText === ""  || cv === ""   ) {
             console.log("verify inputs");
         }else{
 
-             axios.patch('https://toptal.ibrcloud.com/api/v1/user/add-more-information',{about_self: aboutText,cv:cv,kips: kips }, config).then(res => {
+            axios.patch('https://toptal.ibrcloud.com/api/v1/user/add-more-information',{about_self: aboutText,cv:cv,kips: kips }, config).then(res => {
             console.log("done");
               
         }).catch(err =>{

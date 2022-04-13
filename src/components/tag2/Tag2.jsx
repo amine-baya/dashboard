@@ -1,9 +1,9 @@
-import React, { useContext, useState }  from 'react'
-import { UserInfo } from '../../helpers/ContextApi'
+import React  from 'react'
+import useAuth from '../../hooks/useAuth'
 import './tag2.css'
 const Tag2 = ({options,identifier}) => {
 
-  const {select1 ,setSelect1} = useContext(UserInfo)
+  const {select1 ,setSelect1} = useAuth()
   
 
   const addIndustries = (option,e) => {

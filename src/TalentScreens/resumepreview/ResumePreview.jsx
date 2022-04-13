@@ -1,13 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './resumePreview.css'
 import Header from '../../components/header/Header'
 import axios from 'axios'
 import { UserInfo } from '../../helpers/ContextApi'
 import { useNavigate } from 'react-router-dom'
+import useAuth from '../../hooks/useAuth'
 
 const ResumePreview = () => {
     const [data, setData] = useState()
-    const {userInfo,setPersonalData} = useContext(UserInfo)
+    const {userInfo,setPersonalData} = useAuth(UserInfo)
     let navigate = useNavigate()
 
     console.log(data);

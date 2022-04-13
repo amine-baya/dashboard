@@ -1,9 +1,10 @@
 import React, { useContext } from 'react'
-import { ContextApi, UserInfo } from '../../helpers/ContextApi'
+import { ContextApi } from '../../helpers/ContextApi'
+import useAuth from '../../hooks/useAuth'
 import './tag.css'
 const Tag = ({options,identifier}) => {
   const {select ,setSelect} = useContext(ContextApi)
-  const {web,setWeb,mobile,setMobile,dataSience,setDataSience,publicRelations,setPublicRelations} = useContext(UserInfo)
+  const {web,setWeb,mobile,setMobile,dataSience,setDataSience,publicRelations,setPublicRelations} = useAuth()
 
 
  

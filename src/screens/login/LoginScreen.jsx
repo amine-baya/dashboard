@@ -1,16 +1,22 @@
 import axios from 'axios'
-import React, { useState,useContext, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Header from '../../components/header/Header'
-import { UserInfo } from '../../helpers/ContextApi'
 import Title from '../../components/title/Title'
 import './login.css'
+import useAuth from '../../hooks/useAuth'
+
 
 const LoginScreen = () => {
-  const {userInfo,setUserInfo} = useContext(UserInfo)
+  const {userInfo,setUserInfo} = useAuth()
   const [email,setEmail] = useState('')
   const [password,setPassword] = useState('')
   let navigate = useNavigate()
+
+
+
+
+
 
   useEffect(() => {   
     console.log(userInfo);

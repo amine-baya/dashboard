@@ -1,14 +1,15 @@
 import React, { useContext } from 'react'
-import { ContextApi, UserInfo } from '../../../helpers/ContextApi'
-import Button from '../../button/Button'
+import { ContextApi } from '../../../helpers/ContextApi'
+
 import Type from '../../projectDetailsTypes/Type'
 import Title from '../../title/Title'
 import './projectDetails.css'
 import axios from 'axios'
+import useAuth from '../../../hooks/useAuth'
 
 const ProjectDetailsScreen = ({data}) => {
   const {type, setPage} = useContext(ContextApi)
-  const {userInfo} = useContext(UserInfo)
+  const {userInfo} = useAuth()
 
 
   const submitHandler = async (e) => {

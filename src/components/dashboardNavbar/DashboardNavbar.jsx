@@ -1,12 +1,12 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import './dashboardNavbar.css'
 import {ImProfile} from 'react-icons/im'
 import {AiOutlineLogout} from 'react-icons/ai'
-import { UserInfo } from '../../helpers/ContextApi'
+import useAuth from '../../hooks/useAuth'
 
 const DashboardNavbar = () => {
-  const {setUserInfo} = useContext(UserInfo)
+  const {setUserInfo} = useAuth()
 
   let navigate = useNavigate()
 

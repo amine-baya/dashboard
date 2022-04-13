@@ -4,10 +4,11 @@ import { Form } from 'react-bootstrap'
 import axios from 'axios'
 import { DatePickerComponent } from '@syncfusion/ej2-react-calendars'
 import Title from '../../title/Title'
-import { TalentContextApi, UserInfo } from '../../../helpers/ContextApi'
+import { TalentContextApi } from '../../../helpers/ContextApi'
+import useAuth from '../../../hooks/useAuth'
 
 const Education = () => {
-  const {userInfo} = useContext(UserInfo)
+  const {userInfo} = useAuth()
   const {schoolVal, setschoolVal, degreeVal, setdegreeVal, date_education_from, date_education_to, setdate_education_from, setdate_education_to} = useContext(TalentContextApi)
   const [school, setSchool] = useState([])
   const [degree, setDegree] = useState([])
@@ -61,7 +62,7 @@ const Education = () => {
           console.log("verify inputs");
       }
       else{
-          await axios.patch('https://toptal.ibrcloud.com/api/v1/user/add-more-information',{school: schoolVal,degree : degreeVal,date_education_from: date_education_from,date_education_to: date_education_to},  config).then(res => {
+          await axios.patch('https://toptal.ibrcloud.com/api/v1/user/add-more-information',{educations: educations},  config).then(res => {
           
             console.log("done");
             setschoolVal("")

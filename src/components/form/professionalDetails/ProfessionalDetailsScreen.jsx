@@ -4,13 +4,14 @@ import KpiProfessionalDetails from '../../kpiProfessionalDetails/KpiProfessional
 
 
 import './professionalDetails.css'
-import { ContextApi, UserInfo } from '../../../helpers/ContextApi'
+import { ContextApi } from '../../../helpers/ContextApi'
 import axios from 'axios';
+import useAuth from '../../../hooks/useAuth';
 
 const ProfessionalDetailsScreen = ({data}) => {
   const { setPage} = useContext(ContextApi)
 
-  const { userInfo, long, many, level, need} = useContext(UserInfo)
+  const { userInfo, long, many, level, need} = useAuth()
 
 
   const submitHandler = async (e) => {

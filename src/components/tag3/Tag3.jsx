@@ -1,9 +1,11 @@
-import React, {useContext, useEffect, useState}  from 'react'
-import { UserInfo } from '../../helpers/ContextApi'
+import React  from 'react'
+import useAuth from '../../hooks/useAuth'
 import './tag3.css'
 const Tag3 = ({options}) => {
 
-  const {sales,setSales,marketing,setMarketing,finance,setFinance,development,setDevelopment} = useContext(UserInfo)
+  
+  const {sales,setSales,marketing,setMarketing,finance,setFinance,development,setDevelopment} = useAuth()
+
   
   const addIndustries = (option,e) => {
     if(option.parent === "sales" ){

@@ -1,13 +1,14 @@
 import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
-import {  ContextApi, UserInfo } from '../../../helpers/ContextApi'
+import {  ContextApi } from '../../../helpers/ContextApi'
+import useAuth from '../../../hooks/useAuth'
 import Kpi3 from '../../kpi3/Kpi3'
 import Title from '../../title/Title'
 import './kpisOne.css'
 
 const KpisOneScreen = ({ data }) => {
 
-  const {userInfo,sales,marketing,finance,development} = useContext(UserInfo)
+  const {userInfo,sales,marketing,finance,development} = useAuth()
   const {setPage} = useContext(ContextApi)
 
     const [subkpis1, setSubkpis1] = useState([])

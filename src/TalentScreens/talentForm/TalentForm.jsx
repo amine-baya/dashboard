@@ -1,19 +1,19 @@
-import React, { useState,useEffect, useContext } from "react";
+import React, { useState,useEffect } from "react";
 import axios from 'axios'
 import Header from "../../components/header/Header";
-import { TalentContextApi, UserInfo } from "../../helpers/ContextApi";
+import { TalentContextApi } from "../../helpers/ContextApi";
 import AboutMe from "../../components/talentForm/aboutme/AboutMe";
 import PersonalInformation from "../../components/talentForm/PersonalInformation/PersonalInformation";
 import Portfolio from "../../components/talentForm/portfolio/Portfolio";
 import EmploymentHistory from "../../components/talentForm/employmenthistory/EmploymentHistory";
 import Education from "../../components/talentForm/education/Education";
 import Confirmation from "../../components/talentForm/confirmation/Confirmation";
+import useAuth from "../../hooks/useAuth";
 
 
 const TalentForm = () => {
 
-
-  const {userInfo, setSelect1, setSelect2} = useContext(UserInfo)
+  const {userInfo, setSelect1, setSelect2} = useAuth()
   const [talentPage, setTalentPage] = useState(0);
   const [aboutText, setAboutText] = useState("")
   const [cv,setCv] = useState("")
@@ -50,6 +50,7 @@ const TalentForm = () => {
     axios.get('https://toptal.ibrcloud.com/api/v1/user/get-user-information', config).then(res =>{
       localStorage.setItem("personalData", JSON.stringify(res.data) )
       console.log(res.data);
+     
       //setSelect1(res.data.industries[0].subcategory);
       //setSelect2(res.data.portfolio_services[0].subcategory);
       //setAboutText(res.data.about_self)

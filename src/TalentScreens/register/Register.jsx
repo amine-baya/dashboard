@@ -1,16 +1,18 @@
 import axios from 'axios'
-import React, { useContext, useEffect, useState } from 'react'
+import React, {useEffect, useState } from 'react'
 import { Form } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
 import Header from '../../components/header/Header'
-import { UserInfo } from '../../helpers/ContextApi'
+
+import useAuth from '../../hooks/useAuth'
 
 
 import './register.css'
 
 const Register = () => {
 
-  const {userInfo,setUserInfo} = useContext(UserInfo)
+  const {userInfo,setUserInfo} = useAuth()
+  //const {userInfo,setUserInfo} = useContext(UserInfo)
   const [roles,serRoles] = useState([])
   const [firstName,setFirstName] = useState('')
   const [lastName,setLastName] = useState('')

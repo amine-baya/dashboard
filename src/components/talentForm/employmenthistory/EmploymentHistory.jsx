@@ -3,11 +3,12 @@ import { DatePickerComponent } from "@syncfusion/ej2-react-calendars";
 import './EmploymentHistory.css'
 import axios from 'axios';
 import Title from '../../title/Title';
-import { TalentContextApi, UserInfo } from '../../../helpers/ContextApi';
+import { TalentContextApi } from '../../../helpers/ContextApi';
 import Kpi5 from '../../kpi5/Kpi5';
+import useAuth from '../../../hooks/useAuth';
 
 const EmploymentHistory = () => {
-    const {userInfo, select3, setSelect3} = useContext(UserInfo)
+    const {userInfo, select3, setSelect3} = useAuth()
     const {setTalentPage, isEmployed, setIsEmployed,positionName, setPositionName,employmentDescription, setEmploymentDescription,
       hireFrom, setHireFrom,hireTo, setHireTo} = useContext(TalentContextApi)
 

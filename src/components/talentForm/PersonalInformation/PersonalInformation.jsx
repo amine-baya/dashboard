@@ -4,9 +4,12 @@ import { Form } from 'react-bootstrap'
 import axios from 'axios'
 import { TalentContextApi, UserInfo } from '../../../helpers/ContextApi'
 import Kpi2 from '../../kpi2/Kpi2'
+import useAuth from '../../../hooks/useAuth'
 
 const PersonalInformation = () => {
-  const {userInfo, select1} = useContext(UserInfo)
+
+  const {userInfo, select1} = useAuth()
+
   const {setTalentPage,image, setImage,ageVal, setageVal,countryVal, setCountryVal,nationalityVal, setNationalityVal} = useContext(TalentContextApi)
   const [age, setAge] = useState([])
   const [country, setCountry] = useState(null)
