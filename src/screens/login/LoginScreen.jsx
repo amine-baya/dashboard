@@ -41,7 +41,7 @@ const LoginScreen = () => {
       localStorage.setItem("userInfo", JSON.stringify(res.data) )
       navigate('/calender')
     }).catch(err =>{
-      console.err(err);
+      console.log(err.response.data);
     })
     
 }

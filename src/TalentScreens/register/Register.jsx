@@ -3,7 +3,7 @@ import React, {useEffect, useState } from 'react'
 import { Form } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
 import Header from '../../components/header/Header'
-
+import { useLinkedIn } from 'react-linkedin-login-oauth2';
 import useAuth from '../../hooks/useAuth'
 
 
@@ -56,6 +56,16 @@ const Register = () => {
   }
 
 
+  const { linkedInLogin } = useLinkedIn({
+    clientId: '86vhj2q7ukf83q',
+    redirectUri: `${window.location.origin}/linkedin`, // for Next.js, you can use `${typeof window === 'object' && window.location.origin}/linkedin`
+    onSuccess: (code) => {
+      console.log(code);
+    },
+    onError: (error) => {
+      console.log(error);
+    },
+  });
 
   return (
     <div>
@@ -69,7 +79,7 @@ const Register = () => {
                 <div className='register_info'>
                   <h5>We provide access to top companies, a community of experts, and resources that can help accelerate your career.</h5>
                   <div className='in_register'>
-                    <span className='btn_linkedin'> <span>in</span> Sign In with Linkedin </span>
+                    <span className='btn_linkedin' onClick={() => linkedInLogin()}> <span>in</span> Sign In with Linkedin </span>
                     <p>By clicking Sign in with linkedin, you agree to let Topptalent store your Linkedin Profile</p>
                     <span className='or'>Or</span>
                   </div>
@@ -82,7 +92,7 @@ const Register = () => {
                               <option>select</option>
                               {
                                 roles?.map((role)=>(
-                                  <option key={role.identifier} value={role.identifier}>{role.name}</option>
+                                  <option key={role.identifier} value={role.name}>{role.name}</option>
                                   
                                 ))
                               }
