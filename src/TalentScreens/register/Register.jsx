@@ -33,7 +33,9 @@ const Register = () => {
         
     },[userInfo] )
 
-    console.log(roles);
+    const responseLinkedin = response => {
+      console.log(response);
+    }
 
   const submitHandler = async(e)=>{
     e.preventDefault()
@@ -55,17 +57,33 @@ const Register = () => {
   })
   }
 
-
   const { linkedInLogin } = useLinkedIn({
-    clientId: '86vhj2q7ukf83q',
-    redirectUri: `${window.location.origin}/linkedin`, // for Next.js, you can use `${typeof window === 'object' && window.location.origin}/linkedin`
-    onSuccess: (code) => {
-      console.log(code);
+    clientId: '78m6p6keu2thh4',
+    clientSecret: 'yBPGsFCpqVMuXc8M',
+    scope:'r_emailaddress r_liteprofile',
+    redirectUri: `http://localhost:3000/talent`,
+    onSuccess: (token) => {
+      console.log(token);
     },
     onError: (error) => {
       console.log(error);
+      console.log("hiii");
     },
   });
+
+  // function showLin() {
+  //   return <LinkedIn
+  //     // clientId="77mh7zgv7lrcb6"
+  //     clientId="78m6p6keu2thh4"
+  //     clientSecret="yBPGsFCpqVMuXc8M"
+  //     scope='r_basicprofile r_emailaddress r_contactinfo r_network'
+  //     onFailure={responseLinkedin}
+  //     onSuccess={responseLinkedin}
+  //     redirectUri="https://toptal.ibrcloud.com/auth/linkedin/callback"
+  //   >
+  //   </LinkedIn>
+
+  // }
 
   return (
     <div>
@@ -92,11 +110,9 @@ const Register = () => {
                               <option>select</option>
                               {
                                 roles?.map((role)=>(
-                                  <option key={role.identifier} value={role.name}>{role.name}</option>
-                                  
+                                  <option key={role.identifier} value={role.name}>{role.name}</option>                                 
                                 ))
                               }
-                              
                           </Form.Select>
                           <div className='input_component'>
                             <label className='label'>First Name*</label>
