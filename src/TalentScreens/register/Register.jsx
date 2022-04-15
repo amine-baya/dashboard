@@ -76,21 +76,22 @@ const Register = () => {
     clientId: '78m6p6keu2thh4',
     clientSecret: 'yBPGsFCpqVMuXc8M',
     scope:'r_liteprofile r_emailaddress',
-    redirectUri: `leafy-empanada-b618cc.netlify.app/talent`,
+    redirectUri: `https://leafy-empanada-b618cc.netlify.app/linkedin`,
     onSuccess: (code) => {
       console.log(code,"hello");
   
     const config = {
       headers: {
-        "Content-Type": `x-www-form-urlencoded`,
-        "Access-Control-Allow-Origin": "*"
+        "Content-Type": `application/x-www-form-urlencoded`,
+        "Access-Control-Allow-Origin": "*",
+        Authorization: `Bearer ${code}`
       },
     }
 
-    axios.post('https://cors-anywhere.herokuapp.com/www.linkedin.com/oauth/v2/accessToken', {grant_type: "authorization_code", code, redirect_uri: "leafy-empanada-b618cc.netlify.app/talent", client_id: "78m6p6keu2thh4", client_secret: "yBPGsFCpqVMuXc8M"} , config).then(res =>{
+    axios.get('https://www.linkedin.com/oauth/v2/accessToken', {grant_type: "authorization_code", code, redirect_uri: "https://leafy-empanada-b618cc.netlify.app/linkedin", client_id: "78m6p6keu2thh4", client_secret: "yBPGsFCpqVMuXc8M"} , config).then(res =>{
       console.log(res);
     }).catch(err =>{
-      console.log(err.response.data);
+      console.log(err.response);
     })
     },
     onError: (error) => {
