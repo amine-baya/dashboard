@@ -3,8 +3,10 @@ import React, {useEffect, useState } from 'react'
 import { Form } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
 import Header from '../../components/header/Header'
-import { useLinkedIn } from 'react-linkedin-login-oauth2';
+import  { useLinkedIn } from 'react-linkedin-login-oauth2';
 import useAuth from '../../hooks/useAuth'
+import _ from 'lodash'
+
 
 
 import './register.css'
@@ -21,6 +23,16 @@ const Register = () => {
   const [professional,setProfessional] = useState('')
   const [role, setrole] = useState('isTalent')
   let navigate = useNavigate()
+
+
+  const [linked,setLinked] = useState({
+    isAuthorized: false,
+    firstName: null,
+    lastName: null,
+    profileURL: null,
+    pictureURL: null,
+  }) 
+
 
   useEffect(() => {   
   
@@ -57,13 +69,29 @@ const Register = () => {
   })
   }
 
+
+ 
+
   const { linkedInLogin } = useLinkedIn({
     clientId: '78m6p6keu2thh4',
     clientSecret: 'yBPGsFCpqVMuXc8M',
-    scope:'r_emailaddress r_liteprofile',
-    redirectUri: `https://leafy-empanada-b618cc.netlify.app/talent`,
-    onSuccess: (token) => {
-      console.log(token);
+    scope:'r_liteprofile r_emailaddress',
+    redirectUri: `leafy-empanada-b618cc.netlify.app/linkedin`,
+    onSuccess: (code) => {
+      console.log(code,"hello");
+  
+    const config = {
+      headers: {
+        "Content-Type": `x-www-form-urlencoded`,
+        "Access-Control-Allow-Origin": "*"
+      },
+    }
+
+    axios.post('https://cors-anywhere.herokuapp.com/www.linkedin.com/oauth/v2/accessToken', {grant_type: "authorization_code", code, redirect_uri: "leafy-empanada-b618cc.netlify.app/linkedin", client_id: "78m6p6keu2thh4", client_secret: "yBPGsFCpqVMuXc8M"} , config).then(res =>{
+      console.log(res);
+    }).catch(err =>{
+      console.log(err.response.data);
+    })
     },
     onError: (error) => {
       console.log(error);
@@ -84,6 +112,54 @@ const Register = () => {
   //   </LinkedIn>
 
   // }
+
+
+//   useEffect( () => {
+//     window.addEventListener('message', handlePostMessage);
+//   },[])
+
+//  const handlePostMessage = (event) => {
+//     if (event.data.type === "profile") {
+//       updateProfile(event.data.profile);
+//       //Alert.success(`Login successful: ${event.data.profile.localizedFirstName}`,{position:'top'});
+//     }
+//   };
+
+
+//   const updateProfile = (profile) => {
+//     console.log(profile)
+//     setLinked({
+//         isAuthorized: true,
+//         firstName: _.get(profile,'localizedFirstName',''),
+//         lastName: _.get(profile,'localizedLastName',''),
+//         profileURL: `https://www.linkedin.com/in/${_.get(profile,'vanityName','')}`,
+//         pictureURL: _.get(_.last(_.get(profile,'profilePicture.displayImage~.elements','')),'identifiers[0].identifier','')
+//       })
+//   }
+
+
+//   const requestProfile = () => {
+//     var oauthUrl = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=78m6p6keu2thh4&scope=r_liteprofile&state=123456&redirect_uri=https://toptal.ibrcloud.com/auth/linkedin/callback`
+//     var width = 450,
+//       height = 730,
+//       left = window.screen.width / 2 - width / 2,
+//       top = window.screen.height / 2 - height / 2;
+
+//     window.open(
+//       oauthUrl,
+//       "Linkedin",
+//       "menubar=no,location=no,resizable=no,scrollbars=no,status=no, width=" +
+//         width +
+//         ", height=" +
+//         height +
+//         ", top=" +
+//         top +
+//         ", left=" +
+//         left
+//     );
+
+//     }
+  
 
   return (
     <div>

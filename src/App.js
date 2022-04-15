@@ -19,7 +19,7 @@ import DashboardEditing from './TalentScreens/dashboardediting/DashboardEditing'
 import TalentForm from './TalentScreens/talentForm/TalentForm';
 import useAuth from './hooks/useAuth';
 import Layout from './Layout';
-
+import {LinkedInCallback} from 'react-linkedin-login-oauth2'
 
 function App() {
 
@@ -53,6 +53,7 @@ function App() {
                 <Route path="resume" element={<ResumePreview />} />
                 <Route path="dashboard-editing" element={<DashboardEditing />} />
                 <Route path="talent" element={<TalentForm />} />
+                <Route path="linkedin" element={<LinkedInCallback />} />
                 <Route path="*" element={<h1> noooo </h1> }/>
 
 
