@@ -76,7 +76,7 @@ const Register = () => {
     clientId: '78m6p6keu2thh4',
     clientSecret: 'yBPGsFCpqVMuXc8M',
     scope:'r_liteprofile r_emailaddress',
-    redirectUri: `leafy-empanada-b618cc.netlify.app/linkedin`,
+    redirectUri: `leafy-empanada-b618cc.netlify.app/talent`,
     onSuccess: (code) => {
       console.log(code,"hello");
   
@@ -87,7 +87,7 @@ const Register = () => {
       },
     }
 
-    axios.post('https://cors-anywhere.herokuapp.com/www.linkedin.com/oauth/v2/accessToken', {grant_type: "authorization_code", code, redirect_uri: "leafy-empanada-b618cc.netlify.app/linkedin", client_id: "78m6p6keu2thh4", client_secret: "yBPGsFCpqVMuXc8M"} , config).then(res =>{
+    axios.post('https://cors-anywhere.herokuapp.com/www.linkedin.com/oauth/v2/accessToken', {grant_type: "authorization_code", code, redirect_uri: "leafy-empanada-b618cc.netlify.app/talent", client_id: "78m6p6keu2thh4", client_secret: "yBPGsFCpqVMuXc8M"} , config).then(res =>{
       console.log(res);
     }).catch(err =>{
       console.log(err.response.data);
