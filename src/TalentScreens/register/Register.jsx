@@ -61,7 +61,7 @@ const Register = () => {
     clientId: '78m6p6keu2thh4',
     clientSecret: 'yBPGsFCpqVMuXc8M',
     scope:'r_emailaddress r_liteprofile',
-    redirectUri: `http://localhost:3000/talent`,
+    redirectUri: `https://leafy-empanada-b618cc.netlify.app/talent`,
     onSuccess: (token) => {
       console.log(token);
     },
