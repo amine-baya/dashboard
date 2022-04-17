@@ -25,13 +25,7 @@ const Register = () => {
   let navigate = useNavigate()
 
 
-  const [linked,setLinked] = useState({
-    isAuthorized: false,
-    firstName: null,
-    lastName: null,
-    profileURL: null,
-    pictureURL: null,
-  }) 
+   
 
 
   useEffect(() => {   
@@ -45,9 +39,7 @@ const Register = () => {
         
     },[userInfo] )
 
-    const responseLinkedin = response => {
-      console.log(response);
-    }
+   
 
   const submitHandler = async(e)=>{
     e.preventDefault()
@@ -72,95 +64,35 @@ const Register = () => {
 
  
 
-  const { linkedInLogin } = useLinkedIn({
-    clientId: '78m6p6keu2thh4',
-    clientSecret: 'yBPGsFCpqVMuXc8M',
-    scope:'r_liteprofile r_emailaddress',
-    redirectUri: `https://leafy-empanada-b618cc.netlify.app/linkedin`,
-    onSuccess: (code) => {
-      console.log(code,"hello");
-  
-    const config = {
-      headers: {
-        "Content-Type": `application/x-www-form-urlencoded`,
-        "Access-Control-Allow-Origin": "*",
-        Authorization: `Bearer ${code}`
-      },
-    }
+   const { linkedInLogin } = useLinkedIn({
+     clientId: '78m6p6keu2thh4',
+     clientSecret: 'yBPGsFCpqVMuXc8M',
+     scope:'r_liteprofile r_emailaddress',
+     redirectUri: `http://localhost:3000/linkedin`,
+     onSuccess: (code) => {
+       console.log(code,"hello");
+       const config = {
+         headers: {
+           "Content-Type": `application/x-www-form-urlencoded`,
+           "Access-Control-Allow-Origin": "https://www.linkedin.com/oauth/v2/accessToken",
+           Authorization: `Bearer ${code}`
+         },
+       }
+    
+       axios.get('https://www.linkedin.com/oauth/v2/accessToken', {grant_type: "authorization_code", code, redirect_uri: "http://localhost:3000/linkedin", client_id: "78m6p6keu2thh4", client_secret: "yBPGsFCpqVMuXc8M"} , config).then(res =>{
+         console.log(res);
+         window.location.href='http://localhost:3000/talent'
+     }).catch(err =>{
+       console.log(err.response);
+     })
+     },
+     onError: (error) => {
+       console.log(error);
+       console.log("hiii");
+     },
+   });
 
-    axios.get('https://www.linkedin.com/oauth/v2/accessToken', {grant_type: "authorization_code", code, redirect_uri: "https://leafy-empanada-b618cc.netlify.app/linkedin", client_id: "78m6p6keu2thh4", client_secret: "yBPGsFCpqVMuXc8M"} , config).then(res =>{
-      console.log(res);
-    }).catch(err =>{
-      console.log(err.response);
-    })
-    },
-    onError: (error) => {
-      console.log(error);
-      console.log("hiii");
-    },
-  });
-
-  // function showLin() {
-  //   return <LinkedIn
-  //     // clientId="77mh7zgv7lrcb6"
-  //     clientId="78m6p6keu2thh4"
-  //     clientSecret="yBPGsFCpqVMuXc8M"
-  //     scope='r_basicprofile r_emailaddress r_contactinfo r_network'
-  //     onFailure={responseLinkedin}
-  //     onSuccess={responseLinkedin}
-  //     redirectUri="https://toptal.ibrcloud.com/auth/linkedin/callback"
-  //   >
-  //   </LinkedIn>
-
-  // }
-
-
-//   useEffect( () => {
-//     window.addEventListener('message', handlePostMessage);
-//   },[])
-
-//  const handlePostMessage = (event) => {
-//     if (event.data.type === "profile") {
-//       updateProfile(event.data.profile);
-//       //Alert.success(`Login successful: ${event.data.profile.localizedFirstName}`,{position:'top'});
-//     }
-//   };
-
-
-//   const updateProfile = (profile) => {
-//     console.log(profile)
-//     setLinked({
-//         isAuthorized: true,
-//         firstName: _.get(profile,'localizedFirstName',''),
-//         lastName: _.get(profile,'localizedLastName',''),
-//         profileURL: `https://www.linkedin.com/in/${_.get(profile,'vanityName','')}`,
-//         pictureURL: _.get(_.last(_.get(profile,'profilePicture.displayImage~.elements','')),'identifiers[0].identifier','')
-//       })
-//   }
-
-
-//   const requestProfile = () => {
-//     var oauthUrl = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=78m6p6keu2thh4&scope=r_liteprofile&state=123456&redirect_uri=https://toptal.ibrcloud.com/auth/linkedin/callback`
-//     var width = 450,
-//       height = 730,
-//       left = window.screen.width / 2 - width / 2,
-//       top = window.screen.height / 2 - height / 2;
-
-//     window.open(
-//       oauthUrl,
-//       "Linkedin",
-//       "menubar=no,location=no,resizable=no,scrollbars=no,status=no, width=" +
-//         width +
-//         ", height=" +
-//         height +
-//         ", top=" +
-//         top +
-//         ", left=" +
-//         left
-//     );
-
-//     }
-  
+ 
 
   return (
     <div>
@@ -171,6 +103,7 @@ const Register = () => {
         <div className='container' id='register'>
             <div className='register_container'>
                 <h3>Register yourself on the network</h3>
+                <a href="http://localhost:3000/linkedin">Linkedinnnn</a>
                 <div className='register_info'>
                   <h5>We provide access to top companies, a community of experts, and resources that can help accelerate your career.</h5>
                   <div className='in_register'>

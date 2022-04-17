@@ -11,6 +11,8 @@ import EditAboutModal from '../../components/modals/editAboutModal/EditAboutModa
 import EditEmploymentModal from '../../components/modals/editEmploymentModal/EditEmploymentModal'
 import NewEmploymentModal from '../../components/modals/newEmploymentModal/NewEmploymentModal'
 import ChangePhotoModal from '../../components/modals/changePhotoModal/ChangePhotoModal'
+import useAuth from '../../hooks/useAuth'
+import axios from 'axios'
 
 const DashboardEditing = () => {
     const [editmodalShow, setEditModalShow] = useState(false);
@@ -18,11 +20,31 @@ const DashboardEditing = () => {
     const [editPortfoliomodalShow, setEditPortfolioModalShow] = useState(false);
     const [newPortfoliomodalShow, setNewPortfolioModalShow] = useState(false);
     const [editAboutModalShow, setEditAboutModalShow] = useState(false);
-    const [editEmploymentModalShow, setEditEmploymentModalShow] = useState(false);
+    const [editEmploymentModalShow, setEditEmploymentModalShow] = useState({bool: false, id: ""});
     const [newEmploymentModalShow, setNewEmploymentModalShow] = useState(false);
     const [changePhotoModalShow, setChangePhotoModalShow] = useState(false);
+    const {personalData, userInfo} = useAuth()
+    
+    
 
-
+    const deleteEmployment = (id) => {
+        const config = {
+            headers: {
+              Authorization: ` Bearer ${userInfo?.token}`,
+              
+            },
+        }
+        
+         
+        axios.delete(`https://toptal.ibrcloud.com/api/v1/user/employment/${id}`, config).then(res =>{
+          console.log(res.data);
+         
+        }).catch(err =>{
+            console.log("must verify the url");
+            console.log(err);
+        })
+        
+    }
 
   return (
          <>
@@ -51,7 +73,8 @@ const DashboardEditing = () => {
                     onHide={() => setEditAboutModalShow(false)}
                 /> 
                 <EditEmploymentModal
-                    show={editEmploymentModalShow}
+                    id={editEmploymentModalShow.id}
+                    show={editEmploymentModalShow.bool}
                     onHide={() => setEditEmploymentModalShow(false)}
                 />        
                 <NewEmploymentModal
@@ -72,9 +95,9 @@ const DashboardEditing = () => {
                     <div className='dashboard_editing_header'>
                         <div className='dashboard_editing_header_info' >
                             <div className='dashboard_editing_header_img' >
-                                <img src="../../images/preview-img.png" alt="profile" />
+                                <img src={personalData?.profile} alt="profile" />
                             </div>
-                            <h4>Austin Robertson <span>-Graphic designer</span></h4>
+                            <h4>{personalData?.first_name} {personalData?.last_name} <span>- {personalData?.professional_role}</span></h4>
                         </div>
                         <div className='dashboard_editing_header_button' >        
                                 <span onClick={() => setChangePhotoModalShow(true)}>
@@ -90,12 +113,12 @@ const DashboardEditing = () => {
                                 <img src="../../images/pen-edit.png" alt="edit" onClick={() => setEditAboutModalShow(true)}  /> 
                             </div>
                             <p className='dashboard_editing_body_about_p'>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet
+                            {personalData.about_self}
                             </p>
-                            <p> Available Nominee:  <span>Tonny monny</span></p>
-                            <p> Email: <span> nikjone@demoo.com </span></p>
+                            <p> Available Nominee:  <span>{personalData?.first_name} {personalData?.last_name}</span></p>
+                            <p> Email: <span> {personalData?.email} </span></p>
                             <p> Phone: <span>001235125612</span></p>
-                            <p> Location: <span>USA</span></p>
+                            <p> Location: <span>{personalData?.country}</span></p>
 
 
                         </div>
@@ -178,31 +201,26 @@ const DashboardEditing = () => {
                                     <h4>Employment</h4>
                                     <span onClick={() => setNewEmploymentModalShow(true)}>Add New</span>
                             </div>
-                        <div className='dashboard_editing_body_employment_info'>
-                                <div className='dashboard_editing_body_employment_info_edit'><h5>Resturant Website Designs</h5> <span>10 year Experience</span> <img src="../../images/pen-edit.png" alt="sorry" /> <img src="../../images/trash-delete.png" alt="sorry" /></div>
-                                <span className='dashboard_editing_body_employment_info_span'>Past</span>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do </p>
-                                    <div className='resume_about_skills'>
-                                        <span>HTML</span>
-                                        <span>CSS</span>
-                                        <span>javascript</span>
-                                    </div>    
-                        </div> 
-
-                        <div className='dashboard_editing_body_employment_info'>
-                                <div className='dashboard_editing_body_employment_info_edit'>
-                                    <h5>Resturant Website Designs</h5> <span>10 year Experience</span>
-                                    <img src="../../images/pen-edit.png" alt="sorry" onClick={() => setEditEmploymentModalShow(true)} /> 
-                                    <img src="../../images/trash-delete.png" alt="sorry" />
+                        {personalData  && personalData.employments?.map(el => (
+                            <div className='dashboard_editing_body_employment_info'>
+                                <div className='dashboard_editing_body_employment_info_edit'><h5>{el.position}</h5>
+                                <span>10 year Experience</span> 
+                                <img src="../../images/pen-edit.png" alt="sorry" onClick={() => {setEditEmploymentModalShow({bool: true, id: el._id}); }}/> 
+                                <img src="../../images/trash-delete.png" alt="sorry" onClick={() => deleteEmployment(el._id)}/>
                                 </div>
-                                <span className='dashboard_editing_body_employment_info_span'>Past</span>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do </p>
+                                <span className='dashboard_editing_body_employment_info_span'>{ el.current_employed !==null && el.current_employed ===  'yes' ? "Active" : "Past" }</span>
+                                    <p>{ el.short_description !==null &&  el?.short_description} </p>
                                     <div className='resume_about_skills'>
-                                        <span>HTML</span>
-                                        <span>CSS</span>
-                                        <span>javascript</span>
+                                        { el.skills !==null && el?.skills[0].subcategory.map(skill => (
+                                            <span>{skill}</span>
+                                        ))}
+                                        
                                     </div>    
-                        </div>                  
+                            </div>
+                        ))  }
+                            
+
+                                        
                         </div>
                         
                     </div>

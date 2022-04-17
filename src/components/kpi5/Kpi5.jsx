@@ -20,6 +20,7 @@ const Kpi5 = (props) => {
     }
   }
   const slice = props?.options?.slice(0,noOfElement)
+
   
   return (
     <>
@@ -27,7 +28,7 @@ const Kpi5 = (props) => {
             <Accordion.Item eventKey="0" className="accordion-item" >
                 <Accordion.Header className="accordion-Header">{props?.title}</Accordion.Header>
                 <Accordion.Body className="accordion-body" >
-                    <Tag5 options={slice} identifier={props?.identifier} />
+                    <Tag5 options={slice} identifier={props?.identifier} edit={props?.edit}/>
                     <h6 className='see-more' onClick={()=>show()}>{!more ?"See More" : "See Less"}</h6>
                 </Accordion.Body>
             </Accordion.Item>

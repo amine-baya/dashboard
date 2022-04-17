@@ -17,14 +17,10 @@ import Register from './TalentScreens/register/Register';
 import ResumePreview from './TalentScreens/resumepreview/ResumePreview';
 import DashboardEditing from './TalentScreens/dashboardediting/DashboardEditing';
 import TalentForm from './TalentScreens/talentForm/TalentForm';
-import useAuth from './hooks/useAuth';
 import Layout from './Layout';
 import {LinkedInCallback} from 'react-linkedin-login-oauth2'
 
 function App() {
-
-  const {personalData} = useAuth()
-  console.log(personalData);
 
 
   return (

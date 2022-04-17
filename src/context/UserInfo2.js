@@ -42,7 +42,6 @@ export const UserInfoProvider = ( {children}) => {
                'Content-Type' : 'application/json',
                'Accept' : 'application/json',
                 Authorization: ` Bearer ${userInfo?.token}`,
-                
               },
             }
            axios.get('https://toptal.ibrcloud.com/api/v1/user/get-user-information', config).then(res =>{      
@@ -53,7 +52,7 @@ export const UserInfoProvider = ( {children}) => {
         }
    
        
-    }, [userInfo?.token])
+    }, [userInfo])
 
 
 

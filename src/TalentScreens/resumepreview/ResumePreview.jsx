@@ -2,21 +2,19 @@ import React, { useEffect, useState } from 'react'
 import './resumePreview.css'
 import Header from '../../components/header/Header'
 import axios from 'axios'
-import { UserInfo } from '../../helpers/ContextApi'
+
 import { useNavigate } from 'react-router-dom'
 import useAuth from '../../hooks/useAuth'
 
 const ResumePreview = () => {
     const [data, setData] = useState()
-    const {userInfo,setPersonalData} = useAuth(UserInfo)
+    const {userInfo,setPersonalData} = useAuth()
     let navigate = useNavigate()
 
     console.log(data);
     
    
     useEffect(() => {
-        
-     
         const config = {
             headers: {
               Authorization: ` Bearer ${userInfo?.token}`,
@@ -34,6 +32,8 @@ const ResumePreview = () => {
             console.log("must verify the url");
             console.log(err);
         })
+
+        
         
     },[userInfo?.token] )
     

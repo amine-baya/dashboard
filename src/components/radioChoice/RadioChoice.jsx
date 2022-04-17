@@ -1,11 +1,11 @@
-import React, { useContext, useState } from 'react'
-import { UserInfo } from '../../helpers/ContextApi'
+import React from 'react'
+import useAuth from '../../hooks/useAuth'
 import './radioChoice.css'
 
 const RadioChoice = (props) => {
 
 
-  const { setLong, setMany, setLevel, setNeed} = useContext(UserInfo)
+  const { setLong, setMany, setLevel, setNeed} = useAuth()
 
 
 

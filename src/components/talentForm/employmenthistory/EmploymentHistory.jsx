@@ -108,7 +108,7 @@ const addNewProject =()=>{
       console.log(err.response);
    })
 }
-console.log(employments, isEmployed);
+
 
 }
 

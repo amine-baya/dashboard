@@ -1,16 +1,16 @@
-import React, { useContext, useEffect } from 'react'
+import React, {  useEffect } from 'react'
 import DashboardHeader from '../../components/dashboardHeader/DashboardHeader'
 import DashboardNavbar from '../../components/dashboardNavbar/DashboardNavbar'
 import EmailVerificationModal from '../../components/modals/emailVerification/EmailVerificationModal'
 import {Inject, ScheduleComponent, Day, Week, WorkWeek, Month, Agenda, ViewsDirective, ViewDirective, DragAndDrop, Resize, ResourcesDirective, ResourceDirective} from '@syncfusion/ej2-react-schedule'
 import './calender.css'
-import { UserInfo } from '../../helpers/ContextApi'
 import VerifiedEmailModal from '../../components/modals/verifiedEmailModal/VerifiedEmailModal'
+import useAuth from '../../hooks/useAuth'
 
 
 
 const Calender = () => {
-  const {personalData, verifyEmailShow, setVerifyEmailModalShow, verifiedEmailShow, setVerifiedEmailModalShow} = useContext(UserInfo)
+  const {personalData, verifyEmailShow, setVerifyEmailModalShow, verifiedEmailShow, setVerifiedEmailModalShow} = useAuth()
   
   useEffect(() => {
     console.log(verifyEmailShow);

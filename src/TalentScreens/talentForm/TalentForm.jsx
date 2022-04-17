@@ -14,7 +14,7 @@ import useAuth from "../../hooks/useAuth";
 const TalentForm = () => {
 
   const {userInfo, setSelect1, setSelect2} = useAuth()
-  const [talentPage, setTalentPage] = useState(0);
+  const [talentPage, setTalentPage] = useState(0)
   const [aboutText, setAboutText] = useState("")
   const [cv,setCv] = useState("")
   const [image, setImage] = useState("")
