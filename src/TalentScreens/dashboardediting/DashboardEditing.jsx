@@ -8,11 +8,12 @@ import NewEducationModal from '../../components/modals/newEducationModal/NewEduc
 import EditPortfolioModal from '../../components/modals/editPortfolioModal/EditPortfolioModal'
 import NewPortfolioModal from '../../components/modals/newPortfolioModal/NewPortfolioModal'
 import EditAboutModal from '../../components/modals/editAboutModal/EditAboutModal'
-import EditEmploymentModal from '../../components/modals/editEmploymentModal/EditEmploymentModal'
-import NewEmploymentModal from '../../components/modals/newEmploymentModal/NewEmploymentModal'
+import EditEmploymentModal from '../../components/modals/employment/editEmploymentModal/EditEmploymentModal'
+import RemoveEmploymentModal from '../../components/modals/employment/removeEmploymentModal/RemoveEmploymentModal'
+import NewEmploymentModal from '../../components/modals/employment/newEmploymentModal/NewEmploymentModal'
 import ChangePhotoModal from '../../components/modals/changePhotoModal/ChangePhotoModal'
 import useAuth from '../../hooks/useAuth'
-import axios from 'axios'
+
 
 const DashboardEditing = () => {
     const [editmodalShow, setEditModalShow] = useState(false);
@@ -22,30 +23,10 @@ const DashboardEditing = () => {
     const [editAboutModalShow, setEditAboutModalShow] = useState(false);
     const [editEmploymentModalShow, setEditEmploymentModalShow] = useState({bool: false, id: ""});
     const [newEmploymentModalShow, setNewEmploymentModalShow] = useState(false);
+    const [removeEmploymentModalShow, setRemoveEmploymentModalShow] = useState({bool: false, id: ""});
     const [changePhotoModalShow, setChangePhotoModalShow] = useState(false);
-    const {personalData, userInfo} = useAuth()
+    const {personalData} = useAuth()
     
-    
-
-    const deleteEmployment = (id) => {
-        const config = {
-            headers: {
-              Authorization: ` Bearer ${userInfo?.token}`,
-              
-            },
-        }
-        
-         
-        axios.delete(`https://toptal.ibrcloud.com/api/v1/user/employment/${id}`, config).then(res =>{
-          console.log(res.data);
-         
-        }).catch(err =>{
-            console.log("must verify the url");
-            console.log(err);
-        })
-        
-    }
-
   return (
          <>
             <DashboardNavbar />
@@ -77,10 +58,16 @@ const DashboardEditing = () => {
                     show={editEmploymentModalShow.bool}
                     onHide={() => setEditEmploymentModalShow(false)}
                 />        
+                <RemoveEmploymentModal
+                    id={removeEmploymentModalShow.id}
+                    show={removeEmploymentModalShow.bool}
+                    onHide={() => setRemoveEmploymentModalShow(false)}
+                /> 
                 <NewEmploymentModal
                     show={newEmploymentModalShow}
                     onHide={() => setNewEmploymentModalShow(false)}
                 /> 
+
                 <ChangePhotoModal
                     show={changePhotoModalShow}
                     onHide={() => setChangePhotoModalShow(false)}
@@ -205,8 +192,8 @@ const DashboardEditing = () => {
                             <div className='dashboard_editing_body_employment_info'>
                                 <div className='dashboard_editing_body_employment_info_edit'><h5>{el.position}</h5>
                                 <span>10 year Experience</span> 
-                                <img src="../../images/pen-edit.png" alt="sorry" onClick={() => {setEditEmploymentModalShow({bool: true, id: el._id}); }}/> 
-                                <img src="../../images/trash-delete.png" alt="sorry" onClick={() => deleteEmployment(el._id)}/>
+                                <img src="../../images/pen-edit.png" alt="edit" onClick={() => {setEditEmploymentModalShow({bool: true, id: el._id}) }}/> 
+                                <img src="../../images/trash-delete.png" alt="delit" onClick={() => {setRemoveEmploymentModalShow({bool: true, id: el._id}) }}/>
                                 </div>
                                 <span className='dashboard_editing_body_employment_info_span'>{ el.current_employed !==null && el.current_employed ===  'yes' ? "Active" : "Past" }</span>
                                     <p>{ el.short_description !==null &&  el?.short_description} </p>
