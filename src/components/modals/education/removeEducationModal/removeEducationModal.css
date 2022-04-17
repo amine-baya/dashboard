@@ -1,0 +1,19 @@
+.remove_modal_container{
+    margin: 25px 55px;
+}
+
+.remove_modal_container .remove_modal_title{
+   
+    margin-bottom: 25px;
+    position: relative;
+}
+.remove_modal_container .remove_modal_p{
+    color: #404142;
+    font-family: 'Ubuntu', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 25px;
+    margin-bottom: 40px;
+}
+    

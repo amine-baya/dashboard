@@ -3,8 +3,8 @@ import './DashboardEditing.css'
 import DashboardHeader from '../../components/dashboardHeader/DashboardHeader'
 import DashboardNavbar from '../../components/dashboardNavbar/DashboardNavbar'
 import Title from '../../components/title/Title'
-import EditEducationModal from '../../components/modals/editEducationModal/EditEducationModal'
-import NewEducationModal from '../../components/modals/newEducationModal/NewEducationModal'
+import EditEducationModal from '../../components/modals/education/editEducationModal/EditEducationModal'
+import NewEducationModal from '../../components/modals/education/newEducationModal/NewEducationModal'
 import EditPortfolioModal from '../../components/modals/portfolio/editPortfolioModal/EditPortfolioModal'
 import NewPortfolioModal from '../../components/modals/portfolio/newPortfolioModal/NewPortfolioModal'
 import EditAboutModal from '../../components/modals/editAboutModal/EditAboutModal'
@@ -14,11 +14,13 @@ import NewEmploymentModal from '../../components/modals/employment/newEmployment
 import ChangePhotoModal from '../../components/modals/changePhotoModal/ChangePhotoModal'
 import useAuth from '../../hooks/useAuth'
 import RemovePortfolioModal from '../../components/modals/portfolio/removePortfolioModal/RemovePortfolioModal'
+import RemoveEducationModal from '../../components/modals/education/removeEducationModal/RemoveEducationModal'
 
 
 const DashboardEditing = () => {
-    const [editmodalShow, setEditModalShow] = useState(false);
-    const [newModalShow, setNewModalShow] = useState(false);
+    const [removeEducationModalShow, setRemoveEducationtModalShow] = useState({bool: false, id: ""});
+    const [newEducationModalShow, setNewEducationtModalShow] = useState( false);
+    const [editEducationModalShow, setEditEducationtModalShow] = useState({bool: false, id: ""});
     const [editPortfoliomodalShow, setEditPortfolioModalShow] = useState({bool: false, id: ""});
     const [newPortfoliomodalShow, setNewPortfolioModalShow] = useState(false);
     const [removePortfoliomodalShow, setRemovePortfolioModalShow] = useState({bool: false, id: ""});
@@ -37,13 +39,19 @@ const DashboardEditing = () => {
             <DashboardHeader />
 
                 <EditEducationModal
-                    show={editmodalShow}
-                    onHide={() => setEditModalShow(false)}
+                    id={editEducationModalShow.id}
+                    show={editEducationModalShow.bool}
+                    onHide={() => setEditEducationtModalShow(false)}
                     />
-                <NewEducationModal
-                    show={newModalShow}
-                    onHide={() => setNewModalShow(false)}
-                />
+                 <NewEducationModal
+                    show={newEducationModalShow}
+                    onHide={() => setNewEducationtModalShow(false)}
+                /> 
+                <RemoveEducationModal
+                    id={removeEducationModalShow.id}
+                    show={removeEducationModalShow.bool}
+                    onHide={() => setRemoveEducationtModalShow(false)}
+                    />
 
                 <EditPortfolioModal
                     id={editPortfoliomodalShow.id}
@@ -153,33 +161,22 @@ const DashboardEditing = () => {
                         <div className='dashboard_editing_body_education' >
                             <div className='dashboard_editing_body_education_header'>
                                     <h4>Education</h4>
-                                    <span onClick={() => setNewModalShow(true)}>Add New</span>
+                                    <span onClick={() => setNewEducationtModalShow(true)}>Add New</span>
                             </div>
-                            <div className='dashboard_editing_body_education_step'>
-                                <div className='dashboard_editing_body_education_step_info'>
-                                    <div className='dashboard_editing_body_education_step_info_edit'>
-                                        <h5>Resturant Website Designs</h5> 
-                                        <img src="../../images/pen-edit.png" alt="edit" onClick={() => setEditModalShow(true)} />  
-                                        <img src="../../images/trash-delete.png" alt="delete" />
-                                    </div>
-                                    <span>2015 - 2019</span>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do </p>
-                                    
-                                </div>
-                            </div>
-                            <div className='dashboard_editing_body_education_step'>
-                                <div className='dashboard_editing_body_education_step_info'>
-                                    <div className='dashboard_editing_body_education_step_info_edit'>
-                                        <h5>Resturant Website Designs</h5> 
-                                        <img src="../../images/pen-edit.png" alt="sorry" /> 
-                                        <img src="../../images/trash-delete.png" alt="sorry" />
-                                    </div>
-                                    <span>2015 - 2019</span>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do </p>
-                                    
-                                </div>
-                            </div>
-                        
+                            {personalData  && personalData.educations?.map(el => (
+                           <div className='dashboard_editing_body_education_step'>
+                           <div className='dashboard_editing_body_education_step_info'>
+                               <div className='dashboard_editing_body_education_step_info_edit'>
+                                   <h5>{el.degree}</h5> 
+                                   <img src="../../images/pen-edit.png" alt="edit" onClick={() => {setEditEducationtModalShow({bool: true, id: el._id}) }}/>  
+                                        <img src="../../images/trash-delete.png" alt="delete" onClick={() => {setRemoveEducationtModalShow({bool: true, id: el._id}) }}  />
+                               </div>
+                               <span>{el.from.slice(0,4)} - {el.to.slice(0,4)}</span>
+                               <p>{el.school}</p>
+                               
+                           </div>
+                       </div>
+                        ))  }
                         </div>
                         <div className='dashboard_editing_body_employment' >
                             <div className='dashboard_editing_body_employment_header'>

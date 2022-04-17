@@ -15,6 +15,7 @@ const EditEmploymentModal = (props) => {
   const [ positionName,setPositionName] = useState()
   const [ hireFrom,setHireFrom] = useState()
   const [ hireTo, setHireTo] = useState()
+
   const [skils, setskils] = useState()
   const [mySkills, setMySkills] = useState([])
 
@@ -38,6 +39,8 @@ const EditEmploymentModal = (props) => {
 
 
   useEffect(()  =>  {
+
+ 
       const config = {
           headers: {
            'Content-Type' : 'application/json',
