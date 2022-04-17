@@ -9,7 +9,7 @@ import axios from 'axios'
 const NewEmploymentModal = (props) => {
 
 
-  const {userInfo, select3, setSelect3} = useAuth()
+  const {userInfo, select3} = useAuth()
   const [ isEmployed, setIsEmployed] = useState()
   const [ positionName,setPositionName] = useState()
   const [ hireFrom,setHireFrom] = useState()

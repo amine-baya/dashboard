@@ -5,27 +5,31 @@ import DashboardNavbar from '../../components/dashboardNavbar/DashboardNavbar'
 import Title from '../../components/title/Title'
 import EditEducationModal from '../../components/modals/editEducationModal/EditEducationModal'
 import NewEducationModal from '../../components/modals/newEducationModal/NewEducationModal'
-import EditPortfolioModal from '../../components/modals/editPortfolioModal/EditPortfolioModal'
-import NewPortfolioModal from '../../components/modals/newPortfolioModal/NewPortfolioModal'
+import EditPortfolioModal from '../../components/modals/portfolio/editPortfolioModal/EditPortfolioModal'
+import NewPortfolioModal from '../../components/modals/portfolio/newPortfolioModal/NewPortfolioModal'
 import EditAboutModal from '../../components/modals/editAboutModal/EditAboutModal'
 import EditEmploymentModal from '../../components/modals/employment/editEmploymentModal/EditEmploymentModal'
 import RemoveEmploymentModal from '../../components/modals/employment/removeEmploymentModal/RemoveEmploymentModal'
 import NewEmploymentModal from '../../components/modals/employment/newEmploymentModal/NewEmploymentModal'
 import ChangePhotoModal from '../../components/modals/changePhotoModal/ChangePhotoModal'
 import useAuth from '../../hooks/useAuth'
+import RemovePortfolioModal from '../../components/modals/portfolio/removePortfolioModal/RemovePortfolioModal'
 
 
 const DashboardEditing = () => {
     const [editmodalShow, setEditModalShow] = useState(false);
     const [newModalShow, setNewModalShow] = useState(false);
-    const [editPortfoliomodalShow, setEditPortfolioModalShow] = useState(false);
+    const [editPortfoliomodalShow, setEditPortfolioModalShow] = useState({bool: false, id: ""});
     const [newPortfoliomodalShow, setNewPortfolioModalShow] = useState(false);
+    const [removePortfoliomodalShow, setRemovePortfolioModalShow] = useState({bool: false, id: ""});
     const [editAboutModalShow, setEditAboutModalShow] = useState(false);
     const [editEmploymentModalShow, setEditEmploymentModalShow] = useState({bool: false, id: ""});
     const [newEmploymentModalShow, setNewEmploymentModalShow] = useState(false);
     const [removeEmploymentModalShow, setRemoveEmploymentModalShow] = useState({bool: false, id: ""});
     const [changePhotoModalShow, setChangePhotoModalShow] = useState(false);
     const {personalData} = useAuth()
+
+    console.log(personalData);
     
   return (
          <>
@@ -42,13 +46,19 @@ const DashboardEditing = () => {
                 />
 
                 <EditPortfolioModal
-                    show={editPortfoliomodalShow}
+                    id={editPortfoliomodalShow.id}
+                    show={editPortfoliomodalShow.bool}
                     onHide={() => setEditPortfolioModalShow(false)}
+                />
+                <RemovePortfolioModal
+                    id={removePortfoliomodalShow.id}
+                    show={removePortfoliomodalShow.bool}
+                    onHide={() => setRemovePortfolioModalShow(false)}
                 />
                 <NewPortfolioModal
                     show={newPortfoliomodalShow}
                     onHide={() => setNewPortfolioModalShow(false)}
-                /> 
+                />
                 <EditAboutModal
                     show={editAboutModalShow}
                     onHide={() => setEditAboutModalShow(false)}
@@ -113,44 +123,32 @@ const DashboardEditing = () => {
                             <div className='dashboard_editing_body_portfolio_header'>
                                 <h4>Portfolio</h4>
                                 <span onClick={() => setNewPortfolioModalShow(true)}>Add New</span>
+                            </div>                    
+                            {personalData  && personalData.portfolio?.map(el => (
+                            <div className='dashboard_editing_body_portfolio_project'>
+                               <div className='dashboard_editing_body_portfolio_project_img'>
+                                    <img src={el?.images[0]} alt="project" />
+                                </div>
+                                <div className='dashboard_editing_body_portfolio_project_info'>
+                                    <div className='dashboard_editing_body_portfolio_project_info_edit'>
+                                        <h5>{el.project_name}</h5> 
+                                        <img src="../../images/pen-edit.png" alt="edit"  onClick={() => {setEditPortfolioModalShow({bool: true, id: el._id}) }} /> 
+                                        <img src="../../images/trash-delete.png" alt="sorry" onClick={() => {setRemovePortfolioModalShow({bool: true, id: el._id}) }} />
+                                    </div>
+                                    <p>{el.short_description} </p>
+                                    <div className='resume_about_skills'>
+                                        { el.services !==null && el?.services[0].subcategory.map(skill => (
+                                            <span>{skill}</span>
+                                        ))}
+                                        
+                                    </div> 
+                                </div>
                             </div>
-                            <div className='dashboard_editing_body_portfolio_project'>
-                                <div className='dashboard_editing_body_portfolio_project_img'>
-                                    <img src="../../images/preview-portfolio.png" alt="sorry" />
-                                </div>
-                                <div className='dashboard_editing_body_portfolio_project_info'>
-                                    <div className='dashboard_editing_body_portfolio_project_info_edit'>
-                                        <h5>Resturant Website Designs</h5> 
-                                        <img src="../../images/pen-edit.png" alt="edit"  onClick={() => setEditPortfolioModalShow(true)} /> 
-                                        <img src="../../images/trash-delete.png" alt="sorry" />
-                                    </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do </p>
-                                    <div className='resume_about_skills'>
-                                        <span>HTML</span>
-                                        <span>CSS</span>
-                                        <span>javascript</span>
-                                    </div>
-                                </div>
-                            </div>   
-                            <div className='dashboard_editing_body_portfolio_project'>
-                                <div className='dashboard_editing_body_portfolio_project_img'>
-                                    <img src="../../images/preview-portfolio.png" alt="sorry" />
-                                </div>
-                                <div className='dashboard_editing_body_portfolio_project_info'>
-                                    <div className='dashboard_editing_body_portfolio_project_info_edit'>
-                                        <h5>Resturant Website Designs</h5> 
-                                        <img src="../../images/pen-edit.png" alt="sorry" /> 
-                                        <img src="../../images/trash-delete.png" alt="sorry" />
-                                    </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do </p>
-                                    <div className='resume_about_skills'>
-                                        <span>HTML</span>
-                                        <span>CSS</span>
-                                        <span>javascript</span>
-                                    </div>
-                                </div>
-                                
-                            </div>                            
+                        ))  }
+
+
+
+
                         </div>
                         <div className='dashboard_editing_body_education' >
                             <div className='dashboard_editing_body_education_header'>

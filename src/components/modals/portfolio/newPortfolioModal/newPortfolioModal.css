@@ -1,0 +1,22 @@
+.add_project_info_modal input[type="file"]
+{ 
+  display: none;
+    
+}
+
+.add_project_info_modal label
+{ 
+    display: block;
+    background: #FFFFFF;
+    border: 1px solid #395F8C;
+    box-sizing: border-box;
+    border-radius: 6px;
+    height: 55px;
+    line-height: 55px;
+    text-align: center;
+    width: 50%;
+    color: #395F8C;
+    margin-bottom: 40px;
+    cursor: pointer;
+    filter: drop-shadow(0px 4px 4px #DCDCDC);
+}

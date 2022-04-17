@@ -75,8 +75,6 @@ const Portfolio = () => {
   } ]
 
 
-  console.log(portfolio);
-
     const config = {
         headers: {
        'Content-Type': 'application/json',
@@ -111,10 +109,8 @@ const addNewProject = async()=>{
     project_images : imageProject,
     project_short_description: projectDescription,
     portfolio_services: portfolio_services,
-   
   
  } ]
-
       const config = {
         headers: {
       'Content-Type': 'application/json',
@@ -122,11 +118,6 @@ const addNewProject = async()=>{
 
         },
     }
-   
- 
-
-   
-
     if(projectName === "" || imageProject.length === 0  || projectDescription ==="" || portfolio_services[0].subcategory.length === 0  ) {
       console.log("verify inputs");
   }
@@ -137,17 +128,12 @@ const addNewProject = async()=>{
       setImageProject([])
       setProjectDescription("")
       setSelect2([])
-
-     
-      
   }).catch(err =>{
       console.log(err.response);
    })
 }
 
 }
-
-
 
   return (
     <>
@@ -192,11 +178,11 @@ const addNewProject = async()=>{
                   <input type="text" placeholder="Enter Project Name" required value={projectName} onChange={(e) => setProjectName(e.target.value)}/>
             </div> 
               <label className='label'>Upload Image</label>
-            <div className='Personal_information_info'>
+            <div className='Personal_information_info '>
                   <input type="file" id='file' className='upload_about_me' accept='image/*' multiple  onChange={uploadFileHandler} />
                   <label htmlFor="file">
-                  <img src="../../images/plus-blue.png" alt="plus" /> Upload Image/URLs
-              </label> 
+                    <img src="../../images/plus-blue.png" alt="plus" /> Upload Image/URLs
+                  </label> 
             </div>
             <div className="portfolio_description">
                 <label className='label'>Short Description</label>
