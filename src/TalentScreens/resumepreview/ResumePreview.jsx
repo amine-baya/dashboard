@@ -9,33 +9,43 @@ import useAuth from '../../hooks/useAuth'
 const ResumePreview = () => {
     const [data, setData] = useState()
     const {userInfo,setPersonalData} = useAuth()
+    const [allEducation, setAllEducation] = useState([]);
+    const [allEmployment, setAllEmployment] = useState([]);
+    const [allPortfolio, setAllPortfolio] = useState([]);
     let navigate = useNavigate()
-
-    console.log(data);
     
-   
-    useEffect(() => {
+    
+    useEffect(() =>  {
+        let one = "https://toptal.ibrcloud.com/api/v1/user/education-all"
+        let two = "https://toptal.ibrcloud.com/api/v1/user/employment-all"
+        let three = "https://toptal.ibrcloud.com/api/v1/user/portfolio-all"
+        let four = "https://toptal.ibrcloud.com/api/v1/user/get-user-information"
         const config = {
             headers: {
-              Authorization: ` Bearer ${userInfo?.token}`,
-              
+           'Content-Type': 'application/json',
+           Authorization: ` Bearer ${userInfo?.token}`,
+   
             },
-          }
-         
-        axios.get('https://toptal.ibrcloud.com/api/v1/user/get-user-information', config).then(res =>{
-          setData(res.data)
-          setPersonalData(res.data)
-          console.log(res.data);
-         
-          
-        }).catch(err =>{
-            console.log("must verify the url");
-            console.log(err);
-        })
+        }
+        const requestOne =    axios.get(one,config);
+        const requestTwo =    axios.get(two,config);
+        const requestThree =   axios.get(three,config);
+        const requestFour =   axios.get(four,config);
 
+        axios.all([requestOne, requestTwo,requestThree,requestFour]).then(axios.spread((...responses) => {
+            setAllEducation(responses[0].data)
+            setAllEmployment(responses[1].data)
+            setAllPortfolio(responses[2].data)
+            setData(responses[3].data)
+            setPersonalData(responses[3].data)
+         
+        })).catch(errors => {
         
-        
-    },[userInfo?.token] )
+            console.log("must verify the url");
+          })
+        }, [userInfo?.token])
+    
+  
     
          const globalSkills = data?.kips?.map(g => g.subcategory).flat()
         
@@ -80,8 +90,8 @@ const ResumePreview = () => {
         <div className='resume_portfolio_container'>
 
         {
-                data &&
-                data.portfolio.map((po)=>(
+                allPortfolio &&
+                allPortfolio.map((po)=>(
                     <div className='resume_portfolio_box'>
                     <img src={ po?.images[0]  ? po?.images[0] : "../../images/initial_project.jpg"} alt="project" />
                     <div className='resume_portfolio_box_info'>
@@ -112,8 +122,8 @@ const ResumePreview = () => {
          <div className='resume_employment_box'>
             <div className='resume_employment_box_info'>
                 {
-                    data !== undefined &&
-                    data.employments.map((employment)=>(
+                    allEmployment !== undefined &&
+                    allEmployment.map((employment)=>(
                         <div className='resume_employment_box_info_container'>
                             <div className="resume_employment_box_info_position"><h4>{ employment?.position ? employment.position : "........."}</h4><span>{employment?.from ? employment.from.slice(0,4) : "........"}-{employment?.to ? employment.to.slice(0,4) : ".........." }</span></div>
                             <span className='resume_employment_box_info_span'>{ employment.current_employed ===  'yes' ? "Active" : "Past" }</span>
@@ -143,8 +153,8 @@ const ResumePreview = () => {
                 <div className='resume_employment_box_info'>
 
                 {
-                    data !== undefined &&
-                    data.educations.map((education)=>(
+                    allEducation !== undefined &&
+                    allEducation.map((education)=>(
                         <div className='resume_employment_box_info_container'>
                            
                             <div><h4>{education.degree ? education.degree  : "degree"}</h4><span>{education?.from ? education?.from.slice(0,4) : "..........."}-{education?.to ? education?.to.slice(0,4): "............"}</span></div>

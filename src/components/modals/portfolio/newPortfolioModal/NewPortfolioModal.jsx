@@ -59,13 +59,13 @@ const NewPortfolioModal = (props) => {
 
   const addNewProject = async()=>{
 
-    const portfolio = [ {
+    const portfolio = {
       project_name: projectName,
       project_images : imageProject,
       project_short_description: projectDescription,
       portfolio_services: portfolio_services,
     
-   } ]
+   } 
         const config = {
           headers: {
         'Content-Type': 'application/json',
@@ -77,7 +77,7 @@ const NewPortfolioModal = (props) => {
         console.log("verify inputs");
     }
     else{
-        await axios.patch('https://toptal.ibrcloud.com/api/v1/user/add-more-information',{portfolio}, config).then(res => {
+        await axios.post('https://toptal.ibrcloud.com/api/v1/user/portfolio',portfolio, config).then(res => {
         console.log("done");
         setProjectName("")
         setImageProject([])

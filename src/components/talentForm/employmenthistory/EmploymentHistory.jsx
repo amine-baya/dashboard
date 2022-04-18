@@ -36,13 +36,13 @@ const EmploymentHistory = () => {
         e.preventDefault()
         setTalentPage((currPage) => currPage + 1)
 
-        const employments = [ {current_employed: isEmployed,
+        const employments =  {current_employed: isEmployed,
           position:positionName,
           emp_history_short_description: employmentDescription,
           date_hire_from: hireFrom,
           date_hire_to: hireTo,
           skills: mySkills
-          }]
+          }
 
         const config = {
             headers: {
@@ -55,7 +55,7 @@ const EmploymentHistory = () => {
           console.log("verify inputs");
       }
       else{
-          axios.patch('https://toptal.ibrcloud.com/api/v1/user/add-more-information',{employments}, config).then(res => {
+          axios.post('https://toptal.ibrcloud.com/api/v1/user/employment',employments, config).then(res => {
           console.log("done");
           setIsEmployed("")
           setPositionName("")
@@ -83,19 +83,20 @@ const addNewProject =()=>{
 
         },
       }
-    const employments = [ {current_employed: isEmployed,
+    const employments =  {
+      current_employed: isEmployed,
       position:positionName,
       emp_history_short_description: employmentDescription,
       date_hire_from: hireFrom,
       date_hire_to: hireTo,
       skills: mySkills
-      }]
+      }
    
     if(isEmployed === "" || positionName === ""  || employmentDescription ==="" || hireFrom === "" || hireTo === "" || mySkills.length === 0  ) {
       console.log("verify inputs");
   }
   else{
-      axios.patch('https://toptal.ibrcloud.com/api/v1/user/add-more-information',{employments}, config).then(res => {
+      axios.post('https://toptal.ibrcloud.com/api/v1/user/employment',employments, config).then(res => {
       console.log("done");
       setIsEmployed("")
       setPositionName("")

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './DashboardEditing.css'
 import DashboardHeader from '../../components/dashboardHeader/DashboardHeader'
 import DashboardNavbar from '../../components/dashboardNavbar/DashboardNavbar'
@@ -15,6 +15,7 @@ import ChangePhotoModal from '../../components/modals/changePhotoModal/ChangePho
 import useAuth from '../../hooks/useAuth'
 import RemovePortfolioModal from '../../components/modals/portfolio/removePortfolioModal/RemovePortfolioModal'
 import RemoveEducationModal from '../../components/modals/education/removeEducationModal/RemoveEducationModal'
+import axios from 'axios'
 
 
 const DashboardEditing = () => {
@@ -29,9 +30,36 @@ const DashboardEditing = () => {
     const [newEmploymentModalShow, setNewEmploymentModalShow] = useState(false);
     const [removeEmploymentModalShow, setRemoveEmploymentModalShow] = useState({bool: false, id: ""});
     const [changePhotoModalShow, setChangePhotoModalShow] = useState(false);
-    const {personalData} = useAuth()
+    const [allEducation, setAllEducation] = useState([]);
+    const [allEmployment, setAllEmployment] = useState([]);
+    const [allPortfolio, setAllPortfolio] = useState([]);
+    const {personalData,userInfo} = useAuth()
+    
+    useEffect(() =>  {
+        let one = "https://toptal.ibrcloud.com/api/v1/user/education-all"
+        let two = "https://toptal.ibrcloud.com/api/v1/user/employment-all"
+        let three = "https://toptal.ibrcloud.com/api/v1/user/portfolio-all"
+        const config = {
+            headers: {
+           'Content-Type': 'application/json',
+           Authorization: ` Bearer ${userInfo?.token}`,
+   
+            },
+        }
+        const requestOne =    axios.get(one,config);
+        const requestTwo =    axios.get(two,config);
+        const requestThree =   axios.get(three,config);
 
-    console.log(personalData);
+        axios.all([requestOne, requestTwo,requestThree]).then(axios.spread((...responses) => {
+            setAllEducation(responses[0].data)
+            setAllEmployment(responses[1].data)
+            setAllPortfolio(responses[2].data)
+         
+        })).catch(errors => {
+        
+            console.log("must verify the url");
+          })
+        }, [userInfo?.token])
     
   return (
          <>
@@ -132,7 +160,7 @@ const DashboardEditing = () => {
                                 <h4>Portfolio</h4>
                                 <span onClick={() => setNewPortfolioModalShow(true)}>Add New</span>
                             </div>                    
-                            {personalData  && personalData.portfolio?.map(el => (
+                            {allPortfolio  && allPortfolio?.map(el => (
                             <div className='dashboard_editing_body_portfolio_project'>
                                <div className='dashboard_editing_body_portfolio_project_img'>
                                     <img src={el?.images[0]} alt="project" />
@@ -163,7 +191,7 @@ const DashboardEditing = () => {
                                     <h4>Education</h4>
                                     <span onClick={() => setNewEducationtModalShow(true)}>Add New</span>
                             </div>
-                            {personalData  && personalData.educations?.map(el => (
+                            {allEducation  && allEducation?.map(el => (
                            <div className='dashboard_editing_body_education_step'>
                            <div className='dashboard_editing_body_education_step_info'>
                                <div className='dashboard_editing_body_education_step_info_edit'>
@@ -183,7 +211,7 @@ const DashboardEditing = () => {
                                     <h4>Employment</h4>
                                     <span onClick={() => setNewEmploymentModalShow(true)}>Add New</span>
                             </div>
-                        {personalData  && personalData.employments?.map(el => (
+                        {allEmployment  && allEmployment?.map(el => (
                             <div className='dashboard_editing_body_employment_info'>
                                 <div className='dashboard_editing_body_employment_info_edit'><h5>{el.position}</h5>
                                 <span>10 year Experience</span> 

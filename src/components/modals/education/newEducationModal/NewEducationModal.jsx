@@ -76,14 +76,6 @@ const NewEducationModal = (props) => {
       props.onHide()
       
       }
-
-
-
-
-
-
-
-
     return (
         <Modal
           {...props}

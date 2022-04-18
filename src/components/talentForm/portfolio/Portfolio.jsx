@@ -66,13 +66,13 @@ const Portfolio = () => {
     setTalentPage((currPage) => currPage + 1)
 
 
-   const portfolio = [ {
+   const portfolio =  {
      project_name: projectName,
      project_images : imageProject,
      project_short_description: projectDescription,
      portfolio_services: portfolio_services,
     
-  } ]
+  } 
 
 
     const config = {
@@ -87,7 +87,7 @@ const Portfolio = () => {
       console.log("verify inputs");
   }
   else{
-      await axios.patch('https://toptal.ibrcloud.com/api/v1/user/add-more-information',{portfolio}, config).then(res => {
+      await axios.post('https://toptal.ibrcloud.com/api/v1/user/portfolio',portfolio, config).then(res => {
       console.log("done");
       setProjectName("")
       setImageProject([])
@@ -104,13 +104,13 @@ const Portfolio = () => {
 
 const addNewProject = async()=>{
 
-  const portfolio = [ {
+  const portfolio =  {
     project_name: projectName,
     project_images : imageProject,
     project_short_description: projectDescription,
     portfolio_services: portfolio_services,
   
- } ]
+ } 
       const config = {
         headers: {
       'Content-Type': 'application/json',
@@ -122,7 +122,7 @@ const addNewProject = async()=>{
       console.log("verify inputs");
   }
   else{
-      await axios.patch('https://toptal.ibrcloud.com/api/v1/user/add-more-information',{portfolio}, config).then(res => {
+      await axios.post('https://toptal.ibrcloud.com/api/v1/user/portfolio',portfolio, config).then(res => {
       console.log("done");
       setProjectName("")
       setImageProject([])
