@@ -83,7 +83,7 @@ const Register = () => {
          console.log(res);
         
      }).catch(err =>{
-       console.log(err.response);
+       console.log(err);
      })
      },
      onError: (error) => {
