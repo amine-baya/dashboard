@@ -35,7 +35,6 @@ const Register = () => {
 useEffect(() => {   
   if(token !== null ){
 
-    console.log(token)
   setAw(token)
   const config = {
     headers: {
