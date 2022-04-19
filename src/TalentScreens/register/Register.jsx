@@ -29,27 +29,33 @@ const Register = () => {
 
   
   
-  const aw = searchParams.get('auth_token')
+  const token = searchParams.get('auth_token')
 
 
 useEffect(() => {   
-  
-  console.log(aw)
-  setAw(aw)
+  if(token !== null ){
+
+    console.log(token)
+  setAw(token)
   const config = {
     headers: {
-        Authorization: ` Bearer ${aw}`
+        Authorization: ` Bearer ${token}`
     }
 }
   console.log(config);
   axios.get('https://toptal.ibrcloud.com/api/v1/auth/linkedin-user',config).then(res =>{
-   console.log('yes',res)
+    setUserInfo(res.data)
+      localStorage.setItem("userInfo", JSON.stringify(res.data) )
+      navigate('/talent')
     
   }).catch(err =>{
       console.log(err.response.data);
   })
   
-},[aw, aww] )
+
+  }
+  
+},[token, aww] )
    
 
 
