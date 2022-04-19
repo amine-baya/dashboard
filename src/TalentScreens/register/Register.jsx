@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, {useEffect, useState } from 'react'
 import { Form } from 'react-bootstrap'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate,useSearchParams,useLocation } from 'react-router-dom'
 import Header from '../../components/header/Header'
 import  { useLinkedIn } from 'react-linkedin-login-oauth2';
 import useAuth from '../../hooks/useAuth'
@@ -22,9 +22,34 @@ const Register = () => {
   const [password,setPassword] = useState('')
   const [professional,setProfessional] = useState('')
   const [role, setrole] = useState('isTalent')
+  const [searchParams, setSearchParams] =useSearchParams()
+  const [aww,setAw] = useState('')
+
   let navigate = useNavigate()
 
+  
+  
+  const aw = searchParams.get('auth_token')
 
+
+useEffect(() => {   
+  
+  console.log(aw)
+  setAw(aw)
+  const config = {
+    headers: {
+        Authorization: ` Bearer ${aw}`
+    }
+}
+  console.log(config);
+  axios.get('https://toptal.ibrcloud.com/api/v1/auth/linkedin-user',config).then(res =>{
+   console.log('yes',res)
+    
+  }).catch(err =>{
+      console.log(err.response.data);
+  })
+  
+},[aw, aww] )
    
 
 
@@ -68,18 +93,18 @@ const Register = () => {
      clientId: '78m6p6keu2thh4',
      clientSecret: 'yBPGsFCpqVMuXc8M',
      scope:'r_liteprofile r_emailaddress',
-     redirectUri: `https://leafy-empanada-b618cc.netlify.app/linkedin`,
+     redirectUri: `http://localhost:3000/linkedin`,
      onSuccess: (code) => {
        console.log(code,"hello");
        const config = {
          headers: {
            "Content-Type": `application/x-www-form-urlencoded`,
-           "Access-Control-Allow-Origin": "https://www.linkedin.com/oauth/v2/accessToken",
+           "Access-Control-Allow-Origin": "*",
            Authorization: `Bearer ${code}`
          },
        }
     
-       axios.get('https://www.linkedin.com/oauth/v2/accessToken', {grant_type: "authorization_code", code, redirect_uri: "https://leafy-empanada-b618cc.netlify.app/linkedin", client_id: "78m6p6keu2thh4", client_secret: "yBPGsFCpqVMuXc8M"} , config).then(res =>{
+       axios.get('https://www.linkedin.com/oauth/v2/accessToken',{mode: 'no-cors'}, {grant_type: "authorization_code", code, redirect_uri: "http://localhost:3000/linkedin", client_id: "78m6p6keu2thh4", client_secret: "yBPGsFCpqVMuXc8M"} , config).then(res =>{
          console.log(res);
         
      }).catch(err =>{
@@ -103,11 +128,10 @@ const Register = () => {
         <div className='container' id='register'>
             <div className='register_container'>
                 <h3>Register yourself on the network</h3>
-                <a href="http://localhost:3000/linkedin">Linkedinnnn</a>
                 <div className='register_info'>
                   <h5>We provide access to top companies, a community of experts, and resources that can help accelerate your career.</h5>
                   <div className='in_register'>
-                    <span className='btn_linkedin' onClick={() => linkedInLogin()}> <span>in</span> Sign In with Linkedin </span>
+                    <span className='btn_linkedin'><a href='https://toptal.ibrcloud.com/api/v1/auth/login-linkedin' ><span>in</span> Sign In with Linkedin</a>  </span>
                     <p>By clicking Sign in with linkedin, you agree to let Topptalent store your Linkedin Profile</p>
                     <span className='or'>Or</span>
                   </div>

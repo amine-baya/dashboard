@@ -36,6 +36,7 @@ function App() {
                 <Route path="" element={<LoginScreen />} />
                 <Route path="client" element={<Form />} />
                 <Route path="register" element={<Register />} />
+                <Route path="register/:token" element={<Register />} />
                 <Route path="professional-need" element={<ProfessionalNeedScreen />} />
                 <Route path="schedule" element={<ScheduleScreen />} />
                 <Route path="date-and-time" element={<DateAndTime />} />

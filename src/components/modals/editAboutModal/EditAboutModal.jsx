@@ -1,11 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Modal } from 'react-bootstrap'
+import useAuth from '../../../hooks/useAuth'
 import Input from '../../input/Input'
 import TextArea from '../../textarea/TextArea'
 import './editAboutModal.css'
 
 
 const EditAboutModal = (props) => {
+
+  const {personalData} = useAuth()
+  const [firstName,setFirstName] = useState('')
+  const [lastName,setLastName] = useState('')
+  const [email,setEmail] = useState('')
+  const [phone,setPhone] = useState('')
+  const [title,setTitle] = useState('')
+  const [aboutText, setAboutText] = useState("")
+  const [countryVal, setCountryVal] = useState("")
+  const [nationalityVal, setNationalityVal] = useState("")
+
+  console.log(personalData);
     return (
         <Modal
           {...props}
@@ -22,17 +35,47 @@ const EditAboutModal = (props) => {
 
             
             <div className='edit_inputs_project' >
-            <Input label="Full Name" placeH="Austin Robertson" type="text" />
-            <div className='edit_inputs_project_grid'>
-                <Input label="Email address" placeH="nikijone@demoo.com" type="email" />
-                <Input label="Mobile No" placeH="001235125612" type="mobile" />
-            </div> 
-            <Input label="Title that descibe you" placeH="Graphic designer" type="text" /> 
+            <div className='input_component'>
+                  <label className='label'>First Name</label>
+                  <input type="text"  value={firstName} onChange={(e) => setFirstName(e.target.value)}/>
+            </div>
 
-            <TextArea label="Short Description" placeH="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo" />
+             <div className='input_component'>
+                  <label className='label'>Last Name</label>
+                  <input type="text"  value={lastName} onChange={(e) => setLastName(e.target.value)}/>
+            </div> 
+
             <div className='edit_inputs_project_grid'>
-                <Input label="City" placeH="New York" type="text" />
-                <Input label="Country" placeH="Singapore" type="text" />
+                
+                <div className='input_component'>
+                      <label className='label'>Email address</label>
+                      <input type="email"  value={email} onChange={(e) => setEmail(e.target.value)}/>
+                </div> 
+                <div className='input_component'>
+                      <label className='label'>Mobile No</label>
+                      <input type="mobile"  placeholder='001235125612' value={phone} onChange={(e) => setPhone(e.target.value)}/>
+                </div> 
+            </div> 
+            <div className='input_component'>
+                      <label className='label'>Title that descibe you</label>
+                      <input type="email"  value={title} onChange={(e) => setTitle(e.target.value)}/>
+            </div> 
+            
+            <label className='label'>Short Description.</label>
+
+            <textarea id="areaText" name="story" placeholder='Tell us about yourself.' value={aboutText} onChange={(e)=>setAboutText(e.target.value)} >
+                  
+            </textarea> 
+            <div className='edit_inputs_project_grid'>
+                
+                <div className='input_component'>
+                      <label className='label'>Nationality</label>
+                      <input type="email"  value={nationalityVal} onChange={(e) => setNationalityVal(e.target.value)}/>
+                </div>
+                <div className='input_component'>
+                          <label className='label'>Country</label>
+                          <input type="email"  value={countryVal} onChange={(e) => setCountryVal(e.target.value)}/>
+                </div>
             </div> 
             </div>
 

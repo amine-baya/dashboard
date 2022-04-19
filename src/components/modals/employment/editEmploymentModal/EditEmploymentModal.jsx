@@ -6,8 +6,6 @@ import './editEmploymentModal.css'
 import useAuth from '../../../../hooks/useAuth';
 import axios from 'axios'
 
-
-
 const EditEmploymentModal = (props) => {
 
   const {userInfo, select3, setSelect3} = useAuth()
