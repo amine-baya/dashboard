@@ -60,7 +60,7 @@ const DashboardEditing = () => {
             console.log("must verify the url");
           })
         }, [userInfo?.token])
-    
+    console.log(personalData);
   return (
          <>
             <DashboardNavbar />

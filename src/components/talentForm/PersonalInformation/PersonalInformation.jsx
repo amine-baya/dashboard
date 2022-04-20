@@ -68,7 +68,7 @@ const PersonalInformation = () => {
              setImage(res.data.image[0])
          
          }).catch(err =>{
-           console.log(err);
+           console.log(err.response.data,"noo");
         })
    }
 

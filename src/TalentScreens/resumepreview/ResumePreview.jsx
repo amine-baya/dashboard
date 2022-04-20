@@ -14,6 +14,7 @@ const ResumePreview = () => {
     const [allPortfolio, setAllPortfolio] = useState([]);
     let navigate = useNavigate()
     
+    
     useEffect(() =>  {
         let one = "https://toptal.ibrcloud.com/api/v1/user/education-all"
         let two = "https://toptal.ibrcloud.com/api/v1/user/employment-all"
@@ -31,7 +32,7 @@ const ResumePreview = () => {
         const requestThree =   axios.get(three,config);
         const requestFour =   axios.get(four,config);
 
-        axios.all([requestThree]).then(axios.spread((...responses) => {
+        axios.all([requestOne, requestTwo,requestThree,requestFour]).then(axios.spread((...responses) => {
             setAllEducation(responses[0].data)
             setAllEmployment(responses[1].data)
             setAllPortfolio(responses[2].data)
@@ -43,9 +44,6 @@ const ResumePreview = () => {
             console.log("must verify the url");
           })
         }, [userInfo?.token])
-    
-        console.log("uu", data);
-  
 
         useEffect(() => { 
             
@@ -66,6 +64,8 @@ const ResumePreview = () => {
             })
             
         },[userInfo] )
+    
+  
     
          const globalSkills = data?.kips?.map(g => g.subcategory).flat()
         

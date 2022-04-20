@@ -1,9 +1,57 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useState } from 'react'
 import { Modal } from 'react-bootstrap'
+import useAuth from '../../../hooks/useAuth'
 import './changePhotoModal.css'
 
 
 const ChangePhotoModal = (props) => {
+  const [image,setImage] = useState()
+  const {userInfo} = useAuth()
+
+  const uploadFileHandler = async (e) => {
+    const files = e.target.files
+    const formData = new FormData()
+    formData.append('image', files[0])
+
+       const config = {
+         headers: {
+           Authorization: ` Bearer ${userInfo.token}`,
+           'Content-Type': 'multipart/form-data',
+         },
+       }
+       await axios.post('https://toptal.ibrcloud.com/api/v1/user/portfolio-image-uploads',formData, config).then(res => {
+         setImage(res.data.image[0])
+     
+     }).catch(err =>{
+       console.log(err.response.data);
+    })
+}
+
+const updateFileHandler = async (e) => {
+
+if(image !== undefined ){
+
+      const config = {
+        headers: {
+          Authorization: ` Bearer ${userInfo.token}`,
+        },
+      }
+      await axios.post('https://toptal.ibrcloud.com/api/v1/user/change-profile-picture',{profile:image}, config).then(res => {
+        console.log(res)
+
+    }).catch(err =>{
+      console.log(err.response.data);
+    })
+    
+    props.onHide()
+  }
+  
+}
+
+
+
+
     return (
         <Modal
           {...props}
@@ -23,6 +71,7 @@ const ChangePhotoModal = (props) => {
                     <img src="../../images/preview-img.png" className='change_photo_modal_img_profile' alt="profile" />
                     <img src="../../images/edit_photo.png" className='change_photo_modal_img_edit' alt="profile" />
                 </div>
+                <input type="file" id='file' className='upload_about_me' accept='image/*'  onChange={uploadFileHandler} />
                 <div className='change_photo_modal_rules' >
                     <p>Your photo should:</p>
                     <label>Be a close-up of your face</label>
@@ -33,7 +82,7 @@ const ChangePhotoModal = (props) => {
 
                 <div className='modal_buttons modal_buttons_photo_modal'>
                     <button classsName='btn_cancel_modal' onClick={props.onHide} style={{color: '#395F8C',border:'1px solid #395F8C'}} >Cancel</button>
-                    <button classsName="btn_cancel_save" onClick={props.onHide}  style={{background: '#395F8C',marginLeft:'25px'}}>Save</button>
+                    <button classsName="btn_cancel_save" onClick={() => updateFileHandler()}  style={{background: '#395F8C',marginLeft:'25px'}}>Save</button>
                 </div>
             </div>
            

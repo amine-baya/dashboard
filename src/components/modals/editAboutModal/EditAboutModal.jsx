@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { useState } from 'react'
 import { Modal } from 'react-bootstrap'
 import useAuth from '../../../hooks/useAuth'
@@ -8,7 +9,7 @@ import './editAboutModal.css'
 
 const EditAboutModal = (props) => {
 
-  const {personalData} = useAuth()
+  const {personalData,userInfo} = useAuth()
   const [firstName,setFirstName] = useState('')
   const [lastName,setLastName] = useState('')
   const [email,setEmail] = useState('')
@@ -18,7 +19,46 @@ const EditAboutModal = (props) => {
   const [countryVal, setCountryVal] = useState("")
   const [nationalityVal, setNationalityVal] = useState("")
 
-  console.log(personalData);
+
+
+ 
+
+
+  const updateAboutMe = ()=>{
+
+    const config = {
+      headers: {
+       'Content-Type' : 'application/json',
+        Authorization: ` Bearer ${userInfo?.token}`,
+      },
+    }
+
+    const aboutUs =  {
+      first_name: firstName,
+      last_name:lastName,
+      email: "abaya6054@gmail.com",
+      mobile: phone,
+      professional: "web developer",
+      about_self: aboutText,
+      country: countryVal,
+      state: nationalityVal
+      }
+
+    axios.patch(`https://toptal.ibrcloud.com/api/v1/user/about-us-update`,aboutUs, config).then(res => {
+      console.log(res.data); 
+  }).catch(err =>{
+      console.log(err.response);
+   })
+   props.onHide()
+   
+  }
+
+
+
+
+
+
+
     return (
         <Modal
           {...props}
@@ -82,7 +122,7 @@ const EditAboutModal = (props) => {
             
             <div className='modal_buttons modal_buttons_edit_about'>
                 <button classsName='btn_cancel_modal' onClick={props.onHide} style={{color: '#395F8C',border:'1px solid #395F8C'}} >Cancel</button>
-                <button classsName="btn_cancel_save" onClick={props.onHide}  style={{background: '#395F8C',marginLeft:'25px'}}>Save</button>
+                <button classsName="btn_cancel_save" onClick={() => updateAboutMe()}  style={{background: '#395F8C',marginLeft:'25px'}}>Save</button>
             </div>
            
 
