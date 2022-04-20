@@ -43,7 +43,7 @@ useEffect(() => {
         Authorization: ` Bearer ${token}`
     }
 }
-  console.log(config);
+  console.log(aww);
   axios.get('https://toptal.ibrcloud.com/api/v1/auth/linkedin-user',{token: token1},config).then(res =>{
     setUserInfo(res.data)
       localStorage.setItem("userInfo", JSON.stringify(res.data) )
