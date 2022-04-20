@@ -44,7 +44,7 @@ useEffect(() => {
     }
 }
   console.log(config);
-  axios.get('https://toptal.ibrcloud.com/api/v1/auth/linkedin-user',{token: token1}).then(res =>{
+  axios.get('https://toptal.ibrcloud.com/api/v1/auth/linkedin-user',{token: token1},config).then(res =>{
     setUserInfo(res.data)
       localStorage.setItem("userInfo", JSON.stringify(res.data) )
       navigate('/talent')
