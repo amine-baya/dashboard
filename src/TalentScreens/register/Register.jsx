@@ -37,19 +37,16 @@ useEffect(() => {
 
 
   setAw(token)
-  const config = {
-    headers: {
-        Authorization: ` Bearer ${token}`
-    }
-}
+  
   console.log(aww);
-  axios.get('https://toptal.ibrcloud.com/api/v1/auth/linkedin-user',{token: token}).then(res =>{
+  axios.get('https://toptal.ibrcloud.com/api/v1/auth/linkedin-user',{token}).then(res =>{
     setUserInfo(res.data)
       localStorage.setItem("userInfo", JSON.stringify(res.data) )
       navigate('/talent')
     
   }).catch(err =>{
       console.log(err.response.data);
+      console.log(token)
   })
   
 
