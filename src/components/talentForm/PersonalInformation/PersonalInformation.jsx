@@ -8,7 +8,7 @@ import useAuth from '../../../hooks/useAuth'
 
 const PersonalInformation = () => {
 
-  const {userInfo, select1} = useAuth()
+  const {userInfo,personalData, select1} = useAuth()
 
   const {setTalentPage,image, setImage,ageVal, setageVal,countryVal, setCountryVal,nationalityVal, setNationalityVal} = useContext(TalentContextApi)
   const [age, setAge] = useState([])
@@ -38,7 +38,7 @@ const PersonalInformation = () => {
       const requestFour =   axios.get(four);
 
       
-
+      setImage(personalData?.profile)
       axios.all([requestOne, requestTwo, requestThree,requestFour]).then(axios.spread((...responses) => {
         setAge(responses[0].data)
         setCountry(responses[1].data)
@@ -103,6 +103,7 @@ const PersonalInformation = () => {
       }
   }
 
+  console.log(image);
   return (
     <div>
     <div className='container' id='Personal_information'>

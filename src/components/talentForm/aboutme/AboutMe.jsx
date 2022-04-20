@@ -13,6 +13,7 @@ const AboutMe = () => {
     const [subkpis3, setSubkpis3] = useState([])
     const [subkpis4, setSubkpis4] = useState([])
 
+
     const {userInfo,sales,marketing,finance,development} = useAuth()
 
 
@@ -70,7 +71,6 @@ const AboutMe = () => {
       const submitHandler = async (e) => {
         e.preventDefault()
           const kips = [ subkpis1[0],subkpis2[0],subkpis3[0],subkpis4[0] ]
-          console.log(kips);
           setTalentPage((currPage) => currPage + 1)
           const config = {
               headers: {
