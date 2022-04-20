@@ -35,7 +35,6 @@ const Register = () => {
 useEffect(() => {   
   if(token !== null ){
 
-  const  token1 = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjVmZWQwMDhlZjQ1OTNmZDJkNzAxNzUiLCJuYW1lIjoiaGFyc2ggcGFsIiwiZW1haWwiOiJoYXJzaHBhbDFoOEBnbWFpbC5jb20iLCJyb2xlIjoiaXNUYWxlbnQiLCJpYXQiOjE2NTA0NTU1NjgsImV4cCI6MTY1MzA0NzU2OH0.BEb53vkCYKhIUmTV35k3DUVEA-kVrs7htLzbBqWpbP8"
 
   setAw(token)
   const config = {
@@ -44,7 +43,7 @@ useEffect(() => {
     }
 }
   console.log(aww);
-  axios.get('https://toptal.ibrcloud.com/api/v1/auth/linkedin-user',{token: token1},config).then(res =>{
+  axios.get('https://toptal.ibrcloud.com/api/v1/auth/linkedin-user',{token: token}).then(res =>{
     setUserInfo(res.data)
       localStorage.setItem("userInfo", JSON.stringify(res.data) )
       navigate('/talent')
