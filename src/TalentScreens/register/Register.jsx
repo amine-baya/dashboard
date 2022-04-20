@@ -39,7 +39,7 @@ useEffect(() => {
   setAw(token)
   
   console.log(aww);
-  axios.get('https://toptal.ibrcloud.com/api/v1/auth/linkedin-user',{token}).then(res =>{
+  axios.get('https://toptal.ibrcloud.com/api/v1/auth/linkedin-user',token).then(res =>{
     setUserInfo(res.data)
       localStorage.setItem("userInfo", JSON.stringify(res.data) )
       navigate('/talent')
