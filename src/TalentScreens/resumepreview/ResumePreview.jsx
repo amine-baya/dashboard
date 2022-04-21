@@ -15,55 +15,75 @@ const ResumePreview = () => {
     let navigate = useNavigate()
     
     
-    useEffect(() =>  {
-        let one = "https://toptal.ibrcloud.com/api/v1/user/education-all"
-        let two = "https://toptal.ibrcloud.com/api/v1/user/employment-all"
-        let three = "https://toptal.ibrcloud.com/api/v1/user/portfolio-all"
-        let four = "https://toptal.ibrcloud.com/api/v1/user/get-user-information"
-        const config = {
-            headers: {
-           'Content-Type': 'application/json',
-           Authorization: ` Bearer ${userInfo?.token}`,
+    // useEffect(() =>  {
+    //     let one = "https://toptal.ibrcloud.com/api/v1/user/education-all"
+    //     let two = "https://toptal.ibrcloud.com/api/v1/user/employment-all"
+    //     let three = "https://toptal.ibrcloud.com/api/v1/user/portfolio-all"
+    //     let four = "https://toptal.ibrcloud.com/api/v1/user/get-user-information"
+    //     const config = {
+    //         headers: {
+    //        'Content-Type': 'application/json',
+    //        Authorization: ` Bearer ${userInfo?.token}`,
    
-            },
-        }
-        const requestOne =    axios.get(one,config);
-        const requestTwo =    axios.get(two,config);
-        const requestThree =   axios.get(three,config);
-        const requestFour =   axios.get(four,config);
+    //         },
+    //     }
+    //     const requestOne =    axios.get("https://toptal.ibrcloud.com/api/v1/user/education-all",config);
+    //     const requestTwo =    axios.get("https://toptal.ibrcloud.com/api/v1/user/employment-all",config);
+    //     const requestThree =   axios.get("https://toptal.ibrcloud.com/api/v1/user/portfolio-all",config);
+    //     const requestFour =   axios.get("https://toptal.ibrcloud.com/api/v1/user/get-user-information",config);
 
-        axios.all([requestOne, requestTwo,requestThree,requestFour]).then(axios.spread((...responses) => {
-            setAllEducation(responses[0].data)
-            setAllEmployment(responses[1].data)
-            setAllPortfolio(responses[2].data)
-            setData(responses[3].data)
-            setPersonalData(responses[3].data)
+    //     axios.all([requestOne, requestTwo,requestThree,requestFour]).then(axios.spread((...responses) => {
+    //         setAllEducation(responses[0].data)
+    //         setAllEmployment(responses[1].data)
+    //         setAllPortfolio(responses[2].data)
+    //         setData(responses[3].data)
+    //         setPersonalData(responses[3].data)
          
-        })).catch(errors => {
+    //     })).catch(errors => {
         
-            console.log("must verify the url");
-          })
-        }, [userInfo?.token])
+    //         console.log(errors.response);
+    //       })
+    //     }, [userInfo?.token])
 
-        useEffect(() => { 
+         useEffect(() => { 
             
-            const config = {
-                headers: {
-               'Content-Type': 'application/json',
-               Authorization: ` Bearer ${userInfo?.token}`,
+             const config = {
+                 headers: {
+                'Content-Type': 'application/json',
+                Authorization: ` Bearer ${userInfo?.token}`,
        
-                },
-            }
+                 },
+             }
   
-            axios.get('https://toptal.ibrcloud.com/api/v1/user/get-user-information',config).then(res =>{
-                setData(res.data)
-                setPersonalData(res.data)
-              
+             axios.get('https://toptal.ibrcloud.com/api/v1/user/education-all',config).then(res =>{
+                setAllEducation(res.data)
             }).catch(err =>{
                 console.err("must verify the url");
             })
+
+            axios.get('https://toptal.ibrcloud.com/api/v1/user/employment-all',config).then(res =>{
+                setAllEmployment(res.data)  
+            }).catch(err =>{
+                console.err("must verify the url");
+            })
+
+            axios.get('https://toptal.ibrcloud.com/api/v1/user/portfolio-all',config).then(res =>{
+                setAllPortfolio(res.data)
+                
+            }).catch(err =>{
+                console.err("must verify the url");
+            })
+
+
+
+             axios.get('https://toptal.ibrcloud.com/api/v1/user/get-user-information',config).then(res =>{
+                 setData(res.data)
+                 setPersonalData(res.data)  
+             }).catch(err =>{
+                 console.err("must verify the url");
+             })
             
-        },[userInfo] )
+         },[userInfo] )
     
   
     
