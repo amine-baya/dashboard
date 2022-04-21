@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, {useEffect, useState } from 'react'
 import { Form } from 'react-bootstrap'
-import { Link, useNavigate,useSearchParams,useLocation } from 'react-router-dom'
+import { Link, useNavigate,useSearchParams } from 'react-router-dom'
 import Header from '../../components/header/Header'
 import  { useLinkedIn } from 'react-linkedin-login-oauth2';
 import useAuth from '../../hooks/useAuth'
@@ -18,6 +18,8 @@ const Register = () => {
   const [roles,serRoles] = useState([])
   const [firstName,setFirstName] = useState('')
   const [lastName,setLastName] = useState('')
+  const [address,setAddress] = useState('')
+  const [phone,setPhoneNumber] = useState('')
   const [email,setEmail] = useState('')
   const [password,setPassword] = useState('')
   const [professional,setProfessional] = useState('')
@@ -27,7 +29,6 @@ const Register = () => {
 
   let navigate = useNavigate()
 
-  
   
   const token = searchParams.get('auth_token')
 
@@ -76,7 +77,7 @@ useEffect(() => {
             'Content-Type': 'application/json',
         }
     }
-     await axios.post('https://toptal.ibrcloud.com/api/v1/auth/register', {first_name:firstName, last_name:lastName, email, password,professional_role: professional, role}, config).then(res =>{
+     await axios.post('https://toptal.ibrcloud.com/api/v1/auth/register', {first_name:firstName, last_name:lastName, email, password,professional_role: professional, role,mobile:parseInt(phone),address}, config).then(res =>{
       setUserInfo(res.data)
       localStorage.setItem("userInfo", JSON.stringify(res.data))
       if (role === "isClient") {
@@ -153,11 +154,19 @@ useEffect(() => {
                           </Form.Select>
                           <div className='input_component'>
                             <label className='label'>First Name*</label>
-                            <input type="text" placeholder="Enter Full Name " onChange={(e) => setFirstName(e.target.value)}/>
+                            <input type="text" placeholder="Enter First Name " onChange={(e) => setFirstName(e.target.value)}/>
                           </div>
                           <div className='input_component'>
                             <label className='label'>Last Name*</label>
-                            <input type="text" placeholder="Enter Full Name " onChange={(e) => setLastName(e.target.value)}/>
+                            <input type="text" placeholder="Enter Last Name " onChange={(e) => setLastName(e.target.value)}/>
+                          </div>
+                          <div className='input_component'>
+                            <label className='label'>Address</label>
+                            <input type="text" placeholder="Enter Address " onChange={(e) => setAddress(e.target.value)}/>
+                          </div>
+                          <div className='input_component'>
+                            <label className='label'>Phone Number</label>
+                            <input type="tel" placeholder="Enter Phone Number " onChange={(e) => setPhoneNumber(e.target.value)}/>
                           </div>
                           <div className='input_component'>
                             <label className='label'>Email Address*</label>

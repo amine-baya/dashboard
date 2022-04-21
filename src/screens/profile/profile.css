@@ -18,6 +18,12 @@ border-radius: 10px;
 .profile_box .profile_box_name_img{
     display: flex;
 }
+.profile_box .profile_box_name_img img{
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+
+}
 
 .profile_box .profile_box_btn
 {

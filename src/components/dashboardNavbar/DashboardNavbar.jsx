@@ -26,7 +26,7 @@ const DashboardNavbar = () => {
         <div className="menu_dashboard_navbar">
             <ul>
               <li><img src='../../images/calendar.png' alt='Calender' /> <span>Calender</span></li>
-              <li><img src='../../images/profile.png' alt='Profile' /> <span>Profile</span></li>
+              <li onClick={()=> navigate("/profile")}><img src='../../images/profile.png' alt='Profile' /> <span>Profile</span></li>
               <li><img src='../../images/candidate.png' alt='Candidates' /> <span>Candidates</span></li> 
               <li onClick={()=> navigate("/resume")}><ImProfile color="#A3AED0" size="1.7em" /> <span style={{paddingLeft:"20px"}}>resume</span></li> 
               <li onClick={()=> logout()}><AiOutlineLogout color="#A3AED0" size="1.7em" /> <span style={{paddingLeft:"20px"}}>logOut</span></li> 

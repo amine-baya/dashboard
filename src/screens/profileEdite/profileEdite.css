@@ -5,8 +5,8 @@
 .eprofile_container
 {
     background: #FFFFFF;
-box-shadow: 4px 4px 20px rgba(220, 220, 220, 0.8);
-border-radius: 10px;
+    box-shadow: 4px 4px 20px rgba(220, 220, 220, 0.8);
+    border-radius: 10px;
     margin: 40px 200px;
     padding: 30px 100px;
 }
@@ -18,8 +18,26 @@ border-radius: 10px;
     height: 100%;
     position: relative;
 }
-.eprofile_box .eprofile_box_name_img span
+
+.eprofile_box .eprofile_box_name_img .eprofile_box_name_img_profile{
+
+    width: 188px;
+    height: 187px;
+    border-radius: 50%;
+
+}
+
+.eprofile_box .eprofile_box_name_img input[type="file"]
+{ 
+  display: none;
+    
+}
+
+
+
+.eprofile_box .eprofile_box_name_img label
 {
+    display: block;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -29,6 +47,7 @@ border-radius: 10px;
     height: 187px;
     background: rgba(72, 72, 72, 0.49);
     line-height: 187px;
+    margin: 0;
 
 }
 
