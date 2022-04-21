@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Modal } from 'react-bootstrap'
 import useAuth from '../../../hooks/useAuth'
 import './changePhotoModal.css'
@@ -7,7 +7,18 @@ import './changePhotoModal.css'
 
 const ChangePhotoModal = (props) => {
   const [image,setImage] = useState()
-  const {userInfo} = useAuth()
+  const {userInfo,personalData} = useAuth()
+
+
+  useEffect(() => {
+    
+    if(personalData){
+      
+      setImage(personalData.profile)
+    }
+    
+  }, [personalData])
+
 
   const uploadFileHandler = async (e) => {
     const files = e.target.files
@@ -68,10 +79,10 @@ if(image !== undefined ){
 
             <div className='change_photo_modal_container' >
                 <div className='change_photo_modal_img' >
-                    <img src="../../images/preview-img.png" className='change_photo_modal_img_profile' alt="profile" />
-                    <img src="../../images/edit_photo.png" className='change_photo_modal_img_edit' alt="profile" />
+                    <img src={image ? image : "../../images/preview-img.png"} className='change_photo_modal_img_profile' alt="profile" />
+                  <input type="file" id='file' className='upload_about_me' accept='image/*'  onChange={uploadFileHandler} />
+                    <label htmlFor='file'><img src="../../images/edit_photo.png" className='change_photo_modal_img_edit' alt="profile" /></label>  
                 </div>
-                <input type="file" id='file' className='upload_about_me' accept='image/*'  onChange={uploadFileHandler} />
                 <div className='change_photo_modal_rules' >
                     <p>Your photo should:</p>
                     <label>Be a close-up of your face</label>

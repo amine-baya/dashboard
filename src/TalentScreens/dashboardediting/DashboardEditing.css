@@ -43,6 +43,7 @@
 #dashboard_editing .dashboard_editing_header .dashboard_editing_header_info .dashboard_editing_header_img img{
     width: 100%;
     height: 100%;
+    border-radius: 50%;
 }
 
 #dashboard_editing .dashboard_editing_header .dashboard_editing_header_info h4 {
