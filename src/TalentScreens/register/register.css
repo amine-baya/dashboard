@@ -26,6 +26,12 @@ line-height: 30px;
     font-size: 14px;
     color: #696F79;
 }
+
+#register .register_container .register_info .in_register a
+{
+   text-decoration: none;
+}
+
 #register .register_container .register_info .in_register .btn_linkedin
 {
     margin-top: 25px;

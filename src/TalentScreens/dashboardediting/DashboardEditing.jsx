@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './DashboardEditing.css'
 import DashboardHeader from '../../components/dashboardHeader/DashboardHeader'
 import DashboardNavbar from '../../components/dashboardNavbar/DashboardNavbar'
@@ -16,6 +16,7 @@ import useAuth from '../../hooks/useAuth'
 import RemovePortfolioModal from '../../components/modals/portfolio/removePortfolioModal/RemovePortfolioModal'
 import RemoveEducationModal from '../../components/modals/education/removeEducationModal/RemoveEducationModal'
 import axios from 'axios'
+import { UserInfo } from '../../helpers/ContextApi'
 
 
 const DashboardEditing = () => {
@@ -33,9 +34,24 @@ const DashboardEditing = () => {
     const [allEducation, setAllEducation] = useState([]);
     const [allEmployment, setAllEmployment] = useState([]);
     const [allPortfolio, setAllPortfolio] = useState([]);
-    const {personalData,userInfo} = useAuth()
+    const [exp, setExp] = useState([]);
+    const ref = useRef(null);
+    const {personalData,userInfo, dashbordEdit} = useAuth()
     
     useEffect(() =>  {
+
+        // let x = 0;
+
+        //     const intervalID = setInterval(function () {
+        //         ref.current.click();
+        //         console.log("Hi");
+             
+        //         if (++x === 5) {
+        //             window.clearInterval(intervalID);
+        //         }
+        //      }, 200);
+        
+        
         let one = "https://toptal.ibrcloud.com/api/v1/user/education-all"
         let two = "https://toptal.ibrcloud.com/api/v1/user/employment-all"
         let three = "https://toptal.ibrcloud.com/api/v1/user/portfolio-all"
@@ -59,8 +75,72 @@ const DashboardEditing = () => {
         
             console.log("must verify the url");
           })
-        }, [userInfo?.token])
+        }, [userInfo?.token, dashbordEdit])
+
+        
+        
     console.log(personalData);
+
+
+    // const calcDate =(dateA, dateB,index)=>{
+    //     /*
+    //     * calcDate() : Calculates the difference between two dates
+    //     * @date1 : "First Date in the format M-D-Y"
+    //     * @date2 : "Second Date in the format M-D-Y"
+    //     * return : Array
+    //     */
+    //     //Initiate date object
+    //     const dt_date1 = new Date(dateA)
+    //     const dt_date2= new Date(dateB)
+    //     //Get the Timestamp
+    //     let date1 =dt_date1.getTime()
+    //     let date2 = dt_date2.getTime()
+        
+    //     let calc
+    //     //Check which timestamp is greater
+    //     if (date1 > date2){
+    //         calc = new Date(date1 - date2) 
+    //     }else{
+    //         calc = new Date(date2 - date1) 
+    //     }
+    //     //Retrieve the date, month and year
+    //     let calcFormatTmp = calc.getDate() + '-' + (calc.getMonth()+1)+ '-'+calc.getFullYear()
+    //     //Convert to an array and store
+    //     let calcFormat = calcFormatTmp.split("-")
+
+    //     //Subtract each member of our array from the default date
+    //     let days_passed = parseInt(Math.abs(calcFormat[0]) - 1);
+    //     let months_passed = parseInt(Math.abs(calcFormat[1]) - 1);
+    //     let years_passed = parseInt(Math.abs(calcFormat[2] -   1970));
+
+    //     //Set up custom text
+    //     const yrsTxt =["year", "years"];
+    //     const mnthsTxt = ["month", "months"];
+    //     const daysTxt = ["day", "days"];
+    //     //Convert to days and sum together
+    //     let total_days = (years_passed * 365) + (months_passed * 30.417) + days_passed;
+
+    //     //display result with custom text
+    //     const result = ((years_passed === 1) ? years_passed+ ' '+ yrsTxt[0] + ' ' : (years_passed > 1 )  ? 
+    //     years_passed+ ' ' + yrsTxt[1] + ' ' : '') + 
+    //     ((months_passed === 1) ? months_passed+ ' ' + mnthsTxt[0] :  (months_passed > 1) ? 
+    //     months_passed+ ' ' + mnthsTxt[1] + ' ' : '') +
+    //     ((days_passed === 1) ? days_passed+ ' ' + daysTxt[0] : (days_passed > 1) ? 
+    //     days_passed+ ' ' + daysTxt[1] : '' );
+
+    //     //Build our return value
+    //     const retval = {
+    //         "total_days" : Math.round(total_days),
+    //         "result" :  result,
+    //         "index" : index
+    //     }
+
+    //     //return the result
+    //     setExp([...exp,retval])
+    //     //return retval;
+    //                     }
+
+    //                    console.log(exp);
   return (
          <>
             <DashboardNavbar />
@@ -211,10 +291,10 @@ const DashboardEditing = () => {
                                     <h4>Employment</h4>
                                     <span onClick={() => setNewEmploymentModalShow(true)}>Add New</span>
                             </div>
-                        {allEmployment  && allEmployment?.map(el => (
+                        {allEmployment  && allEmployment?.map((el,index )=> (
                             <div className='dashboard_editing_body_employment_info'>
                                 <div className='dashboard_editing_body_employment_info_edit'><h5>{el.position}</h5>
-                                <span>10 year Experience</span> 
+                                <span>10 year Experience  </span> 
                                 <img src="../../images/pen-edit.png" alt="edit" onClick={() => {setEditEmploymentModalShow({bool: true, id: el._id}) }}/> 
                                 <img src="../../images/trash-delete.png" alt="delit" onClick={() => {setRemoveEmploymentModalShow({bool: true, id: el._id}) }}/>
                                 </div>

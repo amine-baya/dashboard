@@ -8,7 +8,7 @@ import axios from 'axios'
 
 const EditEmploymentModal = (props) => {
 
-  const {userInfo, select3, setSelect3} = useAuth()
+  const {userInfo, select3, setSelect3, dashbordEdit,setDashbordEdit} = useAuth()
   const [ isEmployed, setIsEmployed] = useState()
   const [ positionName,setPositionName] = useState()
   const [ hireFrom,setHireFrom] = useState()
@@ -54,6 +54,7 @@ const EditEmploymentModal = (props) => {
        setHireTo(res.data.to)
        setMySkills(res.data.skills) 
        setSelect3(res.data.skills[0].subcategory)
+
       }).catch(err =>{
           console.log("must verify the url");
       })
@@ -80,6 +81,8 @@ const EditEmploymentModal = (props) => {
 
     axios.patch(`https://toptal.ibrcloud.com/api/v1/user/employment/${props?.id}`,employments, config).then(res => {
       console.log(res.data); 
+      setDashbordEdit(!dashbordEdit)
+
   }).catch(err =>{
       console.log(err.response);
    })

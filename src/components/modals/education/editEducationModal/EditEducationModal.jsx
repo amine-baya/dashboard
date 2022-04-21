@@ -7,7 +7,8 @@ import './editEducationModal.css'
 
 const EditEducationModal = (props) => {
 
-  const {userInfo} = useAuth()
+      
+  const {userInfo, setDashbordEdit, dashbordEdit} = useAuth()
   const [schoolVal, setschoolVal] = useState("")
   const [degreeVal, setdegreeVal] = useState("")
   const [date_education_from, setdate_education_from] = useState("")
@@ -77,6 +78,8 @@ const EditEducationModal = (props) => {
 
     axios.patch(`https://toptal.ibrcloud.com/api/v1/user/education/${props?.id}`,educations, config).then(res => {
       console.log(res.data); 
+      setDashbordEdit(!dashbordEdit)
+      
   }).catch(err =>{
       console.log(err.response);
    })

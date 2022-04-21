@@ -7,7 +7,7 @@ import './newEducationModal.css'
 
 const NewEducationModal = (props) => {
 
-  const {userInfo} = useAuth()
+  const {userInfo, dashbordEdit,setDashbordEdit} = useAuth()
   const [schoolVal, setschoolVal] = useState("")
   const [degreeVal, setdegreeVal] = useState("")
   const [date_education_from, setdate_education_from] = useState("")
@@ -48,7 +48,6 @@ const NewEducationModal = (props) => {
          
        } 
       
-       console.log(educations);
             const config = {
               headers: {
             'Content-Type': 'application/json',
@@ -63,6 +62,7 @@ const NewEducationModal = (props) => {
         else{
             axios.post('https://toptal.ibrcloud.com/api/v1/user/education', educations, config).then(res => {
             console.log("done");
+            setDashbordEdit(!dashbordEdit)
             setschoolVal("")
             setdegreeVal("")
             setdate_education_from("")

@@ -8,7 +8,7 @@ import './removePortfolioModal.css'
 
 const RemovePortfolioModal = (props) => {
     
-    const {userInfo} = useAuth()
+    const {userInfo,dashbordEdit, setDashbordEdit} = useAuth()
 
     const deletePortfolio = () => {
         const config = {
@@ -20,6 +20,7 @@ const RemovePortfolioModal = (props) => {
 
         axios.delete(`https://toptal.ibrcloud.com/api/v1/user/portfolio/${props?.id}`, config).then(res =>{
           console.log("done");
+          setDashbordEdit(!dashbordEdit)
 
         }).catch(err =>{
             console.log("must verify the url");

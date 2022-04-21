@@ -27,6 +27,7 @@ export const UserInfoProvider = ( {children}) => {
     const [publicRelations,setPublicRelations] = useState([])
     const [verifiedEmailShow, setVerifiedEmailModalShow] = useState(false);
     const [verifyEmailShow, setVerifyEmailModalShow] = useState(false);
+    const [dashbordEdit, setDashbordEdit] = useState(false)
 
     useEffect(()  =>  {
         setUserInfo(localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : [])
@@ -52,7 +53,7 @@ export const UserInfoProvider = ( {children}) => {
         }
    
        
-    }, [userInfo])
+    }, [userInfo, dashbordEdit])
 
 
 
@@ -62,7 +63,7 @@ export const UserInfoProvider = ( {children}) => {
                     marketing,setMarketing,finance,setFinance,development,setDevelopment, 
                     verifyEmailShow,setVerifyEmailModalShow,verifiedEmailShow,
                      setVerifiedEmailModalShow,long, setLong, many, setMany, level, setLevel, need, setNeed,
-                    web,setWeb,mobile,setMobile,dataSience,setDataSience,publicRelations,setPublicRelations}}>
+                    web,setWeb,mobile,setMobile,dataSience,setDataSience,publicRelations,setPublicRelations,dashbordEdit, setDashbordEdit}}>
 
           {children}
     </UserInfo2.Provider>

@@ -135,7 +135,7 @@ useEffect(() => {
                 <div className='register_info'>
                   <h5>We provide access to top companies, a community of experts, and resources that can help accelerate your career.</h5>
                   <div className='in_register'>
-                    <span className='btn_linkedin'><a href='https://toptal.ibrcloud.com/api/v1/auth/login-linkedin' ><span>in</span> Sign In with Linkedin</a>  </span>
+                  <a href='https://toptal.ibrcloud.com/api/v1/auth/login-linkedin' ><span className='btn_linkedin'><span>in</span> Sign In with Linkedin  </span></a>
                     <p>By clicking Sign in with linkedin, you agree to let Topptalent store your Linkedin Profile</p>
                     <span className='or'>Or</span>
                   </div>

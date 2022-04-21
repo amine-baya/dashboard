@@ -1,11 +1,14 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { UserInfo } from '../../helpers/ContextApi'
+import useAuth from '../../hooks/useAuth'
 import './dashboardHeader.css'
 
 
 const DashboardHeader = () => {
-  const {personalData} = useContext(UserInfo)
+  const {personalData} = useAuth(UserInfo)
  
+ 
+  console.log(personalData?.profile);
 
   return (
     <>
@@ -20,7 +23,7 @@ const DashboardHeader = () => {
             <div className="Dashboard_Header_notification">
               <ul>
                 <li><img src='../../images/notification.png' alt='notification' /></li>
-                <li className='Dashboard_Header_profile_image'><img src={personalData?.profile }  alt='profile' /> <span>{personalData?.first_name}</span></li>
+                <li className='Dashboard_Header_profile_image'><img src={personalData && personalData.profile }  alt='profile' /> <span>{personalData?.first_name}</span></li>
                 <li><img src='../../images/drop_down_header.png' alt='drop down ' /></li> 
               </ul> 
             </div>

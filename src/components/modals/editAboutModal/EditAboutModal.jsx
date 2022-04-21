@@ -1,6 +1,7 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Modal } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
 import useAuth from '../../../hooks/useAuth'
 import Input from '../../input/Input'
 import TextArea from '../../textarea/TextArea'
@@ -9,7 +10,7 @@ import './editAboutModal.css'
 
 const EditAboutModal = (props) => {
 
-  const {personalData,userInfo} = useAuth()
+  const {personalData,userInfo, setDashbordEdit, dashbordEdit} = useAuth()
   const [firstName,setFirstName] = useState('')
   const [lastName,setLastName] = useState('')
   const [email,setEmail] = useState('')
@@ -18,6 +19,22 @@ const EditAboutModal = (props) => {
   const [aboutText, setAboutText] = useState("")
   const [countryVal, setCountryVal] = useState("")
   const [nationalityVal, setNationalityVal] = useState("")
+
+
+
+  useEffect(() => {
+    if(personalData){
+      setFirstName(personalData.first_name)
+      setLastName(personalData.last_name)
+      setEmail(personalData.email)
+      setPhone(personalData.mobile)
+      setTitle(personalData.professional_role)
+      setAboutText(personalData.about_self)
+      setCountryVal(personalData.country)
+      setNationalityVal(personalData.nationality)
+    }
+  }, [personalData])
+  
 
 
 
@@ -36,16 +53,16 @@ const EditAboutModal = (props) => {
     const aboutUs =  {
       first_name: firstName,
       last_name:lastName,
-      email: "abaya6054@gmail.com",
+      email: email,
       mobile: phone,
-      professional: "web developer",
+      professional: title,
       about_self: aboutText,
       country: countryVal,
       state: nationalityVal
       }
 
     axios.patch(`https://toptal.ibrcloud.com/api/v1/user/about-us-update`,aboutUs, config).then(res => {
-      console.log(res.data); 
+      setDashbordEdit(!dashbordEdit)
   }).catch(err =>{
       console.log(err.response);
    })

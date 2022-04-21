@@ -8,7 +8,7 @@ import './removeEmploymentModal.css'
 
 const RemoveEmploymentModal = (props) => {
     
-    const {userInfo} = useAuth()
+    const {userInfo, dashbordEdit,setDashbordEdit} = useAuth()
 
     const deleteEmployment = () => {
         const config = {
@@ -21,6 +21,8 @@ const RemoveEmploymentModal = (props) => {
          
         axios.delete(`https://toptal.ibrcloud.com/api/v1/user/employment/${props?.id}`, config).then(res =>{
           console.log("done");
+      setDashbordEdit(!dashbordEdit)
+
          
         }).catch(err =>{
             console.log("must verify the url");

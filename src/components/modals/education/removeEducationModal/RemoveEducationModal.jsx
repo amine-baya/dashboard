@@ -8,7 +8,8 @@ import './removeEducationModal.css'
 
 const RemoveEducationModal = (props) => {
     
-    const {userInfo} = useAuth()
+  const {userInfo, dashbordEdit,setDashbordEdit} = useAuth()
+
 
     const deleteEducation = () => {
         const config = {
@@ -20,6 +21,7 @@ const RemoveEducationModal = (props) => {
 
         axios.delete(`https://toptal.ibrcloud.com/api/v1/user/education/${props?.id}`, config).then(res =>{
           console.log("done");
+          setDashbordEdit(!dashbordEdit)
 
         }).catch(err =>{
             console.log("must verify the url");

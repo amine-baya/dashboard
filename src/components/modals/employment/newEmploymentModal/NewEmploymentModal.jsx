@@ -9,7 +9,7 @@ import axios from 'axios'
 const NewEmploymentModal = (props) => {
 
 
-  const {userInfo, select3} = useAuth()
+  const {userInfo, select3, dashbordEdit,setDashbordEdit} = useAuth()
   const [ isEmployed, setIsEmployed] = useState()
   const [ positionName,setPositionName] = useState()
   const [ hireFrom,setHireFrom] = useState()
@@ -58,6 +58,8 @@ const NewEmploymentModal = (props) => {
 
     axios.post(`https://toptal.ibrcloud.com/api/v1/user/employment`,employments, config).then(res => {
       console.log("done"); 
+      setDashbordEdit(!dashbordEdit)
+
   }).catch(err =>{
       console.log(err.response.data);
    })

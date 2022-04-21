@@ -7,7 +7,7 @@ import './changePhotoModal.css'
 
 const ChangePhotoModal = (props) => {
   const [image,setImage] = useState()
-  const {userInfo,personalData} = useAuth()
+  const {userInfo,personalData,dashbordEdit, setDashbordEdit} = useAuth()
 
 
   useEffect(() => {
@@ -33,6 +33,7 @@ const ChangePhotoModal = (props) => {
        }
        await axios.post('https://toptal.ibrcloud.com/api/v1/user/portfolio-image-uploads',formData, config).then(res => {
          setImage(res.data.image[0])
+
      
      }).catch(err =>{
        console.log(err.response.data);

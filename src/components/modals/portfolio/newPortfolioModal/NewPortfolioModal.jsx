@@ -8,7 +8,7 @@ import Kpi4 from '../../../kpi4/Kpi4'
 const NewPortfolioModal = (props) => {
 
 
-  const {userInfo, select2,setSelect2} = useAuth()
+  const {userInfo, select2,setSelect2,dashbordEdit, setDashbordEdit} = useAuth()
   const [imageProject,setImageProject] = useState([])
   const [projectDescription, setProjectDescription] = useState("")
   const [projectName,setProjectName] = useState("")
@@ -79,6 +79,8 @@ const NewPortfolioModal = (props) => {
     else{
         await axios.post('https://toptal.ibrcloud.com/api/v1/user/portfolio',portfolio, config).then(res => {
         console.log("done");
+        setDashbordEdit(!dashbordEdit)
+
         setProjectName("")
         setImageProject([])
         setProjectDescription("")

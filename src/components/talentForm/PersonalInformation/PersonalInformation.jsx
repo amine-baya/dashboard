@@ -103,7 +103,6 @@ const PersonalInformation = () => {
       }
   }
 
-  console.log(image);
   return (
     <div>
     <div className='container' id='Personal_information'>

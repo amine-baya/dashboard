@@ -12,7 +12,7 @@ import axios from 'axios'
 
 const EditPortfolioModal = (props) => {
 
-  const {userInfo, select2,setSelect2} = useAuth()
+  const {userInfo, select2,setSelect2, dashbordEdit, setDashbordEdit} = useAuth()
   const [imageProject,setImageProject] = useState([])
   const [projectName,setProjectName] = useState("")
   const [projectDescription, setProjectDescription] = useState("")
@@ -78,6 +78,8 @@ const EditPortfolioModal = (props) => {
 
     axios.patch(`https://toptal.ibrcloud.com/api/v1/user/portfolio/${props?.id}`,portfolio, config).then(res => {
       console.log(res.data); 
+      setDashbordEdit(!dashbordEdit)
+
   }).catch(err =>{
       console.log(err.response);
    })
@@ -103,7 +105,7 @@ const EditPortfolioModal = (props) => {
           <Modal.Body>
 
             <div className='edit_img_project' >
-                <img src="../../../../images/edit_project.png" alt="sorry" />
+                <img src={imageProject? imageProject : "../../../../images/edit_project.png" } alt="project" />
             </div>
             <div className='edit_inputs_project' >
             <div className='input_component'>

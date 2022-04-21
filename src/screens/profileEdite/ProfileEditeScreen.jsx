@@ -13,7 +13,7 @@ const ProfileEdite = () => {
   const [email,setEmail] = useState('')
   const [phoneNumber,setPhoneNumber] = useState('')
   const [image,setImage] = useState()
-  const { personalData,userInfo} = useAuth()
+  const { personalData,userInfo, dashbordEdit,setDashbordEdit} = useAuth()
   let navigate = useNavigate()
 
   useEffect(() => {
@@ -81,6 +81,7 @@ if(image !== undefined ){
     }
      await axios.patch('https://toptal.ibrcloud.com/api/v1/user/update-profile', {first_name:firstName, last_name:lastName, email,mobile:parseInt(phoneNumber)}, config).then(res =>{
      console.log(res.data);
+     setDashbordEdit(!dashbordEdit)
      navigate('/profile')
   }).catch(err =>{
     console.log(err.response.data);
