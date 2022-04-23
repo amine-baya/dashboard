@@ -8,8 +8,7 @@ const RoleScreen = () => {
     const navigate = useNavigate()
   
 
-    const submitRole= async(e)=>{
-        e.preventDefault()
+    const submitRole= async()=>{
         const config = {
           headers: {
               'Content-Type': 'application/json',
