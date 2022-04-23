@@ -55,7 +55,7 @@ const TalentForm = () => {
       console.log(res.data.role);
 
       if(res.data.role === null){
-        navigate('resume')
+        navigate('/linkedin-role')
       }
      
 
