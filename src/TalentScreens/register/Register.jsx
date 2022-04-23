@@ -24,9 +24,9 @@ const Register = () => {
   const [password,setPassword] = useState('')
   const [professional,setProfessional] = useState('')
   const [role, setrole] = useState('isTalent')
-  const [searchParams, setSearchParams] =useSearchParams()
+  const [searchParams] =useSearchParams()
   const [aww,setAw] = useState('')
-  const [show,setShow] = useState(false)
+  const [show,setShow] = useState(true)
 
   let navigate = useNavigate()
 
@@ -94,33 +94,7 @@ useEffect(() => {
 
  
 
-   const { linkedInLogin } = useLinkedIn({
-     clientId: '78m6p6keu2thh4',
-     clientSecret: 'yBPGsFCpqVMuXc8M',
-     scope:'r_liteprofile r_emailaddress',
-     redirectUri: `http://localhost:3000/linkedin`,
-     onSuccess: (code) => {
-       console.log(code,"hello");
-       const config = {
-         headers: {
-           "Content-Type": `application/x-www-form-urlencoded`,
-           "Access-Control-Allow-Origin": "*",
-           Authorization: `Bearer ${code}`
-         },
-       }
-    
-       axios.get('https://www.linkedin.com/oauth/v2/accessToken',{mode: 'no-cors'}, {grant_type: "authorization_code", code, redirect_uri: "http://localhost:3000/linkedin", client_id: "78m6p6keu2thh4", client_secret: "yBPGsFCpqVMuXc8M"} , config).then(res =>{
-         console.log(res);
-        
-     }).catch(err =>{
-       console.log(err);
-     })
-     },
-     onError: (error) => {
-       console.log(error);
-      
-     },
-   });
+   
 
  
 
@@ -175,7 +149,7 @@ useEffect(() => {
                           </div>
                           <div className='input_component input_password_component'>
                             <label className='label'>Confirm Password*</label>
-                            <input type={show ? "password" : "text" } placeholder="Confirm Password" onChange={(e) => setPassword(e.target.value)}/>
+                            <input type={show  ? "password" : "text" } placeholder="Confirm Password" onChange={(e) => setPassword(e.target.value)}/>
                             { show === false ?
                             <BiShow onClick={()=>{setShow(true)}}  className='show_password' size="1.7em" />
                             :

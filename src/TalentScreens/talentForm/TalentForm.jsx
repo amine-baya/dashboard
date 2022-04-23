@@ -9,11 +9,12 @@ import EmploymentHistory from "../../components/talentForm/employmenthistory/Emp
 import Education from "../../components/talentForm/education/Education";
 import Confirmation from "../../components/talentForm/confirmation/Confirmation";
 import useAuth from "../../hooks/useAuth";
+import { Navigate, useNavigate } from "react-router-dom";
 
 
 const TalentForm = () => {
 
-  const {userInfo, setSelect1, setSelect2} = useAuth()
+  const {userInfo} = useAuth()
   const [talentPage, setTalentPage] = useState(0)
   const [aboutText, setAboutText] = useState("")
   const [cv,setCv] = useState("")
@@ -33,6 +34,8 @@ const TalentForm = () => {
   const [degreeVal, setdegreeVal] = useState("")
   const [date_education_from, setdate_education_from] = useState("")
   const [date_education_to, setdate_education_to] = useState("")
+
+  let navigate = useNavigate()
   
   useEffect(() => {
 
@@ -49,24 +52,12 @@ const TalentForm = () => {
 
     axios.get('https://toptal.ibrcloud.com/api/v1/user/get-user-information', config).then(res =>{
       localStorage.setItem("personalData", JSON.stringify(res.data) )
-      console.log(res.data);
+      console.log(res.data.role);
+
+      if(res.data.role === null){
+        navigate('resume')
+      }
      
-      //setSelect1(res.data.industries[0].subcategory);
-      //setSelect2(res.data.portfolio_services[0].subcategory);
-      //setAboutText(res.data.about_self)
-      //setCv(res.data.cv)
-      //setImage(res.data.profile)
-      //setageVal(res.data.age)
-      //setCountryVal(res.data?.country)
-      //setNationalityVal(res.data?.nationality)
-      //setImageProject(res.data.project_images)
-      //setProjectDescription(res.data.project_short_description)
-      //setProjectName(res.data.project_name)
-      //setIsEmployed(res.data.current_employee)
-      //setPositionName(res.data.position)
-      //setEmploymentDescription(res.data.emp_history_short_description)
-      //setHireFrom(res.data.date_hire_from)
-      //setHireTo(res.data.date_hire_to)
 
       
     }).catch(err =>{
