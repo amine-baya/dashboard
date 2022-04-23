@@ -37,7 +37,6 @@ const Register = () => {
 useEffect(() => {   
   if(token !== null ){
 
-
   setAw(token)
   
   console.log(aww);

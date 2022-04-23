@@ -1,10 +1,13 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 import './roleScreen.css'
 
 const RoleScreen = () => {
     const [selectedRole,setSelectedRole] = useState("isTalent")
+    const {userInfo} = useAuth()
+
     const navigate = useNavigate()
   
 
@@ -12,6 +15,7 @@ const RoleScreen = () => {
         const config = {
           headers: {
               'Content-Type': 'application/json',
+              Authorization: ` Bearer ${userInfo?.token}`,
           }
       }
 
