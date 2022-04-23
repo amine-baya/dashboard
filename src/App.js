@@ -19,13 +19,14 @@ import DashboardEditing from './TalentScreens/dashboardediting/DashboardEditing'
 import TalentForm from './TalentScreens/talentForm/TalentForm';
 import Layout from './Layout';
 import {LinkedInCallback} from 'react-linkedin-login-oauth2'
+import RoleScreen from './TalentScreens/roleScreen/RoleScreen';
 
 function App() {
 
 
   return (
 
-    <div className="App">
+    <>
       
         
           <Routes>    
@@ -51,14 +52,14 @@ function App() {
                 <Route path="dashboard-editing" element={<DashboardEditing />} />
                 <Route path="talent" element={<TalentForm />} />
                 <Route path="linkedin" element={<LinkedInCallback />} />
-                <Route path="linkedin/role" element={<LinkedInCallback />} />
+                <Route path="linkedin-role" element={<RoleScreen />} />
                 <Route path="*" element={<h1> noooo </h1> }/>
             </Route>
 
           </Routes>
          
       
-    </div>
+    </>
 
   );
 }
