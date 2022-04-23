@@ -5,7 +5,7 @@ import { Link, useNavigate,useSearchParams } from 'react-router-dom'
 import Header from '../../components/header/Header'
 import  { useLinkedIn } from 'react-linkedin-login-oauth2';
 import useAuth from '../../hooks/useAuth'
-import _ from 'lodash'
+import {BiShow,BiHide} from 'react-icons/bi'
 
 
 
@@ -26,6 +26,7 @@ const Register = () => {
   const [role, setrole] = useState('isTalent')
   const [searchParams, setSearchParams] =useSearchParams()
   const [aww,setAw] = useState('')
+  const [show,setShow] = useState(false)
 
   let navigate = useNavigate()
 
@@ -172,9 +173,14 @@ useEffect(() => {
                             <label className='label'>Email Address*</label>
                             <input type="email" placeholder="Enter Email Address " onChange={(e) => setEmail(e.target.value)}/>
                           </div>
-                          <div className='input_component'>
+                          <div className='input_component input_password_component'>
                             <label className='label'>Confirm Password*</label>
-                            <input type="password" placeholder="Confirm Password" onChange={(e) => setPassword(e.target.value)}/>
+                            <input type={show ? "password" : "text" } placeholder="Confirm Password" onChange={(e) => setPassword(e.target.value)}/>
+                            { show === false ?
+                            <BiShow onClick={()=>{setShow(true)}}  className='show_password' size="1.7em" />
+                            :
+                            <BiHide onClick={()=>{setShow(false)}}  className='show_password' size="1.7em" />
+                            }
                           </div>
                           <div>
                           <p>You acknowledge that the Topptalent screening process is confidential and that you will not publicly disclose details about this process. By submitting, you acknowledge that you have read and agreed to our <span>Terms and Conditions</span> , <span>Privacy Policy</span>, and <span>Cookie Policy</span>.</p>

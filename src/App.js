@@ -51,9 +51,8 @@ function App() {
                 <Route path="dashboard-editing" element={<DashboardEditing />} />
                 <Route path="talent" element={<TalentForm />} />
                 <Route path="linkedin" element={<LinkedInCallback />} />
+                <Route path="linkedin/role" element={<LinkedInCallback />} />
                 <Route path="*" element={<h1> noooo </h1> }/>
-
-
             </Route>
 
           </Routes>

@@ -92,6 +92,17 @@ line-height: 30px;
  {
      padding: 20px 30px;
  }
+
+ #register .register_container .register_info .input_password_component{
+     position: relative;
+ }
+ #register .register_container .register_info .show_password
+ {
+     
+     position: absolute;
+     left: 90%;
+     top: 55%;
+ }
  /*
 #register .register_container .register_info .nrl_register
 {

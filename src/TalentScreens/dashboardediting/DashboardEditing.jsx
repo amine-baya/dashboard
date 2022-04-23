@@ -76,71 +76,8 @@ const DashboardEditing = () => {
             console.log("must verify the url");
           })
         }, [userInfo?.token, dashbordEdit])
-
-        
-        
     console.log(personalData);
 
-
-    // const calcDate =(dateA, dateB,index)=>{
-    //     /*
-    //     * calcDate() : Calculates the difference between two dates
-    //     * @date1 : "First Date in the format M-D-Y"
-    //     * @date2 : "Second Date in the format M-D-Y"
-    //     * return : Array
-    //     */
-    //     //Initiate date object
-    //     const dt_date1 = new Date(dateA)
-    //     const dt_date2= new Date(dateB)
-    //     //Get the Timestamp
-    //     let date1 =dt_date1.getTime()
-    //     let date2 = dt_date2.getTime()
-        
-    //     let calc
-    //     //Check which timestamp is greater
-    //     if (date1 > date2){
-    //         calc = new Date(date1 - date2) 
-    //     }else{
-    //         calc = new Date(date2 - date1) 
-    //     }
-    //     //Retrieve the date, month and year
-    //     let calcFormatTmp = calc.getDate() + '-' + (calc.getMonth()+1)+ '-'+calc.getFullYear()
-    //     //Convert to an array and store
-    //     let calcFormat = calcFormatTmp.split("-")
-
-    //     //Subtract each member of our array from the default date
-    //     let days_passed = parseInt(Math.abs(calcFormat[0]) - 1);
-    //     let months_passed = parseInt(Math.abs(calcFormat[1]) - 1);
-    //     let years_passed = parseInt(Math.abs(calcFormat[2] -   1970));
-
-    //     //Set up custom text
-    //     const yrsTxt =["year", "years"];
-    //     const mnthsTxt = ["month", "months"];
-    //     const daysTxt = ["day", "days"];
-    //     //Convert to days and sum together
-    //     let total_days = (years_passed * 365) + (months_passed * 30.417) + days_passed;
-
-    //     //display result with custom text
-    //     const result = ((years_passed === 1) ? years_passed+ ' '+ yrsTxt[0] + ' ' : (years_passed > 1 )  ? 
-    //     years_passed+ ' ' + yrsTxt[1] + ' ' : '') + 
-    //     ((months_passed === 1) ? months_passed+ ' ' + mnthsTxt[0] :  (months_passed > 1) ? 
-    //     months_passed+ ' ' + mnthsTxt[1] + ' ' : '') +
-    //     ((days_passed === 1) ? days_passed+ ' ' + daysTxt[0] : (days_passed > 1) ? 
-    //     days_passed+ ' ' + daysTxt[1] : '' );
-
-    //     //Build our return value
-    //     const retval = {
-    //         "total_days" : Math.round(total_days),
-    //         "result" :  result,
-    //         "index" : index
-    //     }
-
-    //     //return the result
-    //     setExp([...exp,retval])
-    //     //return retval;
-    //                     }
-
-    //                    console.log(exp);
   return (
          <>
             <DashboardNavbar />
