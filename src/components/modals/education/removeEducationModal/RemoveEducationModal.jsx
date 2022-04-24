@@ -34,8 +34,6 @@ const RemoveEducationModal = (props) => {
     }
 
 
-
-
     return (
         <Modal
           {...props}
@@ -52,8 +50,7 @@ const RemoveEducationModal = (props) => {
                 </div>
                 <div className='remove_modal_p' >
                     <p>
-                        Are you sure you want to remove 'Design Fronted 
-                        developer' from your Education?
+                        Are you sure you want to remove {props.name} from your Education?
                     </p>
                     
                 </div>

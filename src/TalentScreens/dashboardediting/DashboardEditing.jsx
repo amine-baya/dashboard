@@ -20,16 +20,16 @@ import { UserInfo } from '../../helpers/ContextApi'
 
 
 const DashboardEditing = () => {
-    const [removeEducationModalShow, setRemoveEducationtModalShow] = useState({bool: false, id: ""});
+    const [removeEducationModalShow, setRemoveEducationtModalShow] = useState({bool: false, id: "", name:""});
     const [newEducationModalShow, setNewEducationtModalShow] = useState( false);
     const [editEducationModalShow, setEditEducationtModalShow] = useState({bool: false, id: ""});
     const [editPortfoliomodalShow, setEditPortfolioModalShow] = useState({bool: false, id: ""});
     const [newPortfoliomodalShow, setNewPortfolioModalShow] = useState(false);
-    const [removePortfoliomodalShow, setRemovePortfolioModalShow] = useState({bool: false, id: ""});
+    const [removePortfoliomodalShow, setRemovePortfolioModalShow] = useState({bool: false, id: "", name: ""});
     const [editAboutModalShow, setEditAboutModalShow] = useState(false);
     const [editEmploymentModalShow, setEditEmploymentModalShow] = useState({bool: false, id: ""});
     const [newEmploymentModalShow, setNewEmploymentModalShow] = useState(false);
-    const [removeEmploymentModalShow, setRemoveEmploymentModalShow] = useState({bool: false, id: ""});
+    const [removeEmploymentModalShow, setRemoveEmploymentModalShow] = useState({bool: false, id: "",  name: ""});
     const [changePhotoModalShow, setChangePhotoModalShow] = useState(false);
     const [allEducation, setAllEducation] = useState([]);
     const [allEmployment, setAllEmployment] = useState([]);
@@ -95,6 +95,8 @@ const DashboardEditing = () => {
                 <RemoveEducationModal
                     id={removeEducationModalShow.id}
                     show={removeEducationModalShow.bool}
+                    name={removeEducationModalShow.name}
+
                     onHide={() => setRemoveEducationtModalShow(false)}
                     />
 
@@ -106,6 +108,7 @@ const DashboardEditing = () => {
                 <RemovePortfolioModal
                     id={removePortfoliomodalShow.id}
                     show={removePortfoliomodalShow.bool}
+                    name={removePortfoliomodalShow.name}
                     onHide={() => setRemovePortfolioModalShow(false)}
                 />
                 <NewPortfolioModal
@@ -124,6 +127,8 @@ const DashboardEditing = () => {
                 <RemoveEmploymentModal
                     id={removeEmploymentModalShow.id}
                     show={removeEmploymentModalShow.bool}
+                    name={removeEmploymentModalShow.name}
+
                     onHide={() => setRemoveEmploymentModalShow(false)}
                 /> 
                 <NewEmploymentModal
@@ -186,7 +191,7 @@ const DashboardEditing = () => {
                                     <div className='dashboard_editing_body_portfolio_project_info_edit'>
                                         <h5>{el.project_name}</h5> 
                                         <img src="../../images/pen-edit.png" alt="edit"  onClick={() => {setEditPortfolioModalShow({bool: true, id: el._id}) }} /> 
-                                        <img src="../../images/trash-delete.png" alt="sorry" onClick={() => {setRemovePortfolioModalShow({bool: true, id: el._id}) }} />
+                                        <img src="../../images/trash-delete.png" alt="sorry" onClick={() => {setRemovePortfolioModalShow({bool: true, id: el._id, name: el.project_name}) }} />
                                     </div>
                                     <p>{el.short_description} </p>
                                     <div className='resume_about_skills'>
@@ -214,7 +219,7 @@ const DashboardEditing = () => {
                                <div className='dashboard_editing_body_education_step_info_edit'>
                                    <h5>{el.degree}</h5> 
                                    <img src="../../images/pen-edit.png" alt="edit" onClick={() => {setEditEducationtModalShow({bool: true, id: el._id}) }}/>  
-                                        <img src="../../images/trash-delete.png" alt="delete" onClick={() => {setRemoveEducationtModalShow({bool: true, id: el._id}) }}  />
+                                        <img src="../../images/trash-delete.png" alt="delete" onClick={() => {setRemoveEducationtModalShow({bool: true, id: el._id, name: el.degree}) }}  />
                                </div>
                                <span>{el.from.slice(0,4)} - {el.to.slice(0,4)}</span>
                                <p>{el.school}</p>
@@ -233,7 +238,7 @@ const DashboardEditing = () => {
                                 <div className='dashboard_editing_body_employment_info_edit'><h5>{el.position}</h5>
                                 <span>10 year Experience  </span> 
                                 <img src="../../images/pen-edit.png" alt="edit" onClick={() => {setEditEmploymentModalShow({bool: true, id: el._id}) }}/> 
-                                <img src="../../images/trash-delete.png" alt="delit" onClick={() => {setRemoveEmploymentModalShow({bool: true, id: el._id}) }}/>
+                                <img src="../../images/trash-delete.png" alt="delit" onClick={() => {setRemoveEmploymentModalShow({bool: true, id: el._id, name: el.position}) }}/>
                                 </div>
                                 <span className='dashboard_editing_body_employment_info_span'>{ el.current_employed !==null && el.current_employed ===  'yes' ? "Active" : "Past" }</span>
                                     <p>{ el.short_description !==null &&  el?.short_description} </p>

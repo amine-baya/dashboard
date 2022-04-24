@@ -1,12 +1,12 @@
 import axios from 'axios'
-import React, { useContext, useEffect, useState } from 'react'
-import { TalentContextApi } from '../../../helpers/ContextApi'
+import React, {useEffect, useState } from 'react'
 import './aboutme.css'
 import Kpi3 from '../../kpi3/Kpi3'
 import useAuth from "../../../hooks/useAuth"
+import useTalent from "../../../hooks/useTalent"
 
 const AboutMe = () => {
-    const {setTalentPage,aboutText,setAboutText,cv,setCv} = useContext(TalentContextApi)
+    const {setTalentPage,aboutText,setAboutText,cv,setCv,talentPage} = useTalent()
     const [data, setData] = useState([])
     const [subkpis1, setSubkpis1] = useState([])
     const [subkpis2, setSubkpis2] = useState([])
@@ -16,7 +16,7 @@ const AboutMe = () => {
 
     const {userInfo,sales,marketing,finance,development} = useAuth()
 
-
+  console.log(talentPage);
 
     useEffect(() => {
       

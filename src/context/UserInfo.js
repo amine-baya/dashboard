@@ -3,7 +3,7 @@ import { createContext ,useState} from "react";
 import { useEffect } from "react";
 
 
-const UserInfo2= createContext()
+const UserInfo= createContext()
 export const UserInfoProvider = ( {children}) => {
 
 
@@ -57,7 +57,7 @@ export const UserInfoProvider = ( {children}) => {
 
 
 
-    return <UserInfo2.Provider 
+    return <UserInfo.Provider 
               value={{userInfo, setUserInfo,personalData,setPersonalData, select1 ,
                     setSelect1,select2 ,setSelect2,select3,setSelect3,sales,setSales,
                     marketing,setMarketing,finance,setFinance,development,setDevelopment, 
@@ -66,7 +66,7 @@ export const UserInfoProvider = ( {children}) => {
                     web,setWeb,mobile,setMobile,dataSience,setDataSience,publicRelations,setPublicRelations,dashbordEdit, setDashbordEdit}}>
 
           {children}
-    </UserInfo2.Provider>
+    </UserInfo.Provider>
 }
 
-export default UserInfo2
+export default UserInfo

@@ -6,9 +6,7 @@ import './dashboardHeader.css'
 
 const DashboardHeader = () => {
   const {personalData} = useAuth(UserInfo)
- 
- 
-  console.log(personalData?.profile);
+
 
   return (
     <>

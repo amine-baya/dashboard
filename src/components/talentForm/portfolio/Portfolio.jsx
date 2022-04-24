@@ -5,13 +5,14 @@ import Title from '../../title/Title'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 import Kpi4 from '../../kpi4/Kpi4'
-import { TalentContextApi } from '../../../helpers/ContextApi'
+
 import useAuth from '../../../hooks/useAuth';
+import useTalent from '../../../hooks/useTalent';
 
 
 const Portfolio = () => {
   const {userInfo, select2,setSelect2} = useAuth()
-  const {setTalentPage,imageProject,setImageProject,projectDescription, setProjectDescription,projectName,setProjectName} = useContext(TalentContextApi)
+  const {setTalentPage,imageProject,setImageProject,projectDescription, setProjectDescription,projectName,setProjectName} = useTalent()
   const [portfolioData,setPortfolioData] = useState([])
   const [portfolio_services, setportfolio_services] = useState()
   

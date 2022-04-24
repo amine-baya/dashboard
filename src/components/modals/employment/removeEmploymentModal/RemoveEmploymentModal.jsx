@@ -35,8 +35,6 @@ const RemoveEmploymentModal = (props) => {
     }
 
 
-
-
     return (
         <Modal
           {...props}
@@ -53,8 +51,7 @@ const RemoveEmploymentModal = (props) => {
                 </div>
                 <div className='remove_modal_p' >
                     <p>
-                        Are you sure you want to remove 'Design Fonted 
-                        developer' from your Employment?
+                        Are you sure you want to remove {props.name} from your Employment?
                     </p>
                     
                 </div>

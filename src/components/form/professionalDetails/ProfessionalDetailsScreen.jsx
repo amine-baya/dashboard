@@ -1,15 +1,13 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import Title from '../../title/Title';
 import KpiProfessionalDetails from '../../kpiProfessionalDetails/KpiProfessionalDetails';
-
-
 import './professionalDetails.css'
-import { ContextApi } from '../../../helpers/ContextApi'
 import axios from 'axios';
 import useAuth from '../../../hooks/useAuth';
+import useClient from '../../../hooks/useClient';
 
 const ProfessionalDetailsScreen = ({data}) => {
-  const { setPage} = useContext(ContextApi)
+  const { setPage} = useClient()
 
   const { userInfo, long, many, level, need} = useAuth()
 

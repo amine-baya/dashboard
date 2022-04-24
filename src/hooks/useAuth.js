@@ -1,8 +1,8 @@
-import React, { useContext } from 'react'
-import UserInfo2 from '../context/UserInfo2'
+import  { useContext } from 'react'
+import UserInfo from '../context/UserInfo'
 
 const useAuth = () => {
-  return useContext(UserInfo2)
+  return useContext(UserInfo)
 }
 
 export default useAuth

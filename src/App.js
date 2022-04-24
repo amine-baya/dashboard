@@ -20,6 +20,8 @@ import TalentForm from './TalentScreens/talentForm/TalentForm';
 import Layout from './Layout';
 import {LinkedInCallback} from 'react-linkedin-login-oauth2'
 import RoleScreen from './TalentScreens/roleScreen/RoleScreen';
+import { TalentContextApiProvider } from './context/TalentContextApi';
+import { ClientContextApiProvider } from './context/ClientContextApi';
 
 function App() {
 
@@ -35,7 +37,12 @@ function App() {
 
 
                 <Route path="" element={<LoginScreen />} />
-                <Route path="client" element={<Form />} />
+                <Route path="client" element={
+                <ClientContextApiProvider>
+                  <Form />
+                </ClientContextApiProvider>
+
+                } />
                 <Route path="register" element={<Register />} />
                 <Route path="register/:token" element={<Register />} />
                 <Route path="professional-need" element={<ProfessionalNeedScreen />} />
@@ -50,7 +57,11 @@ function App() {
                 <Route path="calender" element={<Calender />} />
                 <Route path="resume" element={<ResumePreview />} />
                 <Route path="dashboard-editing" element={<DashboardEditing />} />
-                <Route path="talent" element={<TalentForm />} />
+                <Route path="talent" element={  
+                <TalentContextApiProvider>
+                  <TalentForm />
+               </TalentContextApiProvider> 
+                } />
                 <Route path="linkedin" element={<LinkedInCallback />} />
                 <Route path="linkedin-role" element={<RoleScreen />} />
                 <Route path="*" element={<h1> noooo </h1> }/>

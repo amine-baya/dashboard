@@ -1,10 +1,10 @@
-import React, { useContext } from 'react'
-import { TalentContextApi } from '../../helpers/ContextApi'
+import React from 'react'
+import useTalent from '../../hooks/useTalent'
 
 import './talentButton.css'
 
 const TalentButton = ({text}) => {
- const {setTalentPage} = useContext(TalentContextApi)
+ const {setTalentPage} = useTalent()
 
   
   return (

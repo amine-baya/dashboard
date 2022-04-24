@@ -1,13 +1,13 @@
 import axios from 'axios'
-import React, { useContext } from 'react'
-import { ContextApi } from '../../../helpers/ContextApi'
+import React from 'react'
 import useAuth from '../../../hooks/useAuth'
+import useClient from '../../../hooks/useClient'
 import Role from '../../homeScreenRoles/Role'
 import './HomeScreen.css'
 
 const HomeScreen = ({data}) => {
 
-  const {setPage,roles} = useContext(ContextApi)
+  const {setPage,roles} = useClient()
   const {userInfo} = useAuth()
 
   const getStarted =()=>{

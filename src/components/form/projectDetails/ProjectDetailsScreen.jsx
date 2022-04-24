@@ -1,14 +1,13 @@
-import React, { useContext } from 'react'
-import { ContextApi } from '../../../helpers/ContextApi'
-
+import React from 'react'
 import Type from '../../projectDetailsTypes/Type'
 import Title from '../../title/Title'
 import './projectDetails.css'
 import axios from 'axios'
 import useAuth from '../../../hooks/useAuth'
+import useClient from '../../../hooks/useClient'
 
 const ProjectDetailsScreen = ({data}) => {
-  const {type, setPage} = useContext(ContextApi)
+  const {type, setPage} = useClient()
   const {userInfo} = useAuth()
 
 

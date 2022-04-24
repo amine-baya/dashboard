@@ -1,8 +1,8 @@
 import axios from 'axios';
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { ContextApi } from '../../../helpers/ContextApi';
 import useAuth from '../../../hooks/useAuth';
+import useClient from '../../../hooks/useClient';
 import Kpi from '../../Kpi/Kpi';
 import ModalP from '../../Modal/ModalP';
 import Tag from '../../tag/Tag';
@@ -13,7 +13,7 @@ import './kpisTwo.css'
 const KpisTwoScreen = ({data}) => {
 
   const {userInfo} = useAuth()
-  const {select,setPage} = useContext(ContextApi)
+  const {select,setPage} = useClient()
   const [modalShow, setModalShow] = useState(false);
   const {web,mobile,dataSience,publicRelations} = useAuth()
 

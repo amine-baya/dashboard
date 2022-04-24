@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import { BrowserRouter as Router,Routes, Route } from "react-router-dom";
-import { UserInfoProvider } from './context/UserInfo2';
+import { UserInfoProvider } from './context/UserInfo';
 
 
 ReactDOM.render(
@@ -13,7 +13,6 @@ ReactDOM.render(
           <Route path="/*" element={<App /> } ></Route>
         </Routes>
 
-        
       </UserInfoProvider >
 
     </Router>

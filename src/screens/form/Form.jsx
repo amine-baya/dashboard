@@ -1,21 +1,19 @@
 import React, { useState,useEffect } from "react";
 import axios from 'axios'
 import Header from "../../components/header/Header";
-import { ContextApi } from "../../helpers/ContextApi";
 import HomeScreen from "../../components/form/homeScreen/HomeScreen";
 import KpisOneScreen from "../../components/form/kpisOneScreen/KpisOneScreen";
 import ProjectDetailsScreen from "../../components/form/projectDetails/ProjectDetailsScreen";
 import ProfessionalDetailsScreen from "../../components/form/professionalDetails/ProfessionalDetailsScreen";
 import KpisTwoScreen from "../../components/form/kpisTwoScreen/KpisTwoScreen";
+import useClient from "../../hooks/useClient";
+
 
 const Form = () => {
 
-  const [select, setSelect] = useState([])
-  const [roles,setRoles] = useState("")
-  const [type,setType] = useState("") 
-  const [page, setPage] = useState(0);
+  const {page} = useClient()
   const [data,setData] = useState([])
-  const [details,setDetails] = useState([])
+
 
 
   useEffect(() => {
@@ -47,11 +45,8 @@ const Form = () => {
   return (
     <>
     <Header /> 
-    <ContextApi.Provider value={{select, setSelect,roles,setRoles,type,setType,details,setDetails,page,setPage}}>
-
       <div>{PageDisplay()}</div>
-    </ContextApi.Provider> 
-
+  
     </>
   )
 }

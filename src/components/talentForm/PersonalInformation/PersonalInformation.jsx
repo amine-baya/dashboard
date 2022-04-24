@@ -2,15 +2,14 @@ import React, {useContext, useEffect, useState } from 'react'
 import './PersonalInformation.css'
 import { Form } from 'react-bootstrap'
 import axios from 'axios'
-import { TalentContextApi, UserInfo } from '../../../helpers/ContextApi'
 import Kpi2 from '../../kpi2/Kpi2'
 import useAuth from '../../../hooks/useAuth'
+import useTalent from '../../../hooks/useTalent'
 
 const PersonalInformation = () => {
 
   const {userInfo,personalData, select1} = useAuth()
-
-  const {setTalentPage,image, setImage,ageVal, setageVal,countryVal, setCountryVal,nationalityVal, setNationalityVal} = useContext(TalentContextApi)
+  const {setTalentPage,image, setImage,ageVal, setageVal,countryVal, setCountryVal,nationalityVal, setNationalityVal} = useTalent()
   const [age, setAge] = useState([])
   const [country, setCountry] = useState(null)
   const [nationality, setNationality] = useState(null)

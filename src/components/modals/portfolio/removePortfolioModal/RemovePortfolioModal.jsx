@@ -32,9 +32,6 @@ const RemovePortfolioModal = (props) => {
         
     }
 
-
-
-
     return (
         <Modal
           {...props}
@@ -51,8 +48,7 @@ const RemovePortfolioModal = (props) => {
                 </div>
                 <div className='remove_modal_p' >
                     <p>
-                        Are you sure you want to remove 'Design Fronted 
-                        developer' from your Portfolio?
+                        Are you sure you want to remove {props.name} from your Portfolio?
                     </p>
                     
                 </div>
