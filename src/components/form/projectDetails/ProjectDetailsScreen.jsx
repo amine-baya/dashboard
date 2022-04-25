@@ -9,8 +9,7 @@ import useClient from '../../../hooks/useClient'
 const ProjectDetailsScreen = ({data}) => {
   const {type, setPage} = useClient()
   const {userInfo} = useAuth()
-
-
+  
   const submitHandler = async (e) => {
 
     e.preventDefault()

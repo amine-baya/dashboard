@@ -1,10 +1,11 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Modal } from 'react-bootstrap'
-import { UserInfo } from '../../../helpers/ContextApi'
+
+import useAuth from '../../../hooks/useAuth'
 import './verifiedEmailModal.css'
 
 const VerifiedEmailModal = (props) => {
-  const {userInfo, setVerifiedEmailModalShow} = useContext(UserInfo)
+  const {userInfo, setVerifiedEmailModalShow} = useAuth()
 
     return (
         <Modal

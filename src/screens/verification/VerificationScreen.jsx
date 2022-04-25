@@ -1,9 +1,10 @@
 import axios from 'axios'
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Header from '../../components/header/Header'
-import LargeButton from '../../components/largeButton/LargeButton'
-import { UserInfo } from '../../helpers/ContextApi'
+
+
+import useAuth from '../../hooks/useAuth'
 import './verification.css'
 
 const VerificationScreen = () => {
@@ -12,7 +13,7 @@ const VerificationScreen = () => {
   const [digit2,setDigit2] = useState('')
   const [digit3,setDigit3] = useState('')
   const [digit4,setDigit4] = useState('')
-  const {userInfo, setVerifyEmailModalShow, setVerifiedEmailModalShow} = useContext(UserInfo)
+  const {userInfo, setVerifyEmailModalShow, setVerifiedEmailModalShow} = useAuth()
   let navigate = useNavigate()
 
 

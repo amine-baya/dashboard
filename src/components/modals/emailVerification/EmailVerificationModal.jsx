@@ -1,13 +1,14 @@
 import axios from 'axios'
-import React, { useContext } from 'react'
+import React from 'react'
 import { Modal } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
-import { UserInfo } from '../../../helpers/ContextApi'
+
+import useAuth from '../../../hooks/useAuth'
 import './emailVerificationModal.css'
 
 const EmailVerificationModal = (props) => {
 
-  const {userInfo} = useContext(UserInfo)
+  const {userInfo} = useAuth()
   let navigate = useNavigate()
 
     const verifyEmail =()=>{
