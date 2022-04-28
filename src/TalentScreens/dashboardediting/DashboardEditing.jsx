@@ -17,6 +17,7 @@ import RemovePortfolioModal from '../../components/modals/portfolio/removePortfo
 import RemoveEducationModal from '../../components/modals/education/removeEducationModal/RemoveEducationModal'
 import axios from 'axios'
 import { UserInfo } from '../../helpers/ContextApi'
+import { Link } from 'react-router-dom'
 
 
 const DashboardEditing = () => {
@@ -40,16 +41,7 @@ const DashboardEditing = () => {
     
     useEffect(() =>  {
 
-        // let x = 0;
-
-        //     const intervalID = setInterval(function () {
-        //         ref.current.click();
-        //         console.log("Hi");
-             
-        //         if (++x === 5) {
-        //             window.clearInterval(intervalID);
-        //         }
-        //      }, 200);
+       
         
         
         let one = "https://toptal.ibrcloud.com/api/v1/user/education-all"
@@ -76,7 +68,7 @@ const DashboardEditing = () => {
             console.log("must verify the url");
           })
         }, [userInfo?.token, dashbordEdit])
-    console.log(personalData);
+    console.log(allEmployment);
 
   return (
          <>
@@ -145,7 +137,7 @@ const DashboardEditing = () => {
                 <div id='dashboard_editing'>
                     <div className='dashboard_editing_titles'>
                         <Title title="Edit Profile" />
-                        <div className='dashboard_editing_cv_button'> CV Preview</div>
+                        <a  href={personalData?.cv} download="test"><div className='dashboard_editing_cv_button'>CV Preview </div></a>
                     </div>
                     <div className='dashboard_editing_header'>
                         <div className='dashboard_editing_header_info' >
@@ -172,7 +164,7 @@ const DashboardEditing = () => {
                             </p>
                             <p> Available Nominee:  <span>{personalData?.first_name} {personalData?.last_name}</span></p>
                             <p> Email: <span> {personalData?.email} </span></p>
-                            <p> Phone: <span>001235125612</span></p>
+                            <p> Phone: <span>{personalData?.mobile}</span></p>
                             <p> Location: <span>{personalData?.country}</span></p>
 
 
@@ -198,7 +190,6 @@ const DashboardEditing = () => {
                                         { el.services !==null && el?.services[0].subcategory.map(skill => (
                                             <span>{skill}</span>
                                         ))}
-                                        
                                     </div> 
                                 </div>
                             </div>
@@ -236,7 +227,7 @@ const DashboardEditing = () => {
                         {allEmployment  && allEmployment?.map((el,index )=> (
                             <div className='dashboard_editing_body_employment_info'>
                                 <div className='dashboard_editing_body_employment_info_edit'><h5>{el.position}</h5>
-                                <span>10 year Experience  </span> 
+                                <span>{el.difference === "0years" ? " "   : el.difference}  </span> 
                                 <img src="../../images/pen-edit.png" alt="edit" onClick={() => {setEditEmploymentModalShow({bool: true, id: el._id}) }}/> 
                                 <img src="../../images/trash-delete.png" alt="delit" onClick={() => {setRemoveEmploymentModalShow({bool: true, id: el._id, name: el.position}) }}/>
                                 </div>

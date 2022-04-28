@@ -9,6 +9,9 @@
     transform: translateY(20px);
     margin-top: -60px;
 }
+#dashboard_editing .dashboard_editing_titles a {
+    text-decoration: none;
+}
 #dashboard_editing .dashboard_editing_titles .dashboard_editing_cv_button {
     margin-left: 80%;
     margin-right: 2%;
