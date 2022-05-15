@@ -22,6 +22,7 @@ import {LinkedInCallback} from 'react-linkedin-login-oauth2'
 import RoleScreen from './TalentScreens/roleScreen/RoleScreen';
 import { TalentContextApiProvider } from './context/TalentContextApi';
 import { ClientContextApiProvider } from './context/ClientContextApi';
+import SearchTalent from './screens/searchTalent/SearchTalent';
 
 function App() {
 
@@ -64,6 +65,8 @@ function App() {
                 } />
                 <Route path="linkedin" element={<LinkedInCallback />} />
                 <Route path="linkedin-role" element={<RoleScreen />} />
+                <Route path="search-talent" element={<SearchTalent />} />
+
                 <Route path="*" element={<h1> noooo </h1> }/>
             </Route>
 
