@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, {useEffect, useState } from 'react'
+import React from 'react'
 import useAuth from '../../../hooks/useAuth'
 import useClient from '../../../hooks/useClient'
 import Kpi3 from '../../kpi3/Kpi3'
@@ -8,38 +8,13 @@ import './kpisOne.css'
 
 const KpisOneScreen = ({ data }) => {
 
-  const {userInfo,sales,marketing,finance,development} = useAuth()
+  const {userInfo, kips} = useAuth()
   const {setPage} = useClient()
 
-    const [subkpis1, setSubkpis1] = useState([])
-    const [subkpis2, setSubkpis2] = useState([])
-    const [subkpis3, setSubkpis3] = useState([])
-    const [subkpis4, setSubkpis4] = useState([])
-
-  useEffect(() => {
-    setSubkpis1([ {
-      options: "sales",
-      subcategory: sales && [...sales]
-    } ])
-    setSubkpis2([ {
-      options: "marketing",
-      subcategory: marketing && [...marketing]
-    } ])
-    setSubkpis3([ {
-      options: "finance",
-      subcategory: finance && [...finance]
-    } ])
-    setSubkpis4([ {
-      options: "development",
-      subcategory: development && [...development]
-    } ])
-  }, [sales,marketing,finance,development])
 
   const submitHandler = async (e) => {
 
     e.preventDefault()
-
-      const kips = [ subkpis1[0],subkpis2[0],subkpis3[0],subkpis4[0] ]
 
       setPage((currPage) => currPage + 1)
 
@@ -66,7 +41,7 @@ const KpisOneScreen = ({ data }) => {
             <Title title="Please select KPIs that you want this person to fulfill:" />
           { data?.options.map((option,index)=>(
             <div key={index}>
-              <Kpi3 title={option.name} options={option.subkpis}  />
+              <Kpi3 title={option.name} options={option.subkpis} data={data} />
             </div>
 
             ))}

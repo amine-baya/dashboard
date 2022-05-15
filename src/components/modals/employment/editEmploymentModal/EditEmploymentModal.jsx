@@ -11,9 +11,9 @@ const EditEmploymentModal = (props) => {
   const {userInfo, select3, setSelect3, dashbordEdit,setDashbordEdit} = useAuth()
   const [ isEmployed, setIsEmployed] = useState()
   const [ positionName,setPositionName] = useState()
+  const [ employmentDescription, setEmploymentDescription] = useState()
   const [ hireFrom,setHireFrom] = useState()
   const [ hireTo, setHireTo] = useState()
-
   const [skils, setskils] = useState()
   const [mySkills, setMySkills] = useState([])
 
@@ -22,7 +22,8 @@ const EditEmploymentModal = (props) => {
         options: "skills",
         subcategory: [...select3]
       } ])
-    }, [ select3])
+    
+    }, [select3])
 
 
     useEffect(() => {
@@ -32,6 +33,7 @@ const EditEmploymentModal = (props) => {
         }).catch(err =>{
           console.err("must verify the url");
         })
+
       }, [])
   
 
@@ -50,16 +52,24 @@ const EditEmploymentModal = (props) => {
        axios.get(`https://toptal.ibrcloud.com/api/v1/user/employment/${props?.id}`, config).then(res =>{    
        setIsEmployed(res.data.current_employed)
        setPositionName(res.data.position)
+       setEmploymentDescription(res.data.short_description)
        setHireFrom(res.data.from)
        setHireTo(res.data.to)
        setMySkills(res.data.skills) 
        setSelect3(res.data.skills[0].subcategory)
+      
 
       }).catch(err =>{
           console.log("must verify the url");
       })
     
-}, [props?.id])
+}, [props?.id, setSelect3, userInfo?.token])
+
+useEffect(() => {
+  if(isEmployed === "yes"){
+    setHireTo() 
+  }
+  }, [ isEmployed])
 
   const updateEmployment = ()=>{
 
@@ -73,14 +83,13 @@ const EditEmploymentModal = (props) => {
     const employments =  {
       current_employed: isEmployed,
       position:positionName,
-      
+      emp_history_short_description: employmentDescription,
       date_hire_from: hireFrom,
       date_hire_to: hireTo,
       skills: mySkills
       }
 
     axios.patch(`https://toptal.ibrcloud.com/api/v1/user/employment/${props?.id}`,employments, config).then(res => {
-      console.log(res.data); 
       setDashbordEdit(!dashbordEdit)
 
   }).catch(err =>{
@@ -89,6 +98,22 @@ const EditEmploymentModal = (props) => {
    props.onHide()
    
   }
+
+  const hireFromdateHandaler = (e) => {
+    const offset = e.target.value.getTimezoneOffset()
+    e.target.value = new Date(e.target.value.getTime() - (offset*60*1000))
+    setHireFrom( e.target.value.toISOString().split('T')[0])
+  }
+  
+  const hireTodateHandaler = (e) => {
+    const offset = e.target.value.getTimezoneOffset()
+    e.target.value = new Date(e.target.value.getTime() - (offset*60*1000))
+    setHireTo( e.target.value.toISOString().split('T')[0])
+    console.log(e.target.value);
+  
+  }
+
+const enddate = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate())
 
 
     return (
@@ -129,13 +154,28 @@ const EditEmploymentModal = (props) => {
             <label className=' label_select_employment_dates'>Dates Attended</label>
             <div className='edit_employment_dates_grid'>
             
-                <DatePickerComponent value={hireFrom} placeholder='From' onChange={(e) => setHireFrom(new Date(e.target.value).toISOString().slice(0, 10))}></DatePickerComponent>
-                <DatePickerComponent value={hireTo} placeholder='To' onChange={(e) => setHireTo(new Date(e.target.value).toISOString().slice(0, 10))}></DatePickerComponent>
-           
+            <DatePickerComponent max={enddate} value={hireFrom} placeholder='From' onChange={(e) =>  hireFromdateHandaler(e)}></DatePickerComponent> 
+
+            
+                {
+                    isEmployed === "yes" ?
+                    <></>
+                    :
+                    <DatePickerComponent min={hireFrom} max={enddate} value={hireTo} placeholder='To' onChange={(e) => hireTodateHandaler(e)}  ></DatePickerComponent>
+                }
+            </div>
+
+            <div className="portfolio_description">
+                <label className='label'>Short Description</label>
+                <textarea id="story" name="story" placeholder='Add short description' value={employmentDescription} onChange={(e)=>setEmploymentDescription(e.target.value)} >
+                      
+                </textarea>
             </div>
             
-            { <Kpi5  options={skils?.options} title={skils?.question_text} edit={true}/>  }
-                
+            { <div className='kpis_employment_dates'>
+                  <Kpi5  options={skils?.options} title={skils?.question_text} edit={true}/>   
+              </div> 
+            }
 
             </div>
 

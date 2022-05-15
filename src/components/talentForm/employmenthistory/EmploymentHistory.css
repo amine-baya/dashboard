@@ -80,11 +80,14 @@ border-radius: 6px;
 }
 
 
-
+#Employment_history .Portfolio_paragraph_grid .active .e-input-group-icon
+{
+    visibility: hidden;
+}
 
 .e-input-group:not(.e-success):not(.e-warning):not(.e-error):not(.e-float-icon-left), .e-input-group.e-float-icon-left:not(.e-success):not(.e-warning):not(.e-error) .e-input-in-wrap, .e-input-group.e-control-wrapper:not(.e-success):not(.e-warning):not(.e-error):not(.e-float-icon-left), .e-input-group.e-control-wrapper.e-float-icon-left:not(.e-success):not(.e-warning):not(.e-error) .e-input-in-wrap, .e-float-input.e-float-icon-left:not(.e-success):not(.e-warning):not(.e-error) .e-input-in-wrap, .e-float-input.e-control-wrapper.e-float-icon-left:not(.e-success):not(.e-warning):not(.e-error) .e-input-in-wrap
 {
     border: 1px solid #8692A6;
     padding: 20px 30px;
-border-radius: 6px;
+    border-radius: 6px;
 }

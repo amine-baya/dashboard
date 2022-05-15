@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Education.css'
 import { Form } from 'react-bootstrap'
 import axios from 'axios'
@@ -82,7 +82,6 @@ const Education = () => {
        
      } 
     
-     console.log(educations);
           const config = {
             headers: {
           'Content-Type': 'application/json',
@@ -108,7 +107,26 @@ const Education = () => {
     }
     
     }
+
+    
+const hireFromdateHandaler = (e) => {
+  const offset = e.target.value.getTimezoneOffset()
+  e.target.value = new Date(e.target.value.getTime() - (offset*60*1000))
+  setdate_education_from( e.target.value.toISOString().split('T')[0])
+
+
+}
+
+const hireTodateHandaler = (e) => {
+  const offset = e.target.value.getTimezoneOffset()
+  e.target.value = new Date(e.target.value.getTime() - (offset*60*1000))
+  setdate_education_to( e.target.value.toISOString().split('T')[0])
+
+}
   
+
+const enddate = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate())
+
   return (
     <>
     <div className='container' id='Education'>
@@ -151,8 +169,9 @@ const Education = () => {
 
             <h4>Dates Attended</h4>
             <div className='Portfolio_paragraph_grid'>
-            <DatePickerComponent placeholder='From' value={date_education_from} onChange={(e) => setdate_education_from(new Date(e.target.value).toISOString().slice(0, 10))}></DatePickerComponent>
-            <DatePickerComponent placeholder='To' value={date_education_to} onChange={(e) => setdate_education_to(new Date(e.target.value).toISOString().slice(0 ,10))}></DatePickerComponent>
+                <DatePickerComponent max={enddate} value={date_education_from} placeholder='From' onChange={(e) =>  hireFromdateHandaler(e)}></DatePickerComponent> 
+                <DatePickerComponent   min={date_education_from} max={enddate} value={date_education_to} placeholder='To' onChange={(e) => hireTodateHandaler(e)}></DatePickerComponent>
+            
             </div>
            
         </div>

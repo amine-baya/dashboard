@@ -51,7 +51,7 @@ const EmploymentHistory = () => {
     
             },
         }
-        if(isEmployed === "" || positionName === ""  || employmentDescription ==="" || hireFrom === "" || hireTo === "" || mySkills.length === 0  ) {
+        if(isEmployed === "" || positionName === ""  || employmentDescription ==="" || hireFrom === ""  || mySkills.length === 0  ) {
           console.log("verify inputs");
       }
       else{
@@ -92,7 +92,7 @@ const addNewProject =()=>{
       skills: mySkills
       }
    
-    if(isEmployed === "" || positionName === ""  || employmentDescription ==="" || hireFrom === "" || hireTo === "" || mySkills.length === 0  ) {
+    if(isEmployed === "" || positionName === ""  || employmentDescription ==="" || hireFrom === ""  || mySkills.length === 0  ) {
       console.log("verify inputs");
   }
   else{
@@ -112,6 +112,25 @@ const addNewProject =()=>{
 
 
 }
+
+const hireFromdateHandaler = (e) => {
+  const offset = e.target.value.getTimezoneOffset()
+  e.target.value = new Date(e.target.value.getTime() - (offset*60*1000))
+  setHireFrom( e.target.value.toISOString().split('T')[0])
+
+
+}
+
+const hireTodateHandaler = (e) => {
+  const offset = e.target.value.getTimezoneOffset()
+  e.target.value = new Date(e.target.value.getTime() - (offset*60*1000))
+  setHireTo( e.target.value.toISOString().split('T')[0])
+
+}
+
+const enddate = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate())
+
+
 
   return (
     
@@ -151,9 +170,16 @@ const addNewProject =()=>{
             </div> 
 
             <h6>Time</h6>
-            <div className='Portfolio_paragraph_grid'>
-                <DatePickerComponent value={hireFrom} placeholder='From' onChange={(e) => setHireFrom(new Date(e.target.value).toISOString().slice(0, 10))}></DatePickerComponent>
-                <DatePickerComponent value={hireTo} placeholder='To' onChange={(e) => setHireTo(new Date(e.target.value).toISOString().slice(0, 10))}></DatePickerComponent>
+            <div className='Portfolio_paragraph_grid'> 
+                <DatePickerComponent max={enddate} value={hireFrom} placeholder='From' onChange={(e) =>  hireFromdateHandaler(e)}></DatePickerComponent> 
+                
+                
+                {
+                    isEmployed === "yes" ?
+                    <></>
+                    :
+                    <DatePickerComponent min={hireFrom} max={enddate} value={hireTo} placeholder='To' onChange={(e) => hireTodateHandaler(e)}  ></DatePickerComponent>
+                }
             </div>
             
             <div className="portfolio_description">

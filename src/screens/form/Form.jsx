@@ -7,22 +7,26 @@ import ProjectDetailsScreen from "../../components/form/projectDetails/ProjectDe
 import ProfessionalDetailsScreen from "../../components/form/professionalDetails/ProfessionalDetailsScreen";
 import KpisTwoScreen from "../../components/form/kpisTwoScreen/KpisTwoScreen";
 import useClient from "../../hooks/useClient";
+import useAuth from "../../hooks/useAuth";
 
 
 const Form = () => {
 
   const {page} = useClient()
-  const [data,setData] = useState([])
+  const [data,setDatas] = useState([])
+
+  const {setData, kips} = useAuth()
+
 
 
 
   useEffect(() => {
     axios.get('https://toptal.ibrcloud.com/api/v1/projects/all-Details').then(res =>{
-      setData(res.data)
-      console.log(res.data);
+      setDatas(res.data)
+      setData(res.data[1])
       
     }).catch(err =>{
-      console.err("must verify the url");
+      console.log("must verify the url");
     })
   }, [])
 

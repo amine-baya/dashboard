@@ -1,68 +1,29 @@
-import React  from 'react'
+import React from 'react'
 import useAuth from '../../hooks/useAuth'
 import './tag3.css'
 const Tag3 = ({options}) => {
 
-  
-  const {sales,setSales,marketing,setMarketing,finance,setFinance,development,setDevelopment} = useAuth()
 
-  
-  const addIndustries = (option,e) => {
-    if(option.parent === "sales" ){
-
-        e.target.parentElement.nodeName === "BUTTON" && e.target.parentElement.classList.toggle(`active`)
-        e.target.classList.toggle(`active`)
-        const selectedOption = sales.find(el => el === option.identifier)
-        if (selectedOption) {
-          setSales(sales.filter(el => el !== option.identifier))
-          }
-        if (selectedOption === undefined) {
-          setSales([...sales,option.identifier])
-          }
-
-    }else if (option.parent === "marketing") {
-
-       e.target.parentElement.nodeName === "BUTTON" && e.target.parentElement.classList.toggle(`active`)
-       e.target.classList.toggle(`active`)
-       const selectedOption = marketing.find(el => el === option.identifier)
-        if (selectedOption) {
-          setMarketing(marketing.filter(el => el !== option.identifier))
-          }
+const {kips} = useAuth()
+const addIndustries = (option, e) =>
+{
+  kips.map(element => {
+    if(option.parent === element.identifier ){
+      e.target.parentElement.nodeName === "BUTTON" && e.target.parentElement.classList.toggle(`active`)
+      e.target.classList.toggle(`active`)
+      const selectedOption = element.subcategory.find(el => el === option.name)
       
-        if (selectedOption === undefined) {
-          setMarketing([...marketing,option.identifier])
-        }
-      
-    }else if (option.parent === "finance") {
+     if (selectedOption) {
+      element.subcategory = element.subcategory.filter(el => el !== option.name)
+       }
 
-       e.target.parentElement.nodeName === "BUTTON" && e.target.parentElement.classList.toggle(`active`)
-       e.target.classList.toggle(`active`)
-       const selectedOption = finance.find(el => el === option.identifier)
-        if (selectedOption) {
-          setFinance(finance.filter(el => el !== option.identifier))
-          }
-      
-        if (selectedOption === undefined) {
-          setFinance([...finance,option.identifier])
-          }
-      
-    }else if (option.parent === "development") {
-
-       e.target.parentElement.nodeName === "BUTTON" && e.target.parentElement.classList.toggle(`active`)
-       e.target.classList.toggle(`active`)
-       const selectedOption = development.find(el => el === option.identifier)
-   
-      if (selectedOption) {
-        setDevelopment(development.filter(el => el !== option.identifier))
-        }
-    
-      if (selectedOption === undefined) {
-        setDevelopment([...development,option.identifier])
-      
-        }   
+     if (selectedOption === undefined) {
+      element.subcategory = [...element.subcategory, option.name]
+       
+      }   
     }
-            }
-           
+  })  
+}
             
   return (
       <>

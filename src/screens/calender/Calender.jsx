@@ -13,7 +13,6 @@ const Calender = () => {
   const {personalData, verifyEmailShow, setVerifyEmailModalShow, verifiedEmailShow, setVerifiedEmailModalShow} = useAuth()
   
   useEffect(() => {
-    console.log(verifyEmailShow);
     personalData?.verify_otp !== undefined &&
     
     setVerifyEmailModalShow( verifyEmailShow === "false" ? false : personalData?.verify_otp ===  "yes" ? false : true)
@@ -39,7 +38,6 @@ const Calender = () => {
     EndTime: new Date(2022, 2, 13, 12,0),
     Location: "msaken",
     ResourceId: 2
-
 
   }];
 

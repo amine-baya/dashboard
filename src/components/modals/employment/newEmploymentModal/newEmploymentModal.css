@@ -3,8 +3,10 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
-    
+}
 
+.kpis_employment_dates{
+    margin-top: 15px;
 }
 
 .label_select_employment_dates{

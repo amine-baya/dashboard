@@ -28,20 +28,19 @@ const PersonalInformation = () => {
 
       let one = "https://toptal.ibrcloud.com/api/v1/ages"
       let two = "https://toptal.ibrcloud.com/api/v1/country"
-      let three = "https://toptal.ibrcloud.com/api/v1/nationality"
       let four = "https://toptal.ibrcloud.com/api/v1/projects/industries"
 
       const requestOne =    axios.get(one);
       const requestTwo =    axios.get(two);
-      const requestThree =  axios.get(three);
+  
       const requestFour =   axios.get(four);
 
       
       setImage(personalData?.profile)
-      axios.all([requestOne, requestTwo, requestThree,requestFour]).then(axios.spread((...responses) => {
+      axios.all([requestOne, requestTwo,requestFour]).then(axios.spread((...responses) => {
         setAge(responses[0].data)
         setCountry(responses[1].data)
-        setNationality(responses[2].data)
+
         setIndustries( responses[3]?.data)
           
       
@@ -50,6 +49,29 @@ const PersonalInformation = () => {
           console.log("must verify the url");
         })
       }, [])
+
+
+      useEffect(() =>  {
+
+
+        const config = {
+          headers: {
+            Authorization: ` Bearer ${userInfo?.token}`,
+            'Content-Type': 'application/json',
+          },
+        }
+        
+  
+  
+        axios.post('https://toptal.ibrcloud.com/api/v1/states',{country_name:countryVal},config).then(res => {
+         
+          setNationality(res.data)
+        }).catch(errors => {
+        
+            console.log(errors.response);
+          })
+        }, [countryVal])
+
 
 
       const uploadFileHandler = async (e) => {
@@ -146,9 +168,9 @@ const PersonalInformation = () => {
                   <label >City or State</label>
                   <Form.Select aria-label="Default select example" value={nationalityVal}  onChange={(e) => setNationalityVal(e.target.value)}>
                   <option>select</option>
-                  { nationality?.map((el,indx)=>(
-                    <option key={indx} value={el.nationality}>{el.nationality}</option> 
-                    ))}
+                  { nationality ? nationality?.map((el,indx)=>(
+                    <option key={indx} value={el.name}>{el.name}</option> 
+                    )) : <option>choose country first</option> }
                 </Form.Select>
                 </div>
                 </div>

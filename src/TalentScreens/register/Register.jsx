@@ -38,8 +38,6 @@ useEffect(() => {
   if(token !== null ){
 
   setAw(token)
-  
-  console.log(aww);
   axios.post('https://toptal.ibrcloud.com/api/v1/auth/linkedin-user',{token:token}).then(res =>{
     setUserInfo(res.data)
       localStorage.setItem("userInfo", JSON.stringify(res.data) )
@@ -47,7 +45,6 @@ useEffect(() => {
     
   }).catch(err =>{
       console.log(err.response.data);
-      console.log(token)
   })
   
 
@@ -89,13 +86,6 @@ useEffect(() => {
     console.log(err.response.data);
   })
   }
-
-
- 
-
-   
-
- 
 
   return (
     <div>

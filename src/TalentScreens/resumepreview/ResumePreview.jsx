@@ -14,37 +14,6 @@ const ResumePreview = () => {
     const [allPortfolio, setAllPortfolio] = useState([]);
     let navigate = useNavigate()
     
-    
-    // useEffect(() =>  {
-    //     let one = "https://toptal.ibrcloud.com/api/v1/user/education-all"
-    //     let two = "https://toptal.ibrcloud.com/api/v1/user/employment-all"
-    //     let three = "https://toptal.ibrcloud.com/api/v1/user/portfolio-all"
-    //     let four = "https://toptal.ibrcloud.com/api/v1/user/get-user-information"
-    //     const config = {
-    //         headers: {
-    //        'Content-Type': 'application/json',
-    //        Authorization: ` Bearer ${userInfo?.token}`,
-   
-    //         },
-    //     }
-    //     const requestOne =    axios.get("https://toptal.ibrcloud.com/api/v1/user/education-all",config);
-    //     const requestTwo =    axios.get("https://toptal.ibrcloud.com/api/v1/user/employment-all",config);
-    //     const requestThree =   axios.get("https://toptal.ibrcloud.com/api/v1/user/portfolio-all",config);
-    //     const requestFour =   axios.get("https://toptal.ibrcloud.com/api/v1/user/get-user-information",config);
-
-    //     axios.all([requestOne, requestTwo,requestThree,requestFour]).then(axios.spread((...responses) => {
-    //         setAllEducation(responses[0].data)
-    //         setAllEmployment(responses[1].data)
-    //         setAllPortfolio(responses[2].data)
-    //         setData(responses[3].data)
-    //         setPersonalData(responses[3].data)
-         
-    //     })).catch(errors => {
-        
-    //         console.log(errors.response);
-    //       })
-    //     }, [userInfo?.token])
-
          useEffect(() => { 
             
              const config = {
@@ -131,8 +100,8 @@ const ResumePreview = () => {
 
         {
                 allPortfolio &&
-                allPortfolio.map((po)=>(
-                    <div className='resume_portfolio_box'>
+                allPortfolio.map((po, index)=>(
+                    <div key={index} className='resume_portfolio_box'>
                     <img src={ po?.images[0]  ? po?.images[0] : "../../images/initial_project.jpg"} alt="project" />
                     <div className='resume_portfolio_box_info'>
                     <h4>{ po?.project_name ? po?.project_name : "...."}</h4> 
@@ -141,7 +110,7 @@ const ResumePreview = () => {
                     
                    {
 
-                    po.services[0]?.subcategory?.map((skill,index)=>(<span >{skill}</span>))
+                    po.services[0]?.subcategory?.map((skill,index)=>(<span key={index}>{skill}</span>))
                    }
                         
                       
@@ -163,9 +132,9 @@ const ResumePreview = () => {
             <div className='resume_employment_box_info'>
                 {
                     allEmployment !== undefined &&
-                    allEmployment.map((employment)=>(
-                        <div className='resume_employment_box_info_container'>
-                            <div className="resume_employment_box_info_position"><h4>{ employment?.position ? employment.position : "........."}</h4><span>{employment?.from ? employment.from.slice(0,4) : "........"}-{employment?.to ? employment.to.slice(0,4) : ".........." }</span></div>
+                    allEmployment.map((employment, index)=>(
+                        <div key={index} className='resume_employment_box_info_container'>
+                            <div className="resume_employment_box_info_position"><h4>{ employment?.position ? employment.position : "........." }</h4><span>{employment?.from ? employment.from.slice(0,4) : "........"}-{employment?.to ? employment.to.slice(0,4) : employment.current_employed ===  'yes' ? "Present" : "........" }</span> </div>
                             <span className='resume_employment_box_info_span'>{ employment.current_employed ===  'yes' ? "Active" : "Past" }</span>
                             <p>{employment?.short_description ? employment.short_description : "........."} </p>
                             <div className='resume_about_skills'>
@@ -194,8 +163,8 @@ const ResumePreview = () => {
 
                 {
                     allEducation !== undefined &&
-                    allEducation.map((education)=>(
-                        <div className='resume_employment_box_info_container'>
+                    allEducation.map((education, index)=>(
+                        <div key={index} className='resume_employment_box_info_container'>
                            
                             <div><h4>{education.degree ? education.degree  : "degree"}</h4><span>{education?.from ? education?.from.slice(0,4) : "..........."}-{education?.to ? education?.to.slice(0,4): "............"}</span></div>
                             <p>{education?.school ? education.school : "school"} </p>

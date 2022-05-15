@@ -13,10 +13,6 @@ export const UserInfoProvider = ( {children}) => {
     const [select1 ,setSelect1] = useState(storageLocalData?.industries?.length > 0 ? storageLocalData?.industries[0].subcategory : [])
     const [select2 ,setSelect2] = useState(storageLocalData?.portfolio_services?.length > 0 ? storageLocalData?.portfolio_services[0].subcategory : [])
     const [select3 ,setSelect3] = useState(storageLocalData?.skills?.length > 0 ? storageLocalData?.skills[0].subcategory : [])
-    const [sales ,setSales] = useState( storageLocalData?.kips[0] !== undefined ? storageLocalData?.kips[0]?.subcategory : [])
-    const [marketing ,setMarketing] = useState( storageLocalData?.kips[1] !== undefined ? storageLocalData?.kips[1]?.subcategory : [])
-    const [finance ,setFinance] = useState( storageLocalData?.kips[2] !== undefined ? storageLocalData?.kips[2]?.subcategory : [])
-    const [development,setDevelopment] = useState( storageLocalData?.kips[3] !== undefined  ? storageLocalData?.kips[3]?.subcategory : [])
     const [long, setLong] = useState([])
     const [many, setMany] = useState([])
     const [level, setLevel] = useState([])
@@ -28,6 +24,9 @@ export const UserInfoProvider = ( {children}) => {
     const [verifiedEmailShow, setVerifiedEmailModalShow] = useState(false);
     const [verifyEmailShow, setVerifyEmailModalShow] = useState(false);
     const [dashbordEdit, setDashbordEdit] = useState(false)
+    const [data, setData] = useState([])
+    const [kips, setKips] = useState([])
+
 
     useEffect(()  =>  {
         setUserInfo(localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : [])
@@ -56,12 +55,21 @@ export const UserInfoProvider = ( {children}) => {
     }, [userInfo, dashbordEdit])
 
 
+useEffect(() => {
+  
+  data?.options?.map(el => kips.push({
+    options: el.name,
+      subcategory: [],
+      identifier: el.identifier
+    }))
+    
+  }, [data])
+
+
 
     return <UserInfo.Provider 
-              value={{userInfo, setUserInfo,personalData,setPersonalData, select1 ,
-                    setSelect1,select2 ,setSelect2,select3,setSelect3,sales,setSales,
-                    marketing,setMarketing,finance,setFinance,development,setDevelopment, 
-                    verifyEmailShow,setVerifyEmailModalShow,verifiedEmailShow,
+              value={{userInfo,kips, setKips, data, setData, setUserInfo,personalData,setPersonalData, select1 ,
+                    setSelect1,select2 ,setSelect2,select3,setSelect3,verifyEmailShow,setVerifyEmailModalShow,verifiedEmailShow,
                      setVerifiedEmailModalShow,long, setLong, many, setMany, level, setLevel, need, setNeed,
                     web,setWeb,mobile,setMobile,dataSience,setDataSience,publicRelations,setPublicRelations,dashbordEdit, setDashbordEdit}}>
 

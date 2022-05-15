@@ -68,8 +68,9 @@
 #dashboard_editing .dashboard_editing_header .dashboard_editing_header_button {
     background: #395F8C;
     border-radius: 4px;
-    padding: 12px 22px ;
+    padding: 12px 22px;
     color: #fff;
+    cursor: pointer;
 }
 
 
@@ -98,6 +99,9 @@ margin-bottom: 25px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+#dashboard_editing .dashboard_editing_body_about  .dashboard_editing_body_about_header img{
+    cursor: pointer;
 }
 #dashboard_editing .dashboard_editing_body_about  .dashboard_editing_body_about_header h4{
     margin-bottom: 0;
@@ -131,6 +135,7 @@ margin-bottom: 25px;
 }
 #dashboard_editing .dashboard_editing_body_portfolio  .dashboard_editing_body_portfolio_header span{
     color:  #395F8C;
+    cursor: pointer;
     
 }
 
@@ -154,6 +159,7 @@ margin-bottom: 25px;
 {
     margin-left: 10px;
     transform: translateY(-5px);
+    cursor: pointer;
 }
  #dashboard_editing .dashboard_editing_body_portfolio_project_info h5
  {
@@ -184,16 +190,17 @@ margin-bottom: 25px;
 {
     display: block;
     padding: 0 15px;
-height: 30px;
-background: #EDEDED;
-border-radius: 6px;
-font-weight: 400;
-font-size: 12px;
-letter-spacing: 0.257143px;
-color: #4EAD8D;
-text-align: center;
-line-height: 30px;
-margin-right:  10px;
+    height: 30px;
+    background: #EDEDED;
+    border-radius: 6px;
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.257143px;
+    color: #4EAD8D;
+    text-align: center;
+    line-height: 30px;
+    margin-right:  10px;
+    margin-bottom: 5px;
 }
 /******************EDUCATION***********************/
 
@@ -208,6 +215,7 @@ margin-right:  10px;
 }
 #dashboard_editing .dashboard_editing_body_education  .dashboard_editing_body_education_header span{
     color:  #395F8C;
+    cursor: pointer;
     
 }
 
@@ -224,6 +232,7 @@ margin-right:  10px;
 {
     margin-left: 10px;
     transform: translateY(-5px);
+    cursor: pointer;
 }
 #dashboard_editing .dashboard_editing_body_education_step_info  h5
  {
@@ -271,7 +280,7 @@ margin-right:  10px;
 }
 #dashboard_editing .dashboard_editing_body_employment  .dashboard_editing_body_employment_header span{
     color:  #395F8C;
-    
+    cursor: pointer;
 }
 
 
@@ -290,6 +299,11 @@ margin-right:  10px;
 #dashboard_editing .dashboard_editing_body_employment_info .dashboard_editing_body_employment_info_edit
 {
     display: flex;
+}
+
+#dashboard_editing .dashboard_editing_body_employment_info .dashboard_editing_body_employment_info_edit img
+{
+    cursor: pointer;
 }
 
 #dashboard_editing .dashboard_editing_body_employment_info .dashboard_editing_body_employment_info_edit span

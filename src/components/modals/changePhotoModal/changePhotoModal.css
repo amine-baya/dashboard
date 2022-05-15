@@ -29,6 +29,7 @@
     position: absolute;
     top: 40%;
     margin: 0;
+    cursor: pointer;
 }
 /* .change_photo_modal_container .change_photo_modal_img label img.change_photo_modal_img_edit{
     width: 40px;

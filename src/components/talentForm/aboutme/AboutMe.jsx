@@ -6,22 +6,16 @@ import useAuth from "../../../hooks/useAuth"
 import useTalent from "../../../hooks/useTalent"
 
 const AboutMe = () => {
-    const {setTalentPage,aboutText,setAboutText,cv,setCv,talentPage} = useTalent()
-    const [data, setData] = useState([])
-    const [subkpis1, setSubkpis1] = useState([])
-    const [subkpis2, setSubkpis2] = useState([])
-    const [subkpis3, setSubkpis3] = useState([])
-    const [subkpis4, setSubkpis4] = useState([])
+    const {setTalentPage,aboutText,setAboutText,cv,setCv} = useTalent()
 
-
-    const {userInfo,sales,marketing,finance,development} = useAuth()
-
-  console.log(talentPage);
+    const {userInfo, data, setData, kips} = useAuth()
+    
 
     useEffect(() => {
       
-        axios.get('https://toptal.ibrcloud.com/api/v1/kpis/show_all_kpis').then(res =>{
+        axios.get('https://toptal.ibrcloud.com/api/v1/kpis/show_all_kpis/accounting_and_consulting').then(res =>{
           setData(res.data)
+          console.log(res.data)
           
         }).catch(err =>{
           console.err("must verify the url");
@@ -29,27 +23,7 @@ const AboutMe = () => {
         
       }, [])
         
-  
-    useEffect(() => {
-        setSubkpis1([ {
-          options: "sales",
-          subcategory: sales && [...sales]
-        } ])
-        setSubkpis2([ {
-          options: "marketing",
-          subcategory: marketing && [...marketing]
-        } ])
-        setSubkpis3([ {
-          options: "finance",
-          subcategory: finance && [...finance]
-        } ])
-        setSubkpis4([ {
-          options: "development",
-          subcategory: development && [...development]
-        } ])
-      }, [sales,marketing,finance,development])
-
-
+      
       const uploadFileHandler = async (e) => {
         const files = e.target.files
         const file = new FormData()
@@ -70,7 +44,6 @@ const AboutMe = () => {
     
       const submitHandler = async (e) => {
         e.preventDefault()
-          const kips = [ subkpis1[0],subkpis2[0],subkpis3[0],subkpis4[0] ]
           setTalentPage((currPage) => currPage + 1)
           const config = {
               headers: {
@@ -81,6 +54,7 @@ const AboutMe = () => {
           if(aboutText === ""  || cv === ""   ) {
             console.log("verify inputs");
         }else{
+          console.log(kips);
 
             axios.patch('https://toptal.ibrcloud.com/api/v1/user/add-more-information',{about_self: aboutText,cv:cv,kips: kips }, config).then(res => {
             console.log("done");
@@ -112,7 +86,7 @@ const AboutMe = () => {
            { data?.options?.map((option)=>(
              <div key={option.identifier}>
 
-               <Kpi3 title={option.name} options={option.subkpis}  />
+               <Kpi3 title={option.name} options={option.subkpis} data={data} />
              </div>
             ))}
             

@@ -41,3 +41,14 @@
         background-image: url("../../images/up.png") !important;
         transform: rotate(-180deg) !important;
     } 
+
+    .accordion .accordion-body
+    {
+        height: 150px;
+        overflow: hidden;
+    }
+
+    .accordion .active
+    {
+        height: auto;
+    }

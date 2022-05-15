@@ -33,6 +33,9 @@ const ChangePhotoModal = (props) => {
        }
        await axios.post('https://toptal.ibrcloud.com/api/v1/user/portfolio-image-uploads',formData, config).then(res => {
          setImage(res.data.image[0])
+        
+
+
 
      
      }).catch(err =>{
@@ -50,7 +53,9 @@ if(image !== undefined ){
         },
       }
       await axios.post('https://toptal.ibrcloud.com/api/v1/user/change-profile-picture',{profile:image}, config).then(res => {
+        console.log("done")
         console.log(res)
+        setDashbordEdit(!dashbordEdit)
 
     }).catch(err =>{
       console.log(err.response.data);

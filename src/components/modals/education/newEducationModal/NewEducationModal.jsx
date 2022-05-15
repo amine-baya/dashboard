@@ -74,8 +74,25 @@ const NewEducationModal = (props) => {
       }
 
       props.onHide()
+      }
+
+      const hireFromdateHandaler = (e) => {
+        const offset = e.target.value.getTimezoneOffset()
+        e.target.value = new Date(e.target.value.getTime() - (offset*60*1000))
+        setdate_education_from( e.target.value.toISOString().split('T')[0])
+      
       
       }
+      
+      const hireTodateHandaler = (e) => {
+        const offset = e.target.value.getTimezoneOffset()
+        e.target.value = new Date(e.target.value.getTime() - (offset*60*1000))
+        setdate_education_to( e.target.value.toISOString().split('T')[0])
+      
+      }
+
+    const enddate = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate())
+
     return (
         <Modal
           {...props}
@@ -114,8 +131,9 @@ const NewEducationModal = (props) => {
 
             <label className='label_select_modal label_select_education_dates'>Dates Attended</label>
             <div className='edit_education_dates_grid'>
-            <DatePickerComponent placeholder='From' value={date_education_from} onChange={(e) => setdate_education_from(new Date(e.target.value).toISOString().slice(0, 10))}></DatePickerComponent>
-            <DatePickerComponent placeholder='To' value={date_education_to} onChange={(e) => setdate_education_to(new Date(e.target.value).toISOString().slice(0 ,10))}></DatePickerComponent>
+    
+            <DatePickerComponent max={enddate} value={date_education_from} placeholder='From' onChange={(e) =>  hireFromdateHandaler(e)}></DatePickerComponent> 
+                <DatePickerComponent   min={date_education_from} max={enddate} value={date_education_to} placeholder='To' onChange={(e) => hireTodateHandaler(e)}></DatePickerComponent>
             </div>
             
             {/* <button classsName='btn_cancel_modal' onClick={props.onHide} style={{color: '#395F8C',border:'1px solid #395F8C'}} >Cancel</button> */}
