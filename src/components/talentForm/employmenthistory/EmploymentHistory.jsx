@@ -34,8 +34,7 @@ const EmploymentHistory = () => {
 
       const submitHandler =  (e) => {
         e.preventDefault()
-        setTalentPage((currPage) => currPage + 1)
-
+        
         const employments =  {current_employed: isEmployed,
           position:positionName,
           emp_history_short_description: employmentDescription,
@@ -57,6 +56,7 @@ const EmploymentHistory = () => {
       else{
           axios.post('https://toptal.ibrcloud.com/api/v1/user/employment',employments, config).then(res => {
           console.log("done");
+          setTalentPage((currPage) => currPage + 1)
           setIsEmployed("")
           setPositionName("")
           setEmploymentDescription("")

@@ -18,9 +18,8 @@ const ProfessionalDetailsScreen = ({data}) => {
     
     const details = [ long,many,level, need ]
 
-      setPage((currPage) => currPage + 1)
-
-      const config = {
+    
+    const config = {
           headers: {
         'Content-Type': 'application/json',
         Authorization: ` Bearer ${userInfo.token}`,
@@ -28,7 +27,8 @@ const ProfessionalDetailsScreen = ({data}) => {
       }
 
 
-        await axios.patch('https://toptal.ibrcloud.com/api/v1/user/add-more-client-information',{professional_details: details }, config).then(res => {
+      await axios.patch('https://toptal.ibrcloud.com/api/v1/user/add-more-client-information',{professional_details: details }, config).then(res => {
+          setPage((currPage) => currPage + 1)
         console.log("done");
            
     }).catch(err =>{

@@ -44,9 +44,8 @@ const AboutMe = () => {
     
       const submitHandler = async (e) => {
         e.preventDefault()
-          setTalentPage((currPage) => currPage + 1)
-          const config = {
-              headers: {
+        const config = {
+          headers: {
             'Content-Type': 'application/json',
             Authorization: ` Bearer ${userInfo?.token}`,
               },
@@ -55,9 +54,10 @@ const AboutMe = () => {
             console.log("verify inputs");
         }else{
           console.log(kips);
-
-            axios.patch('https://toptal.ibrcloud.com/api/v1/user/add-more-information',{about_self: aboutText,cv:cv,kips: kips }, config).then(res => {
+          
+          axios.patch('https://toptal.ibrcloud.com/api/v1/user/add-more-information',{about_self: aboutText,cv:cv,kips: kips }, config).then(res => {
             console.log("done");
+            setTalentPage((currPage) => currPage + 1)
               
         }).catch(err =>{
             console.log(err.response.data)

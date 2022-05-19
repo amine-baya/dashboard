@@ -217,8 +217,7 @@ color: #67748E;
 font-family: 'Inter';
 font-weight: 500;
 font-size: 25px;
-
-color: #373737;
+color: #373737; 
 }
 .search_talent .talent_body_container .filter_talent_list_box
 {
@@ -282,4 +281,52 @@ margin-bottom: 50px;
     font-size: 16px;
     color: #7B7B7B;
     padding: 5px 12px;
+}
+
+
+
+.search_talent .talent_body_container .filter_paragraphe
+{
+    padding: 30px 40px;
+}
+
+.search_talent .talent_body_container p.filter_talent_p
+{
+    
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+    letter-spacing: 0.5px;
+
+color: #5F5F5F;
+}
+
+.search_talent .talent_body_container .filter_talent_btn
+{
+    text-align: center;
+    margin: 40px auto 0;
+    display: block;
+    width:70%;
+    padding: 10px 25px;
+    font-family: 'Inter';
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 30px;
+    color: #75141D;
+    border: 1px solid #75141D;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+.search_talent .talent_body_container .filter_email h3
+{
+    margin-bottom: 22px;
+    text-align: center;
+}
+
+.search_talent .talent_body_container .filter_email h3 img
+{
+    margin-right: 10px;
 }

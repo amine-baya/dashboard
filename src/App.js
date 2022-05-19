@@ -23,6 +23,7 @@ import RoleScreen from './TalentScreens/roleScreen/RoleScreen';
 import { TalentContextApiProvider } from './context/TalentContextApi';
 import { ClientContextApiProvider } from './context/ClientContextApi';
 import SearchTalent from './screens/searchTalent/SearchTalent';
+import Sel from './components/Sel';
 
 function App() {
 
@@ -66,6 +67,7 @@ function App() {
                 <Route path="linkedin" element={<LinkedInCallback />} />
                 <Route path="linkedin-role" element={<RoleScreen />} />
                 <Route path="search-talent" element={<SearchTalent />} />
+                <Route path="ss" element={<Sel />} />
 
                 <Route path="*" element={<h1> noooo </h1> }/>
             </Route>

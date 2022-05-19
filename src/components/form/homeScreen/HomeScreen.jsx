@@ -11,16 +11,16 @@ const HomeScreen = ({data}) => {
   const {userInfo} = useAuth()
 
   const getStarted =()=>{
-    data &&  setPage((currPage) => currPage + 1)
-
-
-      const config = {
-          headers: {
+    
+    
+    const config = {
+      headers: {
         'Content-Type': 'application/json',
         Authorization: ` Bearer ${userInfo?.token}`,
-          },
-      }
-         axios.patch('https://toptal.ibrcloud.com/api/v1/user/add-more-client-information',{selected_role: roles }, config).then(res => {
+      },
+    }
+    axios.patch('https://toptal.ibrcloud.com/api/v1/user/add-more-client-information',{selected_role: roles }, config).then(res => {
+           data &&  setPage((currPage) => currPage + 1)
         console.log("done");
            
     }).catch(err =>{

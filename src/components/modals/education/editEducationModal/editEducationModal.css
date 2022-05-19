@@ -11,3 +11,26 @@
     margin-bottom: 0;
 }
 
+.form_select_modal_search{
+    position: relative;
+    width: 85%;
+    margin: auto;
+}
+
+.form_select_modal_search label{
+   margin-left: 0 !important;
+}
+
+.form_select_modal_search select{
+    padding-bottom: 30px !important;
+ }
+
+.form_select_modal_search input{
+    position: absolute;
+    top: 70%;
+    width: 80%;
+    z-index: 999;
+    left: 5%;
+    border: transparent;
+    outline: none;
+}

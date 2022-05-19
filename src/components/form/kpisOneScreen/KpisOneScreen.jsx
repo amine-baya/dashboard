@@ -16,16 +16,16 @@ const KpisOneScreen = ({ data }) => {
 
     e.preventDefault()
 
-      setPage((currPage) => currPage + 1)
-
-      
-      const config = {
-          headers: {
+    
+    
+    const config = {
+      headers: {
         'Content-Type': 'application/json',
         Authorization: ` Bearer ${userInfo.token}`,
-          },
-      }
-        await axios.patch('https://toptal.ibrcloud.com/api/v1/user/add-more-client-information',{kips }, config).then(res => {
+      },
+    }
+    await axios.patch('https://toptal.ibrcloud.com/api/v1/user/add-more-client-information',{kips }, config).then(res => {
+          setPage((currPage) => currPage + 1)
         console.log("done");
            
     }).catch(err =>{

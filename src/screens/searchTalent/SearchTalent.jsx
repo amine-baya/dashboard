@@ -4,7 +4,7 @@ import './searchTalent.css'
 
 const SearchTalent = () => {
   return (
-    <>
+    <> 
     <Header /> 
     <div className='search_talent'>
 
@@ -192,7 +192,11 @@ const SearchTalent = () => {
                         </p>
                         <button>View</button>
                     </div>
-                </div>
+            </div>
+
+            <div className='talent_list_notSigned'>
+                   
+            </div>
 
             </div>
             <div className='filter_talent_list'>
@@ -239,6 +243,21 @@ const SearchTalent = () => {
 
                     </div>
                     
+
+                </div>
+
+
+                <div className='filter_paragraphe filter_talent_list_box'>
+                    <h3 className='filter_talent_list_h3'>Guide to Hiring a Great Visual Designer</h3>
+                    <p className='filter_talent_p'>Visual designers are foremost interdisciplinary experts; their expertise covers both digital and print. Their work focuses on details and their final goal is impeccable visual communication. Function and form are achieved through carefully understanding and dissecting briefs and goals from their clients, copywriters, strategists and creative directors.</p>
+                    <span className='filter_talent_btn'>Read Hiring Guide</span>
+
+                </div>
+
+                <div className='filter_email filter_talent_list_box'>
+                    <h3 className='filter_talent_list_h3'><img src="./images/mail-unread-outline.png" alt="mail" /> Weekly Newsletter</h3>
+                    <p className='filter_talent_p'>Visual designers are foremost interdisciplinary experts; their expertise covers both digital and print.</p>
+                    <span className='filter_talent_btn'>Get Email Alerts</span>
 
                 </div>
             </div>

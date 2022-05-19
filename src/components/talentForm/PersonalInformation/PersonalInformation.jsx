@@ -102,8 +102,7 @@ const PersonalInformation = () => {
 
     const submitHandler = async (e) => {
       e.preventDefault()
-      setTalentPage((currPage) => currPage + 1)
-
+      
       const config = {
           headers: {
          'Content-Type': 'application/json',
@@ -117,6 +116,7 @@ const PersonalInformation = () => {
     }else{
         await axios.patch('https://toptal.ibrcloud.com/api/v1/user/add-more-information',{profile: image, age: ageVal,country:countryVal,nationality:nationalityVal, industries: industriesVal}, config).then(res => {
         console.log("done");
+        setTalentPage((currPage) => currPage + 1)
         
       }).catch(err =>{
           console.log(err.response.data);

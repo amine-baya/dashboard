@@ -6,6 +6,7 @@ import { DatePickerComponent } from '@syncfusion/ej2-react-calendars'
 import Title from '../../title/Title'
 import useAuth from '../../../hooks/useAuth'
 import useTalent from '../../../hooks/useTalent'
+import CustomSelect from '../../CustomSelect'
 
 const Education = () => {
   const {userInfo} = useAuth()
@@ -37,8 +38,7 @@ const Education = () => {
       const submitHandler = async (e) => {
 
         e.preventDefault()
-        setTalentPage((currPage) => currPage + 1)
-
+        
         const educations =  {
           school: schoolVal,
           degree : degreeVal,
@@ -51,15 +51,16 @@ const Education = () => {
            Authorization: ` Bearer ${userInfo.token}`,
    
             },
-        }
-
+          }
+          
         if(schoolVal === ""  || degreeVal ==="" || date_education_from === ""  || date_education_to ===""   ) {
           console.log("verify inputs");
       }
       else{
-          await axios.post('https://toptal.ibrcloud.com/api/v1/user/education',educations,  config).then(res => {
+        await axios.post('https://toptal.ibrcloud.com/api/v1/user/education',educations,  config).then(res => {
           
-            console.log("done");
+          console.log("done");
+          setTalentPage((currPage) => currPage + 1)
             setschoolVal("")
             setdegreeVal("")
             setdate_education_from("")
@@ -127,6 +128,45 @@ const hireTodateHandaler = (e) => {
 
 const enddate = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate())
 
+/********************************************* */
+
+  const [formData, setFormData] = useState({
+    countryOne: {
+      value: '',
+      error: ''
+    }
+  });
+
+  const [formDataDegree, setFormDataDegree] = useState({
+    countryOne: {
+      value: '',
+      error: ''
+    }
+  });
+  const changeHandler = (value, name) => {
+    setFormData(prev => ({
+      ...prev,
+      [name]: {
+        value,
+        error: value !== '' ? '' : prev[name].error
+      }
+    }));
+    setschoolVal(value)
+  }
+
+  const changeHandlerDegree = (value, name) => {
+    setFormDataDegree(prev => ({
+      ...prev,
+      [name]: {
+        value,
+        error: value !== '' ? '' : prev[name].error
+      }
+    }));
+    setdegreeVal(value)
+  }
+
+/********************************************* */
+
   return (
     <>
     <div className='container' id='Education'>
@@ -143,28 +183,25 @@ const enddate = new Date(new Date().getFullYear(), new Date().getMonth(), new Da
 
                 <h3>Tell us your most notable work experinces.</h3>
                 <div className='Education_location'>
-                <div className='Education_grid'>
-                <div>
-                  <label >School</label>
-                  <Form.Select aria-label="Default select example" value={schoolVal} onChange={(e) => setschoolVal(e.target.value)}>
-                  <option value= "Null">University/School Name</option>
-                  { school?.map((el,index)=>(
-                    <option key={index} value={el.school}>{el.school}</option> 
-                    ))}
-                  
-                </Form.Select>
-                </div>
-                <div>
-                  <label >Education Level Attained</label>
-                  <Form.Select aria-label="Default select example" value={degreeVal} onChange={(e) => setdegreeVal(e.target.value)}>
-                  <option>Select Degree</option>
-                  { degree?.map((el,index)=>(
-                    <option key={index} value={el.degree}>{el.degree}</option> 
-                    ))}
-                </Form.Select>
-                
-                </div>
-                </div>
+                <CustomSelect 
+                  label="School"
+                  data={school}
+                  value={formData.countryOne.value}
+                  onChange={changeHandler}
+                  //error={formData.countryOne.error}
+                  defaultOptionLabel={schoolVal}
+                  name="countryOne"
+                />
+
+                <CustomSelect 
+                  label="Degree"
+                  data={degree}
+                  value={formDataDegree.countryOne.value}
+                  onChange={changeHandlerDegree}
+                  //error={formData.countryOne.error}
+                  defaultOptionLabel={degreeVal}
+                  name="countryOne"
+                />
             </div>
 
             <h4>Dates Attended</h4>

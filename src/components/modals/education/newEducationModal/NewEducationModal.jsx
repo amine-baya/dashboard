@@ -1,9 +1,10 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { Modal, Form } from 'react-bootstrap'
+import { Modal } from 'react-bootstrap'
 import useAuth from '../../../../hooks/useAuth'
 import { DatePickerComponent } from '@syncfusion/ej2-react-calendars'
 import './newEducationModal.css'
+import CustomSelect from '../../../CustomSelect'
 
 const NewEducationModal = (props) => {
 
@@ -93,6 +94,45 @@ const NewEducationModal = (props) => {
 
     const enddate = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate())
 
+    /********************************************* */
+
+const [formData, setFormData] = useState({
+  countryOne: {
+    value: '',
+    error: ''
+  }
+});
+
+const [formDataDegree, setFormDataDegree] = useState({
+  countryOne: {
+    value: '',
+    error: ''
+  }
+});
+const changeHandler = (value, name) => {
+  setFormData(prev => ({
+    ...prev,
+    [name]: {
+      value,
+      error: value !== '' ? '' : prev[name].error
+    }
+  }));
+  setschoolVal(value)
+}
+
+const changeHandlerDegree = (value, name) => {
+  setFormDataDegree(prev => ({
+    ...prev,
+    [name]: {
+      value,
+      error: value !== '' ? '' : prev[name].error
+    }
+  }));
+  setdegreeVal(value)
+}
+
+/********************************************* */
+
     return (
         <Modal
           {...props}
@@ -107,27 +147,25 @@ const NewEducationModal = (props) => {
           </Modal.Header>
           <Modal.Body>
 
-             <div>
-                  <label className='label_select_modal'>School</label>
-                  <Form.Select aria-label="Default select example" className='form_select_modal' value={schoolVal} onChange={(e) => setschoolVal(e.target.value)}>
-                  <option value= "Null">University/School Name</option>
-                  { school?.map((el,index)=>(
-                    <option key={index} value={el.school}>{el.school}</option> 
-                    ))}
-                  
-                </Form.Select>
-              </div>
+          <CustomSelect 
+                  label="School"
+                  data={school}
+                  value={formData.countryOne.value}
+                  onChange={changeHandler}
+                  //error={formData.countryOne.error}
+                  defaultOptionLabel={schoolVal}
+                  name="countryOne"
+                />
 
-                <div>
-                  <label className='label_select_modal' >Education Level Attained</label>
-                  <Form.Select aria-label="Default select example" className='form_select_modal' value={degreeVal} onChange={(e) => setdegreeVal(e.target.value)}>
-                  <option>Select Degree</option>
-                  { degree?.map((el,index)=>(
-                    <option key={index} value={el.degree}>{el.degree}</option> 
-                    ))}
-                </Form.Select>
-                
-                </div>
+                <CustomSelect 
+                  label="Degree"
+                  data={degree}
+                  value={formDataDegree.countryOne.value}
+                  onChange={changeHandlerDegree}
+                  //error={formData.countryOne.error}
+                  defaultOptionLabel={degreeVal}
+                  name="countryOne"
+                />
 
             <label className='label_select_modal label_select_education_dates'>Dates Attended</label>
             <div className='edit_education_dates_grid'>

@@ -64,9 +64,8 @@ const Portfolio = () => {
   const submitHandler = async (e) => {
 
     e.preventDefault()
-    setTalentPage((currPage) => currPage + 1)
-
-
+    
+    
    const portfolio =  {
      project_name: projectName,
      project_images : imageProject,
@@ -90,6 +89,7 @@ const Portfolio = () => {
   else{
       await axios.post('https://toptal.ibrcloud.com/api/v1/user/portfolio',portfolio, config).then(res => {
       console.log("done");
+     setTalentPage((currPage) => currPage + 1)
       setProjectName("")
       setImageProject([])
       setProjectDescription("")

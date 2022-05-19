@@ -14,15 +14,15 @@ const ProjectDetailsScreen = ({data}) => {
 
     e.preventDefault()
   
-      setPage((currPage) => currPage + 1)
-
-      const config = {
+    
+    const config = {
           headers: {
         'Content-Type': 'application/json',
         Authorization: ` Bearer ${userInfo.token}`,
           },
-      }
+        }
         await axios.patch('https://toptal.ibrcloud.com/api/v1/user/add-more-client-information',{project_type: type }, config).then(res => {
+          setPage((currPage) => currPage + 1)
         console.log("done");
            
     }).catch(err =>{
