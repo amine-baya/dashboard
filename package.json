@@ -26,6 +26,7 @@
     "react-scripts": "^5.0.1",
     "react-select": "^5.2.2",
     "react-select-search": "^3.0.9",
+    "slugify": "^1.6.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

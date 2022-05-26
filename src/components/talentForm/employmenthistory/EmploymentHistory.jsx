@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
+import slugify from 'slugify'
 import { DatePickerComponent } from "@syncfusion/ej2-react-calendars";
 import './EmploymentHistory.css'
 import axios from 'axios';
@@ -8,7 +9,7 @@ import useAuth from '../../../hooks/useAuth';
 import useTalent from '../../../hooks/useTalent';
 
 const EmploymentHistory = () => {
-    const {userInfo, select3, setSelect3} = useAuth()
+    const {userInfo, select3, setSelect3,personalData} = useAuth()
     const {setTalentPage, isEmployed, setIsEmployed,positionName, setPositionName,employmentDescription, setEmploymentDescription,
       hireFrom, setHireFrom,hireTo, setHireTo} = useTalent()
 
@@ -24,13 +25,18 @@ const EmploymentHistory = () => {
 
 
     useEffect(() => {
-        axios.get('https://toptal.ibrcloud.com/api/v1/projects/get-skills').then(res =>{
+
+      let pro_role = slugify(`${personalData?.professional_role}`,{
+        replacement: '_',
+        lower: true
+       })
+        axios.get( `https://toptal.ibrcloud.com/api/v1/projects/get-skills/${pro_role}`).then(res =>{
             setskils(res.data)
             
         }).catch(err =>{
           console.err("must verify the url");
         })
-      }, [])
+      }, [personalData])
 
       const submitHandler =  (e) => {
         e.preventDefault()
@@ -50,7 +56,7 @@ const EmploymentHistory = () => {
     
             },
         }
-        if(isEmployed === "" || positionName === ""  || employmentDescription ==="" || hireFrom === ""  || mySkills.length === 0  ) {
+        if(isEmployed === "" || positionName === ""  || employmentDescription ==="" || hireFrom === "" ) {
           console.log("verify inputs");
       }
       else{

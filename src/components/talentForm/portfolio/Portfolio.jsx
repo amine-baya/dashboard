@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
+import slugify from 'slugify'
 import './portfolio.css'
 import axios from 'axios'
 import Title from '../../title/Title'
@@ -11,7 +12,7 @@ import useTalent from '../../../hooks/useTalent';
 
 
 const Portfolio = () => {
-  const {userInfo, select2,setSelect2} = useAuth()
+  const {userInfo, select2,setSelect2,personalData} = useAuth()
   const {setTalentPage,imageProject,setImageProject,projectDescription, setProjectDescription,projectName,setProjectName} = useTalent()
   const [portfolioData,setPortfolioData] = useState([])
   const [portfolio_services, setportfolio_services] = useState()
@@ -29,12 +30,16 @@ const Portfolio = () => {
 
 
   useEffect(() => {
-    axios.get('https://toptal.ibrcloud.com/api/v1/projects/portfolio-services').then(res =>{
+    let pro_role = slugify(`${personalData?.professional_role}`,{
+      replacement: '_',
+      lower: true
+     })
+    axios.get(`https://toptal.ibrcloud.com/api/v1/projects/portfolio-services/${pro_role}`).then(res =>{
       setPortfolioData(res.data)
     }).catch(err =>{
       console.log("must verify the url");
     })
-  }, [])
+  }, [personalData])
 
 
   const uploadFileHandler = async (e) => {
@@ -83,11 +88,12 @@ const Portfolio = () => {
         },
     }
     
-    if(projectName === "" || imageProject.length === 0  || projectDescription ==="" || portfolio_services[0].subcategory.length === 0  ) {
+    if(projectName === "" || imageProject.length === 0  || projectDescription ===""  ) {
       console.log("verify inputs");
   }
   else{
-      await axios.post('https://toptal.ibrcloud.com/api/v1/user/portfolio',portfolio, config).then(res => {
+    
+      await axios.post('https://toptal.ibrcloud.com/api/v1/user/portfolio/',portfolio, config).then(res => {
       console.log("done");
      setTalentPage((currPage) => currPage + 1)
       setProjectName("")
@@ -119,7 +125,7 @@ const addNewProject = async()=>{
 
         },
     }
-    if(projectName === "" || imageProject.length === 0  || projectDescription ==="" || portfolio_services[0].subcategory.length === 0  ) {
+    if(projectName === "" || imageProject.length === 0  || projectDescription ===""  ) {
       console.log("verify inputs");
   }
   else{
@@ -135,6 +141,8 @@ const addNewProject = async()=>{
 }
 
 }
+
+
 
   return (
     <>

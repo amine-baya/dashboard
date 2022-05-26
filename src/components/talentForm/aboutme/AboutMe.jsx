@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, {useEffect, useState } from 'react'
+import slugify from 'slugify'
 import './aboutme.css'
 import Kpi3 from '../../kpi3/Kpi3'
 import useAuth from "../../../hooks/useAuth"
@@ -8,12 +9,18 @@ import useTalent from "../../../hooks/useTalent"
 const AboutMe = () => {
     const {setTalentPage,aboutText,setAboutText,cv,setCv} = useTalent()
 
-    const {userInfo, data, setData, kips} = useAuth()
+    const {userInfo, data, setData, kips,personalData} = useAuth()
     
-
-    useEffect(() => {
+   
+     
+     useEffect(() => {
+       let pro_role = slugify(`${personalData?.professional_role}`,{
+         replacement: '_',
+         lower: true
+        })
+       
       
-        axios.get('https://toptal.ibrcloud.com/api/v1/kpis/show_all_kpis/accounting_and_consulting').then(res =>{
+        axios.get( `https://toptal.ibrcloud.com/api/v1/kpis/show_all_kpis/${pro_role}`).then(res =>{
           setData(res.data)
           console.log(res.data)
           
@@ -21,7 +28,7 @@ const AboutMe = () => {
           console.err("must verify the url");
         })
         
-      }, [])
+      }, [personalData])
         
       
       const uploadFileHandler = async (e) => {
@@ -53,7 +60,7 @@ const AboutMe = () => {
           if(aboutText === ""  || cv === ""   ) {
             console.log("verify inputs");
         }else{
-          console.log(kips);
+         
           
           axios.patch('https://toptal.ibrcloud.com/api/v1/user/add-more-information',{about_self: aboutText,cv:cv,kips: kips }, config).then(res => {
             console.log("done");
